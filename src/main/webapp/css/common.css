@@ -1,0 +1,116 @@
+@CHARSET "UTF-8";
+
+/* body 기본 css */
+* {font-size: small;}
+body {
+  font-family: '맑은 고딕', '본고딕', sans-serif;
+}
+
+body > .container {
+  width: 960px;
+  margin: auto;
+}
+
+/* 헤더 css */
+
+#header {
+  border-bottom: 1px solid black;
+  color: rgb(51,51,51);
+}
+
+#header > img {
+  width: 168px; 
+  height: 100px;
+}
+
+#header > a {
+  margin-right: 5px;
+}
+
+.header-menu-a {
+  text-decoration: none !important;
+  font-size: 1.15em;
+  color: #333333;
+}
+
+#searchmenu-open {
+  font-size: 1.5em; 
+  margin-left: 20px;
+}
+
+#searchbar {
+  display: inline; 
+  padding: 15px 0px 15px 15px; 
+  margin-left: 50px; 
+  margin-right: 50px; 
+  border: 3px solid #c0392b; 
+  border-radius: 30px;
+}
+
+#searchbar > input {
+  width: 250px; 
+  font-size: 1.15em; 
+  color: #c0392b;
+  border: 0px;
+}
+
+#searchbar > button {
+  color: #c0392b; 
+}
+
+#searchbar span {
+  font-size: 1.2em;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #c0392b;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #c0392b);
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #c0392b;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #c0392b;
+}
+
+/* 풋터 css */
+#footer {
+   position: fixed; 
+   width: 100%; 
+   height:220px; 
+   bottom:0px; 
+   background-color: #ebebeb; 
+   border-top: 1px solid #bebebe;
+}
+
+#footer_content {
+   width: 960px; 
+   margin: auto;
+}
+
+.footer_elements {
+   float:left; 
+   width: 200px; 
+   margin: 20px;
+}
+
+.footer_elements_title {
+   font-size: 1.4em; 
+   font-weight: bold;
+}
+
+.footer_elements div {
+   padding: 10px; 
+   background-color: white; 
+   margin-top: 10px; 
+   border-radius: 10px;
+}
+
+.footer_elements img {
+  margin-top: 10px;
+  max-height: 120px;
+}

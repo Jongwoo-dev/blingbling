@@ -4,157 +4,55 @@
 <meta charset="UTF-8">
 <title>블링블링 FAQ UI Test</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-<style>
-* {font-size: small;}
-body {
-  font-family: '본고딕', '맑은 고딕', sans-serif;
-}
-
-body > .container {
-  width: 960px;
-  margin: auto;
-}
-
-#header {
-  border-bottom: 1px solid black;
-  color: rgb(51,51,51);
-}
-
-.header-menu-a {
-  text-decoration: none !important;
-  font-size: 1.15em;
-  color: #333333;
-}
-
-#header_sub {
-  border-bottom: 1px solid black;
-  padding: 20px;
-  color: #5e5e5e;
-  
-  font-weight: bold; 
-}
-
-#sidebar {
-  width: 200px;
-  float: left;
-  padding-top: 40px;
-  color: #5e5e5e;
-  font-weight: bold;
-}
-
-#content {
-  margin-left: 200px;
-  margin-bottom: 230px;
-  border-left: 1px solid rgb(224,224,224);
-  background-color: rgb(244,244,244);
-}
-
-#accordion > h3 {
-  color: #333333;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 0px 0px 20px 10px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-#accordion > div {
-  color: #7f7f7f;
-  font-size: 1.15em;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-    float: right;
-    margin-right: 20px;
-    color: #5e5e5e;
-}
-
-.sidebar_menu {
-  display: block; 
-  padding: 20px 0px 20px 20px; 
-  font-size: 1.45em;
-}
-
-.sidebar_menu:hover {
-  background-color: #bebebe;
-}
-
-.btn-default {
-  width: 215px; 
-  height: 45px; 
-  background-color: rgba(0,0,0,0); 
-  border-color: #9e9e9e; 
-  font-size: 1.2em; 
-  font-weight: bold; 
-  color: #5e5e5e;
-  margin: 10px 0px 0px 5px;
-}
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #c0392b;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #c0392b);
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #c0392b;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #c0392b;
-}
-
-</style>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="faqui.css">
 </head>
 <body>
 
 <div class="container">
 
   <div id='header'>
-    <img src="bling-logo-tx.png" style='height: 100px;'>
+    <img src="bling-logo-tx.png">
     <h1 style="display: none;">블링블링</h1>
-    <span style='font-size: 1.5em; margin-left: 20px;'>검색</span>
+    <span id='searchmenu-open'>검색</span>
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
     
-    <div style='display: inline; padding: 15px 0px 15px 15px; margin-left: 50px; margin-right: 50px; border: 3px solid #c0392b; border-radius: 30px;'>
-      <input type='text' placeholder="업체/지역/비교 검색 가능합니다" 
-             style='width: 250px; font-size: 1.15em; color: #c0392b;border: 0px'>
-      <button type='button' class="btn btn-link"><span class="glyphicon glyphicon-search" aria-hidden="true" 
-              style='color: #c0392b'></span></button>
+    <div id='searchbar'>
+      <input type='text' placeholder="업체/지역/비교 검색 가능합니다">
+      <button type='button' class="btn btn-link">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </button>
     </div>
     
     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
     <a href='#' class='header-menu-a'>로그인</a>
     
-    <span class="glyphicon glyphicon-time" aria-hidden="true" style='margin-left: 5px'></span>
+    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
     <a href='#' class='header-menu-a'>예약내역</a>
     
-    <span class="glyphicon glyphicon-headphones" aria-hidden="true" style='margin-left: 5px'></span>
+    <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
     <a href='#' class='header-menu-a'>고객센터</a>
   </div>
   
   <div id='header_sub'>
-    <span style="color: #c0392b; font-size: 1.15em; padding-right: 5px; border-right: 1px solid black;">EVENT</span>
-    <span style='font-size: 1.15em; margin-left: 10px;'>전 예약자 쿠폰 지급</span>
-    <span style="float: right; font-size: 1.15em;">홈>고객센터>FAQ</span>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>홈>고객센터>FAQ</span>
   </div>
   
   <div id='sidebar'>
-    <span style='display: block; margin-bottom: 20px; padding-left: 20px; font-size: 2.45em; font-weight: bold; color: #333333;'>고객센터</span>
+    <span class='sidebar_title'>고객센터</span>
     <span class='sidebar_menu'>공지사항</span>
-    <span class='sidebar_menu' style="color: #e74c3c">자주묻는질문</span>
+    <span class='sidebar_menu selected'>자주묻는질문</span>
     <span class='sidebar_menu'>1:1 문의</span>
   </div>
   
   <div id='content'>
-    <span style='display: block; padding: 40px; font-size: 2.45em; font-weight: bold; color: #333333;'>자주묻는질문</span>
-    <hr color='#e0e0e0' style='margin: 0px; border: 2px solid #e0e0e0'>
-    <div id='content_main' style='margin-left: 40px'>
-      <div id='btn_category' style='padding: 10px 10px 10px 5px; border-bottom: 3px solid rgb(224, 224, 224);'>
-        <button type="button" class="btn btn-default" style='border-color: rgb(231, 76, 60); color: #e74c3c;'>베스트질문</button>
+    <span class='content_title'>자주묻는질문</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div id='btn_category'>
+        <button type="button" class="btn btn-default selected">베스트질문</button>
         <button type="button" class="btn btn-default">이벤트</button>
         <button type="button" class="btn btn-default">예약문의</button>
         <button type="button" class="btn btn-default">혜택받기</button>
@@ -198,29 +96,22 @@ body > .container {
         </div>
         
       </div>
-      
-      
-      
-      
     </div>
   </div>
-  
-  
-  
 
 </div>
 
 <div class="container-fluid" style="padding: 0px">
-  <div id='footer' style="position: fixed; width: 100%; height:220px; bottom:0px; background-color: #ebebeb; border-top: 1px solid #bebebe">
-    <div id='footer_content' style="width: 960px; margin: auto;">
-      <div style='float:left; width: 200px; margin: 20px;'>
+  <div id='footer'>
+    <div id='footer_content'>
+      <div class='footer_elements'>
         <span style="font-size: 1.4em; font-weight: bold;">이벤트</span>
-        <img src="22222.png" width="200" style="margin-top: 10px;">
+        <img src="22222.png" width="200px">
       </div>
       
-      <div style='float:left; width: 200px; margin: 20px;'>
-        <span style="font-size: 1.4em; font-weight: bold;">공지사항</span>
-        <div style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>공지사항</span>
+        <div>
           <ul>
             <li>리뷰 이벤트 당첨자</li>
             <li>평가하기 당첨자</li>
@@ -230,9 +121,9 @@ body > .container {
         </div>
       </div>
       
-      <div style='float:left; width: 200px; margin: 20px;'>
-        <span style="font-size: 1.4em; font-weight: bold;">고객센터</span>
-        <div style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>고객센터</span>
+        <div>
           <ul>
             <li>이용방법</li>
             <li>리뷰 이벤트 당첨자</li>
@@ -241,9 +132,9 @@ body > .container {
         </div>
       </div>
       
-      <div style='float:left; width: 200px; margin: 20px;'>
-        <span style="font-size: 1.4em; font-weight: bold;">보도자료</span>
-        <div style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>보도자료</span>
+        <div>
           <ul>
             <li>블링블링 대박</li>
             <li>평가하기 당첨자</li>
@@ -259,6 +150,8 @@ body > .container {
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src='../js/common.js'></script>
 
 <script>
 $( function() {
