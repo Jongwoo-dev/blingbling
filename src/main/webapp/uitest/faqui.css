@@ -25,34 +25,14 @@
 	font-size: 1.15em;
 }
 
+/* 사이드바 */
+
 #sidebar {
   width: 200px;
   float: left;
   padding-top: 40px;
   color: #5e5e5e;
   font-weight: bold;
-}
-
-#accordion > h3 {
-  color: #333333;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 0px 0px 20px 10px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-#accordion > div {
-  color: #7f7f7f;
-  font-size: 1.15em;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-    float: right;
-    margin-right: 20px;
-    color: #5e5e5e;
 }
 
 .sidebar_title {
@@ -77,6 +57,8 @@
 .sidebar_menu:hover {
   background-color: #bebebe;
 }
+
+/* 컨텐츠 */
 
 #content {
   margin-left: 200px;
@@ -121,4 +103,26 @@
 .btn-default.selected {
 	 border-color: #e74c3c; 
 	 color: #e74c3c;
+}
+
+#accordion > h3 {
+  color: #333333;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0px 0px 20px 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+#accordion > div {
+  color: #7f7f7f;
+  font-size: 1.15em;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    float: right;
+    margin-right: 20px;
+    color: #5e5e5e;
 }
