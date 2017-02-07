@@ -4,8 +4,6 @@
   border-bottom: 1px solid black;
   padding: 20px;
   color: #5e5e5e;
-  
-  font-weight: bold; 
 }
 
 #header_sub_event_title {
@@ -32,7 +30,6 @@
   float: left;
   padding-top: 40px;
   color: #5e5e5e;
-  font-weight: bold;
 }
 
 .sidebar_title {
@@ -175,6 +172,10 @@
 	background-color: white;
 	height: 35px;
 	color: #333333;
+}
+
+#content_main_form .control-label {
+	font-weight: normal;
 }
 
 #content_main_form  .value {
