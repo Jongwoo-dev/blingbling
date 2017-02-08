@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마이페이지 업체등록</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="mypage5.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div id='header'>
+    <img src="bling-logo-tx.png">
+    <h1 style="display: none;">블링블링</h1>
+    <span id='searchmenu-open'>검색</span>
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+    
+    <div id='searchbar'>
+      <input type='text' placeholder="업체/지역/비교 검색 가능합니다">
+      <button type='button' class="btn btn-link">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </button>
+    </div>
+    
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <a href='#' class='header-menu-a'>로그인</a>
+    
+    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+    <a href='#' class='header-menu-a'>예약내역</a>
+    
+    <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+    <a href='#' class='header-menu-a'>고객센터</a>
+  </div>
+  
+  <div id='header_sub'>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>홈>마이페이지>업체전환</span>
+  </div>
+  
+  <div id='sidebar'>
+    <span class='sidebar_title'>마이페이지</span>
+
+    <span class='sidebar_menu'>찜</span>
+    <span class='sidebar_menu'>스탬프</span>
+    <span class='sidebar_menu'>예약내역</span>
+    <span class='sidebar_menu'>이용내역</span>
+    <span class='sidebar_menu selected'>내정보수정</span>
+    <span class='sidebar_menu'>업체전환</span>
+  </div>
+
+  <div id='content'>
+  
+    <div id="content_header">
+    
+      <div id='content_profile'>
+        <form class="form-inline">
+          <div class="form-group">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="form-group">
+            <span class='profile name'>김건우</span>
+          </div>
+        </form>
+      </div>
+      
+      <div class='itemform'>
+        <div class='item titleform'>
+          <span class="glyphicon glyphicon-heart"></span>
+          <span class='item titletext'>찜</span>
+        </div>
+        <span class='item value'>0개</span>
+      </div>
+      
+      <div class='itemform'>
+        <div class='item titleform'>
+          <span class="glyphicon glyphicon-calendar"></span>
+          <span class='item titletext'>스탬프</span>
+        </div>
+        <span class='item value'>0개</span>
+      </div>
+      
+      <div class='itemform'>
+        <div class='item titleform'>
+          <span class="glyphicon glyphicon-check"></span>
+          <span class='item titletext'>예약내역</span>
+        </div>
+        <span class='item value'>0개</span>
+      </div>
+    
+    </div>
+    
+    <div id='content_main'>
+      <div class="row">
+        <span class="col-md-6 maintitle">내 정보수정</span>
+        <span class="col-md-6 maindesc">회원정보를 수정할 수 있습니다.</span>
+      </div>
+      
+      <form id='content_main_form'>
+        <div id="profile_change1">
+          <div class="profile-photo">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          </div>
+	        <div id="profile_change2">  
+	          <div class="profile_row">
+	            <span class="profile-label">닉네임</span>
+	            <span class="profile-value">김찌벅</span>
+	            <button type="button" class="btn btn-info">변경</button>
+	          </div>
+	          <div class="profile_row">
+	            <span class="profile-label">휴대전화</span>
+              <span class="profile-value">010-1111-1111</span>
+              <button type="button" class="btn btn-info">변경</button>
+	          </div>
+	          <div class="profile_row noborder">
+	            <span class="profile-label">본인인증</span>
+              <span class="profile-value">인증필요</span>
+              <button type="button" class="btn btn-info">본인인증</button>
+	          </div>
+	        </div>  
+        </div>
+      </form>
+  </div>
+</div>
+
+</div>
+ 
+ <div class="container-fluid" style="padding: 0px">
+  <div id='footer'>
+    <div id='footer_content'>
+      <div class='footer_elements'>
+        <span style="font-size: 1.4em; font-weight: bold;">이벤트</span>
+        <img src="22222.png" width="200px">
+      </div>
+      
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>공지사항</span>
+        <div>
+          <ul>
+            <li>리뷰 이벤트 당첨자</li>
+            <li>평가하기 당첨자</li>
+            <li>리뷰 이벤트 당첨자</li>
+            <li>평가하기 당첨자</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>고객센터</span>
+        <div>
+          <ul>
+            <li>이용방법</li>
+            <li>리뷰 이벤트 당첨자</li>
+            <li>평가하기 당첨자</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class='footer_elements'>
+        <span class='footer_elements_title'>보도자료</span>
+        <div>
+          <ul>
+            <li>블링블링 대박</li>
+            <li>평가하기 당첨자</li>
+            <li>리뷰 이벤트 당첨자</li>
+            <li>평가하기 당첨자</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
