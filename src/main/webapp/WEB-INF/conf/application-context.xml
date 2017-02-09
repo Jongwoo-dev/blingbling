@@ -18,7 +18,7 @@
           @Component, @Controller, @Repository, @Service 애노테이션이 붙은 
           클래스를 찾아 인스턴스를 생성한다.
   -->
-  <context:component-scan base-package="bitcamp.java89.ems2">
+  <context:component-scan base-package="bitcamp.java89.blingbling">
     <context:exclude-filter type="annotation" 
                             expression="org.springframework.stereotype.Controller"/>
   </context:component-scan>
@@ -45,13 +45,13 @@
   <!-- Mybatis 퍼시스턴스 프레임워크 객체 -->
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"/>
-    <property name="mapperLocations" value="classpath*:bitcamp/java89/ems2/dao/*Dao.xml" />
-    <property name="typeAliasesPackage" value="bitcamp.java89.ems2.domain" />
+    <property name="mapperLocations" value="classpath*:bitcamp/java89/blingbling/dao/*Dao.xml" />
+    <property name="typeAliasesPackage" value="bitcamp.java89.blingbling.domain" />
   </bean>
   
   <!-- DAO 인터페이스의 Mybatis 구현체를 만들어주는 객체 -->
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    <property name="basePackage" value="bitcamp.java89.ems2.dao" />
+    <property name="basePackage" value="bitcamp.java89.blingbling.dao" />
   </bean>
   
   <!-- 트랜잭션을 다루는 Advice 등록 -->
@@ -66,7 +66,7 @@
   <aop:config>
     <!-- 트랜잭션 Advice를 꼽을 위치 지정 -->
     <aop:pointcut id="serviceOperation" 
-                  expression="execution(* bitcamp.java89.ems2.service..*(..))" />
+                  expression="execution(* bitcamp.java89.blingbling.service..*(..))" />
     <!-- 위치와 Advice를 연결한다. -->
     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
   </aop:config>

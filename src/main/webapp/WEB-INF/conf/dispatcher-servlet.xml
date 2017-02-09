@@ -15,9 +15,9 @@
           @Component, @Controller, @Repository, @Service 애노테이션이 붙은 
           클래스를 찾아 인스턴스를 생성한다.
   -->
-  <context:component-scan base-package="bitcamp.java89.ems2.control">
+  <context:component-scan base-package="bitcamp.java89.blingbling.control">
     <!-- JSON 데이터를 출력하는 페이지 컨트롤러를 제외시킨다. -->
-    <context:exclude-filter type="regex" expression="bitcamp.java89.ems2.control.json.*"/>
+    <context:exclude-filter type="regex" expression="bitcamp.java89.blingbling.control.json.*"/>
   </context:component-scan>
 
   <!--  뷰 컴포넌트 관리자(View Resolver; 뷰 해결사) 등록 -->
@@ -48,7 +48,7 @@
     <mvc:interceptor>
         <mvc:mapping path="/**"/>
         <mvc:exclude-mapping path="/auth/**"/>
-        <bean class="bitcamp.java89.ems2.interceptor.LoginCheckInterceptor"/>
+        <bean class="bitcamp.java89.blingbling.interceptor.LoginCheckInterceptor"/>
     </mvc:interceptor>
   </mvc:interceptors>
 </beans>

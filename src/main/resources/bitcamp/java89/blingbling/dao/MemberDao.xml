@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.MemberDao">
+
+  <resultMap type="member" id="member-map">
+    <id     column="mno"        property="memberNo"/>
+    <result column="name"       property="name"/>
+    <result column="email"      property="email"/>
+    <result column="tel"        property="tel"/>
+    <result column="chck"       property="confirmTel"/>
+    <result column="mgr"        property="isManager"/>
+  </resultMap>
+  
+  <select id="count" parameterType="string" resultType="int">
+    select count(*)
+    from memb
+    where email=#{value}
+  </select>
+  
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from memb 
+    where mno=#{value}
+  </select>
+  
+  <!-- <select id="getList" resultMap="student-map">
+    select 
+      m.mno, 
+      m.name, 
+      m.tel, 
+      m.email, 
+      s.work, 
+      s.lst_schl, 
+      s.schl_nm, 
+      s.path
+    from stud s
+      left outer join memb m on s.sno=m.mno
+  </select> -->
+  
+  <select id="getOne" parameterType="int" resultMap="member-map">
+    select
+      m.mno,
+      m.name, 
+      m.email, 
+      m.tel, 
+      m.chck, 
+      m.mgr 
+    from memb m
+    where mno=#{value}
+  </select>
+
+  <!-- <insert id="insert" parameterType="student">
+    insert into stud(sno,work,lst_schl,schl_nm,path) 
+    values(
+      #{memberNo},
+      #{working},
+       
+      <choose>
+        <when test="working == true">'Y'</when> 
+        <otherwise>'N'</otherwise>
+      </choose>,
+     
+      #{grade}, 
+      #{schoolName}, 
+      #{photoPath})
+  </insert>  
+  
+  <update id="update" parameterType="student">
+    update stud set
+	    work=#{working}, 
+	    lst_schl=#{grade}, 
+	    schl_nm=#{schoolName}, 
+	    path=#{photoPath}
+    where sno=#{memberNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+  <![CDATA[
+    delete from stud where sno=#{value}
+  ]]>
+  </delete> -->
+
+</mapper>
+
+
+
+
+
+
+
+
