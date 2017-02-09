@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마이페이지 업체등록</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="mypage3.css">
+
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+
+		<div id='header'>
+			<img src="bling-logo-tx.png">
+			<h1 style="display: none;">블링블링</h1>
+			<span id='searchmenu-open'>검색</span> <span
+				class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+			<div id='searchbar'>
+				<input type='text' placeholder="업체/지역/비교 검색 가능합니다">
+				<button type='button' class="btn btn-link">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			</div>
+
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
+				href='#' class='header-menu-a'>로그인</a> <span
+				class="glyphicon glyphicon-time" aria-hidden="true"></span> <a
+				href='#' class='header-menu-a'>예약내역</a> <span
+				class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <a
+				href='#' class='header-menu-a'>고객센터</a>
+		</div>
+
+		<div id='header_sub'>
+			<span id='header_sub_event_title'>EVENT</span> <span
+				id='header_sub_event_content'>전 예약자 쿠폰 지급</span> <span
+				id='header_sub_navi'>홈>마이페이지>업체전환</span>
+		</div>
+
+		<div id='sidebar'>
+			<span class='sidebar_title'>마이페이지</span> 
+			<span class='sidebar_menu'>찜</span>
+			<span class='sidebar_menu'>스탬프</span> 
+			<span class='sidebar_menu selected'>예약내역</span>
+			<span class='sidebar_menu'>이용내역</span> 
+			<span class='sidebar_menu'>내정보수정</span> 
+			<span class='sidebar_menu'>업체전환</span>
+		</div>
+
+		<div id='content'>
+
+			<div id="content_header">
+
+				<div id='content_profile'>
+					<form class="form-inline">
+						<div class="form-group">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</div>
+						<div class="form-group">
+							<span class='profile name'>김건우</span>
+						</div>
+					</form>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-heart"></span> <span
+							class='item titletext'>찜</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-calendar"></span> <span
+							class='item titletext'>스탬프</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-check"></span> <span
+							class='item titletext'>예약내역</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+			</div>
+
+			<div id='content_main'>
+				<div class="row">
+					<span class="col-md-6 maintitle">예약내역</span> <span
+						class="col-md-6 maindesc">예약취소 가능횟수x개</span>
+				</div>
+			</div>
+			<div id="content_search">
+				<span class="search-text">조회기간</span>
+				<button type="button" class="btn btn-primary btn-xs bt1">1주일</button>
+				<button type="button" class="btn btn-primary btn-xs bt2">1개월</button>
+				<button type="button" class="btn btn-primary btn-xs bt3">3개월</button>
+				<span><input type="text" id="datepicker" class="calender cn1">~</span>
+			  <span><input type="text" id="datepicker2" class="calender cn2"></span>
+				<button type="button" class="btn btn-primary btn-xs bt4">검색</button>
+			</div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr id="tr">
+							<th>예약일자</th>
+							<th>업체이름</th>
+							<th>상품정보</th>
+							<th>총결제금액</th>
+							<th>상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>예약취소</button></td>
+						</tr>
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>예약취소</button></td>
+						</tr>
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>예약취소</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<nav aria-label="Page navigation">
+				<div class='text-center'>
+					<ul class="pagination">
+						<li><a href="#" aria-label="Previous"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(function() {
+	  $( "#datepicker" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "calendar.png", 
+	        buttonImageOnly: true 
+	  });
+	});
+</script>
+<script>
+$(function() {
+    $( "#datepicker2" ).datepicker({
+          showOn: "both", 
+          buttonImage: "calendar.png", 
+          buttonImageOnly: true 
+    });
+  });
+</script>
+</body>
+</html>
