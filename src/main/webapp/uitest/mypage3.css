@@ -190,67 +190,68 @@
 }
 
 #content_search .btn.btn-primary {
-  margin-top:17px;
-  margin-bottom:19px;
-  background-color: white;
-  color:red;
-  border:1px solid #c0392b;
+	margin-top:17px;
+	margin-bottom:19px;
+	background-color: white;
+	color:red;
+	border:1px solid #c0392b;
 }
 
 #content_search .btn.btn-primary:hover {
-  color: white;
-  background-color: #c0392b;
-  border:0;
+	color: white;
+	background-color: #c0392b;
+	border:0;
 }
 
 
 
 .ui-datepicker-trigger {
-  height:23px;
+	height:23px;
 }
 
 .bt1 {
-  margin-right:10px;
+	margin-right:10px;
 }
 
 .bt2 {
-  margin-right:10px;
+	margin-right:10px;
 }
 .bt3 {
-  margin-right:45px;
+	margin-right:45px;
 }
 
 .bt4 {
-  float:right;
-  width:70px;
-  height:25px;
-  margin-right:5px;
+	float:right;
+	width:70px;
+	height:25px;
+	margin-right:5px;
 }
 
 #content_search {
-  margin-bottom:30px;
+	margin-bottom:30px;
 }
 
 .table-responsive {
-  margin-left:60px;
+	margin-left:60px;
 }
 
 .btn-default {
-  width:70px;
-  height:25px;
+	width:70px;
+	height:25px;
   background-color: #c0392b;
-  color:white;
-  padding:0;
-  font-size:0.9em;
+	color:white;
+	padding:0;
+	font-size:0.9em;
 }
 
 th {
-  text-align: center;
+	text-align: center;
 }
 
 td {
-  text-align: center;
+	text-align: center;
 }
+
 
 
 
