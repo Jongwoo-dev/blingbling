@@ -21,6 +21,10 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.getOne(no);
   }
   
+  public Member getDetail(String email) throws Exception {
+    return memberDao.getOneByEmail(email);
+  }
+  
   public int add(Member member) throws Exception {
     /*
     if (studentDao.count(student.getEmail()) > 0) {
