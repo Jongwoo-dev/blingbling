@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>블링블링 FAQ UI Test</title>
+<link rel="stylesheet"
+	href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"
+	href="http://cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
+<style>
+* {
+	font-size: small;
+}
+
+body {
+	font-family: '본고딕', '맑은 고딕', sans-serif;
+}
+
+body>.container {
+	width: 960px;
+	margin: auto;
+}
+
+#header {
+	border-bottom: 1px solid black;
+	color: rgb(51, 51, 51);
+}
+
+.header-menu-a {
+	text-decoration: none !important;
+	font-size: 1.15em;
+	color: #333333;
+}
+
+#header_sub {
+	border-bottom: 1px solid black;
+	padding: 20px;
+	color: #5e5e5e;
+	font-weight: bold;
+}
+
+.btn-danger {
+	width: 130px;
+	height: 40px;
+	border-color: #9e0e0e;
+	background-color: white;
+	color: #5e5e5e;
+}
+
+.btn-danger:HOVER {
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+	background-color: rgb(192, 57, 43);
+	color: white;
+}
+
+.btn-default {
+	width: 130px;
+	height: 40px;
+	background-color: white;
+	color: #5e5e5e;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.btn-default:HOVER {
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+	background-color: rgb(192, 192, 192);
+	color: white;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	color: #c0392b;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #c0392b);
+	opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #c0392b;
+	opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #c0392b;
+}
+
+#imgcard {
+	margin-top: 30px;
+	margin-bottom: 230px;
+	border-left: 1px solid rgb(224, 224, 224);
+	background-color: rgb(244, 244, 244);
+	position: relative;
+}
+
+.itembox {
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.itembox:hover {
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+}
+
+.itembox>img {
+	width: 188px;
+}
+
+.form-signin {
+	max-width: 400px;
+	display: block;
+	background-color: #f7f7f7;
+	-moz-box-shadow: 0 0 3px 3px #888;
+	-webkit-box-shadow: 0 0 3px 3px #888;
+	box-shadow: 0 0 3px 3px #888;
+	border-radius: 2px;
+}
+
+.main {
+	padding: 38px;
+}
+
+.social-box {
+	margin: 0 auto;
+	padding: 38px;
+	border-bottom: 1px #ccc solid;
+}
+
+.social-box a {
+	font-weight: bold;
+	font-size: 18px;
+	padding: 8px;
+}
+
+.social-box a i {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.heading-desc {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 38px 38px 0px 38px;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin .form-control {
+	position: relative;
+	font-size: 16px;
+	height: 20px;
+	padding: 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="text"] {
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.login-footer {
+	background: #f0f0f0;
+	margin: 0 auto;
+	border-top: 1px solid #dadada;
+	padding: 20px;
+}
+
+.login-footer .left-section a {
+	font-weight: bold;
+	color: #8a8a8a;
+	line-height: 19px;
+}
+
+.mg-btm {
+	margin-bottom: 20px;
+}
+
+.well {
+	margin-bottom: 5px;
+}
+/*
+stylize any heading tags withing white-panel below
+*/
+</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<div id='header'>
+			<img src="logo.png" style='height: 100px;'>
+			<h1 style="display: none;">블링블링</h1>
+			<span style='font-size: 1.5em; margin-left: 20px;'>검색</span> <a
+				class="glyphicon glyphicon-chevron-down " data-toggle="collapse"
+				href="#collapseExample" aria-expanded="false"></a>
+
+
+
+
+
+
+
+
+			<div
+				style='display: inline; padding: 15px 0px 15px 15px; margin-left: 50px; margin-right: 50px; border: 3px solid #c0392b; border-radius: 30px;'>
+				<input type='text' placeholder="업체/지역/비교 검색 가능합니다"
+					style='width: 250px; font-size: 1.15em; color: #c0392b; border: 0px'>
+				<button type='button' class="btn btn-link">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"
+						style='color: #c0392b'></span>
+				</button>
+			</div>
+
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
+				href='#' class='header-menu-a ' data-toggle="modal"
+				data-target="#myModal">로그인</a>
+
+
+
+
+
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel">
+				<div class="modal-dialog modal-sm" style="margin-top: 150px;">
+					<div class="row">
+
+						<form class="form-signin mg-btm">
+							<h3 class="heading-desc">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								로그인
+							</h3>
+							<div class="social-box">
+								<div class="row mg-btm">
+									<div class="col-md-12">
+										<a href="#" class="btn btn-primary btn-block"> <i
+											class="xi-facebook-official"></i> Login with Facebook
+										</a>
+									</div>
+								</div>
+								<div class="row mg-btm">
+									<div class="col-md-12">
+										<a href="#" class="btn btn-success btn-block"> <i
+											class="xi-naver-square"></i> Login with Naver
+										</a>
+									</div>
+								</div>
+								<div class="row mg-btm">
+									<div class="col-md-12">
+										<a href="#" class="btn btn-warning btn-block"> <i
+											class="xi-kakao"></i> Login with kakao
+										</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<a href="#" class="btn btn-info btn-block"> <i
+											class="xi-google"></i> Login with google
+										</a>
+									</div>
+								</div>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+			<span class="glyphicon glyphicon-time" aria-hidden="true"
+				style='margin-left: 5px'></span> <a href='#' class='header-menu-a'>예약내역</a>
+
+			<span class="glyphicon glyphicon-headphones" aria-hidden="true"
+				style='margin-left: 5px'></span> <a href='#' class='header-menu-a'>고객센터</a>
+		</div>
+
+		<div class="collapse" id="collapseExample">
+			<div class="well">
+
+
+				<span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>업종선택</span>
+				<span class="glyphicon glyphicon-chevron-right" style="margin-right: 20px"> </span>
+
+
+				<button type="button" class="btn btn-danger" data-toggle="button"
+					aria-pressed="false">전체</button>
+				<button type="button" class="btn btn-danger" data-toggle="button"
+					aria-pressed="false">마사지</button>
+				<button type="button" class="btn btn-danger" data-toggle="button"
+					aria-pressed="false">에스테틱</button>
+				<button type="button" class="btn btn-danger" data-toggle="button"
+					aria-pressed="false">네일아트</button>
+				<button type="button" class="btn btn-danger" data-toggle="button"
+					aria-pressed="false">왁싱</button>
+			</div>
+			<div class="well">
+				<span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>지역선택</span>
+				<a class="glyphicon glyphicon-chevron-down" style="margin-right: 20px"
+					data-toggle="collapse" href="#collapseExample1"
+					aria-expanded="false"> </a>
+				<div class="collapse" id="collapseExample1">
+					<button type="button" class="btn btn-default" style=""
+						data-toggle="button" aria-pressed="false">전체</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">서울</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">경기</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">인천</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">강원</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">전남</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">전북</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">경남</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">경북</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">충남</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">충북</button>
+					<button type="button" class="btn btn-default" data-toggle="button"
+						aria-pressed="false">제주</button>
+
+				</div>
+
+
+
+			</div>
+			<div class="well">
+
+
+				<span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>내주변검색</span>
+				<span class="glyphicon glyphicon-chevron-right" style="margin-right: 20px"> </span>
+
+
+			</div>
+
+		</div>
+
+		<div id="carousel-example-generic" class="carousel slide"
+			data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0"
+					class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="maini1.jpg"
+						style="margin-left: auto; margin-right: auto; display: block;" />
+					<div class="carousel-caption"></div>
+				</div>
+				<div class="item">
+					<img src="mainn.jpg"
+						style="margin-left: auto; margin-right: auto; display: block;" />
+					<div class="carousel-caption"></div>
+
+				</div>
+				<div class="item">
+					<img src="maint.jpg"
+						style="margin-left: auto; margin-right: auto; display: block;" />
+					<div class="carousel-caption"></div>
+				</div>
+			</div>
+
+			<a class="left carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+
+
+
+
+
+
+
+
+		<div class="w3-card-12">
+			<div id=imgcard>
+				<div class='itembox'>
+					<img src="maini1.jpg" alt="Norway" class="img-fluid ">
+					<div class="w3-container w3-center">
+						<p class="white-text" style="font-size: 1.1em; font-weight: bold;">주변지역</p>
+						<p>자신의 주변지역을 나타냅니다</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src=mainn.jpg alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">서울</p>
+						<p>삼성,강남,역삼,서초,잠실..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src="maint.jpg" alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">경기</p>
+						<p>수원,인계,안산,성남,용인..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src="maina.jpg" alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">강원</p>
+						<p>춘천,원주,강릉,양양,고성..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src="maini1.jpg" alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">전북</p>
+						<p>정읍,익산,김제,남원,전주..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src=mainn.jpg alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">전남</p>
+						<p>광주,여수,목포,무안,나주..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src="maint.jpg" alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">경북</p>
+						<p>김천,안동,영주,경산,구미..</p>
+					</div>
+				</div>
+				<div class='itembox'>
+					<img src="maina.jpg" alt="Norway">
+					<div class="w3-container w3-center">
+						<p style="font-size: 1.1em; font-weight: bold;">경남</p>
+						<p>창원,합천,마산,통영,부산..</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="container-fluid" style="padding: 0px">
+		<div id='footer'
+			style="position: fixed; width: 100%; height: 220px; bottom: 0px; background-color: #ebebeb; border-top: 1px solid #bebebe">
+			<div id='footer_content' style="width: 960px; margin: auto;">
+				<div style='float: left; width: 200px; margin: 20px;'>
+					<span style="font-size: 1.4em; font-weight: bold;">이벤트</span> <img
+						src="22222.png" width="200" style="margin-top: 10px;">
+				</div>
+
+				<div style='float: left; width: 200px; margin: 20px;'>
+					<span style="font-size: 1.4em; font-weight: bold;">공지사항</span>
+					<div
+						style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+						<ul>
+							<li>리뷰 이벤트 당첨자</li>
+							<li>평가하기 당첨자</li>
+							<li>리뷰 이벤트 당첨자</li>
+							<li>평가하기 당첨자</li>
+						</ul>
+					</div>
+				</div>
+
+				<div style='float: left; width: 200px; margin: 20px;'>
+					<span style="font-size: 1.4em; font-weight: bold;">고객센터</span>
+					<div
+						style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+						<ul>
+							<li>이용방법</li>
+							<li>리뷰 이벤트 당첨자</li>
+							<li>평가하기 당첨자</li>
+						</ul>
+					</div>
+				</div>
+
+				<div style='float: left; width: 200px; margin: 20px;'>
+					<span style="font-size: 1.4em; font-weight: bold;">보도자료</span>
+					<div
+						style="padding: 10px; background-color: white; margin-top: 10px; border-radius: 10px;">
+						<ul>
+							<li>블링블링 대박</li>
+							<li>평가하기 당첨자</li>
+							<li>리뷰 이벤트 당첨자</li>
+							<li>평가하기 당첨자</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+	<script>
+		$(function() {
+			$("#accordion").accordion({
+				active : false,
+				collapsible : true,
+				icons : {
+					"header" : "glyphicon glyphicon-menu-up",
+					"activeHeader" : "glyphicon glyphicon-menu-down"
+				},
+			});
+		});
+	</script>
+
+</body>
+</html>
