@@ -10,7 +10,7 @@ public class Member implements Serializable {
   protected String email;
   protected String tel;
   protected boolean confirmTel;
-  protected boolean isManager;
+  protected boolean administrator;
   
   
   public int getMemberNo() {
@@ -43,10 +43,10 @@ public class Member implements Serializable {
   public void setConfirmTel(boolean confirmTel) {
     this.confirmTel = confirmTel;
   }
-  public boolean isManager() {
-    return isManager;
+  public boolean isAdministrator() {
+    return administrator;
   }
-  public void setManager(boolean isManager) {
-    this.isManager = isManager;
+  public void setAdministrator(boolean administrator) {
+    this.administrator = administrator;
   }
 }

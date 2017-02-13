@@ -22,45 +22,26 @@ public class MemberServiceImpl implements MemberService {
   }
   
   public int add(Member member) throws Exception {
-    /*
-    if (studentDao.count(student.getEmail()) > 0) {
-      throw new Exception("같은 학생의 이메일이 존재합니다. 등록을 취소합니다.");
+    if (memberDao.count(member.getEmail()) > 0) {
+      throw new Exception("같은 회원의 이메일이 존재합니다. 등록을 취소합니다.");
     }
     
-    if (memberDao.count(student.getEmail()) == 0) { 
-      memberDao.insert(student);
-      
-    } else {
-      Member member = memberDao.getOne(student.getEmail());
-      student.setMemberNo(member.getMemberNo());
-    }
-    
-    return studentDao.insert(student);*/
-    return 0;
+    return memberDao.insert(member);
   }
   
   public int delete(int no) throws Exception {
-    /*if (studentDao.countByNo(no) == 0) {
-      throw new Exception("학생을 찾지 못했습니다.");
+    if (memberDao.countByNo(no) == 0) {
+      throw new Exception("회원을 찾지 못했습니다.");
     }
     
-    int count = studentDao.delete(no);
-
-    if (managerDao.countByNo(no) == 0 && teacherDao.countByNo(no) == 0) {
-      memberDao.delete(no);
-    }
-    
-    return count;*/
-    return 0;
+    return memberDao.delete(no);
   }
   
   public int update(Member member) throws Exception {
-    /*if (studentDao.countByNo(student.getMemberNo()) == 0) {
-      throw new Exception("학생을 찾지 못했습니다.");
+    if (memberDao.countByNo(member.getMemberNo()) == 0) {
+      throw new Exception("회원을 찾지 못했습니다.");
     }
-    memberDao.update(student);
-    return studentDao.update(student);*/
-    return 0;
+    return memberDao.update(member);
   }
 }
 

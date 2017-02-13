@@ -11,7 +11,7 @@
     <result column="email"      property="email"/>
     <result column="tel"        property="tel"/>
     <result column="chck"       property="confirmTel"/>
-    <result column="mgr"        property="isManager"/>
+    <result column="mgr"        property="administrator"/>
   </resultMap>
   
   <select id="count" parameterType="string" resultType="int">
@@ -26,19 +26,16 @@
     where mno=#{value}
   </select>
   
-  <!-- <select id="getList" resultMap="student-map">
-    select 
-      m.mno, 
+  <select id="getList" resultMap="member-map">
+    select
+      m.mno,
       m.name, 
-      m.tel, 
       m.email, 
-      s.work, 
-      s.lst_schl, 
-      s.schl_nm, 
-      s.path
-    from stud s
-      left outer join memb m on s.sno=m.mno
-  </select> -->
+      m.tel, 
+      m.chck, 
+      m.mgr 
+    from memb m
+  </select>
   
   <select id="getOne" parameterType="int" resultMap="member-map">
     select
@@ -52,36 +49,31 @@
     where m.mno=#{value}
   </select>
 
-  <!-- <insert id="insert" parameterType="student">
-    insert into stud(sno,work,lst_schl,schl_nm,path) 
+  <insert id="insert" parameterType="member">
+    insert into memb(mno, name, email, tel, chck, mgr) 
     values(
       #{memberNo},
-      #{working},
-       
-      <choose>
-        <when test="working == true">'Y'</when> 
-        <otherwise>'N'</otherwise>
-      </choose>,
-     
-      #{grade}, 
-      #{schoolName}, 
-      #{photoPath})
+      #{name},
+      #{email},
+      #{tel},
+      #{confirmTel},
+      #{administrator});
   </insert>  
   
-  <update id="update" parameterType="student">
-    update stud set
-	    work=#{working}, 
-	    lst_schl=#{grade}, 
-	    schl_nm=#{schoolName}, 
-	    path=#{photoPath}
-    where sno=#{memberNo}
+  <update id="update" parameterType="member">
+    update memb m set
+      m.mno=#{memberNo},
+      m.name=#{name},
+      m.email=#{email},
+      m.tel=#{tel},
+      m.chck=#{confirmTel},
+      m.mgr=#{administrator}
+    where mno=#{memberNo}
   </update>
   
   <delete id="delete" parameterType="int">
-  <![CDATA[
-    delete from stud where sno=#{value}
-  ]]>
-  </delete> -->
+    delete from memb where mno=#{value}
+  </delete>
 
 </mapper>
 
