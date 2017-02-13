@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.ServiceCenterDao">
+
+  <resultMap type="serviceCenter" id="serviceCenter-map">
+    <id     column="scno"        property="serviceCenterNo"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="crt"       property="category"/>
+    <result column="prfx"      property="prefix"/>
+    <result column="titl"        property="title"/>
+    <result column="cont"       property="content"/>
+    <result column="repl"        property="reply"/>
+    <result column="sc_rdt"        property="postedDate"/>
+  </resultMap>
+      
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from sc 
+    where scno=#{value}
+  </select>
+  
+  <select id="getList" parameterType="string" resultMap="serviceCenter-map">
+    select
+      scno,
+      mno, 
+      crt, 
+      prfx, 
+      titl, 
+      cont, 
+      repl, 
+      sc_rdt 
+    from sc 
+  </select>
+  
+  <select id="getOne" parameterType="int" resultMap="serviceCenter-map">
+    select
+      scno,
+      mno, 
+      crt, 
+      prfx, 
+      titl, 
+      cont, 
+      repl, 
+      sc_rdt 
+    from sc 
+    where scno=#{value}
+  </select>
+  
+  
+  <insert id="insert" parameterType="serviceCenter">
+    insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) 
+    values(
+      #{serviceCenterNo},
+      #{memberNo},
+      #{category0},
+      #{prefix},
+      #{title},
+      #{content},
+      #{reply},
+      #{postedDate});
+  </insert>  
+  
+  <update id="update" parameterType="serviceCenter">
+    update sc set
+      scno=#{serviceCenterNo},
+      mno=#{memberNo},
+      crt=#{category},
+      prfx=#{prefix},
+      titl=#{title},
+      cont=#{content},
+      repl=#{reply},
+      sc_rdt=#{postedDate}
+    where scno=#{serviceCenterNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from sc where scno=#{value}
+  </delete>
+
+</mapper>
+
+
+
+
+
+
+
+
