@@ -1,5 +1,7 @@
 package bitcamp.java89.blingbling.control;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,11 @@ public class MemberJsonControl {
   
   @Autowired MemberService memberService;
 
-  /*
-  @RequestMapping("/student/list")
+  @RequestMapping("/member/list")
   public AjaxResult list() throws Exception {
-    List<Member> list = studentService.getList();
+    List<Member> list = memberService.getList();
     return new AjaxResult(AjaxResult.SUCCESS, list);
-  }*/
+  }
   
   @RequestMapping("/member/detail")
   public AjaxResult detail(int memberNo) throws Exception {
@@ -33,47 +34,34 @@ public class MemberJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
   
- /* @RequestMapping("/student/add")
-  public AjaxResult add(Student student, MultipartFile photo) throws Exception {
+  @RequestMapping("/member/add")
+  public AjaxResult add(Member member) throws Exception {
     
-    // 페이지 컨트롤러는 입력 파라미터 값을 가공하여 모델 객체에게 전달하는 일을 한다.
-    if (photo != null && photo.getSize() > 0) { 
-      String newFilename = MultipartUtil.generateFilename();
-      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-      student.setPhotoPath(newFilename);
-    }
-    
-    studentService.add(student);
+    memberService.add(member);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
-
-  @RequestMapping("/student/delete")
-  public AjaxResult delete(int memberNo, HttpServletRequest request) throws Exception {
-    int count = studentService.delete(memberNo);
+  
+  @RequestMapping("/member/delete")
+  public AjaxResult delete(int memberNo) throws Exception {
+    int count = memberService.delete(memberNo);
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
   
-  @RequestMapping("/student/update")
-  public AjaxResult update(Student student, MultipartFile photo) throws Exception {
+  @RequestMapping("/member/update")
+  public AjaxResult update(Member member) throws Exception {
     
-    if (photo != null && photo.getSize() > 0) { // 파일이 업로드 되었다면,
-      String newFilename = MultipartUtil.generateFilename();
-      photo.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
-      student.setPhotoPath(newFilename);
-    }
-    
-    int count = studentService.update(student);
+    int count = memberService.update(member);
     
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 학생이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
     }
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
-  }*/
+  }
 }
 
 
