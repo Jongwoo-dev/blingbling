@@ -91,6 +91,7 @@ CREATE TABLE SC (
   SCNO   INTEGER      NOT NULL COMMENT '고객센터일련번호', -- 고객센터일련번호
   MNO    INTEGER      NOT NULL COMMENT '작성자회원일련번호', -- 작성자회원일련번호
   CRT    VARCHAR(50)  NOT NULL COMMENT '카테고리', -- 카테고리
+  PRFX   VARCHAR(50)  NOT NULL COMMENT '말머리', -- 말머리
   TITL   VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
   CONT   TEXT         NOT NULL COMMENT '내용', -- 내용
   REPL   TEXT         NULL     COMMENT '답글', -- 답글
@@ -199,6 +200,11 @@ ALTER TABLE MEMB_STORE
 CREATE UNIQUE INDEX UIX_MEMB_STORE
   ON MEMB_STORE ( -- 업체
     CRNO ASC -- 사업자번호
+  );
+
+-- 업체 유니크 인덱스2
+CREATE UNIQUE INDEX UIX_MEMB_STORE2
+  ON MEMB_STORE ( -- 업체
   );
 
 -- 찜
