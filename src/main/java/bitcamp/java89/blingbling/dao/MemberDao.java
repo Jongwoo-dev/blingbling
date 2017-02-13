@@ -10,6 +10,7 @@ public interface MemberDao {
   int countByNo(int memberNo) throws Exception;
   int insert(Member member) throws Exception;
   Member getOne(int memberNo) throws Exception;
+  Member getOneByEmail(String email) throws Exception;
   int update(Member member) throws Exception;
   int delete(int memberNo) throws Exception;
 }

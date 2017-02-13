@@ -48,6 +48,18 @@
     from memb m
     where m.mno=#{value}
   </select>
+  
+  <select id="getOneByEmail" parameterType="string" resultMap="member-map">
+    select
+      m.mno,
+      m.name, 
+      m.email, 
+      m.tel, 
+      m.chck, 
+      m.mgr 
+    from memb m
+    where m.email=#{value}
+  </select>
 
   <insert id="insert" parameterType="member">
     insert into memb(mno, name, email, tel, chck, mgr) 

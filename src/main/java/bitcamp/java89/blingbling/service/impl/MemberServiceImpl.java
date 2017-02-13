@@ -21,6 +21,10 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.getOne(no);
   }
   
+  public Member getDetail(String email) throws Exception {
+    return memberDao.getOneByEmail(email);
+  }
+  
   public int add(Member member) throws Exception {
     if (memberDao.count(member.getEmail()) > 0) {
       throw new Exception("같은 회원의 이메일이 존재합니다. 등록을 취소합니다.");
