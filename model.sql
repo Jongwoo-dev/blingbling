@@ -202,11 +202,6 @@ CREATE UNIQUE INDEX UIX_MEMB_STORE
     CRNO ASC -- 사업자번호
   );
 
--- 업체 유니크 인덱스2
-CREATE UNIQUE INDEX UIX_MEMB_STORE2
-  ON MEMB_STORE ( -- 업체
-  );
-
 -- 찜
 CREATE TABLE FAVOR (
   MNO  INTEGER NOT NULL COMMENT '회원일련번호', -- 회원일련번호
