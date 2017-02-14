@@ -8,6 +8,7 @@ public class ServiceCenter implements Serializable {
   protected int serviceCenterNo;
   protected int memberNo;
   protected String category;
+  protected String prefix;
   protected String title;
   protected String content;
   protected String reply;
@@ -31,6 +32,12 @@ public class ServiceCenter implements Serializable {
   }
   public void setCategory(String category) {
     this.category = category;
+  }
+  public String getPrefix() {
+    return prefix;
+  }
+  public void setPrefix(String prefix) {
+    this.prefix = prefix;
   }
   public String getTitle() {
     return title;
