@@ -33,6 +33,7 @@
       repl, 
       sc_rdt 
     from sc 
+    where crt=#{value}
   </select>
   
   <select id="getOne" parameterType="int" resultMap="serviceCenter-map">
@@ -48,6 +49,22 @@
     from sc 
     where scno=#{value}
   </select>
+  
+  <select id="getOneByCategory" parameterType="string" resultMap="serviceCenter-map">
+    select
+      scno,
+      mno, 
+      crt, 
+      prfx, 
+      titl, 
+      cont, 
+      repl, 
+      sc_rdt 
+    from sc 
+    where sc.crt=#{value}
+  </select>
+  
+  
   
   
   <insert id="insert" parameterType="serviceCenter">
