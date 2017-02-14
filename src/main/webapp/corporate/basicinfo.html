@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자 페이지 - 기본정보관리</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="basicinfo.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div id='header'></div>
+  
+  <div id='header_sub'>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>홈>관리자페이지>기본정보관리</span>
+  </div>
+  
+  <div id='sidebar'>
+    <span class='sidebar_title'>관리자 페이지</span>
+
+    <span class='sidebar_menu selected'>기본정보 관리</span>
+    <span class='sidebar_menu'>상품정보 관리</span>
+    <span class='sidebar_menu'>정보 및 사진 관리</span>
+    <span class='sidebar_menu'>요금 및 시간 관리</span>
+    <span class='sidebar_menu'>공지사항 관리</span>
+    <span class='sidebar_menu'>리뷰 관리</span>
+    <span class='sidebar_menu'>예약내역 관리</span>
+  </div>
+
+  <div id='content'>
+    <span class='content_title'>기본정보 관리</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+    
+      <div class='inputgroup'>
+        <label>업체이름</label>
+        <input class='form-control short' placeholder="이름을 입력해 주세요">
+      </div>
+      
+      <div class='inputgroup'>
+        <label>우편번호</label>
+        <input class='form-control short' placeholder="검색 버튼을 눌러주세요" readonly>
+        <button class='btn btn-default btn-search'>찾기</button><br>
+        <label>기본주소</label>
+        <input class='form-control short' placeholder="검색 버튼을 눌러주세요" readonly><br>
+        <label>상세주소</label>
+        <input class='form-control long' placeholder="상세 주소를 입력해 주세요">
+      </div>
+      
+      <div class='inputgroup'>
+        <div>
+          <label>업체전화</label>
+          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+          <button type='button' class='btn btn-default btn-change'><i class='fa fa-plus'></i></button>
+          <button type='button' class='btn btn-default btn-change'><i class='fa fa-minus'></i></button>
+        </div>
+        <div class='hidden'>
+          <label></label>
+          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+        </div>
+        <div class='hidden'>
+          <label></label>
+          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+        </div>
+        <div class='hidden'>
+          <label></label>
+          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+        </div>
+        <div class='hidden'>
+          <label></label>
+          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+        </div>
+      </div>
+      
+      <div class='inputgroup'>
+        <div class='labelbox'>
+          <label>추가정보</label>
+        </div>
+        <div id="infoEditor">
+          간단한 소개를 입력해 주세요
+        </div>
+      </div>
+      
+      <div class='inputgroup'>
+        <div class='labelbox'>
+          <label>지도</label>
+        </div>
+        <div id="CorporaterMap">
+        </div>
+      </div>
+      
+	    <!-- <div class='form-horizontal'>
+	    
+	      <div class='form-group'>
+	        <label class='col-sm-3 control-label' >업체이름</label>
+	        <div class='col-sm-7'>
+	          <input type='text' class='form-control' id='corporateName' placeholder="이름을 입력해 주세요">
+	        </div>
+	      </div>
+	      
+	      <div class='form-group address'>
+	        <label class='col-sm-3 control-label' >우편번호</label>
+	        <div class='col-sm-5'>
+	          <input type='text' class='form-control' id='postNumber' readonly placeholder="검색 버튼을 눌러 주세요">
+	        </div>
+	        <button type='button' class='col-sm-2 btn btn-default'>우편번호 검색</button>
+	        <label class='col-sm-3 control-label' >기본주소</label>
+	        <div class='col-sm-7'>
+	          <input type='text' class='form-control' id='baseAddress' readonly>
+	        </div>
+	        <label class='col-sm-3 control-label' >상세주소</label>
+          <div class='col-sm-7'>
+            <input type='text' class='form-control' id='detailAddress' placeholder="상세주소를 입력해 주세요">
+          </div>
+	      </div>
+	      
+	      <div class='form-group tel'>
+          <label class='col-sm-3 control-label' >전화</label>
+          <div class='col-sm-5'>
+            <input type="tel" class='form-control' id='corporateTel1' placeholder="업체 전화번호를 입력해 주세요">
+          </div>
+          <div class='col-sm-2'>
+	          <button type='button' class='btn btn-default btn-change'><i class='fa fa-plus'></i></button>
+	          <button type='button' class='btn btn-default btn-change'><i class='fa fa-minus'></i></button>
+          </div>
+        </div>
+	    </div> -->
+    </div>
+    
+  </div>
+
+
+</div>
+
+<div id='footer' class="container-fluid"></div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+<script src='../js/common.js'></script>
+
+<script>
+CKEDITOR.replace( 'infoEditor', {
+	width: "570px",
+	resize_enabled: false,
+	filebrowserUploadUrl: '../upload',
+	/* toolbar:"['Cut','Copy','Paste'],['Undo','Redo'],['TextColor','BGColor']" */
+	/* toolbar: [['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-',
+		'JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-',
+		'Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],
+		'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']] */
+
+  /* uiColor: '#9AB8F3' */
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+#header_sub {
+  border-bottom: 1px solid black;
+  padding: 20px;
+  color: #5e5e5e;
+}
+
+#header_sub_event_title {
+  color: #c0392b; 
+  font-size: 1.15em; 
+  padding-right: 5px; 
+  border-right: 1px solid black;
+}
+
+#header_sub_event_content {
+  font-size: 1.15em; 
+  margin-left: 10px;
+}
+
+#header_sub_navi {
+  float: right; 
+  font-size: 1.15em;
+}
+
+/* 컨텐츠 */
+
+#content {
+  margin-left: 200px;
+  margin-bottom: 230px;
+  padding: 10px;
+  border-left: 1px solid rgb(224,224,224);
+  background-color: rgb(244,244,244);
+}
+
+.content_title {
+   display: block; 
+   padding: 40px; 
+   font-size: 2.45em; 
+   font-weight: bold; 
+   color: #333333;
+}
+
+.content_hr {
+  margin: 0px; 
+  border: 2px solid #e0e0e0;
+}
+
+#content_main {
+  margin-left: 40px;
+  padding-top: 30px;
+}
+
+.form-horizontal {
+	margin-top: 20px;
+}
+
+label {
+	font-size: 1.3em;
+	font-weight: normal;
+	width: 120px;
+}
+
+.form-control {
+	height: 40px;
+	display: inline-block;
+}
+
+.form-control.short {
+	width: 250px;
+	margin-right: 10px;
+}
+
+.form-control.long {
+  width: 400px;
+}
+
+.btn-search {
+	width: 60px;
+	height: 40px;
+	vertical-align: baseline;
+	background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+  
+}
+
+.inputgroup {
+	margin-bottom: 15px;
+}
+
+.btn-change {
+	width: 34px;
+	height: 34px;
+	border-radius: 17px;
+	/* padding: 9px; */
+}
+
+.btn-change > i {
+	font-size: 0.9em;
+}
+
+#inline-editor {
+	width: 520px;
+	height: 250px;
+	border: 2px solid #e0e0e0;
+	background-color: white;
+	padding: 5px;
+}

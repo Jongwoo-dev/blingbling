@@ -1,5 +1,7 @@
 package bitcamp.java89.blingbling.domain;
 
+import java.util.List;
+
 public class Corporate extends Member {
   private static final long serialVersionUID = 1L;
   
@@ -8,6 +10,8 @@ public class Corporate extends Member {
   boolean corporateConfirm;
   String corporateName;
   String corporateType;
+  
+  protected List<String> telList;
 
   // 선택
   String postNumber;
@@ -84,4 +88,11 @@ public class Corporate extends Member {
   public void setNotice(String notice) {
     this.notice = notice;
   }
+  public List<String> getTelList() {
+    return telList;
+  }
+  public void setTelList(List<String> telList) {
+    this.telList = telList;
+  }
+  
 }
