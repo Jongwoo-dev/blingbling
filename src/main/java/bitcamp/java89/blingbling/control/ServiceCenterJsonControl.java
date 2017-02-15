@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bitcamp.java89.blingbling.domain.Member;
 import bitcamp.java89.blingbling.domain.ServiceCenter;
 import bitcamp.java89.blingbling.service.ServiceCenterService;
 
@@ -34,35 +33,36 @@ public class ServiceCenterJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, serviceCenter);
   }
-  /*
+ 
   @RequestMapping("/serviceCenter/add")
-  public AjaxResult add(Member member) throws Exception {
+  public AjaxResult add(ServiceCenter serviceCenter) throws Exception {
     
-    memberService.add(member);
+    serviceCenterService.add(serviceCenter);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
   @RequestMapping("/serviceCenter/delete")
-  public AjaxResult delete(int memberNo) throws Exception {
-    int count = memberService.delete(memberNo);
+  public AjaxResult delete(int serviceCenterNo) throws Exception {
+    int count = serviceCenterService.delete(serviceCenterNo);
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+      return new AjaxResult(AjaxResult.FAIL, "이미 삭제 되었습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
   
+  
   @RequestMapping("/serviceCenter/update")
-  public AjaxResult update(Member member) throws Exception {
+  public AjaxResult update(ServiceCenter serviceCenter) throws Exception {
     
-    int count = memberService.update(member);
+    int count = serviceCenterService.update(serviceCenter);
     
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
     }
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
-  }*/
+  }
 }
 
 

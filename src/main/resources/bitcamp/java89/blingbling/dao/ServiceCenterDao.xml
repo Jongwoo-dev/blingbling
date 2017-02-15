@@ -49,35 +49,19 @@
     from sc 
     where scno=#{value}
   </select>
-  
-  <select id="getOneByCategory" parameterType="string" resultMap="serviceCenter-map">
-    select
-      scno,
-      mno, 
-      crt, 
-      prfx, 
-      titl, 
-      cont, 
-      repl, 
-      sc_rdt 
-    from sc 
-    where sc.crt=#{value}
-  </select>
-  
-  
-  
-  
+ 
+ 
   <insert id="insert" parameterType="serviceCenter">
     insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) 
     values(
       #{serviceCenterNo},
       #{memberNo},
-      #{category0},
+      #{category},
       #{prefix},
       #{title},
       #{content},
       #{reply},
-      #{postedDate});
+      now());
   </insert>  
   
   <update id="update" parameterType="serviceCenter">
@@ -88,8 +72,7 @@
       prfx=#{prefix},
       titl=#{title},
       cont=#{content},
-      repl=#{reply},
-      sc_rdt=#{postedDate}
+      repl=#{reply}
     where scno=#{serviceCenterNo}
   </update>
   
