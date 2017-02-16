@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.ItemDao">
+
+  <resultMap type="item" id="item-map">
+    <id     column="ino"        property="itemNo"/>
+    <result column="msno"       property="memberNo"/>
+    <result column="name"       property="name"/>
+    <result column="price"      property="price"/>
+    <result column="utime"        property="usingTime"/>
+    <result column="otime"       property="openTime"/>
+    <result column="ctime"        property="closeTime"/>
+  </resultMap>
+      
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from item 
+    where ino=#{value}
+  </select>
+  
+  <select id="getList" resultMap="item-map">
+    select
+      ino,
+      msno, 
+      name, 
+      price, 
+      utime, 
+      otime, 
+      ctime 
+    from item 
+  </select>
+  
+  <select id="getOne" parameterType="int" resultMap="item-map">
+    select
+      ino,
+      msno, 
+      name, 
+      price, 
+      utime, 
+      otime, 
+      ctime 
+    from item 
+    where ino=#{value}
+  </select>
+  
+  <select id="getOneByName" parameterType="string" resultMap="item-map">
+    select
+      ino,
+      msno, 
+      name, 
+      price, 
+      utime, 
+      otime, 
+      ctime 
+    from item 
+    where name=#{value}
+  </select>
+  
+  
+  <insert id="insert" parameterType="item">
+    insert into item(ino, msno, name, price, utime, otime, ctime) 
+    values(
+      #{itemNo},
+      #{memberNo},
+      #{name},
+      #{price},
+      #{usingTime},
+      #{usingTime},
+      #{closeTime});
+  </insert>  
+    
+  <update id="update" parameterType="item">
+    update item set
+      ino=#{itemNo},
+      msno=#{memberNo},
+      name=#{name},
+      price=#{price},
+      utime=#{usingTime},
+      otime=#{usingTime},
+      ctime=#{closeTime}
+    where ino=#{itemNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from item where ino=#{value}
+  </delete>
+
+</mapper>
+
+
+
+
+
+
+
+

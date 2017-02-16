@@ -12,5 +12,5 @@ public interface MemberDao {
   Member getOne(int memberNo) throws Exception;
   Member getOneByEmail(String email) throws Exception;
   int update(Member member) throws Exception;
-  int delete(int memberNo) throws Exception;
+  int delete(int itemNo) throws Exception;
 }
