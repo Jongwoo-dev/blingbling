@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.PrepurchaseDao">
+
+  <resultMap type="prepurchase" id="prepurchase-map">
+    <id     column="bno"     property="prepurchaseNumber"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="ino"      property="itemNo"/>
+    <result column="pay_op"       property="payMean"/>
+    <result column="pay_st"      property="paystate"/>
+    <result column="sctime"        property="servicetime"/>
+    <result column="rp"       property="personnel"/>
+ 
+  </resultMap>
+  
+  
+  <select id="getList" resultMap="prepurchase-map">
+    select
+      bno,
+      mno,
+      ino,
+      pay_op,
+      pay_st,
+      sctime,
+      rp
+    from buy
+  </select>
+  
+ 
+  
+  <select id="getOne" parameterType="int" resultMap="prepurchase-map">
+   select
+      bno,
+      mno,
+      ino,
+      pay_op,
+      pay_st,
+      sctime,
+      rp
+    from buy 
+    where bno=#{value}
+  </select>
+  
+  
+
+  <insert id="insert" parameterType="prepurchase">
+    insert into buy(bno, mno, ino, pay_op, pay_st, 
+     sctime, rp)
+    values(
+      #{prepurchaseNumber},
+      #{memberNo},
+      #{itemNo},
+      #{payMean},
+      #{paystate},
+      now(),
+      #{personnel})
+  </insert>
+  
+  <update id="update" parameterType="prepurchase">
+    update buy set
+      bno=#{prepurchaseNumber},
+      mno=#{memberNo},
+      ino=#{itemNo},
+      pay_op=#{payMean},
+      pay_st=#{paystate},
+      sctime=now(),
+      rp=#{personnel}
+    where bno=#{prepurchaseNumber}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from buy where bno=#{value}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
