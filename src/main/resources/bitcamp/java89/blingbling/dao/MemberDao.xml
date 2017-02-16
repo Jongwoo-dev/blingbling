@@ -39,7 +39,7 @@
   
   <select id="getOne" parameterType="int" resultMap="member-map">
     select
-      m.mno,
+      m.mno 0,
       m.name, 
       m.email, 
       m.tel, 

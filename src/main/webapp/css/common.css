@@ -117,6 +117,7 @@ body > .container {
 
 /* 풋터 css */
 #footer {
+   /* z-index: 8; */
    position: fixed; 
    width: 100%; 
    height:200px; 

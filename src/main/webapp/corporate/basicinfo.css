@@ -107,3 +107,8 @@ label {
 	background-color: white;
 	padding: 5px;
 }
+
+#CorporaterMap {
+	width: 580px;
+	height: 400px;
+}

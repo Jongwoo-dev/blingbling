@@ -50,12 +50,12 @@
       
       <div class='inputgroup'>
         <label>우편번호</label>
-        <input class='form-control short' placeholder="검색 버튼을 눌러주세요" readonly>
-        <button class='btn btn-default btn-search'>찾기</button><br>
+        <input id='corporate-postcode' class='form-control short' placeholder="검색 버튼을 눌러주세요" readonly>
+        <button id='address-search-btn' class='btn btn-default btn-search'>찾기</button><br>
         <label>기본주소</label>
-        <input class='form-control short' placeholder="검색 버튼을 눌러주세요" readonly><br>
+        <input id='corporate-address1' class='form-control long' placeholder="검색 버튼을 눌러주세요" readonly><br>
         <label>상세주소</label>
-        <input class='form-control long' placeholder="상세 주소를 입력해 주세요">
+        <input id='corporate-address2' class='form-control long' placeholder="상세 주소를 입력해 주세요">
       </div>
       
       <div class='inputgroup'>
@@ -100,42 +100,6 @@
         </div>
       </div>
       
-	    <!-- <div class='form-horizontal'>
-	    
-	      <div class='form-group'>
-	        <label class='col-sm-3 control-label' >업체이름</label>
-	        <div class='col-sm-7'>
-	          <input type='text' class='form-control' id='corporateName' placeholder="이름을 입력해 주세요">
-	        </div>
-	      </div>
-	      
-	      <div class='form-group address'>
-	        <label class='col-sm-3 control-label' >우편번호</label>
-	        <div class='col-sm-5'>
-	          <input type='text' class='form-control' id='postNumber' readonly placeholder="검색 버튼을 눌러 주세요">
-	        </div>
-	        <button type='button' class='col-sm-2 btn btn-default'>우편번호 검색</button>
-	        <label class='col-sm-3 control-label' >기본주소</label>
-	        <div class='col-sm-7'>
-	          <input type='text' class='form-control' id='baseAddress' readonly>
-	        </div>
-	        <label class='col-sm-3 control-label' >상세주소</label>
-          <div class='col-sm-7'>
-            <input type='text' class='form-control' id='detailAddress' placeholder="상세주소를 입력해 주세요">
-          </div>
-	      </div>
-	      
-	      <div class='form-group tel'>
-          <label class='col-sm-3 control-label' >전화</label>
-          <div class='col-sm-5'>
-            <input type="tel" class='form-control' id='corporateTel1' placeholder="업체 전화번호를 입력해 주세요">
-          </div>
-          <div class='col-sm-2'>
-	          <button type='button' class='btn btn-default btn-change'><i class='fa fa-plus'></i></button>
-	          <button type='button' class='btn btn-default btn-change'><i class='fa fa-minus'></i></button>
-          </div>
-        </div>
-	    </div> -->
     </div>
     
   </div>
@@ -148,24 +112,16 @@
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<!-- 네이버 지도는 잠시 막아둠
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=mG28pbSNh1mM4sHtBhAk&submodules=geocoder"></script> -->
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script src='../js/common.js'></script>
 
-<script>
-CKEDITOR.replace( 'infoEditor', {
-	width: "570px",
-	resize_enabled: false,
-	filebrowserUploadUrl: '../upload',
-	/* toolbar:"['Cut','Copy','Paste'],['Undo','Redo'],['TextColor','BGColor']" */
-	/* toolbar: [['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-','TextColor','BGColor','-',
-		'JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','-',
-		'Find','Replace','SelectAll','RemoveFormat','-','Image','Flash','Table','SpecialChar'],
-		'/',['Source','-','ShowBlocks','-','Font','FontSize','Undo','Redo','-','About']] */
+<script src='basicinfo.js'></script>
 
-  /* uiColor: '#9AB8F3' */
-});
-
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTT3c0CS6sgPYcloGmGqL0OfZGjFsqHZM&callback=initMap&libraries=places"></script>
 
 </body>
 </html>
