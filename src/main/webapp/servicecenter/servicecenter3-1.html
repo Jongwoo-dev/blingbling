@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고객센터 1대1문의</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="servicecenter3-1.css">
+
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+
+	<div id='header'>
+		<img src="bling-logo-tx.png">
+		<h1 style="display: none;">블링블링</h1>
+		<span id='searchmenu-open'>검색</span> <span
+			class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+		<div id='searchbar'>
+			<input type='text' placeholder="업체/지역/비교 검색 가능합니다">
+			<button type='button' class="btn btn-link">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
+  	</div>
+
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>로그인</a> <span
+			class="glyphicon glyphicon-time" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>예약내역</a> <span
+			class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>고객센터</a>
+	</div>
+
+	<div id='header_sub'>
+		<span id='header_sub_event_title'>EVENT</span> 
+		<span id='header_sub_event_content'>전 예약자 쿠폰 지급</span> 
+		<span id='header_sub_navi'>홈>고객센터>1:1문의</span>
+	</div>
+
+	<div id='sidebar'>
+		<span class='sidebar_title'>고객센터</span> 
+		<span class='sidebar_menu'>공지사항</span>
+		<span class='sidebar_menu'>FAQ</span> 
+		<span class='sidebar_menu selected'>1:1문의</span>
+	</div>
+
+  <div id='content'>
+    <span class='content_title'>자주묻는질문</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-left">문의하기</button>
+			  </div>
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-right">나의 문의 내역</button>
+			  </div>
+		 </div>
+     <span id="question_prefix">문의유형</span>
+     <span id="select_button">
+			<select class="selectpicker">
+			  <option value="" disabled selected>선택하세요</option>
+			  <option>이용문의</option>
+			  <option>이용후기</option>
+			  <option>회원계정</option>
+			  <option>본인인증</option>
+			</select>
+			</span>
+		<span id="question_phone">휴대폰정보</span>	
+    <input type="number" class="form-control" placeholder="휴대폰정보">
+    <textarea class="form-control-text" rows="10"></textarea>
+    <div class='inline-form'>
+	    <input type="checkbox" id="blankCheckbox" value="option1">
+	    <span id="privacy_text">개인정보 수집 이용동의</span>
+	  </div> 
+	  <div id="explanation">
+	    문의하신 내용에 대한 정확한 원인 파악을 위해 휴대폰 정보를 수집하고 있습니다.<br>
+	    자세한 답변을 받고 싶으신 분은 휴대폰 번호를 입력해 주세요.<br>
+	    수집된 정보는 문의 답변 완료 후, 자동 삭제됩니다.<br>
+	  </div>
+	  <form id="complete">
+	  <button type="button" class="btn btn-primary btn-lg">문의완료</button>
+	  </form>
+  </div>
+</div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+
+</body>
+</html>
