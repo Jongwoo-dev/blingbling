@@ -85,6 +85,9 @@
 
 /*자주묻는질문 밑에쪽*/
 
+.btn {
+	padding: 12px 12px;
+}
 .btn-left {
 	border:1px solid red;
 	background-color: rgb(244,244,244);
