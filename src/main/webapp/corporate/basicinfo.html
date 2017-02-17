@@ -85,10 +85,16 @@
       
       <div class='inputgroup'>
         <div class='labelbox'>
-          <label>추가정보</label>
+          <label id='infoform-folder'>
+            <button id='infoform-btn' type="button" class='btn-nodecoration'  data-toggle="collapse" data-target="#collapseEditor" aria-expanded="false" aria-controls="collapseEditor">
+              추가정보 <i id='infoform-icon' class='glyphicon glyphicon-chevron-down'></i>
+            </button>
+          </label>
         </div>
-        <div id="infoEditor">
-          간단한 소개를 입력해 주세요
+        <div class="collapse" id="collapseEditor">
+	        <div id="infoEditor">
+	          간단한 소개를 입력해 주세요
+	        </div>
         </div>
       </div>
       
@@ -100,6 +106,10 @@
         </div>
       </div>
       
+      <div class='inputgroup'>
+        <button id='submit-btn' class='btn btn-default btn-submit'>등록</button>
+      </div>
+      
     </div>
     
   </div>
@@ -107,11 +117,11 @@
 
 </div>
 
-<div id='footer' class="container-fluid"></div>
+<!-- <div id='footer' class="container-fluid"></div> -->
 
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
 <!-- 네이버 지도는 잠시 막아둠
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=mG28pbSNh1mM4sHtBhAk&submodules=geocoder"></script> -->
 

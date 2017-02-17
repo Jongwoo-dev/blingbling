@@ -9,7 +9,7 @@ function initMap() {
     zoom: 17
   });
   marker = new google.maps.Marker({
-    position: {lat: 37.5666805, lng: 126.9784147},
+    //position: {lat: 37.5666805, lng: 126.9784147},
     map: map,
     draggable:true,
     title:"업체의 위치로 드래그 해 주세요"
@@ -114,10 +114,41 @@ $('#address-search-btn').click(function() {
   }).open();
 });
 
+$("#infoform-folder").click(function(){
+	if($('#infoform-btn').attr('aria-expanded') == 'true') {
+		/*console.log('열렸음');
+		console.log($('#infoform-btn').attr('aria-expanded'));*/
+		//열린 상태 -> 닫힌 상태이면
+		//화살표 아이콘을 아래로 변경
+		$('#infoform-icon').attr('class','glyphicon glyphicon-chevron-down');
+	} else {
+		/*console.log('접혔음');
+		console.log($('#infoform-btn').attr('aria-expanded'));*/
+		//닫힌 상태 -> 열린 상태이면
+		//화살표 아이콘을 위로 변경
+		$('#infoform-icon').attr('class','glyphicon glyphicon-chevron-up');
+	}
+	/*$('#infoform-icon')*/
+});
+
 CKEDITOR.replace( 'infoEditor', {
-	width: "570px",
+	width: "600px",
+	height: "350px",
 	resize_enabled: false,
 	filebrowserUploadUrl: '../upload',
+	
+	toolbar : [
+			[ 'Source', '-' ],
+			[ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo' ],
+			[ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
+			'/',
+			[ 'Styles', 'Format', 'Font', 'FontSize' ],
+			[ 'TextColor', 'BGColor' ],
+			[ 'Image', 'Table' , 'SpecialChar' , 'Link']
+			//, 'Unlink'
+		]
+
 });
 
 
