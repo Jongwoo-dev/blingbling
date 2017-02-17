@@ -61,6 +61,14 @@ label {
 	width: 120px;
 }
 
+.btn-nodecoration {
+	text-decoration: none;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  outline: 0;
+  padding: 0;
+}
+
 .form-control {
 	height: 40px;
 	display: inline-block;
@@ -82,7 +90,6 @@ label {
 	background-color: #e74c3c;
   border-color: #e74c3c;
   color: white;
-  
 }
 
 .inputgroup {
@@ -99,16 +106,28 @@ label {
 .btn-change > i {
 	font-size: 0.9em;
 }
-
+/* 
 #inline-editor {
 	width: 520px;
 	height: 250px;
 	border: 2px solid #e0e0e0;
 	background-color: white;
 	padding: 5px;
-}
+} */
 
 #CorporaterMap {
 	width: 580px;
 	height: 400px;
+}
+
+.btn-submit {
+	font-size: 1.3em;
+  width: 200px;
+  height: 50px;
+  vertical-align: baseline;
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+  margin-top: 10px;
+  margin-left: 190px;
 }
