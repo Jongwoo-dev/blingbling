@@ -21,7 +21,7 @@
     where ino=#{value}
   </select>
   
-  <select id="getList" resultMap="item-map">
+  <select id="getList" parameterType="int" resultMap="item-map">
     select
       ino,
       msno, 
@@ -31,6 +31,7 @@
       otime, 
       ctime 
     from item 
+    where msno=#{value}
   </select>
   
   <select id="getOne" parameterType="int" resultMap="item-map">

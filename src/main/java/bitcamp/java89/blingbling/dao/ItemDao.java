@@ -6,7 +6,7 @@ import bitcamp.java89.blingbling.domain.Item;
 
 public interface ItemDao {
   int countByNo(int itemNo) throws Exception;
-  ArrayList<Item> getList() throws Exception;
+  ArrayList<Item> getList(int memberNo) throws Exception;
   Item getOne(int itemNo) throws Exception;
   Item getOneByName(String name) throws Exception;
   int insert(Item item) throws Exception;

@@ -13,8 +13,8 @@ import bitcamp.java89.blingbling.service.ItemService;
 public class ItemServiceImpl implements ItemService {
   @Autowired ItemDao itemDao;
   
-  public List<Item> getList() throws Exception {
-    return itemDao.getList();
+  public List<Item> getList(int memberNo) throws Exception {
+    return itemDao.getList(memberNo);
   }
     
   public Item getDetail(int no) throws Exception {

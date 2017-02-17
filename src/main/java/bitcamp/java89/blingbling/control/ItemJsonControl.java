@@ -18,8 +18,8 @@ public class ItemJsonControl {
   @Autowired ItemService itemService;
 
   @RequestMapping("/item/list")
-  public AjaxResult list() throws Exception {
-    List<Item> list = itemService.getList();
+  public AjaxResult list(int memberNo) throws Exception {
+    List<Item> list = itemService.getList(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
