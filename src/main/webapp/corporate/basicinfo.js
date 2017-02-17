@@ -131,11 +131,15 @@ $("#infoform-folder").click(function(){
 	/*$('#infoform-icon')*/
 });
 
+$("#submit-btn").click(function() {
+	console.log(CKEDITOR.instances.infoEditor.getData());
+})
+
 CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
 	height: "350px",
 	resize_enabled: false,
-	filebrowserUploadUrl: '../upload',
+	filebrowserUploadUrl: '../common/ckeditorImageUpload.json',
 	
 	toolbar : [
 			[ 'Source', '-' ],
