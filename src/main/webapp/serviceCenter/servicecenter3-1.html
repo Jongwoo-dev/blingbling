@@ -51,7 +51,7 @@
 	</div>
 
   <div id='content'>
-    <span class='content_title'>자주묻는질문</span>
+    <span class='content_title'>1:1문의</span>
     <hr class='content_hr' color='#e0e0e0'>
     <div id='content_main'>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -73,7 +73,7 @@
 			</select>
 			</span>
 		<span id="question_phone">휴대폰정보</span>	
-    <input type="number" class="form-control" placeholder="휴대폰정보">
+    <input id='phoneData' type="tel" class="form-control" placeholder="휴대폰정보">
     <textarea class="form-control-text" rows="10"></textarea>
     <div class='inline-form'>
 	    <input type="checkbox" id="blankCheckbox" value="option1">
@@ -96,6 +96,18 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	var status = ajaxResult.status;
+	
+	if (status != 'success') {
+		alert('로그인 하세요');
+		return;
+	}
+	
+	var loginData = ajaxResult.data;
+	console.log(loginData.tel);
+	$('#phoneData').attr('value',loginData.tel);
+});
 $('.btn-right').click(function(){
 	location.href='servicecenter3-2.html';
 })
