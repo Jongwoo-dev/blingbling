@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>고객센터-문의내역</title>
+<title>고객센터-1대1문의</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="servicecenter3-2.css">
+<link rel="stylesheet" href="servicecenter3-1.css">
 
 <style>
 </style>
@@ -62,67 +62,31 @@
 			    <button type="button" class="btn btn-right">나의 문의 내역</button>
 			  </div>
 		 </div>
-   
-  <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr id="tr">
-              <th class='col-xs-2 text-center'>문의유형</th>
-              <th class='col-xs-2 text-center'>답변상태</th>
-              <th class='col-xs-5 text-center'>제목</th>
-              <th class='col-xs-1 text-center'>작성자</th>
-              <th class='col-xs-2 text-center'>작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class='text-center'>이용문의</td>
-              <td class='text-center'>미답변</td>
-              <td>문의합니다</td>
-              <td class='text-center'>김건우</td>
-              <td class='text-center'>2017.01.01</td>
-            </tr>
-            <tr>
-              <td class='text-center'>이용후기</td>
-              <td class='text-center'>답변</td>
-              <td>문의합니다</td>
-              <td class='text-center'>김건우</td>
-              <td class='text-center'>2017.01.02</td>
-            </tr>
-            <tr>
-              <td class='text-center'>본인인증</td>
-              <td class='text-center'>답변</td>
-              <td>문의합니다</td>
-              <td class='text-center'>김건우</td>
-              <td class='text-center'>2017.01.03</td>
-            </tr>
-            <tr>
-              <td class='text-center'>본인인증</td>
-              <td class='text-center'>답변</td>
-              <td>문의합니다</td>
-              <td class='text-center'>김건우</td>
-              <td class='text-center'>2017.01.03</td>
-            </tr>
-          </tbody>
-        </table>
-     </div>
-      <nav aria-label="Page navigation">
-        <div class='text-center'>
-          <ul class="pagination">
-            <li><a href="#" aria-label="Previous"> <span
-                aria-hidden="true">&laquo;</span>
-            </a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" aria-label="Next"> <span
-                aria-hidden="true">&raquo;</span>
-            </a></li>
-          </ul>
-        </div>
-      </nav>
+     <span id="question_prefix">문의유형</span>
+     <span id="select_button">
+			<select class="selectpicker">
+			  <option value="" disabled selected>선택하세요</option>
+			  <option>이용문의</option>
+			  <option>이용후기</option>
+			  <option>회원계정</option>
+			  <option>본인인증</option>
+			</select>
+			</span>
+		<span id="question_phone">휴대폰정보</span>	
+    <input type="number" class="form-control" placeholder="휴대폰정보">
+    <textarea class="form-control-text" rows="10"></textarea>
+    <div class='inline-form'>
+	    <input type="checkbox" id="blankCheckbox" value="option1">
+	    <span id="privacy_text">개인정보 수집 이용동의</span>
+	  </div> 
+	  <div id="explanation">
+	    문의하신 내용에 대한 정확한 원인 파악을 위해 휴대폰 정보를 수집하고 있습니다.<br>
+	    자세한 답변을 받고 싶으신 분은 휴대폰 번호를 입력해 주세요.<br>
+	    수집된 정보는 문의 답변 완료 후, 자동 삭제됩니다.<br>
+	  </div>
+	  <form id="complete">
+	  <button type="button" class="btn btn-primary btn-lg">문의완료</button>
+	  </form>
   </div>
 </div>
 </div>
@@ -131,7 +95,11 @@
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
+<script>
+$('.btn-right').click(function(){
+	location.href='servicecenter3-2.html';
+})
+</script>
 
 
 </body>

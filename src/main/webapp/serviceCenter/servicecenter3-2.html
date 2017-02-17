@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고객센터-문의내역</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="servicecenter3-2.css">
+
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+
+	<div id='header'>
+		<img src="bling-logo-tx.png">
+		<h1 style="display: none;">블링블링</h1>
+		<span id='searchmenu-open'>검색</span> <span
+			class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+		<div id='searchbar'>
+			<input type='text' placeholder="업체/지역/비교 검색 가능합니다">
+			<button type='button' class="btn btn-link">
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			</button>
+  	</div>
+
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>로그인</a> <span
+			class="glyphicon glyphicon-time" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>예약내역</a> <span
+			class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <a
+			href='#' class='header-menu-a'>고객센터</a>
+	</div>
+
+	<div id='header_sub'>
+		<span id='header_sub_event_title'>EVENT</span> 
+		<span id='header_sub_event_content'>전 예약자 쿠폰 지급</span> 
+		<span id='header_sub_navi'>홈>고객센터>1:1문의</span>
+	</div>
+
+	<div id='sidebar'>
+		<span class='sidebar_title'>고객센터</span> 
+		<span class='sidebar_menu'>공지사항</span>
+		<span class='sidebar_menu'>FAQ</span> 
+		<span class='sidebar_menu selected'>1:1문의</span>
+	</div>
+
+  <div id='content'>
+    <span class='content_title'>자주묻는질문</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-left">문의하기</button>
+			  </div>
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-right">나의 문의 내역</button>
+			  </div>
+		 </div>
+   
+  <div class="table-responsive">
+        <table id='list-table' class="table">
+          <thead>
+            <tr id="tr">
+              <th class='col-xs-2 text-center'>문의유형</th>
+              <th class='col-xs-2 text-center'>답변상태</th>
+              <th class='col-xs-4 text-center'>제목</th>
+              <th class='col-xs-2 text-center'>작성자</th>
+              <th class='col-xs-2 text-center'>작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td class='text-center'>이용문의</td>
+              <td class='text-center'>미답변</td>
+              <td>문의합니다</td>
+              <td class='text-center'>김건우</td>
+              <td class='text-center'>2017.01.01</td>
+            </tr>
+            <tr>
+              <td class='text-center'>이용후기</td>
+              <td class='text-center'>답변</td>
+              <td>문의합니다</td>
+              <td class='text-center'>김건우</td>
+              <td class='text-center'>2017.01.02</td>
+            </tr>
+            <tr>
+              <td class='text-center'>본인인증</td>
+              <td class='text-center'>답변</td>
+              <td>문의합니다</td>
+              <td class='text-center'>김건우</td>
+              <td class='text-center'>2017.01.03</td>
+            </tr>
+            <tr>
+              <td class='text-center'>본인인증</td>
+              <td class='text-center'>답변</td>
+              <td>문의합니다</td>
+              <td class='text-center'>김건우</td>
+              <td class='text-center'>2017.01.03</td>
+            </tr> -->
+          </tbody>
+        </table>
+     </div>
+      <nav aria-label="Page navigation">
+        <div class='text-center'>
+          <ul class="pagination">
+            <li><a href="#" aria-label="Previous"> <span
+                aria-hidden="true">&laquo;</span>
+            </a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#" aria-label="Next"> <span
+                aria-hidden="true">&raquo;</span>
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+  </div>
+</div>
+</div>
+
+
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td class='text-center'>{{prefix}}</td>
+  <td class='text-center'>{{status}}</td>
+  <td>{{title}}</td>
+  <td class='text-center'>{{name}}</td>
+  <td class='text-center'>{{postedDate}}</td>
+</tr>
+{{/each}}
+</script>
+
+
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="servicecenter3-2.js"></script>
+
+
+
+
+
+
+<script>
+$('.btn-left').click(function(){
+  location.href='servicecenter3-1.html';
+})
+</script>
+
+
+
+</body>
+</html>

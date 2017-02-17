@@ -14,6 +14,7 @@
     <result column="cont"       property="content"/>
     <result column="repl"        property="reply"/>
     <result column="sc_rdt"        property="postedDate"/>
+    <result column="name"        property="name"/>
   </resultMap>
       
   <select id="countByNo" parameterType="int" resultType="int">
@@ -24,15 +25,17 @@
   
   <select id="getList" parameterType="string" resultMap="serviceCenter-map">
     select
-      scno,
-      mno, 
-      crt, 
-      prfx, 
-      titl, 
-      cont, 
-      repl, 
-      sc_rdt 
-    from sc 
+      sc.scno,
+      sc.mno, 
+      sc.crt, 
+      sc.prfx, 
+      sc.titl, 
+      sc.cont, 
+      sc.repl, 
+      sc.sc_rdt,
+      m.name
+    from sc
+      left outer join memb m on sc.mno=m.mno 
     where crt=#{value}
   </select>
   

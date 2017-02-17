@@ -20,6 +20,15 @@ public class ServiceCenterJsonControl {
   @RequestMapping("/serviceCenter/list")
   public AjaxResult list(String category) throws Exception {
     List<ServiceCenter> list = serviceCenterService.getList(category);
+    for (int i = 0; i < list.size(); i++) {
+      if(list.get(i).getReply() == null) {
+        list.get(i).setStatus("미답변");
+      } else if(list.get(i).getReply().length() > 0) {
+        list.get(i).setStatus("답변완료");
+      } else {
+        list.get(i).setStatus("미답변");
+      }
+    }
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
