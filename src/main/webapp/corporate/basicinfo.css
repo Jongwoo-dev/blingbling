@@ -23,6 +23,11 @@
   font-size: 1.15em;
 }
 
+#header_sub_navi > a {
+	color: #333333;
+	text-decoration: none;
+}
+
 /* 컨텐츠 */
 
 #content {

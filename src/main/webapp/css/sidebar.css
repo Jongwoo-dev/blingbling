@@ -30,4 +30,5 @@
 
 .sidebar_menu:hover {
   background-color: #bebebe;
+  cursor:pointer;
 }

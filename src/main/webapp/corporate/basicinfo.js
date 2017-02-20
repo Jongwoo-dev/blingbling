@@ -139,7 +139,7 @@ CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
 	height: "350px",
 	resize_enabled: false,
-	filebrowserUploadUrl: '../common/ckeditorImageUpload.json',
+	filebrowserUploadUrl: '../ckeditor/upload.php',
 	
 	toolbar : [
 			[ 'Source', '-' ],
