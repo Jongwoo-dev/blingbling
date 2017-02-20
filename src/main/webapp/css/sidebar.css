@@ -20,16 +20,11 @@
 
 .sidebar_menu {
   display: block; 
-  padding: 20px 0px 20px 20px; 
+  margin: 40px 0px 40px 20px; 
   font-size: 1.45em;
   cursor:pointer;
 }
 
 .selected {
   color: #e74c3c;
-}
-
-.sidebar_menu:hover {
-  background-color: #bebebe;
-  
 }
