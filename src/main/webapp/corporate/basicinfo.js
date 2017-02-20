@@ -1,6 +1,8 @@
 var map;
 var marker;
 var infowindow;
+var loginMember;
+
 
 function initMap() {
   var currentLatLng;
@@ -155,4 +157,23 @@ CKEDITOR.replace( 'infoEditor', {
 
 });
 
+$(function() {
+	getLoginMemberInfo();
+	console.log(loginMember);
+	
+});
 
+var getLoginMemberInfo = function() {
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		var status = ajaxResult.status;
+		
+		if (status != 'success') {
+			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경');
+			return;
+		}
+		
+		//console.log(ajaxResult.data)
+		loginMember = ajaxResult.data;
+		console.log(loginMember)
+	});
+};
