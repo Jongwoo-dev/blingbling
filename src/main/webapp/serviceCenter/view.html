@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>고객센터-공지사항</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="servicecenter1.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div id='header'>
+  </div>
+  
+  <div id='header_sub'>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>홈>고객센터>FAQ</span>
+  </div>
+  
+  <div id='sidebar'>
+    <span class='sidebar_title'>고객센터</span>
+    <span class='sidebar_menu selected' id='menu1'>공지사항</span>
+    <span class='sidebar_menu' id='menu2'>FAQ</span>
+    <span class='sidebar_menu' id='menu3'>1:1 문의</span>
+  </div>
+  
+  <div id='content'>
+    <span class='content_title'>공지사항</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div class="table-responsive">
+        <table class="table" id='list-table'>
+          <tbody>
+            <!-- <tr>
+              <td class='text-prefix' height='50'><b>[안내]</b></td>
+              <td>홈페이지 개편 안내</td>
+              <td class='text-date'>2017.01.01</td>
+            </tr>
+            <tr>
+              <td class='text-prefix' height='50'><b>[발표]</b></td>
+              <td>홈페이지 개편 안내</td>
+              <td class='text-date'>2017.01.01</td>
+            </tr>
+            <tr>
+              <td class='text-prefix' height='50'><b>[발표]</b></td>
+              <td>홈페이지 개편 안내</td>
+              <td class='text-date'>2017.01.01</td>
+            </tr>
+            <tr>
+              <td class='text-prefix' height='50'><b>[공지]</b></td>
+              <td>홈페이지 개편 안내</td>
+              <td class='text-date'>2017.01.01</td>
+            </tr> -->
+          </tbody>
+        </table>
+     </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td class='text-prefix' height='50'><b>[{{prefix}}]</b></td>
+  <td class='text-title'>{{title}}</td>
+  <td class='text-date'>{{postedDate}}</td>
+</tr>
+{{/each}}
+</script>
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src='../js/common.js'></script>
+<script src="servicecenterview.js"></script>
+
+
+
+
+<script>
+$('#menu2').click(function(){
+  location.href='servicecenter2.html';
+})
+
+$('#menu3').click(function(){
+  location.href='servicecenter3-1.html';
+})
+</script>
+
+</body>
+</html>
