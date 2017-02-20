@@ -21,6 +21,7 @@ public class ServiceCenterJsonControl {
   public AjaxResult list(String category) throws Exception {
     List<ServiceCenter> list = serviceCenterService.getList(category);
     for (int i = 0; i < list.size(); i++) {
+      // 답변 미답변 처리
       if(list.get(i).getReply() == null) {
         list.get(i).setStatus("미답변");
       } else if(list.get(i).getReply().length() > 0) {
@@ -28,6 +29,9 @@ public class ServiceCenterJsonControl {
       } else {
         list.get(i).setStatus("미답변");
       }
+      
+      // 작성일 시간 날리는 처리
+      list.get(i).setPostedDate((list.get(i).getPostedDate().split(" ")[0]));
     }
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }

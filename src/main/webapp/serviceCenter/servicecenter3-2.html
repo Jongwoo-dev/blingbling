@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
 <link rel="stylesheet" href="servicecenter3-2.css">
 
 <style>
@@ -45,9 +46,9 @@
 
 	<div id='sidebar'>
 		<span class='sidebar_title'>고객센터</span> 
-		<span class='sidebar_menu'>공지사항</span>
-		<span class='sidebar_menu'>FAQ</span> 
-		<span class='sidebar_menu selected'>1:1문의</span>
+		<span class='sidebar_menu' id='menu1'>공지사항</span>
+		<span class='sidebar_menu' id='menu2'>FAQ</span> 
+		<span class='sidebar_menu selected' id='menu3'>1:1문의</span>
 	</div>
 
   <div id='content'>
@@ -145,8 +146,8 @@
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../js/common.js"></script>
 <script src="servicecenter3-2.js"></script>
-
 
 
 
@@ -155,6 +156,14 @@
 <script>
 $('.btn-left').click(function(){
   location.href='servicecenter3-1.html';
+})
+
+$('#menu1').click(function(){
+  location.href='servicecenter1.html';
+})
+
+$('#menu2').click(function(){
+  location.href='servicecenter2.html';
 })
 </script>
 

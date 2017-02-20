@@ -25,7 +25,7 @@
   cursor:pointer;
 }
 
-.sidebar_menu.selected {
+.selected {
   color: #e74c3c;
 }
 
