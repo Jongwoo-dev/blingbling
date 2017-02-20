@@ -43,7 +43,9 @@ public class ServiceCenterJsonControl {
     if (serviceCenter == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }
-    
+
+    serviceCenter.setPostedDate((serviceCenter.getPostedDate().split(" ")[0]));
+  
     return new AjaxResult(AjaxResult.SUCCESS, serviceCenter);
   }
  
