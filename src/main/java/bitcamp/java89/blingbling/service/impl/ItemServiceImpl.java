@@ -26,12 +26,11 @@ public class ItemServiceImpl implements ItemService {
   }
    
   public int add(Item item) throws Exception {
-    /*if (itemDao.count(item.getItemNo()) > 0) {
-      throw new Exception("같은 tkdv 이메일이 존재합니다. 등록을 취소합니다.");
+    if (itemDao.countByNo(item.getItemNo()) > 0) {
+      throw new Exception("같은 상품이 존재합니다. 등록을 취소합니다.");
     }
     
-    return serviceCenterDao.insert(serviceCenter);*/
-    return 0;
+    return itemDao.insert(item);
   }
   
   public int delete(int no) throws Exception {
