@@ -1,20 +1,154 @@
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
+  
   <img src="../image/bling-logo-tx.png">
     <h1 style="display: none;">블링블링</h1>
-    <span id='searchmenu-open'>검색</span>
-    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+    <span style='font-size: 1.5em; margin-left: 20px;'>검색</span>
+    <a class="glyphicon glyphicon-chevron-down " data-toggle="collapse"
+            href="#collapseExample" aria-expanded="false"></a>
+            
+
     
-    <div id='searchbar'>
-      <input type='text' placeholder="업체/지역/비교 검색 가능합니다">
-      <button type='button' class="btn btn-link">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-      </button>
-    </div>
+         <div id='serchbar'
+            style='display: inline; padding: 15px 0px 15px 15px; margin-left: 50px; margin-right: 50px; border: 3px solid #c0392b; border-radius: 30px;'>
+            <input type='text' placeholder="업체/지역/비교 검색 가능합니다"
+               style='width: 250px; font-size: 1.15em; color: #c0392b; border: 0px'>
+            <button type='button' class="btn btn-link">
+               <span class="glyphicon glyphicon-search" aria-hidden="true"
+                  style='color: #c0392b'></span>
+            </button>
+         </div>
     
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    <a id='login-link' href='#' class='header-menu-a'>로그인</a>
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a
+            href='#' class='header-menu-a ' data-toggle="modal"
+            data-target="#myModal">로그인</a>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" style="margin-top: 150px;">
+               <div class="row">
+
+                  <form class="form-signin mg-btm">
+                     <h3 class="heading-desc">
+                        <button type="button" class="close" data-dismiss="modal"
+                           aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                        로그인
+                     </h3>
+                     <div class="social-box">
+                        <div class="row mg-btm">
+                           <div class="col-md-12">
+                              <a href="#" class="btn btn-primary btn-block"> <i
+                                 class="xi-facebook-official"></i> Login with Facebook
+                              </a>
+                           </div>
+                        </div>
+                        <div class="row mg-btm">
+                           <div class="col-md-12">
+                              <a href="#" class="btn btn-success btn-block"> <i
+                                 class="xi-naver-square"></i> Login with Naver
+                              </a>
+                           </div>
+                        </div>
+                        <div class="row mg-btm">
+                           <div class="col-md-12">
+                              <a href="#" class="btn btn-warning btn-block"> <i
+                                 class="xi-kakao"></i> Login with kakao
+                              </a>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <a href="#" class="btn btn-info btn-block"> <i
+                                 class="xi-google"></i> Login with google
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </form>
+               </div>
+            </div>
+         </div>
+
+
     
     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
     <a id='buyinfo-link' href='#' class='header-menu-a'>예약내역</a>
     
     <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
     <a href='servicecenter-link' class='header-menu-a'>고객센터</a>
+    <div class="collapse" id="collapseExample"   style= "z-index: 10000000;
+    position: absolute;
+    background: #fff;
+    width: 930px;">
+         <div class="well">
+
+
+            <span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>업종선택</span>
+            <span class="glyphicon glyphicon-chevron-right" style="margin-right: 20px"> </span>
+
+
+            <button type="button" class="btn btn-danger header-redbtn" data-toggle="button"
+               aria-pressed="false">전체</button>
+            <button type="button" class="btn btn-danger header-redbtn" data-toggle="button"
+               aria-pressed="false">마사지</button>
+            <button type="button" class="btn btn-danger header-redbtn" data-toggle="button"
+               aria-pressed="false">에스테틱</button>
+            <button type="button" class="btn btn-danger header-redbtn" data-toggle="button"
+               aria-pressed="false">네일아트</button>
+            <button type="button" class="btn btn-danger header-redbtn" data-toggle="button"
+               aria-pressed="false">왁싱</button>
+         </div>
+         <div class="well">
+            <span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>지역선택</span>
+            <a class="glyphicon glyphicon-chevron-down" style="margin-right: 20px"
+               data-toggle="collapse" href="#collapseExample1"
+               aria-expanded="false"> </a>
+            <div class="collapse" id="collapseExample1">
+               <button type="button" class="btn btn-default header-normalbtn" style=""
+                  data-toggle="button" aria-pressed="false">전체</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">서울</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">경기</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">인천</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">강원</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">전남</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">전북</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">경남</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">경북</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">충남</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">충북</button>
+               <button type="button" class="btn btn-default header-normalbtn" data-toggle="button"
+                  aria-pressed="false">제주</button>
+
+            </div>
+
+
+
+         </div>
+         <div class="well">
+
+
+            <span aria-hidden="true" style='margin-left: 5px; font-size: 1.2em'>내주변검색</span>
+            <span class="glyphicon glyphicon-chevron-right" style="margin-right: 20px"> </span>
+
+
+         </div>
+
+      </div>
+    
+    
+    
+  

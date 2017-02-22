@@ -33,16 +33,16 @@
     <hr class='content_hr' color='#e0e0e0'>
     <div id='content_main'>
       <div id='btn_category'>
-        <button type="button" class="btn btn-default selected">베스트질문</button>
-        <button type="button" class="btn btn-default">이벤트</button>
-        <button type="button" class="btn btn-default">예약문의</button>
+        <button id='bestqbtn' type="button" class="btn btn-default selected">베스트질문</button>
+        <button id='eventqbtn' type="button" class="btn btn-default">이벤트</button>
+        <button id='reserveqbtn'type="button" class="btn btn-default">예약문의</button>
         <button type="button" class="btn btn-default">혜택받기</button>
         <button type="button" class="btn btn-default">이용문의</button>
         <button type="button" class="btn btn-default">회원정보</button>
-        <button type="button" class="btn btn-default" >리뷰</button>
+        <button type="button" class="btn btn-default">리뷰</button>
       </div>
       
-      <div id='accordion'>
+      <!-- <div id='accordion'>
         <h3>[베스트 질문] 카드결제 승인취소는 언제 되나요?</h3>
         <div>
           <p>여기어때 예약취소에 따른 결제승인취소는, 영업일 기준 5~7일 정도 소요될 수 있으며, 카드사별로 취소완료 문자메시지가 발송되지 않을 수 있습니다.</p>
@@ -76,36 +76,25 @@
           <p>Update 2016.12.15</p>
         </div>
         
-      </div>
+      </div> -->
     </div>
   </div>
 
 </div>
 
 
-
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-
 <script src='../js/common.js'></script>
+<script src='faq.js'></script>
 
-<script>
-$( function() {
-  $( "#accordion" ).accordion({
-	  active: false,
-	  collapsible: true,
-	  icons: { "header": "glyphicon glyphicon-menu-up", "activeHeader": "glyphicon glyphicon-menu-down" },
-  });
-});
-
-$('#menu1').click(function(){
-	  location.href='notice.html';
-	})
-
-$('#menu3').click(function(){
-  location.href='qna.html';
-})
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<h3>[{{prefix}}] {{title}}</h3>
+  <div>{{content}}</div>
+{{/each}}
 </script>
 
 </body>

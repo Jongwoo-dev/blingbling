@@ -16,6 +16,10 @@ public class ServiceCenterServiceImpl implements ServiceCenterService {
   public List<ServiceCenter> getList(String category) throws Exception {
     return serviceCenterDao.getList(category);
   }
+
+  public List<ServiceCenter> getListByPrefix(String prefix) throws Exception {
+    return serviceCenterDao.getListByPrefix(prefix);
+  }
     
   public ServiceCenter getDetail(int no) throws Exception {
     return serviceCenterDao.getOne(no);

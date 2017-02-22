@@ -36,9 +36,19 @@ public class ServiceCenterJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
+  @RequestMapping("/serviceCenter/listByPrefix")
+  public AjaxResult listByPrefix(String prefix) throws Exception {
+    List<ServiceCenter> listByPrefix = serviceCenterService.getListByPrefix(prefix);
+  
+    return new AjaxResult(AjaxResult.SUCCESS, listByPrefix);
+  }
+  
+  
+  
+  
   @RequestMapping("/serviceCenter/detail")
-  public AjaxResult detail(int memberNo) throws Exception {
-    ServiceCenter serviceCenter = serviceCenterService.getDetail(memberNo);
+  public AjaxResult detail(int serviceCenterNo) throws Exception {
+    ServiceCenter serviceCenter = serviceCenterService.getDetail(serviceCenterNo);
     
     if (serviceCenter == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");

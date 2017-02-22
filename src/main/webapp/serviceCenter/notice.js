@@ -16,8 +16,8 @@ $.getJSON('list.json?category=공지사항', function(ajaxResult) {
   tbody.html(template({"list": list}));
  
 // 학생 목록에서 이름 링크에 click 이벤트를 처리한다.
-  $('.text-title').click(function(event) {
-  	location.href = 'view.html?memberNo=' + $(this).attr("");
+  $('.title-link').click(function(event) {
+  	location.href = 'view.html?serviceCenterNo=' + $(this).attr("data-no");
   });
 });
 /*

@@ -13,7 +13,6 @@ public class ServiceCenter implements Serializable {
   protected String content;
   protected String reply;
   protected String postedDate;
-  
   protected String name;
   protected String status;
   
