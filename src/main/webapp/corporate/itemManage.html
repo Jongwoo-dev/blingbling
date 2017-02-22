@@ -10,7 +10,57 @@
 <link rel="stylesheet" href="basicinfo.css">
 
 <style>
+/* .btn.btn-primary {
+width: 80px;
+}
 
+.modal.fade.bs-example-modal-sm {
+width: 400px
+} */
+
+.add-input{
+margin-left:50px;
+margin-bottom:20px;
+width:120px
+}
+.item-add-btn {
+width:80px;
+height:40px;
+vertical-align:baseline;
+background-color:#e74c3c;
+border-color:#e74c3c;
+border-radius:5px;
+color:white;
+margin-left:370px 
+}
+
+.input-number {
+color:black;
+width:35px;
+margin-left:10px;
+border-radius:1px
+}
+
+.change-btn {
+width:70px;
+height:30px;
+vertical-align:baseline;
+background-color:#f39c12;
+border-color:#FE9A2E;
+border-radius:5px;
+color:white;
+margin-right:5px
+}
+
+.delete-btn {
+width:70px;
+height:30px;
+vertical-align:baseline;
+background-color:#e74c3c;
+border-color:#e74c3c;
+border-radius:5px;
+color:white;
+}
 </style>
 </head>
 <body>
@@ -21,13 +71,13 @@
   <div id='header_sub'>
     <span id='header_sub_event_title'>EVENT</span>
     <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
-    <span id='header_sub_navi'>홈>관리자페이지>상품정보관리</span>
+    <span id='header_sub_navi'>홈>관리자페이지>상품정보관리</span>0
   </div>
   
   <div id='sidebar'>
     <span class='sidebar_title'>관리자 페이지</span>
 
-    <span class='sidebar_menu'>기본정보 관리</span>
+    <span id='basicinfo' class='sidebar_menu'>기본정보 관리</span>
     <span class='sidebar_menu selected'>상품정보 관리</span>
     <span class='sidebar_menu'>정보 및 사진 관리</span>
     <span class='sidebar_menu'>요금 및 시간 관리</span>
@@ -42,9 +92,33 @@
     
       <div>
       <span style=font-size:1.2em>최대예약인원</span>
-      <input type='number' placeholder="0" style=color:black;width:35px;margin-left:10px;border-radius:1px>
-      <button id='itemAdd' style=width:80px;height:40px;vertical-align:baseline;background-color:#e74c3c;border-color:#e74c3c;border-radius:5px;color:white;margin-left:370px >상품추가</button>
+      <input type='number' placeholder="0" class="input-number">
+
+		  <button type="button" class="item-add-btn" data-toggle="modal" data-target=".bs-example-modal-sm">상품추가</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">상품추가</h4>
+				      </div>
+				      <div class="modal-body" style=font-size:1.2em>
+				      <div><span style=width:100px>상품명</span><input type=text class="add-input"></div>
+				      
+				      <div><span style=width:100px>시술시간</span><input type=text class="add-input"><span> 분</span></div>
+				      
+				      <div><span style=width:100px>가격</span><input type=text class="add-input"><span> 원</span></div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal" style=background-color:#f39c12>취소</button>
+				        <button type="button" class="btn btn-primary" style=background-color:#e74c3c>상품추가</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
       </div>
+      
       <div class="table-responsive">
         <table class="table" style=text-align:center;width:635px>
           <thead>
@@ -60,24 +134,26 @@
               <td style=font-size:1.5em>힐링테라피</td>
               <td>60분</td>
               <td>100,000</td>
-              <td><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#FE9A2E;border-color:#FE9A2E;border-radius:5px;color:white;margin-right:5px>수정</button><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#e74c3c;border-color:#e74c3c;border-radius:5px;color:white;>삭제</button></td>
+              <td><button type="button" class="change-btn">수정</button>
+              <button type="button" class="delete-btn">삭제</button></td>
             </tr>
             <tr>
               <td style=font-size:1.5em>힐링마사지</td>
               <td>60분</td>
               <td>100,000</td>
-              <td><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#FE9A2E;border-color:#FE9A2E;border-radius:5px;color:white;margin-right:5px>수정</button><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#e74c3c;border-color:#e74c3c;border-radius:5px;color:white;>삭제</button></td>
+              <td><button type="button" class="change-btn">수정</button>
+              <button type="button" class="delete-btn">삭제</button></td>
             </tr>
             <tr>
               <td style=font-size:1.5em>최고의 마사지</td>
               <td>60분</td>
               <td>150,000</td>
-              <td><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#FE9A2E;border-color:#FE9A2E;border-radius:5px;color:white;margin-right:5px>수정</button><button type="button" style=width:70px;height:30px;vertical-align:baseline;background-color:#e74c3c;border-color:#e74c3c;border-radius:5px;color:white;>삭제</button></td>
+              <td><button type="button" class="change-btn">수정</button>
+              <button type="button" class="delete-btn">삭제</button></td>
             </tr>
           </tbody>
         </table>
     </div>
-    
   </div>
 
 
@@ -94,8 +170,16 @@
 
 <script src='basicinfo.js'></script>
 <script>
-
+$.getJSON('auth/loginUser.json', function(ajaxResult)) {
+	var status = ajaxResult.status;
+	
+	console.log(status);
+}
 </script>
-
+<script>
+$('#basicinfo').click(function(){
+	location.href='basicinfo.html';
+})
+</script>
 </body>
 </html>
