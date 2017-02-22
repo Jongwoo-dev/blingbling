@@ -141,7 +141,7 @@ $("#infoform-folder").click(function(){
 $("#add-telform").click(function() {
 	
 	if($("#tel-group").children().length > 4) {
-		alert('전화번호는 5개까지만 추가 가능합니다.')
+		swal('주의','전화번호는 5개까지만 추가 가능합니다.','warning');
 		return;
 	}
 	$("<div>")
@@ -150,6 +150,11 @@ $("#add-telform").click(function() {
 });
 
 $("#remove-telform").click(function() {
+	if($("#tel-group").children().length <= 1) {
+		//$().alert('close');
+		swal('주의','최소 한개의 업체 전화번호는 입력해야 합니다.','warning');
+		return;
+	}
 	$("#tel-group").children().last().remove();
 });
 
@@ -186,6 +191,21 @@ $("#submit-btn").click(function() {
 	}, 'json');
 });
 
+$('#header_sub_a_home').click(function(event) {
+	event.preventDefault()
+	//location.href='.html';
+});
+
+$('#header_sub_a_mgrpage').click(function(event) {
+	event.preventDefault()
+	location.href='basicinfo.html';
+});
+
+$('#header_sub_a_mgrbaseinfo').click(function(event) {
+	event.preventDefault()
+	location.href='basicinfo.html';
+});
+
 CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
 	height: "350px",
@@ -207,9 +227,10 @@ CKEDITOR.replace( 'infoEditor', {
 });
 
 $(function() {
-	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	$.getJSON(serverRoot+'/auth/loginUser.json', function(ajaxResult) {
 		if (ajaxResult.status != 'success') {
-			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경');
+			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경\n임시로 로그인페이지로 이동');
+			location.href=clientRoot+'/auth/testlogin.html';
 			return;
 		}
 		loginMember = ajaxResult.data;
