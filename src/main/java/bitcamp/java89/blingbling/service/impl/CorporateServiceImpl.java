@@ -25,7 +25,7 @@ public class CorporateServiceImpl implements CorporateService {
 
   @Override
   public Corporate getDetail(int no) throws Exception {
-    return corporateDao.getOne(no);
+    return corporateDao.getOneWithTel(no);
   }
 
   @Override
@@ -45,7 +45,13 @@ public class CorporateServiceImpl implements CorporateService {
 
   @Override
   public int update(Corporate corporate) throws Exception {
-    return corporateDao.update(corporate);
+    int count = corporateDao.update(corporate);
+    corporateDao.deleteTel(corporate.getMemberNo());
+    
+    if (corporate.getTelList().size() > 0) {
+      corporateDao.insertTel(corporate);
+    }
+    return count;
   }
 }
 

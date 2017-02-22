@@ -62,6 +62,11 @@ var moveMarker = function(latlng) {
 	});
 }
 
+var initMarker = function(latlngStr) {
+	var point = latlngStr.substring(1,latlngStr.length-1).split(',');
+	moveMarker(new google.maps.LatLng({lat:Number(point[0]), lng:Number(point[1])}));
+}
+
 
 $('#address-search-btn').click(function() { 
   new daum.Postcode({
@@ -93,7 +98,7 @@ $('#address-search-btn').click(function() {
       
       // 우편번호와 주소 정보를 해당 필드에 넣는다.
       document.getElementById('corporate-postcode').value = data.zonecode; //5자리 새우편번호 사용
-      document.getElementById('corporate-address1').value = fullAddr;
+      document.getElementById('corporate-address-base').value = fullAddr;
 
       // 커서를 상세주소 필드로 이동한다.
       //document.getElementById('corporate-address2').focus();
@@ -133,9 +138,73 @@ $("#infoform-folder").click(function(){
 	/*$('#infoform-icon')*/
 });
 
+$("#add-telform").click(function() {
+	
+	if($("#tel-group").children().length > 4) {
+		swal('주의','전화번호는 5개까지만 추가 가능합니다.','warning');
+		return;
+	}
+	$("<div>")
+		.html("<input class='form-control short' name='corporateTel' placeholder='업체 전화번호를 입력해 주세요' style='margin-left:123px;'>")
+		.appendTo("#tel-group");
+});
+
+$("#remove-telform").click(function() {
+	if($("#tel-group").children().length <= 1) {
+		//$().alert('close');
+		swal('주의','최소 한개의 업체 전화번호는 입력해야 합니다.','warning');
+		return;
+	}
+	$("#tel-group").children().last().remove();
+});
+
 $("#submit-btn").click(function() {
-	console.log(CKEDITOR.instances.infoEditor.getData());
-})
+	//console.log(CKEDITOR.instances.infoEditor.getData());
+	/*console.log($("input[name=corporateTel]").map(function() {
+		   return this.value;
+	}).get());*/
+	/*console.log(JSON.stringify($("input[name=corporateTel]").map(function() {
+	   return this.value;
+	}).get()));*/
+	var param = {
+			memberNo        : loginMember.memberNo,
+			corporateName   : $("#corporate-name").val(),
+			postNumber      : $("#corporate-postcode").val(),
+			baseAddress     : $("#corporate-address-base").val(),
+			detailAddress   : $("#corporate-address-detail").val(),
+			telList         : arrayToJson($("input[name=corporateTel]")),
+			additionalInfo  : CKEDITOR.instances.infoEditor.getData(),
+			mapLocation     : marker.getPosition().toString(),
+			
+			corporateRegistrationNumber : $('#corporateRegistrationNumber').val(),
+			corporateConfirm            : $('#corporateConfirm').val(),
+			corporateType               : $('#corporateType').val(),
+			detail                      : $('#detail').val(),
+			notice                      : $('#notice').val()
+	}
+	$.post('update.json', param, function(ajaxResult) {
+		if (ajaxResult.status != "success") {
+			alert(ajaxResult.data);
+			return;
+		}
+		alert(ajaxResult.data);
+	}, 'json');
+});
+
+$('#header_sub_a_home').click(function(event) {
+	event.preventDefault()
+	//location.href='.html';
+});
+
+$('#header_sub_a_mgrpage').click(function(event) {
+	event.preventDefault()
+	location.href='basicinfo.html';
+});
+
+$('#header_sub_a_mgrbaseinfo').click(function(event) {
+	event.preventDefault()
+	location.href='basicinfo.html';
+});
 
 CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
@@ -158,22 +227,69 @@ CKEDITOR.replace( 'infoEditor', {
 });
 
 $(function() {
-	getLoginMemberInfo();
-	console.log(loginMember);
-	
+	$.getJSON(serverRoot+'/auth/loginUser.json', function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경\n임시로 로그인페이지로 이동');
+			location.href=clientRoot+'/auth/testlogin.html';
+			return;
+		}
+		loginMember = ajaxResult.data;
+		
+		initInfo();
+	});
 });
 
-var getLoginMemberInfo = function() {
-	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-		var status = ajaxResult.status;
-		
-		if (status != 'success') {
-			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경');
+var initInfo = function() {
+	$.getJSON('../corporate/detail.json?memberNo='+loginMember.memberNo, function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			alert('업체가 아닙니다.');
 			return;
 		}
 		
-		//console.log(ajaxResult.data)
-		loginMember = ajaxResult.data;
-		console.log(loginMember)
+		var corporate = ajaxResult.data;
+		//console.log(corporate);
+		
+		$('#corporate-name').val(corporate.corporateName);
+		$('#corporate-postcode').val(corporate.postNumber);
+		$('#corporate-address-base').val(corporate.baseAddress);
+		$('#corporate-address-detail').val(corporate.detailAddress);
+		
+		$('#infoEditor').html(corporate.additionalInfo)
+		
+		if(corporate.mapLocation.length != 0) {
+			initMarker(corporate.mapLocation);
+		}
+		//수정 불가능한 정보들(숨겨진 정보)
+		$('#corporateRegistrationNumber').val(corporate.corporateRegistrationNumber);
+		$('#corporateConfirm').val(corporate.corporateConfirm);
+		$('#corporateType').val(corporate.corporateType);
+		$('#detail').val(corporate.detail);
+		$('#notice').val(corporate.notice);
+		
+		var list = corporate.telList
+		
+		for (var i = 0; i < list.length; i++) {
+			//console.log(list[i].corporateTel);
+			if (i == 0) {
+				$('input[name=corporateTel]').val(list[i].corporateTel)
+			} else {
+				$("<div>")
+				.html("<input class='form-control short' name='corporateTel' placeholder='업체 전화번호를 입력해 주세요'" +
+						"value='"+list[i].corporateTel+"' style='margin-left:123px;'>")
+				.appendTo("#tel-group")
+			}
+		}
 	});
-};
+}
+
+var arrayToJson = function(list) {
+	var result = '';
+	for (var i = 0; i < list.length; i++) {
+		if (i != 0) {
+			result += ',';
+		}
+		result += list.eq(i).val();
+	}
+	result += '';
+	return result;
+}
