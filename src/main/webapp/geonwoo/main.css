@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+/* 메인 */
+
+#imgcard {
+	margin-top: 30px;
+	margin-bottom: 230px;
+	border-left: 1px solid rgb(224, 224, 224);
+	background-color: rgb(244, 244, 244);
+	position: relative;
+}
+
+.itembox {
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.itembox:hover {
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+}
+
+.itembox>img {
+	width: 188px;
+}
