@@ -47,7 +47,7 @@
     
       <div class='inputgroup'>
         <label>업체이름</label>
-        <input class='form-control short' placeholder="이름을 입력해 주세요">
+        <input id='corporate-name' class='form-control short' placeholder="이름을 입력해 주세요">
       </div>
       
       <div class='inputgroup'>
@@ -57,35 +57,19 @@
       </div>
       <div class='inputgroup'>
         <label>기본주소</label>
-        <input id='corporate-address1' class='form-control long' placeholder="검색 버튼을 눌러주세요" readonly><br>
+        <input id='corporate-address-base' class='form-control long' placeholder="검색 버튼을 눌러주세요" readonly><br>
       </div>
       <div class='inputgroup'>
         <label>상세주소</label>
-        <input id='corporate-address2' class='form-control long' placeholder="상세 주소를 입력해 주세요">
+        <input id='corporate-address-detail' class='form-control long' placeholder="상세 주소를 입력해 주세요">
       </div>
       
-      <div class='inputgroup'>
+      <div id='tel-group' class='inputgroup'>
         <div>
           <label>업체전화</label>
           <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
-          <button type='button' class='btn btn-default btn-change'><i class='fa fa-plus'></i></button>
-          <button type='button' class='btn btn-default btn-change'><i class='fa fa-minus'></i></button>
-        </div>
-        <div class='hidden'>
-          <label></label>
-          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
-        </div>
-        <div class='hidden'>
-          <label></label>
-          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
-        </div>
-        <div class='hidden'>
-          <label></label>
-          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
-        </div>
-        <div class='hidden'>
-          <label></label>
-          <input class='form-control short' name='corporateTel' placeholder="업체 전화번호를 입력해 주세요">
+          <button id='add-telform' type='button' class='btn btn-default btn-change'><i class='fa fa-plus'></i></button>
+          <button id='remove-telform' type='button' class='btn btn-default btn-change'><i class='fa fa-minus'></i></button>
         </div>
       </div>
       
@@ -115,6 +99,12 @@
       <div class='inputgroup'>
         <button id='submit-btn' class='btn btn-default btn-submit'>등록</button>
       </div>
+      
+      <input id='corporateRegistrationNumber' class='hidden'>
+      <input id='corporateConfirm' class='hidden'>
+      <input id='corporateType' class='hidden'>
+      <input id='detail' class='hidden'>
+      <input id='notice' class='hidden'>
       
     </div>
     

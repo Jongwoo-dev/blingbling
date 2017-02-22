@@ -6,21 +6,21 @@ public class Corporate extends Member {
   private static final long serialVersionUID = 1L;
   
   // 필수
-  String corporateRegistrationNumber;
-  boolean corporateConfirm;
-  String corporateName;
-  String corporateType;
+  protected String corporateRegistrationNumber;
+  protected boolean corporateConfirm;
+  protected String corporateName;
+  protected String corporateType;
   
-  protected List<String> telList;
+  protected List<CorpTel> telList;
 
   // 선택
-  String postNumber;
-  String baseAddress;
-  String detailAddress;
-  String mapLocation;
-  String detail;
-  String additionalInfo;
-  String notice;
+  protected String postNumber;
+  protected String baseAddress;
+  protected String detailAddress;
+  protected String mapLocation;
+  protected String detail;
+  protected String additionalInfo;
+  protected String notice;
   
   public String getCorporateRegistrationNumber() {
     return corporateRegistrationNumber;
@@ -88,10 +88,10 @@ public class Corporate extends Member {
   public void setNotice(String notice) {
     this.notice = notice;
   }
-  public List<String> getTelList() {
+  public List<CorpTel> getTelList() {
     return telList;
   }
-  public void setTelList(List<String> telList) {
+  public void setTelList(List<CorpTel> telList) {
     this.telList = telList;
   }
   

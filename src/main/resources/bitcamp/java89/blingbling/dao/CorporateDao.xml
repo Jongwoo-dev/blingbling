@@ -7,16 +7,16 @@
 
   <resultMap type="corporate" id="corporate-map">
     <id     column="msno"     property="memberNo"/>
-    <result column="name"       property="name"/>
-    <result column="email"      property="email"/>
-    <result column="tel"        property="tel"/>
-    <result column="chck"       property="confirmTel"/>
-    <result column="mgr"        property="administrator"/>
+    <result column="name"     property="name"/>
+    <result column="email"    property="email"/>
+    <result column="tel"      property="tel"/>
+    <result column="chck"     property="confirmTel"/>
+    <result column="mgr"      property="administrator"/>
     <result column="crno"     property="corporateRegistrationNumber"/>
     <result column="cachk"    property="corporateConfirm"/>
     <result column="cname"    property="corporateName"/>
     <result column="ctype"    property="corporateType"/>
-    
+
     <result column="pst_no"   property="postNumber"/>
     <result column="bas_adr"  property="baseAddress"/>
     <result column="det_adr"  property="detailAddress"/>
@@ -24,6 +24,11 @@
     <result column="detail"   property="detail"/>
     <result column="minfo"    property="additionalInfo"/>
     <result column="notice"   property="notice"/>
+    
+    <collection property="telList" ofType="corpTel">
+      <id     column="mtno"   property="no"/>
+      <result column="mstel"  property="corporateTel"/>
+    </collection>
   </resultMap>
   
   <select id="count" parameterType="string" resultType="int">
@@ -42,7 +47,7 @@
   
   <select id="getList" resultMap="corporate-map">
     select
-      m.mno,
+      ms.msno,
       m.name, 
       m.email, 
       m.tel, 
@@ -65,7 +70,7 @@
   
   <select id="getListByCorporateName" parameterType="String" resultMap="corporate-map">
     select
-      m.mno,
+      ms.msno,
       m.name, 
       m.email, 
       m.tel, 
@@ -87,9 +92,9 @@
     where ms.cname like concat('%',#{value}%,'%')
   </select>
   
-  <select id="getOne" parameterType="int" resultMap="corporate-map">
+  <select id="getOneWithTel" parameterType="int" resultMap="corporate-map">
     select
-      m.mno,
+      ms.msno,
       m.name, 
       m.email, 
       m.tel, 
@@ -105,15 +110,18 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
-    from memb_store ms
-      left outer join memb m on ms.msno=m.mno
-    where ms.msno=#{value}
+      ms.notice,
+      mt.mtno,
+      mt.mstel
+    from  memb m
+      inner join memb_store ms on ms.msno=m.mno
+      left outer join ms_tel mt on mt.msno=m.mno
+    where m.mno=#{value}
   </select>
   
   <select id="getOneByEmail" parameterType="string" resultMap="corporate-map">
     select
-      m.mno,
+      ms.msno,
       m.name, 
       m.email, 
       m.tel, 
@@ -153,6 +161,14 @@
       #{notice})
   </insert>
   
+  <insert id="insertTel" parameterType="corporate">
+    insert into ms_tel(msno,mstel) 
+    values
+    <foreach collection="telList" item="corpTel" separator=",">
+      (#{memberNo}, #{corpTel.corporateTel})
+    </foreach>
+  </insert> 
+  
   <update id="update" parameterType="corporate">
     update memb_store ms set
       ms.msno=#{memberNo},
@@ -172,6 +188,10 @@
   
   <delete id="delete" parameterType="int">
     delete from memb_store where msno=#{value}
+  </delete>
+  
+  <delete id="deleteTel" parameterType="int">
+    delete from ms_tel where msno=#{value}
   </delete>
 </mapper>
 
