@@ -36,7 +36,6 @@ public class ItemJsonControl {
   
   @RequestMapping("/item/add")
   public AjaxResult add(Item item) throws Exception {
-    
     itemService.add(item);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
