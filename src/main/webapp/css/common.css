@@ -100,7 +100,7 @@ body > .container {
   font-size: 1.2em;
 }
 
-.btn-danger {
+.header-redbtn {
 	width: 130px;
 	height: 40px;
 	border-color: #9e0e0e;
@@ -108,14 +108,14 @@ body > .container {
 	color: #5e5e5e;
 }
 
-.btn-danger:HOVER {
+.header-redbtn:HOVER {
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 	transition: all 0.3s ease-in-out;
 	background-color: rgb(192, 57, 43);
 	color: white;
 }
 
-.btn-default {
+.header-normalbtn {
 	width: 130px;
 	height: 40px;
 	background-color: white;
@@ -124,7 +124,7 @@ body > .container {
 	margin-left: 10px;
 }
 
-.btn-default:HOVER {
+.header-normalbtn:HOVER {
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 	transition: all 0.3s ease-in-out;
 	background-color: rgb(192, 192, 192);
