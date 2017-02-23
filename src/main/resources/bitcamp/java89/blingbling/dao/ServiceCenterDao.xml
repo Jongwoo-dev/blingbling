@@ -55,7 +55,21 @@
     where prfx=#{value}
   </select>
   
-  
+  <select id="getListByMember" parameterType="int" resultMap="serviceCenter-map">
+    select
+      sc.scno,
+      sc.mno, 
+      sc.crt, 
+      sc.prfx, 
+      sc.titl, 
+      sc.cont, 
+      sc.repl, 
+      sc.sc_rdt,
+      m.name
+    from sc
+      left outer join memb m on sc.mno=m.mno  
+    where sc.mno=#{value}
+  </select>
   
   <select id="getOne" parameterType="int" resultMap="serviceCenter-map">
     select

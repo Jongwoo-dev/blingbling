@@ -43,6 +43,24 @@ public class ServiceCenterJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, listByPrefix);
   }
   
+ 
+  @RequestMapping("/serviceCenter/listByMember")
+  public AjaxResult listByMember(int memberNo) throws Exception {
+    List<ServiceCenter> listByMember = serviceCenterService.getListByMember(memberNo);
+    for (int i = 0; i < listByMember.size(); i++) {
+      // 답변 미답변 처리
+      if(listByMember.get(i).getReply() == null) {
+        listByMember.get(i).setStatus("미답변");
+      } else if(listByMember.get(i).getReply().length() > 0) {
+        listByMember.get(i).setStatus("답변완료");
+      } else {
+        listByMember.get(i).setStatus("미답변");
+      }
+      // 작성일 시간 날리는 처리
+      listByMember.get(i).setPostedDate((listByMember.get(i).getPostedDate().split(" ")[0]));
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, listByMember);
+  }
   
   
   
