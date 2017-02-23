@@ -21,6 +21,10 @@ public class ServiceCenterServiceImpl implements ServiceCenterService {
     return serviceCenterDao.getListByPrefix(prefix);
   }
     
+  public List<ServiceCenter> getListByMember(int memberNo) throws Exception {
+    return serviceCenterDao.getListByMember(memberNo);
+  }
+  
   public ServiceCenter getDetail(int no) throws Exception {
     return serviceCenterDao.getOne(no);
   }
