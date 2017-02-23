@@ -1,33 +1,5 @@
 @CHARSET "UTF-8";
 
-#header_sub {
-  border-bottom: 1px solid black;
-  padding: 20px;
-  color: #5e5e5e;
-}
-
-#header_sub_event_title {
-  color: #c0392b; 
-  font-size: 1.15em; 
-  padding-right: 5px; 
-  border-right: 1px solid black;
-}
-
-#header_sub_event_content {
-  font-size: 1.15em; 
-  margin-left: 10px;
-}
-
-#header_sub_navi {
-  float: right; 
-  font-size: 1.15em;
-}
-
-#header_sub_navi > a {
-	color: #333333;
-	text-decoration: none;
-}
-
 /* 컨텐츠 */
 
 #content {
