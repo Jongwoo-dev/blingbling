@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터-공지사항</title>
+<title>운영자페이지-FAQ관리</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
-<link rel="stylesheet" href="notice.css">
+<link rel="stylesheet" href="admin-faq.css">
 </head>
 <body>
 
@@ -18,22 +18,30 @@
   <div id='header_sub'>
     <span id='header_sub_event_title'>EVENT</span>
     <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
-    <span id='header_sub_navi'>홈>고객센터>공지사항</span>
+    <span id='header_sub_navi'>홈>운영자페이지>FAQ 관리</span>
   </div>
   
   <div id='sidebar'>
-    <span class='sidebar_title'>고객센터</span>
-    <span class='sidebar_menu selected' id='menu1'>공지사항</span>
-    <span class='sidebar_menu' id='menu2'>FAQ</span>
-    <span class='sidebar_menu' id='menu3'>1:1 문의</span>
+    <span class='sidebar_title'>운영자 페이지</span>
+    <span class='sidebar_menu' id='menu1'>1:1문의 관리</span>
+    <span class='sidebar_menu' id='menu2'>공지사항 관리</span>
+    <span class='sidebar_menu selected' id='menu3'>FAQ 관리</span>
   </div>
   
   <div id='content'>
-    <span class='content_title'>공지사항</span>
+    <span class='content_title'>FAQ 관리</span>
     <hr class='content_hr' color='#e0e0e0'>
     <div id='content_main'>
       <div class="table-responsive">
         <table class="table" id='list-table'>
+          <thead>
+            <tr id="tr">
+              <th class='col-xs-3 text-center'>FAQ유형</th>
+              <th class='col-xs-4 text-center'>제목</th>
+              <th class='col-xs-3 text-center'>작성자</th>
+              <th class='col-xs-2 text-center'>작성일</th>
+            </tr>
+          </thead>
           <tbody>
             <!-- <tr>
               <td class='text-prefix' height='50'><b>[안내]</b></td>
@@ -57,6 +65,8 @@
             </tr> -->
           </tbody>
         </table>
+        <hr class='content_hr' color='#e0e0e0'>
+        <button type="button" class="btn btn-primary btn-lg">글쓰기</button>
      </div>
     </div>
   </div>
@@ -70,6 +80,7 @@
 <tr>
   <td class='text-prefix' height='50'><b>[{{prefix}}]</b></td>
   <td class='text-title'><a href='#' class='title-link' data-no={{serviceCenterNo}}>{{title}}</a></td>
+  <td class='text-center'>{{name}}</td>
   <td class='text-date'>{{postedDate}}</td>
 </tr>
 {{/each}}
@@ -79,18 +90,26 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src='../js/common.js'></script>
-<script src="notice.js"></script>
+<script src="admin-faq.js"></script>
 
 
 
 
 <script>
+$('.btn-lg').click(function(){
+	  location.href='admin-faq-create.html';
+	})
+
+$('#menu1').click(function(){
+  location.href='admin-qna.html';
+})
+
 $('#menu2').click(function(){
-  location.href='faq.html';
+  location.href='admin-notice.html';
 })
 
 $('#menu3').click(function(){
-  location.href='qna.html';
+  location.href='admin-faq.html';
 })
 </script>
 
