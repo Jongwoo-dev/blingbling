@@ -104,15 +104,15 @@ color:white;
 				        <h4 class="modal-title" id="myModalLabel">상품추가</h4>
 				      </div>
 				      <div class="modal-body" style=font-size:1.2em>
-				      <div><span style=width:100px>상품명</span><input type=text class="add-input"></div>
+				      <div><span style=width:100px>상품명</span><input id='itemAdd-Name' type=text class="add-input"></div>
 				      
-				      <div><span style=width:100px>시술시간</span><input type=text class="add-input"><span> 분</span></div>
+				      <div><span style=width:100px>시술시간</span><input id='itemAdd-Utime'type=text class="add-input"><span> 분</span></div>
 				      
-				      <div><span style=width:100px>가격</span><input type=text class="add-input"><span> 원</span></div>
+				      <div><span style=width:100px>가격</span><input id='itemAdd-Price' type=text class="add-input"><span> 원</span></div>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-primary" data-dismiss="modal" style=background-color:#f39c12>취소</button>
-				        <button type="button" class="btn btn-primary" style=background-color:#e74c3c>상품추가</button>
+				        <button id='itemAdd-btn' type="button" class="btn btn-primary" style=background-color:#e74c3c>상품추가</button>
 				      </div>
 				    </div>
 				  </div>
@@ -120,7 +120,7 @@ color:white;
       </div>
       
       <div class="table-responsive">
-        <table class="table" style=text-align:center;width:635px>
+        <table id='list-table' class="table" style=text-align:center;width:635px>
           <thead>
             <tr style=background-color:#D8D8D8;font-size:1.1em>
               <th style=text-align:center>상품명</th>
@@ -130,27 +130,8 @@ color:white;
             </tr>
           </thead>
           <tbody style=background-color:white>
-            <tr>
-              <td style=font-size:1.5em>힐링테라피</td>
-              <td>60분</td>
-              <td>100,000</td>
-              <td><button type="button" class="change-btn">수정</button>
-              <button type="button" class="delete-btn">삭제</button></td>
-            </tr>
-            <tr>
-              <td style=font-size:1.5em>힐링마사지</td>
-              <td>60분</td>
-              <td>100,000</td>
-              <td><button type="button" class="change-btn">수정</button>
-              <button type="button" class="delete-btn">삭제</button></td>
-            </tr>
-            <tr>
-              <td style=font-size:1.5em>최고의 마사지</td>
-              <td>60분</td>
-              <td>150,000</td>
-              <td><button type="button" class="change-btn">수정</button>
-              <button type="button" class="delete-btn">삭제</button></td>
-            </tr>
+
+
           </tbody>
         </table>
     </div>
@@ -160,26 +141,34 @@ color:white;
 </div>
 
 <!-- <div id='footer' class="container-fluid">--></div>
-
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
-
-
 <script src='../js/common.js'></script>
+<script src='itemManage.js'></script>
 
-<script src='basicinfo.js'></script>
-<script>
-$.getJSON('auth/loginUser.json', function(ajaxResult)) {
-	var status = ajaxResult.status;
-	
-	console.log(status);
-}
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<tr>
+  <td style=font-size:1.5em>{{name}}</td>
+  <td>{{usingTime}}</td>
+  <td>{{price}}</td>
+  <td><button id="change-btn" type="button" class="change-btn">수정</button><button id="delete-btn" type="button" class="delete-btn">삭제</button></td>
+</tr>
+{{/each}}
 </script>
 <script>
-$('#basicinfo').click(function(){
-	location.href='basicinfo.html';
-})
+$('#delete-btn').click(function() {
+	  $.getJSON('../item/delete.json?itemNo=' + itemNo, function(ajaxResult) {
+	    console.log(itemNo);
+	    if (ajaxResult.status != "success") {
+	      alert(ajaxResult.data);
+	      return;
+	    }
+	  });
+	});
 </script>
+
 </body>
 </html>
