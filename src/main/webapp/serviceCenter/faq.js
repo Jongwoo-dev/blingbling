@@ -12,7 +12,7 @@ $('#new-btn').click(function(event) {
 $('#bestqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=베스트질문', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
+			$('.btn.btn-default.selected').removeClass('selected')
 			$('#bestqbtn').addClass('selected')
 		}
 	});
@@ -21,7 +21,7 @@ $('#bestqbtn').click(function() {
 $('#eventqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=이벤트', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
+			$('.btn.btn-default.selected').removeClass('selected')
 			$('#eventqbtn').addClass('selected')
 		}
 	});
@@ -30,7 +30,7 @@ $('#eventqbtn').click(function() {
 $('#reserveqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=예약문의', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
+			$('.btn.btn-default.selected').removeClass('selected')
 			$('#reserveqbtn').addClass('selected')
 		}
 	});
