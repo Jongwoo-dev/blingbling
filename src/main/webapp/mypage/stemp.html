@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마이 페이지 - 스탬프</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="stemp.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div id='header'></div>
+  
+  <div id='header_sub'>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>
+      <a href='#'>홈</a> > <a href='#'>마이페이지</a> > <a href='#'>스탬프</a>
+    </span>
+  </div>
+  
+  <div id='sidebar'>
+    <span class='sidebar_title'>마이 페이지</span>
+
+    <span class='sidebar_menu'>찜</span>
+    <span class='sidebar_menu selected'>스탬프</span>
+    <span class='sidebar_menu'>예약내역</span>
+    <span class='sidebar_menu'>이용내역</span>
+    <span class='sidebar_menu'>내정보수정</span>
+    <span class='sidebar_menu'>업체전환</span>
+  </div>
+
+  <div id='content'>
+   <div id="content_header">
+
+				<div id='content_profile'>
+					<form class="form-inline">
+						<div class="form-group">
+							<span class="fa fa-user-circle-o" aria-hidden="true"></span>
+						</div>
+						<div class="form-group">
+							<span class='profile name'>김건우</span>
+						</div>
+					</form>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-heart"></span> <span
+							class='item titletext'>찜</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-calendar"></span> <span
+							class='item titletext'>스탬프</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+				<div class='itemform'>
+					<div class='item titleform'>
+						<span class="glyphicon glyphicon-check"></span> <span
+							class='item titletext'>예약내역</span>
+					</div>
+					<span class='item value'>0개</span>
+				</div>
+
+			</div>
+
+			<div id='content_main'>
+				<div class="row">
+					<span class="maintitle">이용내역</span> <span class="maindesc">3개</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">강남피부샾</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">비트피부샾</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">비트피부샾</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">비트피부샾</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">비트피부샾</span>
+				</div>
+				<div class=chart>
+					<canvas class="myDoughnutChart"></canvas>
+					<span style="display: block; text-align: center;">비트피부샾</span>
+				</div>
+			</div>
+		</div>
+			
+
+
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+<script src='../js/common.js'></script>
+
+<script src="../node_modules/chart.js/dist/Chart.js"></script>
+<script>
+var ctx = $('.myDoughnutChart');
+for (var i = 0; i < ctx.length; i++) {
+	
+	var myDoughnutChart = new Chart(ctx.eq(i), {
+	    type: 'doughnut',
+	    data: {
+	        labels: ["남은횟수", "누적횟수"],
+	        datasets: [{
+	            label: '# of Votes',
+	            data: [8, 2],
+	            backgroundColor: [
+	                'rgba(230, 126, 34, 0.6)',
+	                'rgba(230, 126, 34, 1)'
+	                
+	            ],
+	            hoverBackgroundColor: [
+	                'rgba(230, 126, 34, 0.5)',
+	                'rgba(230, 126, 34, 0.8)'
+	            ]
+	         
+	        
+	        }]
+	    },
+	    options: {
+	    	legend:{
+	    	display: false
+	    	}
+	    }
+	    
+	});
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>
