@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
 <link rel="stylesheet" href="detail.css">
+<link rel="stylesheet" href="calendar.css">
 
 </head>
 <body>
@@ -28,15 +29,94 @@
   
 
   <div id='content'>
-      
-    
+    <button type="button" data-toggle="modal" data-target="#reservation-modal" class='btn btn-default' style='margin: 30px;'>예약하기</button>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-labelledby="reservation-modal-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          
+          <!-- 모달 내부  -->
+          <div id='modal-body-inner'>
+            <div id='calendar-container'>
+              <div id="calendar"></div>
+            </div>
+            <div id='modal-contents-container'> <!-- 달력 오른쪽 -->
+              <span class='modal-contents-label'>인원</span>
+              <div class='reservation-ctrcontainer'>
+                <span class='modal-contents-text'>
+                  인원 <span id='reservation-number'>0</span>명
+                </span>
+                <div class='numberctr-btnbox'>
+                  <span class='numberctr-btn'>＋</span><span class='numberctr-btn'>－</span>
+                </div>
+              </div>
+              <div class='timeselect-box'>
+                <span class='modal-contents-label'>시간</span>
+                <div class='timeselect-ctrbox'>
+                  <span class='glyphicon glyphicon-triangle-top'></span>
+                  <span id='timeselect-hour-text'>8</span>
+                  <span class='glyphicon glyphicon-triangle-bottom'></span>
+                </div>
+                <div class='timeselect-ctrbox'>
+                  <span class='glyphicon glyphicon-triangle-top'></span>
+                  <span id='timeselect-minute-text'>00</span>
+                  <span class='glyphicon glyphicon-triangle-bottom'></span>
+                </div>
+                <span id='timeselect-ampm'>오전</span>
+              </div>
+              <button type="button" class='btn btn-danger'>예약하기</button>
+            </div>
+            
+            <div class='item-container'>
+              <div class='item-box'>
+                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <div class='item-contents'>
+                  <span class='item-title'>힐링테라피 - 60분</span>
+                  <span class='item-cost'>가격: 20만</span>
+                  <span class='item-possible-number'>예약가능인원: 8명</span>
+                </div>
+              </div>
+              <div class='item-box'>
+                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <div class='item-contents'>
+                  <span class='item-title'>힐링테라피 - 60분</span>
+                  <span class='item-cost'>가격: 20만</span>
+                  <span class='item-possible-number'>예약가능인원: 8명</span>
+                </div>
+              </div>
+              <div class='item-box'>
+                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <div class='item-contents'>
+                  <span class='item-title'>힐링테라피 - 60분</span>
+                  <span class='item-cost'>가격: 20만</span>
+                  <span class='item-possible-number'>예약가능인원: 8명</span>
+                </div>
+              </div>
+              <div class='item-box'>
+                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <div class='item-contents'>
+                  <span class='item-title'>힐링테라피 - 60분</span>
+                  <span class='item-cost'>가격: 20만</span>
+                  <span class='item-possible-number'>예약가능인원: 8명</span>
+                </div>
+              </div>
+            </div> <!-- item-container -->
+          </div> <!-- modal-body-inner -->
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
+
 <script src="../js/context.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 

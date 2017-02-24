@@ -17,11 +17,15 @@ if (serviceCenterNo > 0) {
 	  }
 	  var serviceCenter = ajaxResult.data;
 	  console.log(serviceCenter);
+	  if (serviceCenter.reply != null) {
+		  $('#faq-reply').css('display','block');
+	  }
 	  $('#faq-prefix').text('['+serviceCenter.prefix+']');
 	  $('#faq-title').text(serviceCenter.title);
 	  $('#faq-postedDate').text(serviceCenter.postedDate);
 	  $('#faq-view').text(serviceCenter.content);
 	  $('#faq-reply').text(serviceCenter.reply);
+	  
 	});
 
 // 목록 버튼을 클릭했을 때 호출될 함수(이벤트 핸들러) 등록!
