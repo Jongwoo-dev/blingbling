@@ -3,7 +3,9 @@ $('.btn-lg2').click(function() {
 	var param = {
 		category : 'FAQ',
 		prefix : $('#faq-prefix').val(),
+	    title: $('#title-box').val(),
 		content: $('#content-text').val(),
+      
 	}
 	console.log(param);
 	$.post('add.json', param, function(ajaxResult) {
@@ -11,7 +13,7 @@ $('.btn-lg2').click(function() {
 			alert(ajaxResult.data);
 			return;
 		}
-		//location.href = 'admin-faq.html';
+		location.href = 'admin-faq.html';
 	}, 'json');
 });
 

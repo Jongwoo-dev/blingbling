@@ -9,6 +9,6 @@ insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) values(7,7,'FAQ',
 insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) values(8,8,'FAQ','이벤트','제목8','내용8','답글8',now());
 insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) values(9,9,'1대1질문','이용문의','제목9','내용9','답글9',now());
 insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) values(10,10,'1대1질문','이용후기','제목10','내용10','답글10',now());
-insert into sc(scno, mno, crt, prfx, titl, cont, sc_rdt) values(11,10,'1대1질문','이용후기','제목10','내용10',now());
+insert into sc(scno, mno, crt, prfx, titl, cont, sc_rdt) values(11,10,'1대1질문','이용후기','제목11','내용11',now());
 
 
