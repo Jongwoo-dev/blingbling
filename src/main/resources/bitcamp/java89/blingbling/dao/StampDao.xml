@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.StampDao">
+
+  <resultMap type="stamp" id="stamp-map">
+    <id     column="mno"     property="memberNo"/>
+    <id     column="msno"     property="memberStoreNo"/>
+    <result column="cnt"      property="saveNo"/>
+    
+     </resultMap>
+       <resultMap type="stamplog" id="stamplog-map">
+    <id     column="mno"     property="memberNo"/>
+    <id     column="msno"     property="memberStoreNo"/>
+    <result column="chng"      property="stampchangeNo"/>
+    <result column="pm"      property="stampcnt"/>
+    <result column="chdt"      property="stampdate"/>
+     </resultMap>
+  
+  <select id="getList" resultMap="stamp-map">
+    select
+      mno,
+      msno,
+      cnt
+    from stmp
+  </select>
+  
+ 
+  
+  <select id="getOne" parameterType="map" resultMap="stamp-map">
+   select
+      mno,
+      msno,
+      cnt
+    from stmp
+    where mno=#{value} and msno=#{value}
+  </select>
+  
+  
+
+  <insert id="insert" parameterType="stamp">
+    insert into stmp(mno, msno, cnt)
+    values(
+      #{memberNo},
+      #{memberStoreNo},
+      #{saveNo})
+  </insert>
+  
+  <update id="update" parameterType="stamp">
+    update stmp set
+      mno=#{memberNo},
+      msno=#{memberStoreNo},
+      cnt=#{saveNo}
+     where mno=#{value} and msno=#{value}
+  </update>
+  
+  <delete id="delete" parameterType="map">
+    delete from stmp where mno=#{value} and msno=#{value}
+  </delete>
+  
+    <insert id="insertstamplog" parameterType="stamplog">
+    insert into stmp_log(mno, msno, chng, pm, chdt)
+    values(
+      #{memberNo},
+      #{memberStoreNo},
+      #{stampchangeNo},
+      #{stampcnt},
+      now())
+  </insert>
+  
+ <select id="getlistStamplog" resultMap="stamplog-map">
+    select
+      mno,
+      msno,
+      chng,
+      pm,
+      chdt
+    from stmp_log
+    where mno=#{value} and msno=#{value}
+  </select>
+  
+  
+</mapper>
+
+
+
+
+
+
+
