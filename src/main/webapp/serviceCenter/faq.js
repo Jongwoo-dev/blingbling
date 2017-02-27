@@ -2,18 +2,35 @@
 $.getJSON('listByPrefix.json?prefix=베스트질문', function(ajaxResult) {
 	changeAccodion(ajaxResult);
 });
-/*
-$('#new-btn').click(function(event) {
-	event.preventDefault(); 
-	location.href = 'view.html';
-});
-*/
 
+$('.btn-danger').click(function() {
+	$.getJSON('listBySearch.json?word='+ $('#searchbar').val(), function(ajaxResult){
+		if (ajaxResult.status != "success") { 
+			  alert(ajaxResult.data);
+			  return;
+		}
+	  changeAccodion(ajaxResult);
+	  $('.btn.btn-default.selected');
+	});
+});
+
+$('#btn_category button').click(function() {
+	var btn = $(this);
+	$.getJSON('listByPrefix.json?prefix='+btn.text(), function(ajaxResult) {
+		if (changeAccodion(ajaxResult)) {
+			$('.btn.btn-default.selected').removeClass('selected');
+			btn.addClass('selected');
+		}
+	});
+});
+/*
 $('#bestqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=베스트질문', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
-			$('#bestqbtn').addClass('selected')
+			$('.btn.btn-default.selected')
+			$('#bestqbtn').removeClass('selected')
+			$('#eventbtn').addClass('selected')
+			$('#bestqbtn').toggleClass('selected');
 		}
 	});
 });
@@ -21,8 +38,7 @@ $('#bestqbtn').click(function() {
 $('#eventqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=이벤트', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
-			$('#eventqbtn').addClass('selected')
+			$('#eventqbtn').toggleClass('selected');
 		}
 	});
 });
@@ -30,11 +46,11 @@ $('#eventqbtn').click(function() {
 $('#reserveqbtn').click(function() {
 	$.getJSON('listByPrefix.json?prefix=예약문의', function(ajaxResult) {
 		if (changeAccodion(ajaxResult)) {
-			$('.selected').removeClass('selected')
+			$('.btn.btn-default.selected').removeClass('selected')
 			$('#reserveqbtn').addClass('selected')
 		}
 	});
-});
+});*/
 
 var changeAccodion = function(ajaxResult) {
 	var status = ajaxResult.status;

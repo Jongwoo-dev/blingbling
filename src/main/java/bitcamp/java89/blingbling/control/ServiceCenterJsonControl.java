@@ -42,6 +42,13 @@ public class ServiceCenterJsonControl {
   
     return new AjaxResult(AjaxResult.SUCCESS, listByPrefix);
   }
+
+  @RequestMapping("/serviceCenter/listBySearch")
+  public AjaxResult listBySearch(String word) throws Exception {
+    List<ServiceCenter> listBySearch = serviceCenterService.getListBySearch(word);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, listBySearch);
+  }
   
  
   @RequestMapping("/serviceCenter/listByMember")
