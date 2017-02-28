@@ -10,8 +10,7 @@ public class Item implements Serializable {
   protected String name;
   protected int price;
   protected int  usingTime;
-  protected String openTime;
-  protected String closeTime;
+  protected int availableNo;
   
   public int getMemberNo() {
     return memberNo;
@@ -44,21 +43,10 @@ public class Item implements Serializable {
   public void setUsingTime(int usingTime) {
     this.usingTime = usingTime;
   }
-  public String getOpenTime() {
-    return openTime;
+  public int getAvailableNo() {
+    return availableNo;
   }
-  public void setOpenTime(String openTime) {
-    this.openTime = openTime;
+  public void setAvailableNo(int availableNo) {
+    this.availableNo = availableNo;
   }
-  public String getCloseTime() {
-    return closeTime;
-  }
-  public void setCloseTime(String closeTime) {
-    this.closeTime = closeTime;
-  }
-  
-  
-  
-  
-  
 }

@@ -70,9 +70,7 @@ CREATE TABLE ITEM (
   MSNO  INTEGER     NOT NULL COMMENT '업체일련번호', -- 업체일련번호
   NAME  VARCHAR(50) NOT NULL COMMENT '이름', -- 이름
   PRICE INTEGER     NOT NULL COMMENT '요금', -- 요금
-  UTIME DATETIME    NOT NULL COMMENT '시술시간', -- 시술시간
-  OTIME DATE        NOT NULL COMMENT '서비스시작시간', -- 서비스시작시간
-  CTIME DATE        NOT NULL COMMENT '서비스종료시간' -- 서비스종료시간
+  UTIME INTEGER     NOT NULL COMMENT '시술시간' -- 시술시간
 )
 COMMENT '상품';
 
@@ -185,7 +183,9 @@ CREATE TABLE MEMB_STORE (
   MAP_LOC VARCHAR(255) NULL     COMMENT '지도좌표', -- 지도좌표
   DETAIL  TEXT         NULL     COMMENT '업체상세정보', -- 업체상세정보
   MINFO   TEXT         NULL     COMMENT '업체추가정보', -- 업체추가정보
-  NOTICE  TEXT         NULL     COMMENT '업체공지사항' -- 업체공지사항
+  NOTICE  TEXT         NULL     COMMENT '업체공지사항', -- 업체공지사항
+  OTIME   DATE         NULL     COMMENT '서비스시작시간', -- 서비스시작시간
+  CTIME   DATE         NULL     COMMENT '서비스종료시간' -- 서비스종료시간
 )
 COMMENT '업체';
 
@@ -290,6 +290,7 @@ ALTER TABLE MS_PHOT
 
 -- 스탬프로그
 CREATE TABLE STMP_LOG (
+  SLNO INTEGER     NOT NULL COMMENT '로그일련번호', -- 로그일련번호
   MNO  INTEGER     NOT NULL COMMENT '회원일련번호', -- 회원일련번호
   MSNO INTEGER     NOT NULL COMMENT '업체일련번호', -- 업체일련번호
   CHNG INTEGER     NULL     COMMENT '스탬프변동개수', -- 스탬프변동개수
@@ -302,9 +303,11 @@ COMMENT '스탬프로그';
 ALTER TABLE STMP_LOG
   ADD CONSTRAINT PK_STMP_LOG -- 스탬프로그 기본키
     PRIMARY KEY (
-      MNO,  -- 회원일련번호
-      MSNO  -- 업체일련번호
+      SLNO -- 로그일련번호
     );
+
+ALTER TABLE STMP_LOG
+  MODIFY COLUMN SLNO INTEGER NOT NULL AUTO_INCREMENT COMMENT '로그일련번호';
 
 -- 상품
 ALTER TABLE ITEM
