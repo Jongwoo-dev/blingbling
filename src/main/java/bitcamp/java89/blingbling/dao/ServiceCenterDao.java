@@ -8,6 +8,7 @@ public interface ServiceCenterDao {
   ArrayList<ServiceCenter> getList(String category) throws Exception;
   ArrayList<ServiceCenter> getListByPrefix(String prefix) throws Exception;
   ArrayList<ServiceCenter> getListByMember(int memberNo) throws Exception;
+  ArrayList<ServiceCenter> getListBySearch(String word) throws Exception;
   int countByNo(int serviceCenterNo) throws Exception;
   int insert(ServiceCenter serviceCenter) throws Exception;
   ServiceCenter getOne(int serviceCenterNo) throws Exception;

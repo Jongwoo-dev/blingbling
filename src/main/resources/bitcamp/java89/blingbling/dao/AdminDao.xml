@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.AdminDao">
+
+  <resultMap type="admin" id="admin-map">
+    <id     column="scno"        property="serviceCenterNo"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="crt"       property="category"/>
+    <result column="prfx"      property="prefix"/>
+    <result column="titl"        property="title"/>
+    <result column="cont"       property="content"/>
+    <result column="repl"        property="reply"/>
+    <result column="sc_rdt"        property="postedDate"/>
+    <result column="name"        property="name"/>
+  </resultMap>
+      
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from sc 
+    where scno=#{value}
+  </select>
+  
+  <select id="getList" parameterType="string" resultMap="admin-map">
+    select
+      sc.scno,
+      sc.mno, 
+      sc.crt, 
+      sc.prfx, 
+      sc.titl, 
+      sc.cont, 
+      sc.repl, 
+      sc.sc_rdt,
+      m.name
+    from sc
+      left outer join memb m on sc.mno=m.mno 
+    where crt=#{value}
+  </select>
+  
+  <!-- <select id="getListByPrefix" parameterType="string" resultMap="serviceCenter-map">
+    select
+      sc.scno,
+      sc.mno, 
+      sc.crt, 
+      sc.prfx, 
+      sc.titl, 
+      sc.cont, 
+      sc.repl, 
+      sc.sc_rdt,
+      m.name
+    from sc
+      left outer join memb m on sc.mno=m.mno 
+    where prfx=#{value}
+  </select>
+  
+  <select id="getListByMember" parameterType="int" resultMap="serviceCenter-map">
+    select
+      sc.scno,
+      sc.mno, 
+      sc.crt, 
+      sc.prfx, 
+      sc.titl, 
+      sc.cont, 
+      sc.repl, 
+      sc.sc_rdt,
+      m.name
+    from sc
+      left outer join memb m on sc.mno=m.mno  
+    where sc.mno=#{value}
+  </select> -->
+  
+  <select id="getOne" parameterType="int" resultMap="admin-map">
+    select
+      scno,
+      mno, 
+      crt, 
+      prfx, 
+      titl, 
+      cont, 
+      repl, 
+      sc_rdt 
+    from sc 
+    where scno=#{value}
+  </select>
+ 
+ 
+  <insert id="insert" parameterType="admin">
+    insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) 
+    values(
+      #{serviceCenterNo},
+      #{memberNo},
+      #{category},
+      #{prefix},
+      #{title},
+      #{content},
+      #{reply},
+      now());
+  </insert>  
+  
+  <update id="update" parameterType="admin">
+    update sc set
+      scno=#{serviceCenterNo},
+      mno=#{memberNo},
+      crt=#{category},
+      prfx=#{prefix},
+      titl=#{title},
+      cont=#{content},
+      repl=#{reply}
+    where scno=#{serviceCenterNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from sc where scno=#{value}
+  </delete>
+
+</mapper>
+
+
+
+
+
+
+
+

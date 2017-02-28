@@ -1,0 +1,171 @@
+@CHARSET "UTF-8";
+
+#header_sub {
+  border-bottom: 1px solid black;
+  padding: 20px;
+  color: #5e5e5e;
+}
+
+#header_sub_event_title {
+  color: #c0392b; 
+  font-size: 1.15em; 
+  padding-right: 5px; 
+  border-right: 1px solid black;
+}
+
+#header_sub_event_content {
+  font-size: 1.15em; 
+  margin-left: 10px;
+}
+
+#header_sub_navi {
+  float: right; 
+  font-size: 1.15em;
+}
+
+/* 사이드바 */
+
+
+
+/* 컨텐츠 */
+
+#content {
+  margin-left: 200px;
+  padding: 10px;
+  border-left: 1px solid rgb(224,224,224);
+  background-color: rgb(244,244,244);
+}
+
+.content_title {
+   display: block; 
+   padding: 40px; 
+   font-size: 2.45em; 
+   font-weight: bold; 
+   color: #333333;
+}
+
+.content_hr {
+  margin-bottom: 20px; 
+  border: 2px solid #e0e0e0;
+}
+
+#content_main {
+  margin-left: 40px;
+  padding-right: 40px;
+}
+
+
+/*자주묻는질문 밑에쪽*/
+
+.btn {
+	padding: 12px 12px;
+}
+.btn-left {
+	border:1px solid red;
+	background-color: rgb(244,244,244);
+	color:rgb(231, 76, 60);
+	font-weight:bold;
+	margin-bottom:20px;
+}
+
+.btn-right {
+	border:1px solid rgb(94, 94, 94);
+	background-color: rgb(244,244,244);
+	font-weight:bold;
+	margin-bottom:20px;
+}
+
+/*문의유형 쪽*/
+
+#question_prefix {
+	padding-right:20px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.selectpicker {
+	width:250px;
+	height:40px;
+	border-radius: 5px;
+	border-color:#ccc;
+	font-size:1.1em;
+}
+
+
+
+.form-control {
+	display:inline-block;
+	width:200px;
+	height:40px;
+	border-radius: 5px;
+	margin-right:0;
+}
+
+.form-control-text {
+	width:628px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+#blankCheckbox {
+  width:18px;
+  height:18px;
+  margin-right:10px;
+}
+
+#privacy_text {
+	font-weight: bold;
+	font-size: 1.1em;
+	position: relative;
+	top:-3px;
+}
+
+#explanation {
+	margin-top:10px;
+	padding-bottom:25px;
+	border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.btn-lg1 {
+	padding:13px 55px;
+	margin-top:10px;
+	border:0;
+	background-color:rgb(241, 196, 15);
+	margin-left:150px;
+	font-size:1.2em;
+}
+
+.btn-lg2 {
+  padding:13px 55px;
+  margin-top:10px;
+  border:0;
+  background-color:rgb(231, 76, 60);
+  margin-left:30px;
+  font-size:1.2em;
+}
+
+
+.btn-lg:hover {
+	color:rgb(231, 76, 60);
+	background-color: white;
+}
+
+#bottom-button1 {
+  display:inline-block;
+  margin-left:0;
+}
+
+#bottom-button2 {
+  display:inline-block;
+  margin-left:0;
+}
+
+textarea {
+	resize:none;
+	height:250px;
+}
+
+
+
+
+

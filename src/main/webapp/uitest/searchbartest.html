@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마이페이지 업체등록</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="mypage4.css">
+
+<style>
+</style>
+</head>
+<body>
+<form name = "search" method = "get" action ="a.jsp" onsubmit="return check()">
+<!-- onsubmit은 이벤트 핸들러다 결국 자바스크립트에 대한 이벤트의 처리는 body에있는 form에서 하게된다.
+따라서 이벤트 핸들러인 onsubmit을 이용해서 이벤트의 처리를 하며 onsubmit이 true값을 받으면 이벤트가
+동작되고 false인 경우에는 이벤트가 작동하지 않는다.만약 전달되는 데이터가 없으면 true라고  간주해서
+자동으로 동작하게 된다. 하지만 check()에서의 조건문에는 if문에 boolean값을 호출하도록 작성해야 한다. -->
+ <table width="200" border="0" align="center">
+  <tr>
+   <td align ="center" valign="bottom">
+    <select name="keyField">
+     <option value="subject">제목</option>
+     <option value="writer">이름</option>
+     <option value="content">내용</option>
+     </select>
+     </td>
+     
+   <td>
+    <input type="text" size="16" name="keyWord"> 
+   </td>
+   
+   <td>
+    <input type="submit" value="찾기">
+   </td>  
+  </tr>
+ </table>
+</form>
+</body>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript">
+ function check(){
+  if(document.search.keyWord.value==''){
+   alert('검색어를 입력하세요'); 
+   document.search.keyWord.focus();
+   return false; 
+   
+  }
+  
+  
+ }
+
+</script>
+</html>

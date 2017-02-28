@@ -24,6 +24,10 @@ public class ServiceCenterServiceImpl implements ServiceCenterService {
   public List<ServiceCenter> getListByMember(int memberNo) throws Exception {
     return serviceCenterDao.getListByMember(memberNo);
   }
+
+  public List<ServiceCenter> getListBySearch(String word) throws Exception {
+    return serviceCenterDao.getListBySearch(word);
+  }
   
   public ServiceCenter getDetail(int no) throws Exception {
     return serviceCenterDao.getOne(no);

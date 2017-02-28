@@ -9,7 +9,7 @@
 	  $('#currentId').text(member.email);
 });*/
 //로그인정보 받아와서 멤버넘버로 리스트 뽑아준다.
-$.getJSON(serverRoot+'/auth/loginUser.json', function (ajaxResult){
+$.getJSON('../auth/loginUser.json', function (ajaxResult){
 	if (ajaxResult.status != "success")
 		  return;
 	var member = ajaxResult.data;

@@ -21,7 +21,7 @@ insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(5,'123-45-01234','1',
 insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(6,'123-45-01235','1','업체명2','에스테틱');
 insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(7,'123-45-01236','1','업체명3','네일아트');
 insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(8,'123-45-01237','1','업체명4','왁싱');
-insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(9,'123-45-01234','1','업체명5','마사지');
+insert into memb_store(MSNO,CRNO,CACHK,CNAME,CTYPE) values(9,'123-45-01238','1','업체명5','마사지');
 
 
 -- 업체 사진

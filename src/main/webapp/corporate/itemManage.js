@@ -15,48 +15,54 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		
 		tbody.html(template({"list":list}));
 		
-	});
-});
-
-$('#delete-btn').click(function() {
-	$.getJSON('../item/delete.json?itemNo=' + itemNo, function(ajaxResult) {
-		console.log(itemNo);
+		
+	$('.delete-btn').click(function() {
+	$.getJSON('../item/delete.json?itemNo=' + $(this).attr("data-no"), function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);
 			return;
 		}
+		location.href = 'itemManage.html';
+	});
+		});
 	});
 });
 
-/*
+
+
 $('#itemAdd-btn').click(function(){
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		var data = ajaxResult.data;
+		
+		memberNo= data.memberNo;});
 	var param = {
-			memberNo   :,
-			itemNo     :,
-			itemName   :$('#itemAdd-Name').val(),
-			price      :$('#itemAdd-Price')val(),
-			usingTime  :$('#itemAdd-Utime')val()
+			memberNo   : memberNo,
+			name   :$('#itemAdd-Name').val(),
+			price      :$('#itemAdd-Price').val(),
+			usingTime  :$('#itemAdd-Utime').val(),
+			openTime   :'00:00:00',
+			closeTime  :'00:00:00'
 	}
-	$.post('../item/add.json', param, function(ajaxResult) {
+//	memberNo=8&name=123&price=123&usingTime=123&openTime=now()&closeTime=now()
+	$.post('../item/add.json?', param, function(ajaxResult) {
 		if(ajaxResult.status != "success") {
 			  alert(ajaxResult.data);
 			  return;
 		}
-		alert(ajaxResult.data);
-	}. 'json');
-});*/
+		
+	}, 'json');
+	location.href = 'itemManage.html';
+});
 
 
 $(function() {
-	$.getJSON(serverRoot+'/auth/loginUser.json', function(ajaxResult) {
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		if (ajaxResult.status != 'success') {
 			alert('로그인 하세요! 다음에 인터셉트로 걸러내게끔 변경\n임시로 로그인페이지로 이동');
 			location.href=clientRoot+'/auth/testlogin.html';
 			return;
 		}
 		loginMember = ajaxResult.data;
-		
-		initInfo();
 	});
 });
 

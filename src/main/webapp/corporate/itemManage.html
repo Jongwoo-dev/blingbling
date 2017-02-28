@@ -154,7 +154,8 @@ color:white;
   <td style=font-size:1.5em>{{name}}</td>
   <td>{{usingTime}}</td>
   <td>{{price}}</td>
-  <td><button id="change-btn" type="button" class="change-btn">수정</button><button id="delete-btn" type="button" class="delete-btn">삭제</button></td>
+  <td><button data-no= "{{itemNo}}" type="button" class="change-btn">수정</button>
+      <button data-no= "{{itemNo}}" type="button" class="delete-btn">삭제</button></td>
 </tr>
 {{/each}}
 </script>

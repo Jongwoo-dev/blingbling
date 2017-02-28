@@ -69,9 +69,15 @@
   margin: 10px 0px 0px 5px;
 }
 
-.btn-default.selected {
+/* .btn-default.selected {
 	 border-color: #e74c3c; 
 	 color: #e74c3c;
+}
+ */
+
+.btn-default.selected {
+   background-color: #e74c3c; 
+   color: white;
 }
 
 #accordion > h3 {
@@ -93,4 +99,50 @@
     float: right;
     margin-right: 20px;
     color: #5e5e5e;
+}
+/*서치바*/
+
+#custom-search-input {
+  margin:10px 21px 0 10px;
+  padding: 0;
+  background-color: white;
+  display: inline-block;
+  border-radius: 3px;
+  border:2px solid #c0392b;
+   
+}
+ 
+#custom-search-input .search-query {
+   padding-right: 3px;
+   padding-right: 4px \9;
+   padding-left: 10px;
+   padding-left: 4px \9;
+   /* IE7-8 doesn't have border-radius, so don't indent the padding */
+   margin:0 auto;
+   margin-bottom: 0;
+   -webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+   width:620px;
+   height:40px;
+   margin-left:0;
+   margin-right:12px;
+   border:0;
+}
+ 
+#custom-search-input button {
+  border: 0;
+  background: none;
+  /** belows styles are working good */
+  padding: 2px 5px;
+  margin-top: 2px;
+  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color:#D9230F;
+}
+ 
+.search-query:focus + button {
+  z-index: 3;   
 }

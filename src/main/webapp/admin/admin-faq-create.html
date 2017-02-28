@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고객센터-qna</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="admin-faq-create.css">
+
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+
+	<div id='header'>
+	</div>
+
+	<div id='header_sub'>
+		<span id='header_sub_event_title'>EVENT</span> 
+		<span id='header_sub_event_content'>전 예약자 쿠폰 지급</span> 
+		<span id='header_sub_navi'>홈>운영자페이지>FAQ 글쓰기</span>
+	</div>
+
+	<div id='sidebar'>
+    <span class='sidebar_title'>운영자 페이지</span>
+    <span class='sidebar_menu' id='menu1'>1:1문의 관리</span>
+    <span class='sidebar_menu' id='menu2'>공지사항 관리</span>
+    <span class='sidebar_menu selected' id='menu3'>FAQ 관리</span>
+  </div>
+
+  <div id='content'>
+    <span class='content_title'>FAQ 관리</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-left">FAQ 작성</button>
+			  </div>
+		  </div>
+     <span id="question_prefix">FAQ 유형</span>
+     <span id="select_button">
+			<select class="selectpicker" id="faq-prefix">
+			  <option value="" disabled selected>FAQ 고르기</option>
+			  <option>베스트질문</option>
+			  <option>이벤트</option>
+			  <option>예약/문의</option>
+			  <option>혜택받기</option>
+			  <option>이용문의</option>
+			  <option>회원정보</option>
+			  <option>리뷰</option>
+			</select>
+			</span>
+		<div>	
+		  <input type="text" class="title-input" id="title-box" placeholder="제목을 입력하세요"/>
+		</div>
+    <textarea class="form-control-text" id="content-text" rows="10"></textarea>
+    <hr class='content_hr' color='#e0e0e0'>
+	  <form id="complete">
+	    <div id='bottom-button1'>
+	      <button type="button" class="btn btn-primary btn-lg1">취소</button>
+	  </div>
+	    <div id='bottom-button2'>
+        <button type="button" class="btn btn-primary btn-lg2">등록</button>
+      </div>    
+	  </form>
+  </div>
+</div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="admin-faq-create.js"></script>
+
+<script>
+
+</script>
+
+
+</body>
+</html>

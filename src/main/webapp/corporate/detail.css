@@ -1,0 +1,187 @@
+@CHARSET "UTF-8";
+
+span {
+	cursor: default;
+}
+
+.modal-dialog {
+	width: 700px;
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#modal-body-inner {
+	padding: 26px;
+}
+
+#calendar-container {
+	border:1px solid #bebebe; 
+	display: inline-block; 
+	padding: 20px;
+}
+
+#calendar {
+	display: inline-block;
+}
+
+#modal-contents-container {
+	display: inline-block;
+	float: right;
+}
+
+.modal-contents-label {
+	display: block;
+	color: rgb(94, 94, 94);
+	font-size: 1.2em;
+}
+
+.reservation-ctrcontainer {
+	margin-top: -10px;
+}
+
+.modal-contents-text {
+	color: rgb(51, 51, 51);
+	font-size: 1.4em;
+}
+
+.numberctr-btnbox {
+	display: inline-block;
+	margin-left: 90px;
+}
+
+.numberctr-btn {
+	display: inline-block;
+	color: rgb(158, 158, 158);
+	font-size: 2em !important;
+	border: 1px solid rgb(190, 190, 190);
+	padding : 0 6px;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.numberctr-btn:FIRST-CHILD {
+  border-right: 0;
+}
+
+.numberctr-btn:active , #timeselect-ampm:active, .timeselect-ctrbox>.glyphicon:active {
+	background-color: rgb(158, 158, 158);
+	color: white;
+}
+
+.timeselect-box {
+	display: inline-block;
+	padding-top: 30px;
+}
+
+.fa.fa-circle-o.selected {
+	color: rgb(52, 152, 219);
+}
+
+.timeselect-ctrbox {
+	display: inline-block;
+	width: 80px;
+	margin-right: 8px;
+}
+
+.timeselect-ctrbox span {
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-size: 1.4em;
+}
+
+.timeselect-ctrbox .glyphicon {
+	border: 1px solid  rgb(190, 190, 190);
+	background-color: rgb(244, 244, 244);
+	padding: 5px 0;
+	cursor: pointer;
+}
+
+#timeselect-hour-text, #timeselect-minute-text {
+	font-size: 2em;
+	font-weight: bold;
+	padding: 5px 0;
+}
+
+#timeselect-ampm {
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	font-size: 1.4em;
+	position: relative;
+	top: -39px;
+	padding: 10px 0;
+	border: 1px solid  rgb(190, 190, 190);
+	background-color: rgb(244, 244, 244);
+	cursor: pointer;
+}
+
+.btn.btn-danger {
+	display: block;
+	border-radius: 0;
+	font-size: 1.4em;
+	margin-top: 4px;
+	width: 100%;
+	height: 64px;
+	background-color: rgb(231, 76, 60);
+	border-color: rgb(231, 76, 60);
+}
+
+.item-container {
+	width: 100%;
+	height: 260px;
+	margin-top: 20px;
+	overflow-y: scroll;
+}
+
+.item-box {
+	display: inline-block;
+	border: 1px solid rgb(51, 51, 51);
+	color: rgb(51, 51, 51);
+	width: 300px;
+	padding: 17px 14px;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.item-box span {
+	cursor: pointer;
+}
+
+.item-box:NTH-CHILD(even) {
+	margin-left: 5px;
+}
+
+.fa.fa-circle-o {
+	font-size: 3em;
+	color: rgb(190, 190, 190);
+	position: relative;
+	top: -7px;
+}
+
+.item-contents {
+	display: inline-block;
+	margin-left: 8px;
+}
+
+.item-title {
+	display: block;
+	font-size: 1.4em;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.item-cost {
+	display: inline-block;
+	font-size: 1.3em;
+}
+
+.item-possible-number {
+	display: inline-block;
+	font-size: 1.3em;
+	margin-left: 22px;
+} 
