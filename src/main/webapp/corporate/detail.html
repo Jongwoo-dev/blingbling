@@ -129,6 +129,18 @@
 
 </div>
 
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<div class='item-box'>
+  <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='6'></span>
+  <div class='item-contents'>
+    <span class='item-title'>{{name}} - {{usingTime}}분</span>
+    <span class='item-cost'>가격: {{price}}</span>
+    <span class='item-possible-number'>예약가능인원: {{availableNo}}명</span>
+  </div>
+</div>
+{{/each}}
+</script>
 
 <script src="../js/context.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
