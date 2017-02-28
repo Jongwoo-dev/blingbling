@@ -35,7 +35,7 @@ $('.btn-lg1').click(function() {
 
 //답글버튼
 $('.btn-lg2').click(function() {
-	location.href = 'admin-qna-create.html';
+	location.href = 'admin-qna-create.html?serviceCenterNo=' + serviceCenterNo;
 });
 
 

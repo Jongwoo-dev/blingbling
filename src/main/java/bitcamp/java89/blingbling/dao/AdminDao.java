@@ -11,5 +11,5 @@ public interface AdminDao {
   Admin getOne(int serviceCenterNo) throws Exception;
   int update(Admin admin) throws Exception;
   int delete(int serviceCenterNo) throws Exception;
-
+  int answer(Admin admin) throws Exception;
 }

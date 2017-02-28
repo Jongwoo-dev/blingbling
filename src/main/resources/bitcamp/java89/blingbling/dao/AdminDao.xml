@@ -110,6 +110,12 @@
     where scno=#{serviceCenterNo}
   </update>
   
+  <update id="answer" parameterType="admin">
+    update sc set
+      repl=#{reply}
+    where scno=#{serviceCenterNo}
+  </update>
+  
   <delete id="delete" parameterType="int">
     delete from sc where scno=#{value}
   </delete>

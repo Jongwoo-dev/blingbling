@@ -107,6 +107,7 @@
 	width:628px;
 	border-radius: 5px;
 	margin-top: 20px;
+	border: 2px solid #e0e0e0;
 }
 
 #blankCheckbox {
@@ -145,7 +146,16 @@ textarea {
 	resize:none;
 }
 
+.explain {
+	font-size:1.2em;
+	padding-right:20px;
+}
 
-
-
+#title-box {
+	margin-top: 15px;
+	width:576px;
+	height:30px;
+	border-radius: 3px;
+	border:2px solid #e0e0e0;
+}
 

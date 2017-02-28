@@ -39,6 +39,12 @@ public class AdminServiceImpl implements AdminService {
     }
     return adminDao.update(admin);
   }
+  public int answer(Admin admin) throws Exception {
+    if (adminDao.countByNo(admin.getServiceCenterNo()) == 0) {
+      throw new Exception("글을 찾지 못했습니다.");
+    }
+    return adminDao.answer(admin);
+  }
 }
 
 
