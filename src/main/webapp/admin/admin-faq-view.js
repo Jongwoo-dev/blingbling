@@ -1,3 +1,4 @@
+//서비스넘버 받아오는거
 try {
   var serviceCenterNo = location.href.split('?')[1].split('=')[1];
 } catch (error) {
@@ -7,7 +8,7 @@ try {
 if (serviceCenterNo > 0) {
 } 
 
-		//학생 목록 가져와서 tr 태그를 만들어 붙인다.
+//디테일 처리
 $.getJSON('detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
   var status = ajaxResult.status;
   
@@ -23,6 +24,7 @@ $.getJSON('detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult)
   $('#faq-view').text(serviceCenter.content);
 });
 
+//삭제 처리
 $('.btn-lg.3').click(function() {
 	$.getJSON('delete.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
 		if (ajaxResult.status != "success") { 
@@ -35,6 +37,11 @@ $('.btn-lg.3').click(function() {
 
 
 
+//update처리
+$('.btn-lg.2').click(function() {
+	location.href = 'admin-faq-update.html?serviceCenterNo=' + serviceCenterNo;
+    	
+});
 
 
 

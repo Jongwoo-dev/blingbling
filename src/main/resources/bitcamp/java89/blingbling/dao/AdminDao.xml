@@ -87,9 +87,8 @@
  
  
   <insert id="insert" parameterType="admin">
-    insert into sc(scno, mno, crt, prfx, titl, cont, repl, sc_rdt) 
+    insert into sc(mno, crt, prfx, titl, cont, repl, sc_rdt) 
     values(
-      #{serviceCenterNo},
       #{memberNo},
       #{category},
       #{prefix},
