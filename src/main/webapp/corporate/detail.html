@@ -57,23 +57,23 @@
               <div class='timeselect-box'>
                 <span class='modal-contents-label'>시간</span>
                 <div class='timeselect-ctrbox'>
-                  <span class='glyphicon glyphicon-triangle-top'></span>
+                  <span id='hourup' class='glyphicon glyphicon-triangle-top'></span>
                   <span id='timeselect-hour-text'>8</span>
-                  <span class='glyphicon glyphicon-triangle-bottom'></span>
+                  <span id='hourdown' class='glyphicon glyphicon-triangle-bottom'></span>
                 </div>
                 <div class='timeselect-ctrbox'>
-                  <span class='glyphicon glyphicon-triangle-top'></span>
+                  <span id='minuteup' class='glyphicon glyphicon-triangle-top'></span>
                   <span id='timeselect-minute-text'>00</span>
-                  <span class='glyphicon glyphicon-triangle-bottom'></span>
+                  <span id='minutedown' class='glyphicon glyphicon-triangle-bottom'></span>
                 </div>
                 <span id='timeselect-ampm'>오전</span>
               </div>
-              <button type="button" class='btn btn-danger'>예약하기</button>
+              <button id='reservation-submitbtn' type="button" class='btn btn-danger'>예약하기</button>
             </div>
             
             <div class='item-container'>
               <div class='item-box'>
-                <span class='fa fa-circle-o selected'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o selected'  aria-hidden="true" data-itemno='1'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -81,7 +81,7 @@
                 </div>
               </div>
               <div class='item-box'>
-                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='2'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -89,7 +89,7 @@
                 </div>
               </div>
               <div class='item-box'>
-                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='3'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class='item-box'>
-                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='4'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -105,7 +105,7 @@
                 </div>
               </div>
               <div class='item-box'>
-                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='5'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -113,7 +113,7 @@
                 </div>
               </div>
               <div class='item-box'>
-                <span class='fa fa-circle-o'  aria-hidden="true"></span>
+                <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='6'></span>
                 <div class='item-contents'>
                   <span class='item-title'>힐링테라피 - 60분</span>
                   <span class='item-cost'>가격: 20만</span>
@@ -129,6 +129,18 @@
 
 </div>
 
+<script id="trTemplate" type="text/x-handlebars-template">
+{{#each list}}
+<div class='item-box'>
+  <span class='fa fa-circle-o'  aria-hidden="true" data-itemno='6'></span>
+  <div class='item-contents'>
+    <span class='item-title'>{{name}} - {{usingTime}}분</span>
+    <span class='item-cost'>가격: {{price}}</span>
+    <span class='item-possible-number'>예약가능인원: {{availableNo}}명</span>
+  </div>
+</div>
+{{/each}}
+</script>
 
 <script src="../js/context.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
