@@ -9,7 +9,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 	$('.btn-lg2').click(function() {
 		var param = {
 				memberNo : member.memberNo,
-				category : 'FAQ',
+				category : '공지사항',
 				prefix : $('#faq-prefix').val(),
 				title: $('#title-box').val(),
 				content: $('#content-text').val()
@@ -20,7 +20,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 				alert(ajaxResult.data);
 				return;
 			}
-			location.href = 'admin-faq.html';
+			location.href = 'admin-notice.html';
 		}, 'json');
 	});
 });
@@ -37,7 +37,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 
 // 목록 버튼을 클릭했을 때 호출될 함수(이벤트 핸들러) 등록!
 $('.btn-lg1').click(function() {
-	location.href = 'admin-faq.html';
+	location.href = 'admin-notice.html';
 });
 
 

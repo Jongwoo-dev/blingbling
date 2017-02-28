@@ -29,10 +29,14 @@ if (serviceCenterNo > 0) {
 	});
 
 // 목록 버튼을 클릭했을 때 호출될 함수(이벤트 핸들러) 등록!
-$('.btn-lg').click(function() {
-	location.href = 'qna-list.html';
+$('.btn-lg1').click(function() {
+	location.href = 'admin-qna.html';
 });
 
+//답글버튼
+$('.btn-lg2').click(function() {
+	location.href = 'admin-qna-create.html';
+});
 
 
 

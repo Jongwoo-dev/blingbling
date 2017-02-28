@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>운영자페이지-FAQ관리</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="admin-notice-update.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div id='header'>
+  </div>
+  
+  <div id='header_sub'>
+    <span id='header_sub_event_title'>EVENT</span>
+    <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
+    <span id='header_sub_navi'>홈>운영자페이지>공지사항 관리</span>
+  </div>
+  
+  <div id='sidebar'>
+    <span class='sidebar_title'>운영자 페이지</span>
+    <span class='sidebar_menu' id='menu1'>1:1문의 관리</span>
+    <span class='sidebar_menu selected' id='menu2'>공지사항 관리</span>
+    <span class='sidebar_menu' id='menu3'>FAQ 관리</span>
+  </div>
+  
+  <div id='content'>
+    <span class='content_title'>공지사항 관리</span>
+    <hr class='content_hr' color='#e0e0e0'>
+    <div id='content_main'>
+      <div id='faq-menu1'>
+	      <span id="question_prefix" class='explain'>유형</span>
+	      <span id="select_button">
+		      <select class="selectpicker" id="faq-prefix">
+		        <option value="" disabled selected>공지 고르기</option>
+		        <option>안내</option>
+		        <option>발표</option>
+		        <option>공지</option>
+		      </select>
+	      </span>
+      </div>
+      <div id='faq-menu2'>
+        <span id="question_title" class='explain'>제목</span>
+        <input type="text" class="title-input" id="title-box"/>
+      </div>
+	    <div id='faq-view'>
+	      <textarea class="form-control-text" id="content-text" rows="10"></textarea>
+	    </div>
+	    <button type="button" class="btn btn-primary btn-lg 1">취소</button>
+	    <button type="button" class="btn btn-primary btn-lg 2">등록</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src='../js/common.js'></script>
+<script src="admin-notice-update.js"></script>
+
+
+
+
+<script>
+$('#menu1').click(function(){
+	  location.href='admin-qna.html';
+	})
+	
+$('#menu2').click(function(){
+  location.href='admin-notice.html';
+})
+
+$('#menu3').click(function(){
+  location.href='admin-faq.html';
+})
+</script>
+
+</body>
+</html>
