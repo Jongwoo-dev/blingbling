@@ -5,3 +5,4 @@ insert into item(ino, msno, name, price, utime, otime, ctime) values(3, 6, '긴�
 insert into item(ino, msno, name, price, utime, otime, ctime) values(4, 7, '건마', 80000, 50,'00:00:00','24:00:00');
 insert into item(ino, msno, name, price, utime, otime, ctime) values(5, 8, '불건마', 200000, 120,'00:00:00','24:00:00');
 insert into item(ino, msno, name, price, utime, otime, ctime) values(6, 8, 'longbam', 200000, 120,'00:00:00','24:00:00');
+insert into item(ino, msno, name, price, utime, otime, ctime) values(7, 8, '건강마사지', 150000, now(),'00:00:00','24:00:00');
