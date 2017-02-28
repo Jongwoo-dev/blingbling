@@ -39,9 +39,7 @@ $('#itemAdd-btn').click(function(){
 			memberNo   : memberNo,
 			name   :$('#itemAdd-Name').val(),
 			price      :$('#itemAdd-Price').val(),
-			usingTime  :$('#itemAdd-Utime').val(),
-			openTime   :'00:00:00',
-			closeTime  :'00:00:00'
+			usingTime  :$('#itemAdd-Utime').val()
 	}
 //	memberNo=8&name=123&price=123&usingTime=123&openTime=now()&closeTime=now()
 	$.post('../item/add.json?', param, function(ajaxResult) {
