@@ -6,12 +6,13 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 
 	
 // add처리
-	$('.btn-lg2').click(function() {
+	$('.btn-lg').click(function() {
 		var param = {
 				memberNo : member.memberNo,
-				category : 'FAQ',
-				prefix : $('#faq-prefix').val(),
+				category : '1대1질문',
+				prefix : $('#question-prefixx').val(),
 				title: $('#title-box').val(),
+				reply:"",
 				content: $('#content-text').val()
 		}
 		console.log(param);
@@ -20,7 +21,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 				alert(ajaxResult.data);
 				return;
 			}
-			location.href = 'admin-faq.html';
+			location.href = 'qna-list.html';
 		}, 'json');
 	});
 });
@@ -32,13 +33,6 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 
 
 
-
-
-
-// 목록 버튼을 클릭했을 때 호출될 함수(이벤트 핸들러) 등록!
-$('.btn-lg1').click(function() {
-	location.href = 'admin-faq.html';
-});
 
 
 

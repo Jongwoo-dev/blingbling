@@ -36,34 +36,7 @@ public class AdminJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
- /* @RequestMapping("/admin/listByPrefix")
-  public AjaxResult listByPrefix(String prefix) throws Exception {
-    List<ServiceCenter> listByPrefix = serviceCenterService.getListByPrefix(prefix);
-  
-    return new AjaxResult(AjaxResult.SUCCESS, listByPrefix);
-  }
-  
  
-  @RequestMapping("/admin/listByMember")
-  public AjaxResult listByMember(int memberNo) throws Exception {
-    List<ServiceCenter> listByMember = serviceCenterService.getListByMember(memberNo);
-    for (int i = 0; i < listByMember.size(); i++) {
-      // 답변 미답변 처리
-      if(listByMember.get(i).getReply() == null) {
-        listByMember.get(i).setStatus("미답변");
-      } else if(listByMember.get(i).getReply().length() > 0) {
-        listByMember.get(i).setStatus("답변완료");
-      } else {
-        listByMember.get(i).setStatus("미답변");
-      }
-      // 작성일 시간 날리는 처리
-      listByMember.get(i).setPostedDate((listByMember.get(i).getPostedDate().split(" ")[0]));
-    }
-    return new AjaxResult(AjaxResult.SUCCESS, listByMember);
-  }*/
-  
-  
-  
   @RequestMapping("/admin/detail")
   public AjaxResult detail(int serviceCenterNo) throws Exception {
     Admin admin = adminService.getDetail(serviceCenterNo);
@@ -106,6 +79,18 @@ public class AdminJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
+ 
+ @RequestMapping("/admin/answer")
+ public AjaxResult answer(Admin admin) throws Exception {
+   
+   int count = adminService.answer(admin);
+   
+   if (count == 0) {
+     return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+   }
+   
+   return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+ }
 }
 
 

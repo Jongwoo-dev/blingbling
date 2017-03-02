@@ -10,6 +10,7 @@ public interface AdminService {
   int add(Admin admin) throws Exception;
   int delete(int no) throws Exception;
   int update(Admin admin) throws Exception;
+  int answer(Admin admin) throws Exception;
 }
 
 

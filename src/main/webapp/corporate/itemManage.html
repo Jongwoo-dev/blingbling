@@ -94,9 +94,9 @@ color:white;
       <span style=font-size:1.2em>최대예약인원</span>
       <input type='number' placeholder="0" class="input-number">
 
-		  <button type="button" class="item-add-btn" data-toggle="modal" data-target=".bs-example-modal-sm">상품추가</button>
+		  <button type="button" class="item-add-btn" data-toggle="modal" data-target="#itemAdd-main">상품추가</button>
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div id='itemAdd-main' class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
           <div class="modal-dialog modal-sm" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -137,6 +137,30 @@ color:white;
     </div>
   </div>
 
+  
+<div id="itemChange-main" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">상품수정</h4>
+              </div>
+              <div class="modal-body" style=font-size:1.2em>
+              <div><span style=width:100px>상품명</span><input id="chg-name" type=text class="add-input"></div>
+              
+              <div><span style=width:100px>시술시간</span><input id="chg-utime" type=text class="add-input"><span> 분</span></div>
+              
+              <div><span style=width:100px>가격</span><input id="chg-price" type=text class="add-input"><span> 원</span></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style=background-color:#f39c12>취소</button>
+                <button type="button" class="btn btn-primary" id='chg-final' style=background-color:#e74c3c>상품수정</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
 </div>
 
@@ -154,21 +178,14 @@ color:white;
   <td style=font-size:1.5em>{{name}}</td>
   <td>{{usingTime}}</td>
   <td>{{price}}</td>
-  <td><button data-no= "{{itemNo}}" type="button" class="change-btn">수정</button>
+  
+<td><button data-no= "{{itemNo}}" type="button" class="change-btn" data-toggle="modal" data-target="#itemChange-main">수정</button>
       <button data-no= "{{itemNo}}" type="button" class="delete-btn">삭제</button></td>
 </tr>
 {{/each}}
 </script>
 <script>
-$('#delete-btn').click(function() {
-	  $.getJSON('../item/delete.json?itemNo=' + itemNo, function(ajaxResult) {
-	    console.log(itemNo);
-	    if (ajaxResult.status != "success") {
-	      alert(ajaxResult.data);
-	      return;
-	    }
-	  });
-	});
+
 </script>
 
 </body>

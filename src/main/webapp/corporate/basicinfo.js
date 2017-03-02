@@ -293,3 +293,8 @@ var arrayToJson = function(list) {
 	result += '';
 	return result;
 }
+
+/*사이드바 링크*/
+$('#sb-itemManage').click(function(){
+	location.href='itemManage.html';
+})

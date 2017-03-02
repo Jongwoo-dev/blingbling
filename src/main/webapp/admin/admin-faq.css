@@ -71,6 +71,12 @@ td {
 	vertical-align: middle !important;
 }
 
+.table {
+  width:97%;
+  max-width:100%;
+  margin-bottom:20px;
+}
+
 .text-title:hover {
 	
 }
