@@ -11,8 +11,6 @@
     <result column="name"       property="name"/>
     <result column="price"      property="price"/>
     <result column="utime"        property="usingTime"/>
-    <result column="otime"       property="openTime"/>
-    <result column="ctime"        property="closeTime"/>
   </resultMap>
       
   <select id="countByNo" parameterType="int" resultType="int">
@@ -27,9 +25,7 @@
       msno, 
       name, 
       price, 
-      utime, 
-      otime, 
-      ctime 
+      utime
     from item 
     where msno=#{value}
   </select>
@@ -40,9 +36,7 @@
       msno, 
       name, 
       price, 
-      utime, 
-      otime, 
-      ctime 
+      utime 
     from item 
     where ino=#{value}
   </select>
@@ -53,24 +47,20 @@
       msno, 
       name, 
       price, 
-      utime, 
-      otime, 
-      ctime 
+      utime
     from item 
     where name=#{value}
   </select>
   
   
   <insert id="insert" parameterType="item">
-    insert into item(ino, msno, name, price, utime, otime, ctime) 
+    insert into item(ino, msno, name, price, utime) 
     values(
       #{itemNo},
       #{memberNo},
       #{name},
       #{price},
-      #{usingTime},
-      #{usingTime},
-      #{closeTime});
+      #{usingTime});
   </insert>  
     
   <update id="update" parameterType="item">
@@ -79,9 +69,7 @@
       msno=#{memberNo},
       name=#{name},
       price=#{price},
-      utime=#{usingTime},
-      otime=#{usingTime},
-      ctime=#{closeTime}
+      utime=#{usingTime}
     where ino=#{itemNo}
   </update>
   
