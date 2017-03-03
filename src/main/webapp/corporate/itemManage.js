@@ -17,7 +17,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		
 	//삭제버튼	
 	$('.delete-btn').click(function() {
-	$.getJSON('../item/update.json?itemNo=' + $(this).attr("data-no"), function(ajaxResult) {
+	$.getJSON('../item/delete.json?itemNo=' + $(this).attr("data-no"), function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);
 			return;
