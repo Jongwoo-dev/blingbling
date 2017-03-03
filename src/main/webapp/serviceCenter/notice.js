@@ -6,7 +6,6 @@ $.getJSON('list.json?category=공지사항', function(ajaxResult) {
 	  return;
   
   var list = ajaxResult.data;
-  console.log(list);
   var tbody = $('#list-table > tbody');
   
   // 템플릿 텍스트를 처리하여 HTML을 생성해 줄 함수 얻기

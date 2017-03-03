@@ -9,6 +9,12 @@ $(function() {
 		$('#login-link').click(function(){
 			location.href = '../auth/testlogin.html';
 		});
+		
+		$('#service-center-link').click(function(event) {
+			event.preventDefault();
+			location.href='../serviceCenter/notice.html'
+		});
+			
 	});
 });
 
