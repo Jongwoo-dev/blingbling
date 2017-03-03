@@ -7,60 +7,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
-<link rel="stylesheet" href="basicinfo.css">
+<link rel="stylesheet" href="itemManage.css">
 
 <style>
-/* .btn.btn-primary {
-width: 80px;
-}
 
-.modal.fade.bs-example-modal-sm {
-width: 400px
-} */
-
-.add-input{
-margin-left:50px;
-margin-bottom:20px;
-width:120px
-}
-.item-add-btn {
-width:80px;
-height:40px;
-vertical-align:baseline;
-background-color:#e74c3c;
-border-color:#e74c3c;
-border-radius:5px;
-color:white;
-margin-left:370px 
-}
-
-.input-number {
-color:black;
-width:35px;
-margin-left:10px;
-border-radius:1px
-}
-
-.change-btn {
-width:70px;
-height:30px;
-vertical-align:baseline;
-background-color:#f39c12;
-border-color:#FE9A2E;
-border-radius:5px;
-color:white;
-margin-right:5px
-}
-
-.delete-btn {
-width:70px;
-height:30px;
-vertical-align:baseline;
-background-color:#e74c3c;
-border-color:#e74c3c;
-border-radius:5px;
-color:white;
-}
 </style>
 </head>
 <body>
@@ -91,8 +41,8 @@ color:white;
     <div id='content_main'>
     
       <div>
-      <span style=font-size:1.2em>최대예약인원</span>
-      <input type='number' placeholder="0" class="input-number">
+      <!-- <span style=font-size:1.2em>최대예약인원</span>
+      <input type='number' placeholder="0" class="input-number"> -->
 
 		  <button type="button" class="item-add-btn" data-toggle="modal" data-target="#itemAdd-main">상품추가</button>
 
@@ -123,10 +73,10 @@ color:white;
         <table id='list-table' class="table" style=text-align:center;width:635px>
           <thead>
             <tr style=background-color:#D8D8D8;font-size:1.1em>
-              <th style=text-align:center>상품명</th>
-              <th style=text-align:center>시술시간</th>
-              <th style=text-align:center>가격</th>
-              <th style=text-align:center>수정/삭제</th>
+              <th>상품명</th>
+              <th>시술시간</th>
+              <th>가격</th>
+              <th class='table-btns'>수정/삭제</th>
             </tr>
           </thead>
           <tbody style=background-color:white>
@@ -175,9 +125,9 @@ color:white;
 <script id="trTemplate" type="text/x-handlebars-template">
 {{#each list}}
 <tr>
-  <td style=font-size:1.5em>{{name}}</td>
-  <td>{{usingTime}}</td>
-  <td>{{price}}</td>
+  <td class='td-name'>{{name}}</td>
+  <td>{{usingTime}}분</td>
+  <td>{{price}}원</td>
   
 <td><button data-no= "{{itemNo}}" type="button" class="change-btn" data-toggle="modal" data-target="#itemChange-main">수정</button>
       <button data-no= "{{itemNo}}" type="button" class="delete-btn">삭제</button></td>
