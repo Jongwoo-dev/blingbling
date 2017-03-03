@@ -121,9 +121,7 @@
   background-color: #ffffff; 
   border: 1px solid #cccccc;
   border-radius: 4px; 
-  /* padding: 12px;  */
   font-size: 1.0em; 
-  font-weight: bold; 
   height: 40px; 
   text-align: center;
 }
@@ -151,7 +149,7 @@
 #content_main_form > .form-group {
 	border-top: 2px solid #cccccc;
 	border-bottom: 2px solid #cccccc;
-	height: 39px;
+	height: 41px;
 	width: 566px;
 	margin:15px 0;
 }
