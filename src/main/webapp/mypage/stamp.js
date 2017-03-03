@@ -35,7 +35,7 @@ $.getJSON('../stamp/list.json', function(ajaxResult) {
 				labels: ["남은횟수", "누적횟수"],
 				datasets: [{
 					label: '# of Votes',
-					data: [list[i].stampTotalNo, list[i].saveNo],
+					data: [list[i].stampTotalNo - list[i].saveNo, list[i].saveNo],
 					backgroundColor: [
 						'rgba(230, 126, 34, 0.6)',
 						'rgba(230, 126, 34, 1)'
