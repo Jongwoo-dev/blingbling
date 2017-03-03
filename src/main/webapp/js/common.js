@@ -12,7 +12,11 @@ $(function() {
 		
 		$('#service-center-link').click(function(event) {
 			event.preventDefault();
-			location.href='../serviceCenter/notice.html'
+			location.href='../serviceCenter/notice.html';
+		});
+		
+		$('#titleimg').click(function(event) {
+			location.href='/blingbling/';
 		});
 			
 	});
