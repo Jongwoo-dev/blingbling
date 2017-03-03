@@ -57,12 +57,11 @@ public class StampServiceImpl implements StampService {
 
   @Override
   public int update(Stamp stamp, int stampChangeNo) throws Exception {
-  	int count = stampDao.insert(stamp);
+  	int count = stampDao.update(stamp);
   	stampDao.insertStamplog(new Stamplog(stamp, stampChangeNo));
     return count;
   }
-
-	
+ 
 }
 
 

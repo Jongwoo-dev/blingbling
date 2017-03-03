@@ -25,14 +25,14 @@ public class StampJsonControl{
   }
 
   @RequestMapping("/stamplog/list")
-  public AjaxResult listStamplog(int memberNo,int memberStoreNo) throws Exception {
-		List<Stamplog> list = stampService.getListStamplog(memberNo,memberStoreNo);
+  public AjaxResult ListStamplog(int memberNo,int memberStoreNo) throws Exception {
+		List<Stamplog> listStamplog = stampService.getListStamplog(memberNo,memberStoreNo);
 		
-		if (list == null) {
+		if (listStamplog.isEmpty()) {
       return new AjaxResult(AjaxResult.FAIL, "해당 스탬프기록이 없습니다.");
     }
     
-    return new AjaxResult(AjaxResult.SUCCESS, list);
+    return new AjaxResult(AjaxResult.SUCCESS, listStamplog);
   }
 		
 
@@ -63,10 +63,12 @@ public class StampJsonControl{
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
   }
+ 
   
   @RequestMapping("/stamp/update")
   public AjaxResult update(Stamp stamp,int stampChangeNo) throws Exception {
     
+  	stamp.setSaveNo(stamp.getSaveNo() + stampChangeNo);
     int count = stampService.update(stamp,stampChangeNo);
     
     if (count == 0) {

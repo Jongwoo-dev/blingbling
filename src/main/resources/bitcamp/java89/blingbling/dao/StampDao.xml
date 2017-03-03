@@ -9,8 +9,10 @@
     <id     column="mno"     property="memberNo"/>
     <id     column="msno"     property="memberStoreNo"/>
     <result column="cnt"      property="saveNo"/>
-    
+    <result column="cname"      property="memberStoreName"/>
+    <result column="max_cnt"      property="stampTotalNo"/>
      </resultMap>
+     
        <resultMap type="stamplog" id="stamplog-map">
     <id     column="mno"     property="memberNo"/>
     <id     column="msno"     property="memberStoreNo"/>
@@ -21,10 +23,15 @@
   
   <select id="getList" resultMap="stamp-map">
     select
-      mno,
-      msno,
-      cnt
-    from stmp
+      s.mno,
+      s.msno,
+      s.cnt,
+      m.cname,
+      max(sb.sb_cnt) as max_cnt
+    from stmp s 
+    left outer join memb_store m on s.msno=m.msno 
+    left outer join stmp_bnf sb on s.msno=sb.msno 
+    group by s.mno, s.msno
   </select>
   
  
@@ -35,7 +42,7 @@
       msno,
       cnt
     from stmp
-    where mno=#{value} and msno=#{value}
+    where mno=#{memberNo} and msno=#{memberStoreNo}
   </select>
   
   
@@ -53,14 +60,14 @@
       mno=#{memberNo},
       msno=#{memberStoreNo},
       cnt=#{saveNo}
-     where mno=#{value} and msno=#{value}
+     where mno=#{memberNo} and msno=#{memberStoreNo}
   </update>
   
   <delete id="delete" parameterType="map">
     delete from stmp where mno=#{value} and msno=#{value}
   </delete>
   
-    <insert id="insertstamplog" parameterType="stamplog">
+    <insert id="insertStamplog" parameterType="stamplog">
     insert into stmp_log(mno, msno, chng, pm, chdt)
     values(
       #{memberNo},
@@ -70,7 +77,7 @@
       now())
   </insert>
   
- <select id="getlistStamplog" resultMap="stamplog-map">
+ <select id="getListStamplog" parameterType="map" resultMap="stamplog-map">
     select
       mno,
       msno,
@@ -78,9 +85,10 @@
       pm,
       chdt
     from stmp_log
-    where mno=#{value} and msno=#{value}
+    where mno=#{memberNo} and msno=#{memberStoreNo}
   </select>
   
+ 
   
 </mapper>
 

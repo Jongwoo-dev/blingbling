@@ -11,9 +11,23 @@ public class Stamp implements Serializable{
   int memberStoreNo;
   int saveNo;
   List<Stamplog> stamplog;
+  String memberStoreName;
+  int stampTotalNo;
   
   
 
+	public String getMemberStoreName() {
+		return memberStoreName;
+	}
+	public void setMemberStoreName(String memberStoreName) {
+		this.memberStoreName = memberStoreName;
+	}
+	public int getStampTotalNo() {
+		return stampTotalNo;
+	}
+	public void setStampTotalNo(int stampTotalNo) {
+		this.stampTotalNo = stampTotalNo;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}
