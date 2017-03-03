@@ -67,6 +67,24 @@ $.getJSON('../stamp/list.json', function(ajaxResult) {
 
   // 템플릿 엔진을 통해 생성된 HTML을 tbody에 넣는다.
   stamp.html(template({"list": list}));
+  
+  select count(*)
+  from memb m
+    join stmp s on m.mno=s.mno
+  where m.mno=1;
+  
+  select count(*)
+  from memb m
+    join buy b on m.mno=b.mno
+  where m.mno=1;
+  
+  select 
+    (select count(*) from stmp s where s.mno=m.mno) stmp_cnt,
+    (select count(*) from buy b where b.mno=m.mno) buy_cnt,
+    (select count(*) from favor f where f.mno=m.mno) favor_cnt,
+  from memb m
+  where m.mno=1;
+  
 	 */
 
 });
