@@ -6,12 +6,12 @@
 <mapper namespace="bitcamp.java89.blingbling.dao.PrepurchaseDao">
 
   <resultMap type="prepurchase" id="prepurchase-map">
-    <id     column="bno"     property="prepurchaseNumber"/>
+    <id     column="bno"     property="prepurchaseNo"/>
     <result column="mno"       property="memberNo"/>
     <result column="ino"      property="itemNo"/>
     <result column="pay_op"       property="payMean"/>
-    <result column="pay_st"      property="paystate"/>
-    <result column="sctime"        property="servicetime"/>
+    <result column="pay_st"      property="payState"/>
+    <result column="sctime"        property="serviceTime"/>
     <result column="rp"       property="personnel"/>
  
   </resultMap>
@@ -50,23 +50,23 @@
     insert into buy(bno, mno, ino, pay_op, pay_st, 
      sctime, rp)
     values(
-      #{prepurchaseNumber},
+      #{prepurchaseNo},
       #{memberNo},
       #{itemNo},
       #{payMean},
-      #{paystate},
-      now(),
+      #{payState},
+      #{serviceTime},
       #{personnel})
   </insert>
   
   <update id="update" parameterType="prepurchase">
     update buy set
-      bno=#{prepurchaseNumber},
+      bno=#{prepurchaseNo},
       mno=#{memberNo},
       ino=#{itemNo},
       pay_op=#{payMean},
-      pay_st=#{paystate},
-      sctime=now(),
+      pay_st=#{payState},
+      sctime=#{serviceTime},
       rp=#{personnel}
     where bno=#{prepurchaseNumber}
   </update>

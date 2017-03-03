@@ -6,61 +6,58 @@ public class Prepurchase implements Serializable {
   private static final long serialVersionUID = 1L;
   
   // 필수
-  int prepurchaseNumber;
+  int prepurchaseNo;
   int memberNo;
   int itemNo;
   
-  String payMean;
-  String paystate;
+  String payMean;     //결제수단
+  String payState;    //결제상태
   
-  // 선택
-  String servicetime;
-  String personnel;
-	public int getPrepurchaseNumber() {
-		return prepurchaseNumber;
-	}
-	public void setPrepurchaseNumber(int prepurchaseNumber) {
-		this.prepurchaseNumber = prepurchaseNumber;
-	}
-	public int getMemberNo() {
-		return memberNo;
-	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
-	}
-	public int getItemNo() {
-		return itemNo;
-	}
-	public void setItemNo(int itemNo) {
-		this.itemNo = itemNo;
-	}
-	public String getPayMean() {
-		return payMean;
-	}
-	public void setPayMean(String payMean) {
-		this.payMean = payMean;
-	}
-	public String getPaystate() {
-		return paystate;
-	}
-	public void setPaystate(String paystate) {
-		this.paystate = paystate;
-	}
-	public String getServicetime() {
-		return servicetime;
-	}
-	public void setServicetime(String servicetime) {
-		this.servicetime = servicetime;
-	}
-	public String getPersonnel() {
-		return personnel;
-	}
-	public void setPersonnel(String personnel) {
-		this.personnel = personnel;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-
+  String serviceTime; //서비스 받는시간
+  int personnel;      //인원
+  
+  
+  public int getPrepurchaseNo() {
+    return prepurchaseNo;
+  }
+  public void setPrepurchaseNo(int prepurchaseNo) {
+    this.prepurchaseNo = prepurchaseNo;
+  }
+  public int getMemberNo() {
+    return memberNo;
+  }
+  public void setMemberNo(int memberNo) {
+    this.memberNo = memberNo;
+  }
+  public int getItemNo() {
+    return itemNo;
+  }
+  public void setItemNo(int itemNo) {
+    this.itemNo = itemNo;
+  }
+  public String getPayMean() {
+    return payMean;
+  }
+  public void setPayMean(String payMean) {
+    this.payMean = payMean;
+  }
+  public String getPayState() {
+    return payState;
+  }
+  public void setPayState(String payState) {
+    this.payState = payState;
+  }
+  public String getServiceTime() {
+    return serviceTime;
+  }
+  public void setServiceTime(String serviceTime) {
+    this.serviceTime = serviceTime;
+  }
+  public int getPersonnel() {
+    return personnel;
+  }
+  public void setPersonnel(int personnel) {
+    this.personnel = personnel;
+  }
+  
 }
