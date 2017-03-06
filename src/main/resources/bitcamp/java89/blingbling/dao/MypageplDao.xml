@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.MypageplDao">
+ 
+  <resultMap type="mypagepl" id="mypagepl-map">
+    <id column="mno"      property="memberNo"/>
+    <result column="favor_cnt"      property="likeNum"/>
+    <result column="stmp_cnt"      property="stampNum"/>  
+    <result column="buy_cnt"      property="prepurchaseNum"/>
+     </resultMap>
+    
+  
+  <select id="getListBymember" parameterType="int" resultMap="mypagepl-map">
+  select 
+  (select count(*) from stmp s where s.mno=m.mno) stmp_cnt,
+  (select count(*) from buy b where b.mno=m.mno) buy_cnt,
+  (select count(*) from favor f where f.mno=m.mno) favor_cnt
+from memb m
+where m.mno=#{memberNo}
+   
+  </select>
+  
+ 
+  
+  
+</mapper>
+
+
+
+
+
