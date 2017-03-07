@@ -206,7 +206,7 @@ $('#header_sub_a_mgrbaseinfo').click(function(event) {
 	location.href='basicinfo.html';
 });
 
-CKEDITOR.replace( 'infoEditor', {
+/*CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
 	height: "350px",
 	resize_enabled: false,
@@ -224,6 +224,20 @@ CKEDITOR.replace( 'infoEditor', {
 			//, 'Unlink'
 		]
 
+});*/
+
+$('#summernote').summernote({
+	height: 450,                 // set editor height
+	minHeight: null,             // set minimum height of editor
+	maxHeight: null,             // set maximum height of editor
+	focus: true,                  // set focus to editable area after initializing summernote
+	lang: 'ko-KR',
+	maximumImageFileSize: 1000000, //1MB
+	/*callbacks : {
+      onImageUpload: function(image) {
+        uploadImage(image[0]);
+      }
+    }*/
 });
 
 $(function() {
