@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/sidebar.css">
 <link rel="stylesheet" href="companyRegistration.css">
 
 <style>
@@ -101,24 +102,20 @@
             <input type="text" class="form-control" id="company_number">
           </div>
         </div>
-        
+                        
         <div class="form-group">
           <div class='bb name'>
-            <label for="company_tel" class="control-label">전화번호</label>
-          </div>
-          <div class="cc value">
-            <input type="tel" class="form-control" id="company_tel">
+            <label for="company_number" class="control-label">사진업로드</label>
           </div>
         </div>
         
-        <div class="form-group">
-          <div class='bb name'>
-            <label for="company_photo" class="control-label">업체사진</label>
-          </div>
-          <div class="cc value">
-            <input type="text" class="form-control" id="company_photo">
-          </div>
-        </div>
+        <div>
+          <img id='photo-img' height='100'>
+          <i class="glyphicon glyphicon-plus"></i>
+            <span>사진 등록</span>
+          <input id='photo' class='form-control' type='file' name='filename' multiple='multiple'>
+        <input id='photo-path' type='hidden'>
+       </div>
         
         <div class="checkbox">
           <label>
@@ -157,6 +154,17 @@
 
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+<script src="../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+<script src="../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script> 
 <script src='../js/common.js'></script>
 <script src='companyRegistration.js'></script>
 

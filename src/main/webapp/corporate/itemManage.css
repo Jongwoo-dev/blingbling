@@ -113,3 +113,7 @@ border-color:#e74c3c;
 border-radius:5px;
 color:white;
 }
+
+.btn.btn-primary {
+	border: 0;
+}

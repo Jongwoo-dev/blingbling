@@ -23,37 +23,6 @@
   font-size: 1.15em;
 }
 
-/* 사이드바 */
-
-#sidebar {
-  width: 200px;
-  float: left;
-  padding-top: 40px;
-  color: #5e5e5e;
-}
-
-.sidebar_title {
-  display: block; 
-  margin-bottom: 20px; 
-  padding-left: 20px; 
-  font-size: 2.45em; 
-  font-weight: bold; 
-  color: #333333;
-}
-
-.sidebar_menu {
-  display: block; 
-  padding: 20px 0px 20px 20px; 
-  font-size: 1.45em;
-}
-
-.sidebar_menu.selected {
-  color: #e74c3c;
-}
-
-.sidebar_menu:hover {
-  background-color: #bebebe;
-}
 
 /* 컨텐츠 */
 
@@ -152,9 +121,7 @@
   background-color: #ffffff; 
   border: 1px solid #cccccc;
   border-radius: 4px; 
-  /* padding: 12px;  */
   font-size: 1.0em; 
-  font-weight: bold; 
   height: 40px; 
   text-align: center;
 }
@@ -182,7 +149,7 @@
 #content_main_form > .form-group {
 	border-top: 2px solid #cccccc;
 	border-bottom: 2px solid #cccccc;
-	height: 39px;
+	height: 41px;
 	width: 566px;
 	margin:15px 0;
 }
@@ -236,4 +203,5 @@
 	display:table-cell;
 	width:466px;
 }
+
 

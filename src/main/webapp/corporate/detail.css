@@ -133,9 +133,9 @@ span {
 
 .item-container {
 	width: 100%;
-	height: 260px;
+	/* height: 260px; */
 	margin-top: 20px;
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 }
 
 .item-box {
