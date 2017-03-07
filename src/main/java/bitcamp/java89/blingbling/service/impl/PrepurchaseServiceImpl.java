@@ -14,6 +14,11 @@ public class PrepurchaseServiceImpl implements PrepurchaseService {
   @Autowired PrepurchaseDao prepurchaseDao;
 
   @Override
+  public List<Prepurchase> getBookingList(int memberNo) throws Exception {
+    return prepurchaseDao.getBookingList(memberNo);
+  }
+  
+  @Override
   public List<Prepurchase> getList() throws Exception {
     return prepurchaseDao.getList();
   }

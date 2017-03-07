@@ -298,3 +298,6 @@ var arrayToJson = function(list) {
 $('#sb-itemManage').click(function(){
 	location.href='itemManage.html';
 })
+$('#sb-bookingManage').click(function(){
+	location.href='bookingManage.html';
+})

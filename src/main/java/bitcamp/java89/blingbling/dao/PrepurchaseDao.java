@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bitcamp.java89.blingbling.domain.Prepurchase;
 
 public interface PrepurchaseDao {
+  ArrayList<Prepurchase> getBookingList(int memberNo) throws Exception;
   ArrayList<Prepurchase> getList() throws Exception;
   int insert(Prepurchase prepurchase) throws Exception;
   Prepurchase getOne(int prepurchaseNumber) throws Exception;

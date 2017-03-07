@@ -13,9 +13,37 @@
     <result column="pay_st"      property="payState"/>
     <result column="sctime"        property="serviceTime"/>
     <result column="rp"       property="personnel"/>
- 
   </resultMap>
   
+  <resultMap type="prepurchase" id="booking-map">
+    <id     column="bno"     property="prepurchaseNo"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="ino"      property="itemNo"/>
+    <result column="sctime"        property="serviceTime"/>
+    <result column="rp"       property="personnel"/>
+    
+    <result column="mname"       property="userName"/>
+    <result column="iname"       property="itemName"/>
+    <result column="price"       property="price"/>
+  </resultMap>
+  
+  <select id="getBookingList" parameterType="int" resultMap="booking-map">
+		  select
+		    m.name as mname,
+				i.ino,
+				i.name as iname,
+				i.price,
+				b.bno,
+				b.sctime,
+				b.rp
+		  from
+		    item i
+		  join buy b
+		    using(ino)
+		  join memb m
+		    using(mno)
+		  where i.msno=#{memberNo}
+  </select>
   
   <select id="getList" resultMap="prepurchase-map">
     select

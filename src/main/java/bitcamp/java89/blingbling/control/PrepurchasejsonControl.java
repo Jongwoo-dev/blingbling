@@ -17,6 +17,12 @@ public class PrepurchasejsonControl {
   
   @Autowired PrepurchaseService prepurchaseService;
 
+  @RequestMapping("/prepurchase/bookinglist")
+  public AjaxResult bookinglist(int memberNo) throws Exception {
+    List<Prepurchase> list = prepurchaseService.getBookingList(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, list);
+  }
+  
   @RequestMapping("/prepurchase/list")
   public AjaxResult list() throws Exception {
 		List<Prepurchase> list = prepurchaseService.getList();
