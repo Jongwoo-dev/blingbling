@@ -70,7 +70,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
   </select>
@@ -93,7 +94,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
     where ms.cname like concat('%',#{value}%,'%')
@@ -118,6 +120,7 @@
       ms.detail,
       ms.minfo,
       ms.notice,
+      ms.pr_ti,
       mt.mtno,
       mt.mstel
     from  memb m
@@ -144,7 +147,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
     where m.email=#{value}

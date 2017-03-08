@@ -23,6 +23,7 @@ public class Corporate extends Member {
   protected String detail;
   protected String additionalInfo;
   protected String notice;
+  protected String priceTime;
   
   public String getCorporateRegistrationNumber() {
     return corporateRegistrationNumber;
@@ -101,6 +102,12 @@ public class Corporate extends Member {
   }
   public void setPhotoList(List<Photo> photoList) {
     this.photoList = photoList;
+  }
+  public String getPriceTime() {
+    return priceTime;
+  }
+  public void setPriceTime(String priceTime) {
+    this.priceTime = priceTime;
   }
   
   

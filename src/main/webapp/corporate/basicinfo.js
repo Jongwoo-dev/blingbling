@@ -326,3 +326,6 @@ $('#sb-infopicture').click(function(){
 $('#sb-notice').click(function(){
 	location.href='notice.html';
 })
+$('#sb-pricetime').click(function(){
+	location.href='pricetime.html';
+})
