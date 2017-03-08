@@ -37,6 +37,18 @@
 
   </resultMap>
   
+  <select id="getConversionList" resultMap="corporate-map">
+    select
+      memb.mno,
+      memb.name,
+      memb_store.cname,
+      memb_store.ctype
+    from memb_store
+      join memb on memb.mno=memb_store.msno
+    where
+    cachk='0';
+  </select>
+  
   <select id="count" parameterType="string" resultType="int">
     select count(*)
     from memb_store ms

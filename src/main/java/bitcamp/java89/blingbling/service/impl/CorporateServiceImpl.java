@@ -14,6 +14,11 @@ public class CorporateServiceImpl implements CorporateService {
   @Autowired CorporateDao corporateDao;
 
   @Override
+  public List<Corporate> getConversionList() throws Exception {
+    return corporateDao.getConversionList();
+  }
+  
+  @Override
   public List<Corporate> getList() throws Exception {
     return corporateDao.getList();
   }

@@ -5,6 +5,7 @@
 <title>마이페이지 업체등록</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
 <link rel="stylesheet" href="companyRegistration.css">
@@ -40,42 +41,44 @@
   <div id='content'>
   
     <div id="content_header">
-    
       <div id='content_profile'>
-        <div class="form-inline">
-          <div class="form-group">
-            <span class="fa fa-user-circle-o" aria-hidden="true"></span>
+          <form class="form-inline">
+            <div class="form-group">
+              <span class="fa fa-user-circle-o" aria-hidden="true"></span>
+            </div>
+            <div class="form-group">
+              <span class='profile name'>김건우</span>
+            </div>
+          </form>
+        </div>
+
+        <div class='itemform'>
+          <div class='item titleform'>
+            <span class="glyphicon glyphicon-heart"></span> <span
+              class='item titletext'>찜</span>
           </div>
-          <div class="form-group">
-            <span class='profile name'>뽐거지김건우</span>
+            <div id='Totallike'>
           </div>
         </div>
-      </div>
-      
-      <div class='itemform'>
-        <div class='item titleform'>
-          <span class="glyphicon glyphicon-heart"></span>
-          <span class='item titletext'>찜</span>
+
+        <div class='itemform'>
+          <div class='item titleform'>
+            <span class="glyphicon glyphicon-calendar"></span> <span
+              class='item titletext'>스탬프</span>
+          </div>
+          <div id='Totalstamp'>
+          </div>
         </div>
-        <span class='item value'>0개</span>
+
+        <div class='itemform'>
+          <div class='item titleform'>
+            <span class="glyphicon glyphicon-check"></span> <span
+              class='item titletext'>예약내역</span>
+          </div>
+            <div id='Totalprepurchase'>
+
+          </div>
       </div>
-      
-      <div class='itemform'>
-        <div class='item titleform'>
-          <span class="glyphicon glyphicon-calendar"></span>
-          <span class='item titletext'>스탬프</span>
-        </div>
-        <span class='item value'>0개</span>
-      </div>
-      
-      <div class='itemform'>
-        <div class='item titleform'>
-          <span class="glyphicon glyphicon-check"></span>
-          <span class='item titletext'>예약내역</span>
-        </div>
-        <span class='item value'>0개</span>
-      </div>
-    
     </div>
     
     <!-- 메인컨텐트 시작 -->
@@ -116,23 +119,20 @@
           </div>
         </div>
                         
-        <div class="form-group">
-          <div class='bb name'>
-            <label for="company_number" class="control-label">사진업로드</label>
+        <div class="form-group file-list">
+          <div class='bb name photo'>
+            <label for="company_number" class="control-label">사진파일명</label>
+          </div>
+          <div class="cc value photo">
+            <span id='imgfilenames'></span>
           </div>
         </div>
-        
-        
-        
-        
+                
         <div>
-          <div id='preview-box'>
-          </div>
-          <span>선택된 파일 이름들 : </span>
-          <span id='imgfilenames'></span><br>
+          <div id='preview-box'></div>
           <input id='photo' class='form-control' type='file' name='files' multiple='multiple'>
-          <button id='photo-select' type='button' class='btn btn-default'>이미지 파일 선택 버튼</button>
-        <input id='photo-path' type='hidden'>
+          <button id='photo-select' type='button' class='btn btn-default'>사진 첨부</button>
+          <input id='photo-path' type='hidden'>
        </div>
         
         <div class="checkbox">
@@ -182,7 +182,8 @@
 <script src="../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
 <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
-<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script> 
+<script src="../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
 <script src='../js/common.js'></script>
 <script src='companyRegistration.js'></script>
 

@@ -1,3 +1,33 @@
+//로그인 정보를 가져온다.
+$.getJSON('../auth/loginUser.json', function (ajaxResult){
+	if (ajaxResult.status != "success") {
+		swal('주의','로그인하세요','warning');
+		return;
+	}
+	var member = ajaxResult.data;
+
+//상단바
+$.getJSON('../mypagepl/listByMember.json?memberNo='+member.memberNo, function(ajaxResult) {
+		var status = ajaxResult.status;
+
+		if (status != "success")
+			return; 
+
+		var list = ajaxResult.data;
+		console.log(list);
+		
+		var totallike = $('#Totallike');
+		$('<span>').addClass('item value').text(list[0].likeNum+'개').appendTo(totallike);
+		
+		var totalstamp = $('#Totalstamp');
+		$('<span>').addClass('item value').text(list[0].stampNum+'개').appendTo(totalstamp);
+		
+		var totalprepurchase = $('#Totalprepurchase');
+		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
+
+		
+	});
+
 var filenames = new Array();
 
 $('#photo').fileupload({
@@ -15,14 +45,12 @@ $('#photo').fileupload({
       previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
       done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
          console.log('done()...');
-         if (filenames.length != 0) {
-        	 $('#imgfilenames').append(', ');
-         }
+         
          filenames.push(data.result.data[0]);
-         $('#imgfilenames').append(data.result.data[0]);
+         
          
          console.log('파일이름들 : ',filenames);
-         $('#photo-path').val(data.result.data[0]);
+         /*$('#photo-path').val(data.result.data[0]);*/
       }, 
       processalways: function(e, data) {
          /*console.log('fileuploadprocessalways()...', data.files.length, data.index);*/
@@ -37,14 +65,18 @@ $('#photo').fileupload({
             	.addClass('previewimg')
             	.appendTo($('#preview-box'));
          }
+         
+         if (filenames.length != 0) {
+        	 $('#imgfilenames').append(', ');
+         } else {
+        	 $('.value.photo').css('height','99px');
+         }
+         
+         $('#imgfilenames').append(data.files[0].name);
       } 
 });
 
-//로그인 정보를 가져온다.
-$.getJSON('../auth/loginUser.json', function (ajaxResult){
-	if (ajaxResult.status != "success")
-		return;
-	var member = ajaxResult.data;
+
 
 	
 // add처리

@@ -6,6 +6,8 @@ import java.util.List;
 public class Corporate extends Member {
   private static final long serialVersionUID = 1L;
   
+  protected String name;
+  protected int memberNo;
   // 필수
   protected String corporateRegistrationNumber;
   protected boolean corporateConfirm;
@@ -24,6 +26,18 @@ public class Corporate extends Member {
   protected String additionalInfo;
   protected String notice;
   
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public int getMemberNo() {
+    return memberNo;
+  }
+  public void setMemberNo(int memberNo) {
+    this.memberNo = memberNo;
+  }
   public String getCorporateRegistrationNumber() {
     return corporateRegistrationNumber;
   }

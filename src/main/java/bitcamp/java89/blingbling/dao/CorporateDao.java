@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bitcamp.java89.blingbling.domain.Corporate;
 
 public interface CorporateDao {
+  ArrayList<Corporate> getConversionList() throws Exception;
   ArrayList<Corporate> getList() throws Exception;
   ArrayList<Corporate> getListByCorporateName(String corporateName) throws Exception;
   int count(String email) throws Exception;
