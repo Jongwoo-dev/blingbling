@@ -312,17 +312,6 @@ var initInfo = function() {
 	});
 }
 
-var arrayToJson = function(list) {
-	var result = '';
-	for (var i = 0; i < list.length; i++) {
-		if (i != 0) {
-			result += ',';
-		}
-		result += list.eq(i).val();
-	}
-	result += '';
-	return result;
-}
 
 /*사이드바 링크*/
 $('#sb-itemManage').click(function(){

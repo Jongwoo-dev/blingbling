@@ -28,3 +28,15 @@ $(function() {
 		$('#footer').html(result);
 	});
 });
+
+var arrayToJson = function(list) {
+	var result = '';
+	for (var i = 0; i < list.length; i++) {
+		if (i != 0) {
+			result += ',';
+		}
+		result += list.eq(i).val();
+	}
+	result += '';
+	return result;
+}

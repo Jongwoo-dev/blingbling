@@ -204,4 +204,59 @@
 	width:466px;
 }
 
+/* 업체종류 선택버튼 */
 
+#cor-select {
+	display: inline-block;
+	position:relative;
+	top:17px;
+	
+}
+
+#cor-selectpicker {
+	display: inline-block;
+	border-top:2px solid #cccccc;
+	border-bottom:2px solid #cccccc;
+	background-color: #e9e9e9;
+	height:41px;
+	position:relative;
+	left:-3px;
+	top:-1px;
+	
+}
+
+#question_prefix {
+  border-top: 2px solid #cccccc;
+  border-bottom: 2px solid #cccccc;
+  height: 41px;
+  width: 566px;
+  margin:15px 0;
+  display:table-cell;
+  text-align:center;
+  width:100px;
+  vertical-align:middle;
+  background-color: white;
+}
+
+.selectpicker {
+  width:464px;
+  height:32px;
+  border:0;
+  background-color:rgba(0,0,0,0);
+}
+
+
+.previewimg {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#photo {
+	display: none;
+}
+
+#photo {
+	height: 40px;
+}
