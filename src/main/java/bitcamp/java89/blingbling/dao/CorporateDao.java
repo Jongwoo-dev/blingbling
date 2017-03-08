@@ -11,6 +11,7 @@ public interface CorporateDao {
   int countByNo(int memberNo) throws Exception;
   int insert(Corporate corporate) throws Exception;
   int insertTel(Corporate corporate) throws Exception;
+  int insertPhoto(Corporate corporate) throws Exception;
   Corporate getOneWithTel(int memberNo) throws Exception;
   Corporate getOneByEmail(String email) throws Exception;
   int update(Corporate corporate) throws Exception;

@@ -29,6 +29,12 @@
       <id     column="mtno"   property="no"/>
       <result column="mstel"  property="corporateTel"/>
     </collection>
+
+    <collection property="photoList" ofType="photo">
+      <id     column="mpno"   property="no"/>
+      <result column="path" property="filepath"/>
+    </collection>
+
   </resultMap>
   
   <select id="count" parameterType="string" resultType="int">
@@ -166,6 +172,14 @@
     values
     <foreach collection="telList" item="corpTel" separator=",">
       (#{memberNo}, #{corpTel.corporateTel})
+    </foreach>
+  </insert> 
+  
+  <insert id="insertPhoto" parameterType="corporate">
+    insert into ms_phot(mpno,path) 
+    values
+    <foreach collection="photoList" item="photo" separator=",">
+      (#{memberNo}, #{photo.filepath})
     </foreach>
   </insert> 
   
