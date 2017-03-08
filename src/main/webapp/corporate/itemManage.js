@@ -106,6 +106,9 @@ $(function() {
 
 
 /*사이드바 링크*/
-$('#basicinfo').click(function(){
+$('#sb-basicinfo').click(function(){
 	location.href='basicinfo.html';
+})
+$('#sb-bookingManage').click(function(){
+	location.href='bookingManage.html';
 })

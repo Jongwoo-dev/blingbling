@@ -2,6 +2,7 @@ var map;
 var marker;
 var infowindow;
 var loginMember;
+var filename;
 
 
 function initMap() {
@@ -173,7 +174,7 @@ $("#submit-btn").click(function() {
 			baseAddress     : $("#corporate-address-base").val(),
 			detailAddress   : $("#corporate-address-detail").val(),
 			telList         : arrayToJson($("input[name=corporateTel]")),
-			additionalInfo  : CKEDITOR.instances.infoEditor.getData(),
+			additionalInfo  : separateImg($('#infoEditor').summernote('code')),
 			mapLocation     : marker.getPosition().toString(),
 			
 			corporateRegistrationNumber : $('#corporateRegistrationNumber').val(),
@@ -226,13 +227,27 @@ $('#header_sub_a_mgrbaseinfo').click(function(event) {
 
 });*/
 
-$('#summernote').summernote({
+$('#infoEditor').summernote({
 	height: 450,                 // set editor height
 	minHeight: null,             // set minimum height of editor
 	maxHeight: null,             // set maximum height of editor
 	focus: true,                  // set focus to editable area after initializing summernote
 	lang: 'ko-KR',
-	maximumImageFileSize: 1000000, //1MB
+	maximumImageFileSize: 2097152, //2MB
+	disableDragAndDrop: true,
+	toolbar: [
+		// [groupName, [list of button]]
+		['style', ['bold', 'italic', 'underline', 'clear']],
+		['fontsize', ['fontname', 'fontsize']],
+		['color', ['color']],
+		['insert', ['picture', 'link', 'video']],
+		['font', ['strikethrough', 'superscript', 'subscript']],
+		['misc', ['undo', 'redo']],
+		['table', ['table']],
+		['para', ['ul', 'ol', 'paragraph']],
+		['height', ['height']],
+		['detail', ['codeview']]
+		]
 	/*callbacks : {
       onImageUpload: function(image) {
         uploadImage(image[0]);
@@ -268,10 +283,11 @@ var initInfo = function() {
 		$('#corporate-address-base').val(corporate.baseAddress);
 		$('#corporate-address-detail').val(corporate.detailAddress);
 		
-		$('#infoEditor').html(corporate.additionalInfo)
-		
-		if(corporate.mapLocation.length != 0) {
-			initMarker(corporate.mapLocation);
+		$('#infoEditor').summernote('code', corporate.additionalInfo)
+		if (corporate.mapLocation != null) {
+			if (corporate.mapLocation.length != 0) {
+				initMarker(corporate.mapLocation);
+			}
 		}
 		//수정 불가능한 정보들(숨겨진 정보)
 		$('#corporateRegistrationNumber').val(corporate.corporateRegistrationNumber);
@@ -300,4 +316,7 @@ var initInfo = function() {
 /*사이드바 링크*/
 $('#sb-itemManage').click(function(){
 	location.href='itemManage.html';
+})
+$('#sb-bookingManage').click(function(){
+	location.href='bookingManage.html';
 })

@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+
+/* 컨텐츠 */
+
+#content {
+  margin-left: 200px;
+  margin-bottom: 230px;
+  padding: 10px;
+  border-left: 1px solid rgb(224,224,224);
+  background-color: rgb(244,244,244);
+}
+
+.content_title {
+   display: block; 
+   padding: 40px; 
+   font-size: 2.45em; 
+   font-weight: bold; 
+   color: #333333;
+}
+
+.content_hr {
+  margin: 0px; 
+  border: 2px solid #e0e0e0;
+}
+
+#content_main {
+  margin-left: 40px;
+  padding-top: 30px;
+}
+
+button {
+	border: 0;
+}
+
+#list-table {
+	margin-top: 10px;
+	color: rgb(94, 94, 94);
+	
+}
+
+#list-table td {
+	vertical-align: middle;
+	height: 55px;
+	border: 0;
+}
+
+#list-table th {
+	vertical-align: middle;
+	height: 55px;
+	text-align: center;
+}
+
+tbody tr {
+	border: 1px solid rgb(190, 190, 190);
+	border-top: 0;
+}
+
+thead tr {
+	border: 1px solid rgb(190, 190, 190);
+}
+
+.td-name {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.table-btns {
+	width: 200px;
+}
+
+
+
+.add-input{
+margin-left:50px;
+margin-bottom:20px;
+width:120px
+}
+.item-add-btn {
+width:120px;
+height:35px;
+vertical-align:baseline;
+background-color:#e74c3c;
+border-color:#e74c3c;
+border-radius:5px;
+color:white;
+margin-left:515px 
+}
+
+.input-number {
+color:black;
+width:35px;
+margin-left:10px;
+border-radius:1px
+}
+
+.change-btn {
+width:70px;
+height:30px;
+vertical-align:baseline;
+background-color:#f39c12;
+border-color:#FE9A2E;
+border-radius:5px;
+color:white;
+margin-right:5px
+}
+
+.delete-btn {
+width:70px;
+height:30px;
+vertical-align:baseline;
+background-color:#e74c3c;
+border-color:#e74c3c;
+border-radius:5px;
+color:white;
+}
