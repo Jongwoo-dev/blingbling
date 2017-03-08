@@ -23,6 +23,7 @@
     <result column="map_loc"  property="mapLocation"/>
     <result column="detail"   property="detail"/>
     <result column="minfo"    property="additionalInfo"/>
+    <result column="pr_ti"    property="priceTime"/>
     <result column="notice"   property="notice"/>
     
     <collection property="telList" ofType="corpTel">
@@ -211,6 +212,13 @@
     update memb_store ms set
       ms.msno=#{memberNo},
       ms.notice=#{notice}
+    where msno=#{memberNo}
+  </update>
+  
+  <update id="updatePriceTime" parameterType="corporate">
+    update memb_store ms set
+      ms.msno=#{memberNo},
+      ms.pr_ti=#{priceTime}
     where msno=#{memberNo}
   </update>
   

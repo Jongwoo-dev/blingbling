@@ -183,6 +183,7 @@ CREATE TABLE MEMB_STORE (
   MAP_LOC VARCHAR(255) NULL     COMMENT '지도좌표', -- 지도좌표
   DETAIL  TEXT         NULL     COMMENT '업체상세정보', -- 업체상세정보
   MINFO   TEXT         NULL     COMMENT '업체추가정보', -- 업체추가정보
+  PR_TI   TEXT         NULL     COMMENT '요금및시간', -- 요금및시간
   NOTICE  TEXT         NULL     COMMENT '업체공지사항', -- 업체공지사항
   OTIME   DATE         NULL     COMMENT '서비스시작시간', -- 서비스시작시간
   CTIME   DATE         NULL     COMMENT '서비스종료시간' -- 서비스종료시간
@@ -200,6 +201,11 @@ ALTER TABLE MEMB_STORE
 CREATE UNIQUE INDEX UIX_MEMB_STORE
   ON MEMB_STORE ( -- 업체
     CRNO ASC -- 사업자번호
+  );
+
+-- 업체 유니크 인덱스2
+CREATE UNIQUE INDEX UIX_MEMB_STORE2
+  ON MEMB_STORE ( -- 업체
   );
 
 -- 찜
