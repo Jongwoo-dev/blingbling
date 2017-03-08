@@ -53,6 +53,12 @@ public class CorporateServiceImpl implements CorporateService {
     }
     return count;
   }
+
+  @Override
+  public int updateDetail(Corporate corporate) throws Exception {
+    return corporateDao.updateDetail(corporate);
+  }
+
 }
 
 

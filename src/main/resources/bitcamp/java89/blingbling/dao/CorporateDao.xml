@@ -186,6 +186,13 @@
     where msno=#{memberNo}
   </update>
   
+  <update id="updateDetail" parameterType="corporate">
+    update memb_store ms set
+      ms.msno=#{memberNo},
+      ms.detail=#{detail}
+    where msno=#{memberNo}
+  </update>
+  
   <delete id="delete" parameterType="int">
     delete from memb_store where msno=#{value}
   </delete>

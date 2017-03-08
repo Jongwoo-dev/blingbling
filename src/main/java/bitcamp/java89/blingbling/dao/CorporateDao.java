@@ -14,6 +14,7 @@ public interface CorporateDao {
   Corporate getOneWithTel(int memberNo) throws Exception;
   Corporate getOneByEmail(String email) throws Exception;
   int update(Corporate corporate) throws Exception;
+  int updateDetail(Corporate corporate) throws Exception;
   int delete(int memberNo) throws Exception;
   int deleteTel(int memberNo) throws Exception;
 }
