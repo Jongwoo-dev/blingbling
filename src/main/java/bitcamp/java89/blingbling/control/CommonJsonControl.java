@@ -29,11 +29,11 @@ public class CommonJsonControl {
           String newFilename = MultipartUtil.generateFilename();
           file.transferTo(new File(sc.getRealPath("/upload/" + newFilename)));
           filenames.add(newFilename);
-          System.out.println("파일 추가 완료 : " + filenames);
+          /*System.out.println("파일 추가 완료 : " + filenames);*/
         }
       }
     }
-    System.out.println("파일이름 : " + filenames);
+    /*System.out.println("파일이름 : " + filenames);*/
     return new AjaxResult(AjaxResult.SUCCESS, filenames);
   }
   

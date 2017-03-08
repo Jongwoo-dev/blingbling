@@ -77,6 +77,39 @@ public class CorporateJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
+  
+  @RequestMapping("/corporate/updateDetail")
+  public AjaxResult updateDetail(Corporate corporate) throws Exception {
+    int count = corporateService.updateDetail(corporate);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
+  
+  @RequestMapping("/corporate/updateNotice")
+  public AjaxResult updateNotice(Corporate corporate) throws Exception {
+    int count = corporateService.updateNotice(corporate);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
+  
+  @RequestMapping("/corporate/updatePriceTime")
+  public AjaxResult updatePriceTime(Corporate corporate) throws Exception {
+    int count = corporateService.updatePriceTime(corporate);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
 }
 
 

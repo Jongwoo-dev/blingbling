@@ -58,6 +58,22 @@ public class CorporateServiceImpl implements CorporateService {
     }
     return count;
   }
+
+  @Override
+  public int updateDetail(Corporate corporate) throws Exception {
+    return corporateDao.updateDetail(corporate);
+  }
+
+  @Override
+  public int updateNotice(Corporate corporate) throws Exception {
+    return corporateDao.updateNotice(corporate);
+  }
+
+  @Override
+  public int updatePriceTime(Corporate corporate) throws Exception {
+    return corporateDao.updatePriceTime(corporate);
+  }
+
 }
 
 

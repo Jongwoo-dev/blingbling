@@ -188,7 +188,7 @@ $("#submit-btn").click(function() {
 			alert(ajaxResult.data);
 			return;
 		}
-		alert(ajaxResult.data);
+		swal('등록 성공',ajaxResult.data,'success');
 	}, 'json');
 });
 
@@ -319,4 +319,13 @@ $('#sb-itemManage').click(function(){
 })
 $('#sb-bookingManage').click(function(){
 	location.href='bookingManage.html';
+})
+$('#sb-infopicture').click(function(){
+	location.href='infopicture.html';
+})
+$('#sb-notice').click(function(){
+	location.href='notice.html';
+})
+$('#sb-pricetime').click(function(){
+	location.href='pricetime.html';
 })

@@ -23,6 +23,7 @@
     <result column="map_loc"  property="mapLocation"/>
     <result column="detail"   property="detail"/>
     <result column="minfo"    property="additionalInfo"/>
+    <result column="pr_ti"    property="priceTime"/>
     <result column="notice"   property="notice"/>
     
     <collection property="telList" ofType="corpTel">
@@ -81,7 +82,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
   </select>
@@ -104,7 +106,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
     where ms.cname like concat('%',#{value}%,'%')
@@ -129,6 +132,7 @@
       ms.detail,
       ms.minfo,
       ms.notice,
+      ms.pr_ti,
       mt.mtno,
       mt.mstel
     from  memb m
@@ -155,7 +159,8 @@
       ms.map_loc,
       ms.detail,
       ms.minfo,
-      ms.notice
+      ms.notice,
+      ms.pr_ti
     from memb_store ms
       left outer join memb m on ms.msno=m.mno
     where m.email=#{value}
@@ -209,6 +214,27 @@
       ms.detail=#{detail},
       ms.minfo=#{additionalInfo},
       ms.notice=#{notice}
+    where msno=#{memberNo}
+  </update>
+  
+  <update id="updateDetail" parameterType="corporate">
+    update memb_store ms set
+      ms.msno=#{memberNo},
+      ms.detail=#{detail}
+    where msno=#{memberNo}
+  </update>
+  
+  <update id="updateNotice" parameterType="corporate">
+    update memb_store ms set
+      ms.msno=#{memberNo},
+      ms.notice=#{notice}
+    where msno=#{memberNo}
+  </update>
+  
+  <update id="updatePriceTime" parameterType="corporate">
+    update memb_store ms set
+      ms.msno=#{memberNo},
+      ms.pr_ti=#{priceTime}
     where msno=#{memberNo}
   </update>
   

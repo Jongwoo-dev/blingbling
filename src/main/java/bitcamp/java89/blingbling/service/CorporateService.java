@@ -13,20 +13,9 @@ public interface CorporateService {
   int add(Corporate corporate) throws Exception;
   int delete(int no) throws Exception;
   int update(Corporate corporate) throws Exception;
+  int updateDetail(Corporate corporate) throws Exception;
+  int updateNotice(Corporate corporate) throws Exception;
+  int updatePriceTime(Corporate corporate) throws Exception;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
