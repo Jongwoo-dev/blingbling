@@ -13,6 +13,7 @@ public interface CorporateService {
   int delete(int no) throws Exception;
   int update(Corporate corporate) throws Exception;
   int updateDetail(Corporate corporate) throws Exception;
+  int updateNotice(Corporate corporate) throws Exception;
 }
 
 

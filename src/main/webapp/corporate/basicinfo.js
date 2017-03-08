@@ -323,3 +323,6 @@ $('#sb-bookingManage').click(function(){
 $('#sb-infopicture').click(function(){
 	location.href='infopicture.html';
 })
+$('#sb-notice').click(function(){
+	location.href='notice.html';
+})

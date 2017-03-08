@@ -58,9 +58,9 @@ var initInfo = function() {
 $('#submit-btn').click(function() {
 	var param = {
 			memberNo        : loginMember.memberNo,
-			detail          : separateImg($('#infoEditor').summernote('code')),
+			detail          : separateImg($('#infoEditor').summernote('code'))
 	}
-	
+	/*console.log(param.detail);*/
 	$.post('updateDetail.json', param, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);

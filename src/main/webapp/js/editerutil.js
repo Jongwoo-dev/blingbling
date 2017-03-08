@@ -1,17 +1,28 @@
 
 // HTML 텍스트에서 dataURL로 쓰여진 이미지를 추출하여 내용물을 추출한 파일경로로 교체
 function separateImg(htmlText) {
-	var spiltedContent =htmlText.split('<img src=');
+	var spiltedContent =htmlText.split('<img');
+	var srcSplit;
 	var resultHTML = spiltedContent[0];
 	var startImgIndex = 1;
 	var endImgIndex;
 	var dataURL;
 	var tempFilename;
 	for (var i = 1; i < spiltedContent.length; i++) {
-		endImgIndex = spiltedContent[i].indexOf('data-filename') - 2;
-		uploadImage(dataURItoBlob(spiltedContent[i].substring(startImgIndex, endImgIndex)));
-		/*console.log(i,'번째 파일이름 : ',filename);*/
-		resultHTML += '<img src="/blingbling/upload/'+ filename + '" style="' + spiltedContent[i].split('" style="')[1];
+		srcSplit = spiltedContent[i].split(' src=');
+		resultHTML += '<img' + srcSplit[0];
+		/*console.log(resultHTML);*/
+		if (srcSplit[1].indexOf('/upload/') >= 0) {
+			// src 속성에 '/upload/'가 있으면 경로이므로 나머지를 그대로 붙임
+			resultHTML += ' src=' + srcSplit[1];
+		} else {
+			// src 속성에 '/upload/'가 없으면 dataURL이므로 변환 후 붙임
+			endImgIndex = srcSplit[1].indexOf('data-filename') - 2;
+			uploadImage(dataURItoBlob(srcSplit[1].substring(startImgIndex, endImgIndex)));
+			/*console.log(i,'번째 파일이름 : ',filename);*/
+			resultHTML += ' src="/blingbling/upload/'+ filename + '"' + srcSplit[1].substring(endImgIndex+1);
+		}
+		/*console.log(resultHTML);*/
 	}
 	return resultHTML;
 }

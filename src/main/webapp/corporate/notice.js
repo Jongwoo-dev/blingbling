@@ -48,8 +48,8 @@ var initInfo = function() {
 		}
 		
 		var corporate = ajaxResult.data;
-		
-		$('#infoEditor').summernote('code', corporate.detail);
+		console.log('공지 : ',corporate.notice)
+		$('#infoEditor').summernote('code', corporate.notice);
 	});
 	
 }
@@ -58,10 +58,10 @@ var initInfo = function() {
 $('#submit-btn').click(function() {
 	var param = {
 			memberNo        : loginMember.memberNo,
-			detail          : separateImg($('#infoEditor').summernote('code')),
+			notice          : separateImg($('#infoEditor').summernote('code')),
 	}
 	
-	$.post('updateDetail.json', param, function(ajaxResult) {
+	$.post('updateNotice.json', param, function(ajaxResult) {
 		if (ajaxResult.status != "success") {
 			alert(ajaxResult.data);
 			return;
@@ -71,6 +71,9 @@ $('#submit-btn').click(function() {
 })
 
 /*사이드바 링크*/
+$('#sb-basicinfo').click(function(){
+	location.href='basicinfo.html';
+})
 $('#sb-itemManage').click(function(){
 	location.href='itemManage.html';
 })
