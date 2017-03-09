@@ -21,7 +21,7 @@
     <result column="chdt"      property="stampdate"/>
      </resultMap>
   
-  <select id="getList" resultMap="stamp-map">
+  <select id="getListBymember"  parameterType="int" resultMap="stamp-map">
     select
       s.mno,
       s.msno,
@@ -31,7 +31,11 @@
     from stmp s 
     left outer join memb_store m on s.msno=m.msno 
     left outer join stmp_bnf sb on s.msno=sb.msno 
+    where s.mno=#{memberNo}
     group by s.mno, s.msno
+    
+    
+    
   </select>
   
  

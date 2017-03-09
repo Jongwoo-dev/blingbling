@@ -38,7 +38,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 					labels: ["남은횟수", "누적횟수"],
 					datasets: [{
 						label: '# of Votes',
-						data: [list[i].stampTotalNo, list[i].saveNo],
+						data: [list[i].stampTotalNo-list[i].saveNo, list[i].saveNo],
 						backgroundColor: [
 							'rgba(230, 126, 34, 0.6)',
 							'rgba(230, 126, 34, 1)'
@@ -56,6 +56,9 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 					legend:{
 						display: false
 					}
+				
+					
+				
 				}
 
 			});
@@ -91,9 +94,13 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 		
 		var totalstamp = $('#Totalstamp');
 		$('<span>').addClass('item value').text(list[0].stampNum+'개').appendTo(totalstamp);
+		$('<span>').addClass('maindesc').text(list[0].stampNum+'개').appendTo(substamp);
 		
 		var totalprepurchase = $('#Totalprepurchase');
 		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
+		
+		var profilename =$('#profilename');
+		$('<span>').addClass('profile name').text(member.name).appendTo(profilename);
 
 		
 	});

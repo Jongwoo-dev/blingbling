@@ -7,7 +7,7 @@ import bitcamp.java89.blingbling.domain.Stamp;
 import bitcamp.java89.blingbling.domain.Stamplog;
 
 public interface StampDao {
-  ArrayList<Stamp> getList() throws Exception;
+  ArrayList<Stamp> getListBymember(int memberNo) throws Exception;
   int insert(Stamp stamp) throws Exception;
   Stamp getOne(Map<String,Integer> paramMap) throws Exception;
   int update(Stamp stamp) throws Exception;

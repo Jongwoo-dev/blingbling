@@ -16,8 +16,8 @@ public class StampServiceImpl implements StampService {
   @Autowired StampDao stampDao;
 
   @Override
-  public List<Stamp> getList() throws Exception {
-    return stampDao.getList();
+  public List<Stamp> getListBymember(int memberNo) throws Exception {
+    return stampDao.getListBymember(memberNo);
   }
   @Override
   public List<Stamplog> getListStamplog(int memberNo,int memberStoreNo) throws Exception {
