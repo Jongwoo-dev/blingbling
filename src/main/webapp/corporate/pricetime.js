@@ -48,7 +48,6 @@ var initInfo = function() {
 		}
 		
 		var corporate = ajaxResult.data;
-		console.log('가격시간 : ',corporate.priceTime)
 		$('#infoEditor').summernote('code', corporate.priceTime);
 	});
 	

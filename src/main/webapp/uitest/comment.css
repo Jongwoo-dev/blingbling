@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+
+#content {
+	color: rgb(51, 51, 51);
+}
+
+.comment-box {
+	margin: 20px 20px 0px 20px;
+}
+
+.comment-box.reply {
+	background-color: rgb(224, 224, 224);
+	margin: 0 0 0 50px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	
+}
+
+.profile-picture {
+  font-size: 4em;
+  display: inline-table;
+  color: rgb(158, 158, 158);
+  vertical-align: top;
+}
+
+.comment-content {
+	display: inline-block;
+	padding-left: 10px;
+}
+
+.writer-name {
+	font-size: 1.4em;
+	
+}
+
+.write-date {
+	/* font-size: 1em; */
+	margin-left: 10px;
+  color: rgb(158, 158, 158);
+}
+
+.comment-textline {
+	margin-top: 10px;
+	font-size: 1.2em;
+}

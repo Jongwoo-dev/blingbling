@@ -48,7 +48,6 @@ var initInfo = function() {
 		}
 		
 		var corporate = ajaxResult.data;
-		console.log('공지 : ',corporate.notice)
 		$('#infoEditor').summernote('code', corporate.notice);
 	});
 	
