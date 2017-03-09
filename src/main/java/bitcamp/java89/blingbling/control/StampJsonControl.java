@@ -18,9 +18,9 @@ public class StampJsonControl{
   
   @Autowired StampService stampService;
 
-  @RequestMapping("/stamp/list")
-  public AjaxResult list() throws Exception {
-		List<Stamp> list = stampService.getList();
+  @RequestMapping("/stamp/listByMember")
+  public AjaxResult getListBymember(int memberNo) throws Exception {
+		List<Stamp> list = stampService.getListBymember(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
 

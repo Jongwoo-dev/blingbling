@@ -17,7 +17,7 @@ $.getJSON('../corporate/conversionlist.json?', function(ajaxResult) {
  
 // 학생 목록에서 이름 링크에 click 이벤트를 처리한다.
   $('.title-link').click(function(event) {
-  	location.href = 'admin-qna-view.html?serviceCenterNo=' + $(this).attr("data-no");
+  	location.href = 'admin-conversion-view.html?memberNo=' + $(this).attr("data-no");
   });
 });
 /*

@@ -51,39 +51,46 @@
 	margin-left: 40px;
 }
 
-
-
-tr > td {
-	padding:12px;
-}
-
-.text-title {
-	padding-right: 300px;
-}
-
-
-#tr {
-	font-size:1.2em; 
-}
-
-td {
-	font-size:1.2em;
-	vertical-align: middle !important;
-}
-
-.content_hr {
-	margin-bottom:10px;
-
-}
-
 .btn-lg {
-  padding:10px 30px;
-  margin-top:10px;
+  padding:10px 20px;
+  margin-top:20px;
   background-color:rgb(231, 76, 60);
   border:0;
   border-radius:3px;
   font-size:1.1em;
-  float:right;
-  margin-right:30px;
 }
 
+#content_main {
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:30px;
+  padding-right:20px;
+}
+
+.content_hr {
+	margin-bottom: 30px;
+}
+
+/* 세부내용시작
+ */
+span {
+display: inline-block;
+}
+
+td {
+	border:1px solid;
+}
+.conversion-menu {
+	margin-bottom: 35px;
+}
+
+.explain {
+	font-size:1.5em;
+}
+
+.content-box {
+	border: 1px solid #e0e0e0;
+	width:400px;
+	height:50px;
+	background-color: white;
+}

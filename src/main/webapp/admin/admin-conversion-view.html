@@ -2,15 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>운영자페이지-업체전환 관리</title>
+<title>운영자페이지-업체전환관리</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
-<link rel="stylesheet" href="admin-conversion.css">
+<link rel="stylesheet" href="admin-conversion-view.css">
 </head>
 <body>
 
-<div class="container">
+<div class="container"> 
 
   <div id='header'>
   </div>
@@ -33,21 +33,31 @@
     <span class='content_title'>업체전환 관리</span>
     <hr class='content_hr' color='#e0e0e0'>
     <div id='content_main'>
-      <div class="table-responsive">
-        <table class="table" id='list-table'>
-          <thead>
-            <tr id="tr">
-              <th class='col-xs-2 text-center'>업종유형</th>
-              <th class='col-xs-6'>업체명</th>
-              <th class='col-xs-2 text-center'>작성자</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-        <hr class='content_hr' color='#e0e0e0'>
-     </div>
+      <div class='conversion-menu'>
+      <table>
+        <tbody>
+          <tr>
+            <th>작성자</th>
+            <td>adsfadsf</td>
+          </tr>
+          <tr>
+            <th>업체유형</th>
+            <td>adsfadsf</td>
+          </tr>
+          <tr>
+            <th>업체명</th>
+            <td>adsfadsf</td>
+          </tr>
+          <tr>
+            <th>사업자번호</th>
+            <td>adsfadsf</td>
+          </tr>
+        </tbody>
+      </table>  
+      </div>
+	    <button type="button" class="btn btn-primary btn-lg 1">목록</button>
+	    <button type="button" class="btn btn-primary btn-lg 2">거절</button>
+	    <button type="button" class="btn btn-primary btn-lg 3">승인</button>
     </div>
   </div>
 
@@ -55,30 +65,22 @@
 
 
 
-<script id="trTemplate" type="text/x-handlebars-template">
-{{#each list}}
-<tr>
-  <td class='text-center'><b>[{{corporateType}}]</b></td>
-  <td><a href='#' class='title-link' data-no={{memberNo}}>{{corporateName}}</a></td>
-  <td class='text-center'>{{name}}</td>
-</tr>
-{{/each}}
-</script>
+
 <script src="../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src='../js/common.js'></script>
-<script src="admin-conversion.js"></script>
+<script src="admin-conversion-view.js"></script>
 
 
 
 
 <script>
 $('#menu1').click(function(){
-  location.href='admin-qna.html';
-}) 
-
+	  location.href='admin-qna.html';
+	})
+	
 $('#menu2').click(function(){
   location.href='admin-notice.html';
 })

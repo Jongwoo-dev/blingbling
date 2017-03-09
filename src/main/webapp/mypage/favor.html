@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이 페이지 - 스탬프</title>
+<title>마이 페이지 - 찜</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
-<link rel="stylesheet" href="stamp.css">
+<link rel="stylesheet" href="favor.css">
 
 <style>
 
@@ -32,8 +32,8 @@
   <div id='sidebar'>
     <span class='sidebar_title'>마이 페이지</span>
 
-    <span class='sidebar_menu'>찜</span>
-    <span class='sidebar_menu selected'>스탬프</span>
+    <span class='sidebar_menu selected'>찜</span>
+    <span class='sidebar_menu'>스탬프</span>
     <span class='sidebar_menu'>예약내역</span>
     <span class='sidebar_menu'>이용내역</span>
     <span class='sidebar_menu'>내정보수정</span>
@@ -85,34 +85,62 @@
 			</div>
 
 			<div id='content_main'>
-				<div class="row" id = substamp>
+				<div class="row" id = subfavor>
 					<span class="maintitle">이용내역</span>
 				</div>
-<!-- 				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">강남피부샾</span>
-				</div>
-				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">비트피부샾</span>
-				</div>
-				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">비트피부샾</span>
-				</div>
-				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">비트피부샾</span>
-				</div>
-				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">비트피부샾</span>
-				</div>
-				<div class=chart>
-					<canvas class="myDoughnutChart"></canvas>
-					<span style="display: block; text-align: center;">비트피부샾</span>
-				</div> -->
+
 			</div>
+			<div class="submain">
+			<div class="cardbox">
+    <figure class="snip1174 blue">
+      <img src="favor3.jpg" />
+      <figcaption>
+        <h2>강남피부</h2>
+        <p>
+          피부 - 50000원
+        </p>
+        <a href="/main/page/auction">둘러보기</a>
+      </figcaption>
+    </figure>
+</div>
+			<div class="cardbox">
+    <figure class="snip1174 blue">
+      <img src="favor1.jpg" />
+      <figcaption>
+        <h2>강남피부</h2>
+        <p>
+          피부 - 50000원
+        </p>
+        <a href="/main/page/auction">둘러보기</a>
+      </figcaption>
+    </figure>
+</div>
+	<div class="cardbox">
+    <figure class="snip1174 blue">
+      <img src="favor2.jpg" />
+      <figcaption>
+        <h2>강남피부</h2>
+        <p>
+          피부 - 50000원
+        </p>
+        <a href="/main/page/auction">둘러보기</a>
+      </figcaption>
+    </figure>
+</div>
+	<div class="cardbox">
+    <figure class="snip1174 blue">
+      <img src="favor2.jpg" />
+      <figcaption>
+        <h2>강남피부</h2>
+        <p>
+          피부 - 50000원
+        </p>
+        <a href="/main/page/auction">둘러보기</a>
+      </figcaption>
+    </figure>
+</div>
+			
+		</div>	
 		</div>
 			
 
@@ -125,45 +153,8 @@
 <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
 <script src='../js/common.js'></script>
 
-<script src="../node_modules/chart.js/dist/Chart.js"></script>
-<script src='stamp.js'></script>
+<script src='favor.js'></script>
 
-<script>
-/* 
-var ctx = $('.myDoughnutChart');
-for (var i = 0; i < ctx.length; i++) {
-	
-	var myDoughnutChart = new Chart(ctx.eq(i), {
-	    type: 'doughnut',
-	    data: {
-	        labels: ["남은횟수", "누적횟수"],
-	        datasets: [{
-	            label: '# of Votes',
-	            data: [8, 2],
-	            backgroundColor: [
-	                'rgba(230, 126, 34, 0.6)',
-	                'rgba(230, 126, 34, 1)'
-	                
-	            ],
-	            hoverBackgroundColor: [
-	                'rgba(230, 126, 34, 0.5)',
-	                'rgba(230, 126, 34, 0.8)'
-	            ]
-	         
-	        
-	        }]
-	    },
-	    options: {
-	    	legend:{
-	    	display: false
-	    	}
-	    }
-	    
-	});
-} 
-*/
-
-</script>
 
 
 
