@@ -134,7 +134,8 @@ CREATE TABLE RV_CMT (
   LEVEL  INTEGER  NULL     COMMENT '레벨', -- 레벨
   SEQ    INTEGER  NULL     COMMENT '순서', -- 순서
   CONT   TEXT     NOT NULL COMMENT '내용', -- 내용
-  RC_RDT DATETIME NOT NULL COMMENT '날짜' -- 날짜
+  RC_RDT DATETIME NOT NULL COMMENT '날짜', -- 날짜
+  DEL    CHAR(1)  NOT NULL DEFAULT 0 COMMENT '삭제여부' -- 삭제여부
 )
 COMMENT '리뷰댓글';
 

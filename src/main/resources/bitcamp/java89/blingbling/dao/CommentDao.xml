@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.CommentDao">
+
+  <resultMap type="comment"   id="comment-map">
+    <id     column="rvno"     property="commentNo"/>
+    <result column="msno"     property="corporateNo"/>
+    <result column="mno"      property="memberNo"/>
+    <result column="name"     property="name"/>
+    <result column="grup"     property="group"/>
+    <result column="level"    property="level"/>
+    <result column="seq"      property="sequence"/>
+    <result column="cont"     property="contents"/>
+    <result column="rc_rdt"   property="registrationDate"/>
+    <result column="del"      property="deleted"/>
+  </resultMap>
+  
+  <select id="countByNo" parameterType="int" resultType="int">
+    select count(*)
+    from rv_cmt rc
+    where rc.rvno=#{value}
+  </select>
+  
+  <select id="getList" parameterType="int" resultMap="comment-map">
+    select
+      rc.rvno,
+      rc.msno,
+      rc.mno,
+      m.name,
+      rc.grup,
+      rc.level,
+      rc.seq,
+      rc.cont,
+      rc_rdt
+    from rv_cmt rc
+      left outer join memb m on m.mno=rc.mno
+    where rc.msno=#{value}
+  </select>
+  
+  <select id="getOne" parameterType="int" resultMap="comment-map">
+    select
+      rc.rvno,
+      rc.msno,
+      rc.mno,
+      m.name,
+      rc.grup,
+      rc.level,
+      rc.seq,
+      rc.cont,
+      rc.rc_rdt
+    from rv_cmt rc
+      left outer join memb m on m.mno=rc.mno
+    where rc.rvno=#{value}
+  </select>
+  
+
+  <insert id="insert" parameterType="comment">
+    insert into rv_cmt(rvno, msno, mno, grup, level, seq, cont, rc_rdt)
+    values(
+      #{commentNo},
+      #{corporateNo},
+      #{memberNo},
+      #{group},
+      #{level},
+      #{sequence},
+      #{contents},
+      #{registrationDate})
+  </insert>
+  
+  
+  <update id="update" parameterType="comment">
+    update rv_cmt rc set 
+      rc.rvno = #{commentNo}, 
+      rc.msno = #{corporateNo}, 
+      rc.mno = #{memberNo},
+      rc.grup = #{group}, 
+      rc.level = #{level}, 
+      rc.seq = #{sequence}, 
+      rc.cont = #{contents}, 
+      rc.rc_rdt = #{registrationDate)
+     where rc.rvno = #{commentNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from rv_cmt where rvno=#{value}
+  </delete>
+  
+</mapper>
+
+
+
+
+
+
+
+
