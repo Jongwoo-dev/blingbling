@@ -128,8 +128,8 @@ ALTER TABLE REVIEW
 -- 리뷰댓글
 CREATE TABLE RV_CMT (
   RVNO   INTEGER  NOT NULL COMMENT '리뷰댓글일련번호', -- 리뷰댓글일련번호
-  MNO    INTEGER  NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-  MSNO   INTEGER  NOT NULL COMMENT '업체일련번호', -- 업체일련번호
+  MSNO   INTEGER  NULL     COMMENT '업체일련번호', -- 업체일련번호
+  MNO    INTEGER  NULL     COMMENT '회원일련번호', -- 회원일련번호
   GRUP   INTEGER  NULL     COMMENT '그룹', -- 그룹
   LEVEL  INTEGER  NULL     COMMENT '레벨', -- 레벨
   SEQ    INTEGER  NULL     COMMENT '순서', -- 순서
@@ -357,14 +357,22 @@ ALTER TABLE REVIEW
 
 -- 리뷰댓글
 ALTER TABLE RV_CMT
-  ADD CONSTRAINT FK_REVIEW_TO_RV_CMT -- 업체리뷰 -> 리뷰댓글
+  ADD CONSTRAINT FK_MEMB_STORE_TO_RV_CMT -- 업체 -> 리뷰댓글
     FOREIGN KEY (
-      MNO,  -- 회원일련번호
-      MSNO  -- 업체일련번호
+      MSNO -- 업체일련번호
     )
-    REFERENCES REVIEW ( -- 업체리뷰
-      MNO,  -- 회원일련번호
-      MSNO  -- 업체일련번호
+    REFERENCES MEMB_STORE ( -- 업체
+      MSNO -- 업체일련번호
+    );
+
+-- 리뷰댓글
+ALTER TABLE RV_CMT
+  ADD CONSTRAINT FK_MEMB_TO_RV_CMT -- 회원 -> 리뷰댓글
+    FOREIGN KEY (
+      MNO -- 회원일련번호
+    )
+    REFERENCES MEMB ( -- 회원
+      MNO -- 회원일련번호
     );
 
 -- 예약구매

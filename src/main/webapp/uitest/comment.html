@@ -25,11 +25,22 @@
   </div>
   
   <div id='content'>
-    ↳ ↳ ↳<br>
+    <div class='comment-box'>
+      <div class='comment-write-box'>
+        <span class='writer-name'>김건우 얼굴박살남</span>
+        <textarea class='comment-write-textarea' rows="5" ></textarea>
+        <button type='button' class='btn btn-default comment-write-btn'>등록</button>
+      </div>
+    </div>
     <div class='comment-box'>
       <div class='profile-picture'>
         <span class="fa fa-user-circle"></span>
       </div>
+          <div class='writer-interaction'>
+            <a class='comment-reply'>답글</a>
+            <a class='comment-update'>수정</a>
+            <a class='comment-delete'>삭제</a>
+          </div>
       <div class='comment-content'>
         <div class='comment-titleline'>
           <span class='writer-name'>김건우 얼굴박살남</span>
@@ -39,6 +50,11 @@
         <div class='comment-textline'>
           <pre>자주가는데 갈때마다 너무 좋아요~!</pre>
         </div>
+      </div>
+      <div class='comment-write-box in-comment-box'>
+        <span class='writer-name'>김건우 얼굴박살남</span>
+        <textarea class='comment-write-textarea' rows="5" ></textarea>
+        <button type='button' class='btn btn-default comment-write-btn'>등록</button>
       </div>
       <div class='comment-box reply'>
         <div class='profile-picture'>
@@ -96,21 +112,7 @@
 </div>
 
 <script id="commentBoxTemplate" type="text/x-handlebars-template">
-<div class='comment-box'>
-  <div class='profile-picture'>
-    <span class="fa fa-user-circle"></span>
-  </div>
-  <div class='comment-content'>
-    <div class='comment-titleline'>
-      <span class='writer-name'>김건우 얼굴박살남</span>
-      <span class='write-date'>2017.01.22</span>
-      <div class='rating'></div>
-    </div>
-    <div class='comment-textline'>
-      <pre>자주가는데 갈때마다 너무 좋아요~!</pre>
-    </div>
-  </div>
-</div>
+
 </script>
 
 <script src="../js/context.js"></script>
