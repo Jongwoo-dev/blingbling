@@ -34,7 +34,8 @@
       rc.level,
       rc.seq,
       rc.cont,
-      rc_rdt
+      rc.rc_rdt,
+      rc.del
     from rv_cmt rc
       left outer join memb m on m.mno=rc.mno
     where rc.msno=#{value}
@@ -50,7 +51,8 @@
       rc.level,
       rc.seq,
       rc.cont,
-      rc.rc_rdt
+      rc.rc_rdt,
+      rc.del
     from rv_cmt rc
       left outer join memb m on m.mno=rc.mno
     where rc.rvno=#{value}
@@ -85,7 +87,10 @@
   </update>
   
   <delete id="delete" parameterType="int">
-    delete from rv_cmt where rvno=#{value}
+    <!-- delete from rv_cmt where rvno=#{value} -->
+    update rv_cmt rc set
+      rc.del = '0'
+    where rc.rvno = #{value}
   </delete>
   
 </mapper>

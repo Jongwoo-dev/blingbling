@@ -2,8 +2,6 @@ package bitcamp.java89.blingbling.control;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +11,7 @@ import bitcamp.java89.blingbling.service.CorporateService;
 
 @RestController
 public class CorporateJsonControl {
-  @Autowired ServletContext sc;
-  
+
   @Autowired CorporateService corporateService;
 
   @RequestMapping("/corporate/conversionlist")

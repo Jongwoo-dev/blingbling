@@ -30,20 +30,28 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public int delete(int commentNo) throws Exception {
-    /*if (commentDao.countByNo(commentNo) == 0) {
-      throw new Exception("이미 삭제된 코멘트 입니다.");
-    }*/
-    // 삭제 명령 하면 지우지 말고 지웠다는 표시만 남기게.\
-    // 컬럼 하나 추가해야함.
-    // 삭제여부 컬럼 확인하는 메서드도 만들어야 함.
-    // 아래 업데이트도 동일
-    return 0;
+    try {
+      if (commentDao.getOne(commentNo).isDeleted()) {
+        throw new Exception("이미 삭제된 코멘트 입니다.");
+      }
+    } catch (Exception e) {
+      throw new Exception("해당 댓글이 존재하지 않습니다."); // *이거 제대로 동작하는지 체크 필요
+    }
+    
+    return commentDao.delete(commentNo);
   }
 
   @Override
   public int update(Comment comment) throws Exception {
-    // TODO Auto-generated method stub
-    return 0;
+    try {
+      if (commentDao.getOne(comment.getCommentNo()).isDeleted()) {
+        throw new Exception("이미 삭제된 코멘트 입니다.");
+      }
+    } catch (Exception e) {
+      throw new Exception("해당 댓글이 존재하지 않습니다.");
+    }
+    
+    return commentDao.update(comment);
   }
 }
 
