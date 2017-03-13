@@ -25,7 +25,13 @@ public class CommentServiceImpl implements CommentService {
 
   @Override
   public int add(Comment comment) throws Exception {
-    return commentDao.insert(comment);
+    int count = commentDao.insert(comment);
+    
+    if (comment.getLevel() == 1) {  // 부모 댓글이면 그룹번호를 생성된 pk 값으로 설정 후 업데이트
+      comment.setGroup(comment.getCommentNo());
+      commentDao.updateGroup(comment);
+    }
+    return count;
   }
 
   @Override
@@ -34,7 +40,7 @@ public class CommentServiceImpl implements CommentService {
       if (commentDao.getOne(commentNo).isDeleted()) {
         throw new Exception("이미 삭제된 코멘트 입니다.");
       }
-    } catch (Exception e) {
+    } catch (NullPointerException e) {
       throw new Exception("해당 댓글이 존재하지 않습니다."); // *이거 제대로 동작하는지 체크 필요
     }
     

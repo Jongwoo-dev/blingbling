@@ -59,10 +59,10 @@
   </select>
   
 
-  <insert id="insert" parameterType="comment">
-    insert into rv_cmt(rvno, msno, mno, grup, level, seq, cont, rc_rdt)
+  <insert id="insert" parameterType="comment"
+       useGeneratedKeys="true" keyColumn="rvno" keyProperty="commentNo">
+    insert into rv_cmt(msno, mno, grup, level, seq, cont, rc_rdt)
     values(
-      #{commentNo},
       #{corporateNo},
       #{memberNo},
       #{group},
@@ -75,22 +75,23 @@
   
   <update id="update" parameterType="comment">
     update rv_cmt rc set 
-      rc.rvno = #{commentNo}, 
-      rc.msno = #{corporateNo}, 
-      rc.mno = #{memberNo},
-      rc.grup = #{group}, 
-      rc.level = #{level}, 
-      rc.seq = #{sequence}, 
-      rc.cont = #{contents}, 
-      rc.rc_rdt = #{registrationDate)
-     where rc.rvno = #{commentNo}
+      rc.cont=#{contents}, 
+      rc.rc_rdt=now()
+     where rc.rvno=#{commentNo}
   </update>
+  
+  <update id="updateGroup" parameterType="comment">
+    update rv_cmt rc set 
+      rc.grup=#{group} 
+     where rc.rvno=#{commentNo}
+  </update>
+  
   
   <delete id="delete" parameterType="int">
     <!-- delete from rv_cmt where rvno=#{value} -->
     update rv_cmt rc set
-      rc.del = '0'
-    where rc.rvno = #{value}
+      rc.del='1'
+    where rc.rvno=#{value}
   </delete>
   
 </mapper>
