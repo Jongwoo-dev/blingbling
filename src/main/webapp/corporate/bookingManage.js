@@ -12,8 +12,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		console.log(list);
 		var tbody = $('#list-table > tbody');
 		
+		for (var i = 0; i < list.length; i++) {
+			list[i].bookingDate = list[i].serviceTime.split(" ")[0],
+			list[i].bookingTime = list[i].serviceTime.split(" ")[1];
+		}
 		var template = Handlebars.compile($('#trTemplate').html());
-		
 		tbody.html(template({"list":list}));
 		
 	//삭제버튼	
