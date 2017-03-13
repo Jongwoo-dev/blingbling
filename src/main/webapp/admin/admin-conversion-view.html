@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>운영자페이지-업체전환관리</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/sidebar.css">
 <link rel="stylesheet" href="admin-conversion-view.css">
@@ -31,30 +32,35 @@
   
   <div id='content'>
     <span class='content_title'>업체전환 관리</span>
-    <hr class='content_hr' color='#e0e0e0'>
+    <hr class='content_hr1' color='#e0e0e0'>
     <div id='content_main'>
       <div class='conversion-menu'>
       <table>
         <tbody>
           <tr>
-            <th><span class='th-content'>작성자</span></th>
-            <td><span class='td-content'>adsfadsf</span></td>
+            <th>작성자</th>
+            <td><span class='td-content' id='td-name'></span></td>
           </tr>
           <tr>
             <th>업체유형</th>
-            <td><span class='td-content'>adsfadsf</span></td>
+            <td><span class='td-content' id='td-corType'></span></td>
           </tr>
           <tr>
             <th>업체명</th>
-            <td><span class='td-content'>adsfadsf</span></td>
+            <td><span class='td-content' id='td-corName'></span></td>
           </tr>
           <tr>
             <th>사업자번호</th>
-            <td><span class='td-content'>adsfadsf</span></td>
+            <td><span class='td-content' id='td-corRegistationNo'></span></td>
+          </tr>
+          <tr>
+            <th>사진</th>
+            <td><div class='td-content-photo' id='td-photo'></div></td>
           </tr>
         </tbody>
       </table>  
-      </div>
+    <hr class='content_hr2' color='#e0e0e0'>
+    </div>
 	    <button type="button" class="btn btn-primary btn-lg 1">목록</button>
 	    <button type="button" class="btn btn-primary btn-lg 2">거절</button>
 	    <button type="button" class="btn btn-primary btn-lg 3">승인</button>
@@ -70,6 +76,7 @@
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script src='../js/common.js'></script>
 <script src="admin-conversion-view.js"></script>
 

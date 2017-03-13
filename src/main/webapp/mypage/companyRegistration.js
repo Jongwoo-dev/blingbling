@@ -95,7 +95,19 @@ $('#photo').fileupload({
 				alert(ajaxResult.data);
 				return;
 			}
-			/*location.href = 'admin-faq.html';*/
+			swal({
+				  title: "안내",
+				  text: "업체전환 신청되었습니다",
+				  type: "success",
+				  /*showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, delete it!",*/
+				  closeOnConfirm: true
+				},
+				function(){
+					
+				  location.href = 'companyRegistration.html';
+			});
 		}, 'json');
 	});
 });

@@ -26,6 +26,7 @@
     <span class='sidebar_menu selected' id='menu1'>1:1문의 관리</span>
     <span class='sidebar_menu' id='menu2'>공지사항 관리</span>
     <span class='sidebar_menu' id='menu3'>FAQ 관리</span>
+    <span class='sidebar_menu' id='menu4'>업체전환 관리</span>
   </div>
   
   <div id='content'>
@@ -67,15 +68,19 @@
 
 <script>
 $('#menu1').click(function(){
-	  location.href='admin-qna.html';
-	})
-	
+    location.href='admin-qna.html';
+  })
+  
 $('#menu2').click(function(){
   location.href='admin-notice.html';
 })
 
 $('#menu3').click(function(){
   location.href='admin-faq.html';
+})
+
+$('#menu4').click(function(){
+  location.href='admin-conversion.html';
 })
 </script>
 

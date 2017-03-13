@@ -19,6 +19,8 @@ public interface CorporateDao {
   int updateDetail(Corporate corporate) throws Exception;
   int updateNotice(Corporate corporate) throws Exception;
   int updatePriceTime(Corporate corporate) throws Exception;
+  int updateCorporateConfirm(int memberNo) throws Exception;
   int delete(int memberNo) throws Exception;
   int deleteTel(int memberNo) throws Exception;
+  int deletePhoto(int memberNo) throws Exception;
 }
