@@ -117,6 +117,12 @@ var initInfo = function() {
 					}
 					comment[list[i].group].children('.comment-box.reply').last()
 						.css('display','block');
+					
+					comment[list[i].group].children('.comment-box.reply').last()
+					.children('.writer-interaction').children('.comment-update').click(function() {
+						
+					}); // click()
+					
 					comment[list[i].group].children('.comment-box.reply').last()
 						.children('.writer-interaction').children('.comment-delete').click(function() {
 							var param = {
