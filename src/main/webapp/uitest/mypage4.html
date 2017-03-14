@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이페이지 업체등록</title>
+<title>마이페이지 이용내역</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +16,11 @@
 <body>
 	<div class="container">
 
-		<div id='header'>
+		<!-- <div id='header'>
 			<img src="bling-logo-tx.png">
 			<h1 style="display: none;">블링블링</h1>
-			<span id='searchmenu-open'>검색</span> <span
-				class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+			<span id='searchmenu-open'>검색</span> 
+			<span	class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 
 			<div id='searchbar'>
 				<input type='text' placeholder="업체/지역/비교 검색 가능합니다">
@@ -36,19 +36,23 @@
 				class="glyphicon glyphicon-headphones" aria-hidden="true"></span> <a
 				href='#' class='header-menu-a'>고객센터</a>
 		</div>
-
+ -->
 		<div id='header_sub'>
-			<span id='header_sub_event_title'>EVENT</span> <span
-				id='header_sub_event_content'>전 예약자 쿠폰 지급</span> <span
-				id='header_sub_navi'>홈>마이페이지>업체전환</span>
+			<span id='header_sub_event_title'>EVENT</span> 
+			<span id='header_sub_event_content'>전 예약자 쿠폰 지급</span> 
+			<span id='header_sub_navi'>홈>마이페이지>이용내역</span>
 		</div>
 
-		<div id='sidebar'>
-			<span class='sidebar_title'>마이페이지</span> <span class='sidebar_menu'>찜</span>
-			<span class='sidebar_menu'>스탬프</span> <span class='sidebar_menu'>예약내역</span>
-			<span class='sidebar_menu selected'>이용내역</span> <span
-				class='sidebar_menu'>내정보수정</span> <span class='sidebar_menu'>업체전환</span>
-		</div>
+	<div id='sidebar'>
+    <span class='sidebar_title'>마이페이지</span>
+
+    <span class='sidebar_menu' id='menu1'>찜</span>
+    <span class='sidebar_menu' id='menu2'>스탬프</span>
+    <span class='sidebar_menu' id='menu3'>예약내역</span>
+    <span class='sidebar_menu' id='menu4'>이용내역</span>
+    <span class='sidebar_menu' id='menu5'>내정보수정</span>
+    <span class='sidebar_menu selected' id='menu6'>업체전환</span>
+  </div>
 
 		<div id='content'>
 
