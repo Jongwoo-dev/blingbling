@@ -37,7 +37,7 @@ $('#photo').fileupload({
    singleFileUploads: true, // 한 요청에 여러 개의 파일을 전송시키기. 기본은 true.
    autoUpload: true,        // 파일을 추가할 때 자동 업로딩 여부 설정. 기본은 true.
    minFileCount:1,
-   maxFileCount:5,
+   maxFileCount:4,
    disableImageResize: /Android(?!.*Chrome)|Opera/
       .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
       previewMaxWidth: 800,   // 미리보기 이미지 너비
@@ -76,18 +76,28 @@ $('#photo').fileupload({
       } 
 });
 
-
-
 	
 // add처리
 	$('.fullwidthbtn').click(function() {
+		
+		 if($("#check1").is(":checked") == false){
+             swal("안내","모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.","error");
+             return;
+         }else if($("#check2").is(":checked") == false){
+        	 swal("안내","모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.","error");
+             return;
+         }else if($("#check3").is(":checked") == false){
+        	 swal("안내","모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다.","error");
+             return;
+         }
+
 		var param = {
-				memberNo : member.memberNo,
-				corporateType : $('#corporate-prefix').val(),
-				corporateName: $('#company_name').val(),
-				corporateRegistrationNumber: $('#company_number').val(),
-				corporateConfirm: 'false',
-				photoList: arrayToJson(filenames)
+			memberNo : member.memberNo,
+			corporateType : $('#corporate-prefix').val(),
+			corporateName: $('#company_name').val(),
+			corporateRegistrationNumber: $('#company_number').val(),
+			corporateConfirm: 'false',
+			photoList: arrayToJson(filenames)
 		}
 		console.log(param);
 		$.post('../corporate/add.json', param, function(ajaxResult) {
@@ -95,6 +105,7 @@ $('#photo').fileupload({
 				alert(ajaxResult.data);
 				return;
 			}
+		
 			swal({
 				  title: "안내",
 				  text: "업체전환 신청되었습니다",
@@ -111,6 +122,7 @@ $('#photo').fileupload({
 		}, 'json');
 	});
 });
+
 
 function preview(filenameList) {
 	console.log(filenameList);
