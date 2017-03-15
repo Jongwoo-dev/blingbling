@@ -29,7 +29,13 @@ public class CorporateJsonControl {
   @RequestMapping("/corporate/detail")
   public AjaxResult detail(int memberNo) throws Exception {
     Corporate corporate = corporateService.getDetail(memberNo);
-    
+    /*
+    List<CorpTel> list = corporate.getTelList();
+    System.out.println("------------");
+    for (CorpTel tel : list) {
+      System.out.println("전화번호 : "+tel.getCorporateTel());
+    }
+    */
     if (corporate == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }

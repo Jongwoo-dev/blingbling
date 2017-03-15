@@ -167,13 +167,14 @@ $("#submit-btn").click(function() {
 	/*console.log(JSON.stringify($("input[name=corporateTel]").map(function() {
 	   return this.value;
 	}).get()));*/
+	/*console.log($("input[name=corporateTel]").val());*/
 	var param = {
 			memberNo        : loginMember.memberNo,
 			corporateName   : $("#corporate-name").val(),
 			postNumber      : $("#corporate-postcode").val(),
 			baseAddress     : $("#corporate-address-base").val(),
 			detailAddress   : $("#corporate-address-detail").val(),
-			telList         : arrayToJson($("input[name=corporateTel]")),
+			telList         : jqueryArrayToJson($("input[name=corporateTel]")),
 			additionalInfo  : separateImg($('#infoEditor').summernote('code')),
 			mapLocation     : marker.getPosition().toString(),
 			
@@ -297,9 +298,9 @@ var initInfo = function() {
 		$('#notice').val(corporate.notice);
 		
 		var list = corporate.telList
+		/*console.log(list);*/
 		
 		for (var i = 0; i < list.length; i++) {
-			//console.log(list[i].corporateTel);
 			if (i == 0) {
 				$('input[name=corporateTel]').val(list[i].corporateTel)
 			} else {

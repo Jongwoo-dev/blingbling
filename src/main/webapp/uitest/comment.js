@@ -1,6 +1,10 @@
 var loginMember;
 var corporateNo;
 
+var commentBox;
+var mainCommentBox;
+var writeBoxContainer;
+
 try {
 	var splitParam = location.href.split('?')[1].split('=');
 	if (splitParam[0] == 'corporateNo') {
@@ -73,42 +77,34 @@ var initInfo = function() {
 					.prepend(commentTemplate(list[i])); 
 				}
 				comment[list[i].group] = $('.comment-list > .comment-box').first();
-				comment[list[i].group].children('.writer-interaction').children('.comment-reply').click(function() {
-					// *사용자 속성 확인해보고 추가할지 없엘지 
-					if ($(this).parent().parent().hasClass('active-write')) {
-						$(this).parent().parent().children('.write-box-container').children().remove();
-						$(this).parent().parent().removeClass('active-write');
+				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-reply').click(function() {
+					commentBox = $(this).parent().parent().parent();
+					writeBoxContainer = commentBox.children('.write-box-container');
+					// 속성 확인해보고 추가할지 없엘지 
+					if (commentBox.hasClass('active-write')) {
+						writeBoxContainer.children().remove();
+						commentBox.removeClass('active-write');
 					} else {
-						$('.write-box-container').children().remove();
-						$('.comment-box').removeClass('active-write');
-						$(this).parent().parent().children('.write-box-container').append(writeTemplate(loginMember));
-						$(this).parent().parent().addClass('active-write');
+						removeWriteBox();
 						
-						writeBtn = $(this).parent().parent().children('.write-box-container').children('.comment-write-box').children('.comment-write-btn');
-						writeBtnRegister(writeBtn, $(this).parent().attr('data-no'), 2, $(this).parent().parent().children('.reply').length+1);
+						// 답글박스 추가
+						writeBoxContainer.append(writeTemplate(loginMember));
+						commentBox.addClass('active-write');
+						
+						
+						writeBtn = writeBoxContainer.children('.comment-write-box').children('.comment-write-btn');
+						writeBtnRegister(writeBtn, $(this).parent().attr('data-no'), 2, commentBox.children('.reply').length+1);
 						
 					}
-					//console.log(comment[list[i].group].children('.comment-box.reply'));//**여기해야함 안됨
-					/*writeBtn = comment[list[i].group].children('.comment-write-btn');
-					writeBtnRegister(writeBtn);*/
-				}) // click()
+				}) // reply_click()
 				
-				comment[list[i].group].children('.writer-interaction').children('.comment-update').click(function() {
-					
-				}); // click()
+				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-update').click(function() {
+					updateComment(this, 1);
+				}); // update_click()
 				
-				comment[list[i].group].children('.writer-interaction').children('.comment-delete').click(function() {
-					var param = {
-							commentNo : $(this).parent().attr('data-no'),
-					}
-					$.post('/blingbling/comment/delete.json', param, function(ajaxResult) {
-						if (ajaxResult.status != 'success') {
-							swal('에러',ajaxResult.data,'error');
-						}
-						/*console.log(ajaxResult);*/
-						initInfo();
-					});
-				}); // click()
+				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-delete').click(function() {
+					deleteComment(this);
+				}); // delete_click()
 			} else {
 				comment[list[i].group].append(replyTemplate(list[i]));
 				if (!list[i].deleted) {
@@ -125,17 +121,8 @@ var initInfo = function() {
 					
 					comment[list[i].group].children('.comment-box.reply').last()
 						.children('.writer-interaction').children('.comment-delete').click(function() {
-							var param = {
-									commentNo : $(this).parent().attr('data-no'),
-							}
-							$.post('/blingbling/comment/delete.json', param, function(ajaxResult) {
-								if (ajaxResult.status != 'success') {
-									swal('에러',ajaxResult.data,'error');
-								}
-								/*console.log(ajaxResult);*/
-								initInfo();
-							});
-					}); // click()
+							deleteComment(this);
+					}); // delete_click()
 				}
 			}
 		}
@@ -143,7 +130,7 @@ var initInfo = function() {
 	});
 }
 
-function writeBtnRegister (jqueryObj, group = 0, level = 1, sequence = 1) {
+function writeBtnRegister(jqueryObj, group = 0, level = 1, sequence = 1) {
 	jqueryObj
 		.attr('data-group', group)
 		.attr('data-level', level)
@@ -169,10 +156,54 @@ function writeBtnRegister (jqueryObj, group = 0, level = 1, sequence = 1) {
 		});
 };
 
-function replyBtnRegister (jqueryObj) {
+function updateComment(domObj, level) {
+	removeWriteBox();
+	
+	commentBox = $(domObj).parent().parent().parent();
+	mainCommentBox = commentBox.children('.main-comment-box');
+	
+	var commentNo = $(domObj).parent().attr('data-no');
+	var commentText = mainCommentBox.children('.comment-content').children('.comment-textline').children('pre').text();
+	/*console.log('코멘트 번호 : ',commentNo,'      내용 : ',commentText);*/
+	var updateTemplate = Handlebars.compile($('#updateBoxTemplate').html());
+	
+	var currentComment = {
+			name        : loginMember.name,
+			commentText : commentText
+	}
+	
+	commentBox.prepend(updateTemplate(currentComment));
+	mainCommentBox.addClass('hidden');
+	
+}
+
+function deleteComment(domObj) {
+	var param = {
+			commentNo : $(domObj).parent().attr('data-no')
+	}
+	$.post('/blingbling/comment/delete.json', param, function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			swal('에러',ajaxResult.data,'error');
+		}
+		/*console.log(ajaxResult);*/
+		initInfo();
+	});
+}
+
+function replyBtnRegister(jqueryObj) {
 	
 }
 
 function userCheck() {
 	
+}
+
+function removeWriteBox() {
+	// 기존 답글박스 삭제
+	$('.write-box-container').children().remove();
+	$('.comment-box').removeClass('active-write');
+	
+	// 기존 수정박스 삭제
+	$('.comment-box').children('.comment-write-box').remove();
+	$('.main-comment-box').removeClass('hidden');
 }

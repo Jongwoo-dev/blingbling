@@ -105,7 +105,18 @@ $('#reservation-submitbtn').click(function() {
 			if (ajaxResult.status != 'success') {
 				swal('에러',ajaxResult.data,'error');
 			}
-			swal('예약성공!',ajaxResult.data,'success');
+			
+			swal({
+				  title: "예약성공",
+				  text: ajaxResult.data,
+				  type: "success",
+				  closeOnConfirm: true
+				},
+				function(){
+					
+				  location.reload();
+			});
+			
 		});
 	});
 	
