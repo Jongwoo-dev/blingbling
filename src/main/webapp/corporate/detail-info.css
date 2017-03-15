@@ -1,0 +1,180 @@
+@CHARSET "UTF-8";
+
+.info-navi-btn {
+	type:button;
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+  height:100%;
+  width:25%;
+  background-color:rgb(158, 158, 158);
+  float:left;
+  border:hidden;	
+}
+
+#board-div {
+	width:100%;
+	float:left;
+}
+#map-div {
+	width:50%; 
+	height:370px;
+	float:right; 
+	border-left:2px solid #e0e0e0;
+}
+
+#show-map-div{
+	margin:15px auto 5px;
+	width:85%;
+	height:280px;
+	background-color:black;
+  display:block;
+	
+}
+
+#view-big{
+  color:white;
+  font-size:1.3em;
+  margin:auto;
+  type:botton;
+  height:50px;
+  width:85%;
+  background-color:rgb(243, 156, 18);
+  border:hidden;
+  display:block;
+}
+
+#info-div-01 {
+	padding-top:10px;
+	width:50%; 
+	height:148px;
+	float:left;
+	border-bottom:2px solid #e0e0e0;
+}
+
+#corp-name-span {
+	margin-left:20px;
+	margin-bottom:6px;
+	font-size:1.8em;
+	font-weight:bold;
+	display:inline-block;
+}
+#favorite-star-span {
+	margin-right:8px;
+	float:right;
+	font-size:2em;
+	color:rgb(127, 127, 127);
+}
+#corp-score-span{
+	margin-left:20px;
+	margin-bottom:6px;
+	color:rgb(41, 128, 185);
+	display:inline-block;
+}
+#corp-addr-span{
+	margin-left:20px;
+	margin-bottom:6px;
+	display:inline-block;
+}
+#addr-copy-btn{
+	width:55px;
+	hight:25px;
+	margin-right:5px;
+	type:button;
+	border:hidden;
+	background-color:rgb(224, 224, 224);
+	float:right;
+	font-size:0.8em;
+	border-radius: 4px;
+}
+#corp-tel-span{
+	margin-left:20px;
+	display:inline-block;
+}
+
+#info-div-02 {
+	padding-top:20px;
+	padding-left:20px;
+	width:50%; 
+	height:148px;
+	float:left; 
+	border-bottom:2px solid #e0e0e0;
+}
+
+#comment-span {
+	line-height:200%;
+	display:block;
+	color:rgb(39, 174, 96);
+	
+}
+#booking-div {
+	 width:50%;
+	 height:74px;
+	 float:left;
+}
+
+#booking-btn{
+	color:white;
+	font-size:1.3em;
+	margin:5px auto;
+	type:button;
+	height:50px;
+	width:85%;
+	background-color:rgb(231, 76, 60);
+	border:hidden;
+	display:block;
+}
+
+
+#navi-div {
+	color:white;
+  font-size:1.3em;
+	width:100%;
+	height:70px;
+	float:left;
+	background-color:rgb(158, 158, 158);
+}
+
+#navi-header-div {
+  font-size:1.1em;
+	border-bottom:2px solid #e0e0e0;
+	width:100%; 
+	height:40px;
+	float:left;
+	background-color:rgba(224, 224, 224, 0.56);
+	vertical-align: middle;
+	padding-left:20px;
+	padding-top:10px;
+	display: block;
+}
+
+#info-cont-div {
+	padding:20px;
+  width:100%; 
+  height:500px;
+  float:left; 
+  background-color:rgba(224, 224, 224, 0.56);
+}
+
+span {
+	cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
