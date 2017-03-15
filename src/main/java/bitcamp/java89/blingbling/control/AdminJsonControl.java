@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.blingbling.domain.Admin;
+import bitcamp.java89.blingbling.domain.Corporate;
 import bitcamp.java89.blingbling.service.AdminService;
+import bitcamp.java89.blingbling.service.CorporateService;
 
 @RestController
 public class AdminJsonControl {
   @Autowired ServletContext sc;
   
   @Autowired AdminService adminService;
+  @Autowired CorporateService corporateService;
 
   @RequestMapping("/admin/list")
   public AjaxResult list(String category) throws Exception {
@@ -38,16 +41,14 @@ public class AdminJsonControl {
   
  
   @RequestMapping("/admin/detail")
-  public AjaxResult detail(int serviceCenterNo) throws Exception {
-    Admin admin = adminService.getDetail(serviceCenterNo);
+  public AjaxResult detail(int memberNo) throws Exception {
+    Corporate corporate = corporateService.getDetail(memberNo);
     
-    if (admin == null) {
+    if (corporate == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }
 
-    admin.setPostedDate((admin.getPostedDate().split(" ")[0]));
-  
-    return new AjaxResult(AjaxResult.SUCCESS, admin);
+    return new AjaxResult(AjaxResult.SUCCESS, corporate);
   }
  
   @RequestMapping("/admin/add")

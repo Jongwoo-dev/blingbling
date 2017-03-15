@@ -14,6 +14,7 @@
 	margin: 0 0 0 50px;
 	padding: 20px;
 	border: 1px solid #ccc;
+	display: none;
 	
 }
 
@@ -35,9 +36,22 @@
 	cursor: pointer;
 }
 
+.comment-box.reply .writer-interaction {
+	margin-right: 0;
+}
+
 .comment-content {
 	display: inline-block;
 	padding-left: 10px;
+}
+
+.deleted-comment {
+	font-style: italic;
+	color: rgb(158, 158, 158);
+}
+
+.deleted {
+	display: none;
 }
 
 .writer-name {
@@ -87,4 +101,8 @@
 	border: 0;
 	padding: 0 0 50px 0;
 	
+}
+
+.write-box-container {
+	margin: 0 0 0 50px;
 }

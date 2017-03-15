@@ -8,7 +8,7 @@ if (serviceCenterNo > 0) {
 } 
 
 		//학생 목록 가져와서 tr 태그를 만들어 붙인다.
-	$.getJSON('detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
+	$.getJSON('../serviceCenter/detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
 	  var status = ajaxResult.status;
 	  
 	  if (status != "success") {

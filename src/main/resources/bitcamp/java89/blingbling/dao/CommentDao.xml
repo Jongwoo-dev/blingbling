@@ -34,7 +34,8 @@
       rc.level,
       rc.seq,
       rc.cont,
-      rc_rdt
+      rc.rc_rdt,
+      rc.del
     from rv_cmt rc
       left outer join memb m on m.mno=rc.mno
     where rc.msno=#{value}
@@ -50,42 +51,47 @@
       rc.level,
       rc.seq,
       rc.cont,
-      rc.rc_rdt
+      rc.rc_rdt,
+      rc.del
     from rv_cmt rc
       left outer join memb m on m.mno=rc.mno
     where rc.rvno=#{value}
   </select>
   
 
-  <insert id="insert" parameterType="comment">
-    insert into rv_cmt(rvno, msno, mno, grup, level, seq, cont, rc_rdt)
+  <insert id="insert" parameterType="comment"
+       useGeneratedKeys="true" keyColumn="rvno" keyProperty="commentNo">
+    insert into rv_cmt(msno, mno, grup, level, seq, cont, rc_rdt)
     values(
-      #{commentNo},
       #{corporateNo},
       #{memberNo},
       #{group},
       #{level},
       #{sequence},
       #{contents},
-      #{registrationDate})
+      now())
   </insert>
   
   
   <update id="update" parameterType="comment">
     update rv_cmt rc set 
-      rc.rvno = #{commentNo}, 
-      rc.msno = #{corporateNo}, 
-      rc.mno = #{memberNo},
-      rc.grup = #{group}, 
-      rc.level = #{level}, 
-      rc.seq = #{sequence}, 
-      rc.cont = #{contents}, 
-      rc.rc_rdt = #{registrationDate)
-     where rc.rvno = #{commentNo}
+      rc.cont=#{contents}, 
+      rc.rc_rdt=now()
+     where rc.rvno=#{commentNo}
   </update>
   
+  <update id="updateGroup" parameterType="comment">
+    update rv_cmt rc set 
+      rc.grup=#{group} 
+     where rc.rvno=#{commentNo}
+  </update>
+  
+  
   <delete id="delete" parameterType="int">
-    delete from rv_cmt where rvno=#{value}
+    <!-- delete from rv_cmt where rvno=#{value} -->
+    update rv_cmt rc set
+      rc.del='1'
+    where rc.rvno=#{value}
   </delete>
   
 </mapper>

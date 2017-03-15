@@ -9,7 +9,7 @@ if (serviceCenterNo > 0) {
 } 
 
 //디테일 처리
-$.getJSON('detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
+$.getJSON('../serviceCenter/detail.json?serviceCenterNo=' + serviceCenterNo, function(ajaxResult) {
   var status = ajaxResult.status;
   
   if (status != "success") {

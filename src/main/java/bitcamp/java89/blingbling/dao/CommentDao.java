@@ -10,5 +10,6 @@ public interface CommentDao {
   int insert(Comment comment) throws Exception;
   Comment getOne(int commentNo) throws Exception;
   int update(Comment comment) throws Exception;
+  int updateGroup(Comment comment) throws Exception;
   int delete(int commentNo) throws Exception;
 }

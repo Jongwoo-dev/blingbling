@@ -40,14 +40,21 @@ public class CorporateServiceImpl implements CorporateService {
 
   @Override
   public int add(Corporate corporate) throws Exception {
-    return corporateDao.insert(corporate);
+    int count = corporateDao.insert(corporate);
+    corporateDao.insertPhoto(corporate);
+    return count;
   }
 
   @Override
   public int delete(int no) throws Exception {
-    return corporateDao.delete(no);
-  }
+    if (corporateDao.countByNo(no) == 0) {
+    }
+    corporateDao.deletePhoto(no);
+    int count = corporateDao.delete(no);
 
+    return count;
+  }
+  
   @Override
   public int update(Corporate corporate) throws Exception {
     int count = corporateDao.update(corporate);
@@ -74,6 +81,11 @@ public class CorporateServiceImpl implements CorporateService {
     return corporateDao.updatePriceTime(corporate);
   }
 
+  @Override
+  public int updateCorporateConfirm(int memberNo) throws Exception {
+    return corporateDao.updateCorporateConfirm(memberNo);
+  }
+  
 }
 
 

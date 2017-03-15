@@ -2,8 +2,6 @@ package bitcamp.java89.blingbling.control;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +11,7 @@ import bitcamp.java89.blingbling.service.CorporateService;
 
 @RestController
 public class CorporateJsonControl {
-  @Autowired ServletContext sc;
-  
+
   @Autowired CorporateService corporateService;
 
   @RequestMapping("/corporate/conversionlist")
@@ -103,6 +100,17 @@ public class CorporateJsonControl {
   @RequestMapping("/corporate/updatePriceTime")
   public AjaxResult updatePriceTime(Corporate corporate) throws Exception {
     int count = corporateService.updatePriceTime(corporate);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+  }
+
+  @RequestMapping("/corporate/updateCorporateConfirm")
+  public AjaxResult updateCorporateConfirm(int memberNo) throws Exception {
+    int count = corporateService.updateCorporateConfirm(memberNo);
     
     if (count == 0) {
       return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
