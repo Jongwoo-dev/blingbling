@@ -27,6 +27,19 @@
     <result column="price"       property="price"/>
   </resultMap>
   
+  <resultMap type="prepurchase" id="member-booking-map">
+    <id     column="bno"     property="prepurchaseNo"/>
+    <result column="mno"       property="memberNo"/>
+    <result column="ino"      property="itemNo"/>
+    <result column="sctime"        property="serviceTime"/>
+    <result column="rp"       property="personnel"/>
+    <result column="cname"       property="corporateName"/>
+    
+    <result column="mname"       property="userName"/>
+    <result column="iname"       property="itemName"/>
+    <result column="price"       property="price"/>
+  </resultMap>
+  
   <select id="getBookingList" parameterType="int" resultMap="booking-map">
 		  select
 		    m.name as mname,
@@ -44,6 +57,24 @@
 		    using(mno)
 		  where i.msno=#{memberNo}
   </select>
+  
+  <select id="getMemberBookingList" parameterType="int" resultMap="member-booking-map">
+  select
+    m.name as mname,
+    i.ino,
+    i.name as iname,
+    i.price,
+    b.bno,
+    b.sctime,
+    b.rp
+  from
+    buy b
+  join item i
+   using(ino)
+   join memb_store ms on ms.msno = i.msno 
+   join memb m on m.mno = ms.msno
+  where b.mno=#{memberNo}
+  </select>    
   
   <select id="getList" resultMap="prepurchase-map">
     select

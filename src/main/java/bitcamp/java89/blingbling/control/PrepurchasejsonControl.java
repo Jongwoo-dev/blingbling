@@ -22,6 +22,12 @@ public class PrepurchasejsonControl {
     List<Prepurchase> list = prepurchaseService.getBookingList(memberNo);
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
+
+  @RequestMapping("/prepurchase/memberbookinglist")
+  public AjaxResult memberbookinglist(int memberNo) throws Exception {
+    List<Prepurchase> list = prepurchaseService.getMemberBookingList(memberNo);
+    return new AjaxResult(AjaxResult.SUCCESS, list);
+  }
   
   @RequestMapping("/prepurchase/list")
   public AjaxResult list() throws Exception {

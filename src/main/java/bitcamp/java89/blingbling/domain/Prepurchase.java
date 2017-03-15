@@ -16,11 +16,19 @@ public class Prepurchase implements Serializable {
   String serviceTime; //서비스 받는시간
   int personnel;      //인원
   
+  String corporateName;
   String userName;
   String itemName;
   int price;
  
   
+  
+  public String getCorporateName() {
+    return corporateName;
+  }
+  public void setCorporateName(String corporateName) {
+    this.corporateName = corporateName;
+  }
   public String getUserName() {
     return userName;
   }
