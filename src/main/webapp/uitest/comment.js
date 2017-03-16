@@ -65,7 +65,6 @@ var initInfo = function() {
 			.appendTo(commentContainer);
 		
 		var boxHtml;
-		
 		for (var i in list) {
 			if (list[i].level == 1) {
 				if (list[i].deleted) {
@@ -98,13 +97,16 @@ var initInfo = function() {
 					}
 				}) // reply_click()
 				
-				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-update').click(function() {
-					updateComment(this, 1);
-				}); // update_click()
-				
-				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-delete').click(function() {
-					deleteComment(this);
-				}); // delete_click()
+				if (interactionBtnCheck(comment[list[i].group].children('.main-comment-box').children('.writer-interaction'))) {
+					
+					comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-update').click(function() {
+						updateComment(this, 1);
+					}); // update_click()
+					
+					comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-delete').click(function() {
+						deleteComment(this);
+					}); // delete_click()
+				}
 			} else {
 				comment[list[i].group].append(replyTemplate(list[i]));
 				if (!list[i].deleted) {
@@ -114,15 +116,18 @@ var initInfo = function() {
 					comment[list[i].group].children('.comment-box.reply').last()
 						.css('display','block');
 					
-					comment[list[i].group].children('.comment-box.reply').last()
-					.children('.writer-interaction').children('.comment-update').click(function() {
+					if (interactionBtnCheck(comment[list[i].group].children('.comment-box.reply').last()
+							.children('.writer-interaction'))) {
+						comment[list[i].group].children('.comment-box.reply').last()
+						.children('.writer-interaction').children('.comment-update').click(function() {
+							updateComment(this, 2);
+						}); // update_click()
 						
-					}); // click()
-					
-					comment[list[i].group].children('.comment-box.reply').last()
+						comment[list[i].group].children('.comment-box.reply').last()
 						.children('.writer-interaction').children('.comment-delete').click(function() {
 							deleteComment(this);
-					}); // delete_click()
+						}); // delete_click()
+					}
 				}
 			}
 		}
@@ -160,8 +165,8 @@ function updateComment(domObj, level) {
 	removeWriteBox();
 	
 	commentBox = $(domObj).parent().parent().parent();
-	mainCommentBox = commentBox.children('.main-comment-box');
-	
+	mainCommentBox = $(domObj).parent().parent();
+
 	var commentNo = $(domObj).parent().attr('data-no');
 	var commentText = mainCommentBox.children('.comment-content').children('.comment-textline').children('pre').text();
 	/*console.log('코멘트 번호 : ',commentNo,'      내용 : ',commentText);*/
@@ -172,8 +177,32 @@ function updateComment(domObj, level) {
 			commentText : commentText
 	}
 	
-	commentBox.prepend(updateTemplate(currentComment));
+	if (level == 1) {
+		commentBox.prepend(updateTemplate(currentComment));
+		commentBox.children('.comment-write-box').css('background-color','rgb(244,244,244)');
+	} else if(level == 2) {
+		mainCommentBox.before(updateTemplate(currentComment));
+		commentBox.children('.comment-write-box').css('margin-left','50px').css('background-color','rgb(244,244,244)');;
+	}
+	
 	mainCommentBox.addClass('hidden');
+	
+	$('.comment-cancel-btn').click(function() {
+		removeWriteBox();
+	})
+	
+	$('.comment-update-btn').click(function() {
+		var param = {
+				commentNo : commentNo,
+				contents    : $(this).parent().children('.comment-write-textarea').val()
+		}
+		$.post('/blingbling/comment/update.json', param, function(ajaxResult) {
+			if (ajaxResult.status != 'success') {
+				swal('에러',ajaxResult.data,'error');
+			}
+			initInfo();
+		});
+	})
 	
 }
 
@@ -194,16 +223,26 @@ function replyBtnRegister(jqueryObj) {
 	
 }
 
-function userCheck() {
+function interactionBtnCheck(jqueryObj) {
+	// 로그인한 유저랑 코멘트 쓴 유저가 다르면 삭제
+	if (loginMember.memberNo != jqueryObj.attr('data-writer-no')) {
+		jqueryObj.children('.comment-update').remove();
+		if (!loginMember.administrator) {
+			jqueryObj.children('.comment-delete').remove();
+		}
+		return false;
+	} 
 	
+	return true;
 }
 
 function removeWriteBox() {
 	// 기존 답글박스 삭제
-	$('.write-box-container').children().remove();
+	$('.comment-list').children('.comment-box').children('.write-box-container').children().remove();
 	$('.comment-box').removeClass('active-write');
 	
 	// 기존 수정박스 삭제
-	$('.comment-box').children('.comment-write-box').remove();
+	$('.comment-list').children('.comment-box').children('.comment-write-box').remove();
 	$('.main-comment-box').removeClass('hidden');
+	$('.comment-box').removeClass('hidden');
 }

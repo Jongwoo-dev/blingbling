@@ -58,11 +58,7 @@ public class CommentJsonControl {
   
   @RequestMapping("update")
   public AjaxResult update(Comment comment) throws Exception {
-    /*List<CorpTel> list = corporate.getTelList();
-    for (int i = 0; i < list.size(); i++) {
-      //*전화 목록 넘어오는지 테스트
-      System.out.println(list.get(i).getCorporateTel());
-    }*/
+    
     int count;
     try {
       count = commentService.update(comment);
