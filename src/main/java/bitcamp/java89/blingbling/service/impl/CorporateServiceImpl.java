@@ -1,5 +1,6 @@
 package bitcamp.java89.blingbling.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java89.blingbling.dao.CorporateDao;
 import bitcamp.java89.blingbling.domain.Corporate;
+import bitcamp.java89.blingbling.domain.Stamplog;
 import bitcamp.java89.blingbling.service.CorporateService;
 
 @Service
@@ -40,21 +42,14 @@ public class CorporateServiceImpl implements CorporateService {
 
   @Override
   public int add(Corporate corporate) throws Exception {
-    int count = corporateDao.insert(corporate);
-    corporateDao.insertPhoto(corporate);
-    return count;
+    return corporateDao.insert(corporate);
   }
 
   @Override
   public int delete(int no) throws Exception {
-    if (corporateDao.countByNo(no) == 0) {
-    }
-    corporateDao.deletePhoto(no);
-    int count = corporateDao.delete(no);
-
-    return count;
+    return corporateDao.delete(no);
   }
-  
+
   @Override
   public int update(Corporate corporate) throws Exception {
     int count = corporateDao.update(corporate);
@@ -80,12 +75,11 @@ public class CorporateServiceImpl implements CorporateService {
   public int updatePriceTime(Corporate corporate) throws Exception {
     return corporateDao.updatePriceTime(corporate);
   }
-
   @Override
-  public int updateCorporateConfirm(int memberNo) throws Exception {
-    return corporateDao.updateCorporateConfirm(memberNo);
+  public List<Corporate> searchBybaseAddress(HashMap<String, Object> map) throws Exception {
+    return corporateDao.getListBybaseAddress(map);
   }
-  
+ 
 }
 
 

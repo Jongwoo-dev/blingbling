@@ -98,6 +98,9 @@
 }
 
 .img-card img {
+	height: 208px;
+  width: 293px;
+	
 }
 
 .img-card .caption {

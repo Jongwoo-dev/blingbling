@@ -16,8 +16,8 @@ public class Corporate extends Member {
   
   protected List<CorpTel> telList;
   protected List<Photo> photoList;
-  
-  // 선택
+  protected List<Item> itemList;
+	// 선택
   protected String postNumber;
   protected String baseAddress;
   protected String detailAddress;
@@ -27,7 +27,14 @@ public class Corporate extends Member {
   protected String notice;
   protected String priceTime;
   
-  public String getName() {
+  
+  public List<Item> getItemList() {
+		return itemList;
+	}
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+	public String getName() {
     return name;
   }
   public void setName(String name) {

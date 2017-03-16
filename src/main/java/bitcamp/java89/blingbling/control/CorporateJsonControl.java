@@ -1,6 +1,10 @@
 package bitcamp.java89.blingbling.control;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +15,8 @@ import bitcamp.java89.blingbling.service.CorporateService;
 
 @RestController
 public class CorporateJsonControl {
-
+  @Autowired ServletContext sc;
+  
   @Autowired CorporateService corporateService;
 
   @RequestMapping("/corporate/conversionlist")
@@ -29,13 +34,7 @@ public class CorporateJsonControl {
   @RequestMapping("/corporate/detail")
   public AjaxResult detail(int memberNo) throws Exception {
     Corporate corporate = corporateService.getDetail(memberNo);
-    /*
-    List<CorpTel> list = corporate.getTelList();
-    System.out.println("------------");
-    for (CorpTel tel : list) {
-      System.out.println("전화번호 : "+tel.getCorporateTel());
-    }
-    */
+    
     if (corporate == null) {
       return new AjaxResult(AjaxResult.FAIL, "해당 회원이 없습니다.");
     }
@@ -113,17 +112,28 @@ public class CorporateJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
-
-  @RequestMapping("/corporate/updateCorporateConfirm")
-  public AjaxResult updateCorporateConfirm(int memberNo) throws Exception {
-    int count = corporateService.updateCorporateConfirm(memberNo);
+  @RequestMapping("/corporate/searchBybaseAddress")
+  public AjaxResult searchBybaseAddressList(String baseAddress) throws Exception {
+    String[] tempStr = baseAddress.split(" ");
+    HashMap<String, Object> map = new HashMap<>();
+    ArrayList<String> list = new ArrayList<>();
     
-    if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    for (int i = 1; i < tempStr.length; i++) {
+    	list.add(tempStr[i]);
     }
     
-    return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
+    System.out.println("지역 : " + tempStr[0] + "    세부 : " + list.toString());
+    
+    map.put("addr1", tempStr[0]);
+    map.put("addr2", list);
+    
+    
+  	List<Corporate> searchBybaseAddressList = corporateService.searchBybaseAddress(map);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, searchBybaseAddressList);
   }
+ 
+  
 }
 
 

@@ -68,51 +68,7 @@ stylize any heading tags withing white-panel below
 			<hr class='content_hr' color='#e0e0e0'>
 			<div id='content_main'>
 
-					<div class="img-card">
-						<img src="favor1.jpg">
-						<div class="caption">
-							<p>피부관리 강남점</p>
-							<div class="description">피부미용:50000원
-							</div>
-							<div class="description">네일아트:50000원
-							</div>
-							<div class="description">전신미용:50000원
-							</div>
-						</div>
-					</div>
-						<div class="img-card">
-						<img src="favor1.jpg">
-						<div class="caption">
-							<p>Lorem Ipsum</p>
-							<div class="description">Lorem ipsum dolor sit amet,
-								consectetur adipiscing elit. In ut porttitor elit. Proin a
-								placerat metus, nec tincidunt urna. Aliquam eleifend facilisis
-								accumsan.
-							</div>
-						</div>
-					</div>
-						<div class="img-card">
-						<img src="favor1.jpg">
-						<div class="caption">
-							<p>Lorem Ipsum</p>
-							<div class="description">Lorem ipsum dolor sit amet,
-								consectetur adipiscing elit. In ut porttitor elit. Proin a
-								placerat metus, nec tincidunt urna. Aliquam eleifend facilisis
-								accumsan.
-							</div>
-						</div>
-					</div>
-						<div class="img-card">
-						<img src="favor1.jpg">
-						<div class="caption">
-							<p>Lorem Ipsum</p>
-							<div class="description">Lorem ipsum dolor sit amet,
-								consectetur adipiscing elit. In ut porttitor elit. Proin a
-								placerat metus, nec tincidunt urna. Aliquam eleifend facilisis
-								accumsan.
-							</div>
-						</div>
-					</div>
+					
 					
 					
 					
@@ -120,8 +76,28 @@ stylize any heading tags withing white-panel below
 	 </div>
 </div>
 			<div id='footer' class="container-fluid"></div>
+			
+			<script id="corTemplate" type="text/x-handlebars-template">
+      {{#each list}}
+            <div class="img-card">
+						<img src="../upload/{{photoList.[0].filePath}}">
+						<div class="caption">
+							<p>{{corporateName}}</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+			
+			{{/each}}
+			</script>
 
-			<script src="../node_modules/jquery/dist/jquery.js"></script>
+
+      <script src="../node_modules/handlebars/dist/handlebars.js"></script>
+      <script src="../node_modules/jquery/dist/jquery.js"></script>
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 			<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 			<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
