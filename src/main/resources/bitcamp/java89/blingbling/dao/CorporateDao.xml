@@ -35,13 +35,20 @@
       <id     column="mpno"   property="no"/>
       <result column="path" property="filePath"/>
     </collection>
+    
+    <collection property="itemList" ofType="item">
+      <id     column="ino"   property="itemNo"/>
+      <result column="iname" property="name"/>
+      <result column="price" property="price"/>
+      <result column="utime" property="usingTime"/>
+    </collection>
 
   </resultMap>
   
   <select id="getConversionList" resultMap="corporate-map">
     select
+      memb.mno,
       memb.name,
-      memb_store.msno,
       memb_store.cname,
       memb_store.ctype
     from memb_store
@@ -134,14 +141,47 @@
       ms.notice,
       ms.pr_ti,
       mt.mtno,
-      mt.mstel,
-      mp.mpno,
-      mp.path
+      mt.mstel
     from  memb m
       inner join memb_store ms on ms.msno=m.mno
       left outer join ms_tel mt on mt.msno=m.mno
-      left outer join ms_phot mp on mp.msno=m.mno
     where m.mno=#{value}
+  </select>
+  <select id="getListBybaseAddress" parameterType="map" resultMap="corporate-map">
+    select
+      ms.msno,
+      m.name, 
+      m.email, 
+      m.tel, 
+      m.chck, 
+      m.mgr,
+      ms.crno,
+      ms.cachk,
+      ms.cname,
+      ms.ctype,
+      ms.pst_no,
+      ms.bas_adr,
+      ms.det_adr,
+      ms.map_loc,
+      ms.detail,
+      ms.minfo,
+      ms.notice,
+      ms.pr_ti,
+      mp.mpno,
+      mp.path,
+      it.ino,
+      it.name as iname,
+      it.price,
+      it.utime
+    from  memb m
+      inner join memb_store ms on ms.msno=m.mno
+      left outer join ms_phot mp on mp.msno=m.mno
+      left outer join item it on it.msno=mp.msno
+      where ms.bas_adr like concat('%',#{addr1},'%') and 
+      <foreach collection = "addr2" item="value" open="(" close=")" separator="or">
+      	ms.bas_adr like concat('%',#{value},'%')
+      </foreach>
+       
   </select>
   
   <select id="getOneByEmail" parameterType="string" resultMap="corporate-map">
@@ -196,10 +236,10 @@
   </insert> 
   
   <insert id="insertPhoto" parameterType="corporate">
-    insert into ms_phot(msno,path) 
+    insert into ms_phot(mpno,path) 
     values
     <foreach collection="photoList" item="photo" separator=",">
-      (#{memberNo}, #{photo.filePath})
+      (#{memberNo}, #{photo.filepath})
     </foreach>
   </insert> 
   
@@ -226,12 +266,6 @@
       ms.detail=#{detail}
     where msno=#{memberNo}
   </update>
-
-  <update id="updateCorporateConfirm" parameterType="int">
-    update memb_store ms set
-      ms.cachk = '1'
-    where ms.msno=#{memberNo}
-  </update>
   
   <update id="updateNotice" parameterType="corporate">
     update memb_store ms set
@@ -253,10 +287,6 @@
   
   <delete id="deleteTel" parameterType="int">
     delete from ms_tel where msno=#{value}
-  </delete>
-
-  <delete id="deletePhoto" parameterType="int">
-    delete from ms_phot where msno=#{value}
   </delete>
 </mapper>
 

@@ -20,12 +20,12 @@ $.getJSON('list.json?category=공지사항', function(ajaxResult) {
   	location.href = 'admin-notice-view.html?serviceCenterNo=' + $(this).attr("data-no");
   });
 });
-/*
-$('#new-btn').click(function(event) {
-	event.preventDefault(); 
-	location.href = 'view.html';
+
+
+$('.btn-lg').click(function(event) {
+	location.href = 'admin-notice-create.html';
 });
-*/
+
   
 
 
