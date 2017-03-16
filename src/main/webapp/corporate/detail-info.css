@@ -1,6 +1,11 @@
 @CHARSET "UTF-8";
 
+body {
+	outline:none;
+}
+
 .info-navi-btn {
+	outline:none;
 	type:button;
   display:table-cell;
   vertical-align:middle;
@@ -60,6 +65,7 @@
 	display:inline-block;
 }
 #favorite-star-span {
+	cursor: pointer;
 	margin-right:8px;
 	float:right;
 	font-size:2em;
@@ -127,6 +133,7 @@
 
 
 #navi-div {
+	outline:none;
 	color:white;
   font-size:1.3em;
 	width:100%;

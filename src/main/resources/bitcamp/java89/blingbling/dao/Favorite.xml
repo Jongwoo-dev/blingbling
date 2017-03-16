@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.StampDao">
+
+  <resultMap type="favorite" id="favorite-map">
+    <id     column="mno"     property="memberNo"/>
+    <id     column="msno"     property="memberStoreNo"/>
+  </resultMap>
+  
+  <select id="getListBymember"  parameterType="int" resultMap="favorite-map">
+    select
+      s.mno,
+      s.msno,
+      s.cnt,
+      m.cname,
+      max(sb.sb_cnt) as max_cnt
+    from stmp s 
+    left outer join memb_store m on s.msno=m.msno 
+    left outer join stmp_bnf sb on s.msno=sb.msno 
+    where s.mno=#{memberNo}
+    group by s.mno, s.msno
+  </select>
+  
+  <select id="getOne" parameterType="map" resultMap="stamp-map">
+   select
+      mno,
+      msno,
+      cnt
+    from stmp
+    where mno=#{memberNo} and msno=#{memberStoreNo}
+  </select>
+
+  <insert id="insert" parameterType="favor">
+    insert into favor(mno, msno)
+    values(
+      #{memberNo},
+      #{memberStoreNo})
+  </insert>
+  
+  <delete id="delete" parameterType="map">
+    delete from stmp where mno=#{value} and msno=#{value}
+  </delete>
+  
+ 
+  
+</mapper>
+
+
+
+
+
+
+
