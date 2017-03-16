@@ -59,16 +59,19 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 $(function() {
 	  $( "#datepicker" ).datepicker({
 	        showOn: "both", 
-	        buttonImage: "calendar.png", 
-	        buttonImageOnly: true 
-	  });
+	        buttonImage: "calendar.png",
+	        buttonImageOnly: true, 
+	        dateFormat: "yy-mm-dd"
+	   });
 	});
 
 $(function() {
     $( "#datepicker2" ).datepicker({
           showOn: "both", 
-          buttonImage: "calendar.png", 
-          buttonImageOnly: true 
+          buttonImage: "calendar.png",
+          buttonImageOnly: true,
+          dateFormat: "yy-mm-dd"
     });
   });
+
 
