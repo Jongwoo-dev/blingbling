@@ -23,7 +23,7 @@
 	border-left:2px solid #e0e0e0;
 }
 
-#show-map-div{
+.show-map-div{
 	margin:15px auto 5px;
 	width:85%;
 	height:280px;
@@ -146,6 +146,11 @@
 	padding-left:20px;
 	padding-top:10px;
 	display: block;
+}
+
+.navi-selected {
+	background-color: rgb(94, 94, 94);
+	
 }
 
 #info-cont-div {
