@@ -315,6 +315,9 @@ var initInfo = function() {
 
 
 /*사이드바 링크*/
+$('#sb-basicinfo').click(function(){
+	location.href='basicinfo.html';
+})
 $('#sb-itemManage').click(function(){
 	location.href='itemManage.html';
 })

@@ -17,10 +17,10 @@ function separateImg(htmlText) {
 			resultHTML += ' src=' + srcSplit[1];
 		} else {
 			// src 속성에 '/upload/'가 없으면 dataURL이므로 변환 후 붙임
-			endImgIndex = srcSplit[1].indexOf('data-filename') - 2;
+			endImgIndex = srcSplit[1].indexOf('" ');
 			uploadImage(dataURItoBlob(srcSplit[1].substring(startImgIndex, endImgIndex)));
 			/*console.log(i,'번째 파일이름 : ',filename);*/
-			resultHTML += ' src="/blingbling/upload/'+ filename + '"' + srcSplit[1].substring(endImgIndex+1);
+			resultHTML += ' src="/blingbling/upload/'+ filename + '" ' + srcSplit[1].substring(endImgIndex+1);
 		}
 		/*console.log(resultHTML);*/
 	}
@@ -30,6 +30,7 @@ function separateImg(htmlText) {
 // URL인코딩->바이너리 데이터
 function dataURItoBlob(dataURI) {
   // convert base64/URLEncoded data component to raw binary data held in a string
+	//console.log(dataURI);
   var byteString;
   if (dataURI.split(',')[0].indexOf('base64') >= 0) {
       byteString = atob(dataURI.split(',')[1]);

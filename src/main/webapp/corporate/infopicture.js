@@ -71,6 +71,9 @@ $('#submit-btn').click(function() {
 })
 
 /*사이드바 링크*/
+$('#sb-basicinfo').click(function(){
+	location.href='basicinfo.html';
+})
 $('#sb-itemManage').click(function(){
 	location.href='itemManage.html';
 })
@@ -82,4 +85,7 @@ $('#sb-infopicture').click(function(){
 })
 $('#sb-notice').click(function(){
 	location.href='notice.html';
+})
+$('#sb-pricetime').click(function(){
+	location.href='pricetime.html';
 })

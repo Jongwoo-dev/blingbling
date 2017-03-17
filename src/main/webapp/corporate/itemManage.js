@@ -109,6 +109,18 @@ $(function() {
 $('#sb-basicinfo').click(function(){
 	location.href='basicinfo.html';
 })
+$('#sb-itemManage').click(function(){
+	location.href='itemManage.html';
+})
 $('#sb-bookingManage').click(function(){
 	location.href='bookingManage.html';
+})
+$('#sb-infopicture').click(function(){
+	location.href='infopicture.html';
+})
+$('#sb-notice').click(function(){
+	location.href='notice.html';
+})
+$('#sb-pricetime').click(function(){
+	location.href='pricetime.html';
 })
