@@ -75,6 +75,14 @@ body > .container {
   color: #333333;
 }
 
+.login-div {
+	display: inline;
+}
+
+#login-name-div {
+	margin-right: 5px;
+}
+
 #searchmenu-open {
   font-size: 1.5em; 
   margin-left: 20px;

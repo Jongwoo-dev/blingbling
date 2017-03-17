@@ -122,7 +122,6 @@ public class CorporateJsonControl {
     	list.add(tempStr[i]);
     }
     
-    System.out.println("지역 : " + tempStr[0] + "    세부 : " + list.toString());
     
     map.put("addr1", tempStr[0]);
     map.put("addr2", list);

@@ -5,12 +5,18 @@ import java.io.Serializable;
 public class Member implements Serializable {
   private static final long serialVersionUID = 1L;
   
+  public static final String USER = "user";
+  public static final String CEO = "ceo";
+  public static final String ADMIN = "admin";
+  
   protected int memberNo;
   protected String name;
   protected String email;
   protected String tel;
   protected boolean confirmTel;
   protected boolean administrator;
+  
+  protected String type;
   
   
   public int getMemberNo() {
@@ -48,5 +54,11 @@ public class Member implements Serializable {
   }
   public void setAdministrator(boolean administrator) {
     this.administrator = administrator;
+  }
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
 }

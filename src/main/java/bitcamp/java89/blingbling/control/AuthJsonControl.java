@@ -43,6 +43,7 @@ public class AuthJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
+  
 }
 
 
