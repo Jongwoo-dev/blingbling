@@ -6,8 +6,10 @@ var filename;
 var memberNo = 5;
 
 $('#favorite-star-span').click(function(){
-	$(this).addClass('glyphicon glyphicon-star');
+	$(this).removeClass('glyphicon-star-empty');
+	$(this).addClass('glyphicon-star');
 });
+
 
 function initMap() {
 	  var currentLatLng;
