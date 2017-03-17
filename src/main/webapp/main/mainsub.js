@@ -48,7 +48,7 @@ $.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function
 	var list = ajaxResult.data;
 	var main = $('#content_main');
 	var template = Handlebars.compile($('#corTemplate').html());
-	console.log(list);
+	//console.log(list);
 
 	main.html(template({"list": list}));
 	
@@ -75,7 +75,7 @@ $('#content-headersub span').click(function() {
 		var list = ajaxResult.data;
 		var main = $('#content_main');
 		var template = Handlebars.compile($('#corTemplate').html());
-		console.log(list);
+		//console.log(list);
 
 		main.html(template({"list": list}));
 		
@@ -433,7 +433,7 @@ $('#btn_category button').click(function() {
 		var list = ajaxResult.data;
 		var main = $('#content_main');
 		var template = Handlebars.compile($('#corTemplate').html());
-		console.log(list);
+		//console.log(list);
 
 		main.html(template({"list": list}));
 		
@@ -460,7 +460,7 @@ $('#btn_category button').click(function() {
 			var list = ajaxResult.data;
 			var main = $('#content_main');
 			var template = Handlebars.compile($('#corTemplate').html());
-			console.log(list);
+			//console.log(list);
 
 			main.html(template({"list": list}));
 			
