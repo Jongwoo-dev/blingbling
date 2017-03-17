@@ -45,7 +45,7 @@
     select *
     from buy 
     where sctime >= #{startTime}
-    and sctime < #{endTime}
+    and sctime <= #{endTime}
     and mno=#{memberNo}
     
     ]]>
