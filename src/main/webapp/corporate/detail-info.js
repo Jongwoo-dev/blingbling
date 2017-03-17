@@ -106,7 +106,7 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 			$('button').removeClass('navi-selected');
 			$(this).addClass('navi-selected');
 			$('#navi-header-div').text('공지사항');
-			$('#info-cont-div').text(corporate.notice);
+			$('#info-cont-div').html(corporate.notice);
 		});
 		
 		$('#review-btn').click(function() {
