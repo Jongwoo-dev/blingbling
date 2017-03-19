@@ -1,5 +1,6 @@
 package bitcamp.java89.blingbling.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,16 @@ public class PrepurchaseServiceImpl implements PrepurchaseService {
   @Override
   public List<Prepurchase> getMemberBookingList(int memberNo) throws Exception {
     return prepurchaseDao.getMemberBookingList(memberNo);
+  }
+  
+  @Override
+  public List<Prepurchase> getCalenderTime(String startTime,String endTime,int memberNo) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startTime", startTime);
+    paramMap.put("endTime", endTime);
+    paramMap.put("memberNo", memberNo);
+    
+    return prepurchaseDao.getCalenderTime(paramMap);
   }
   
   @Override
