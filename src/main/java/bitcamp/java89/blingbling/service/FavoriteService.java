@@ -8,7 +8,7 @@ public interface FavoriteService {
   List<Favorite> getList(int memberNo) throws Exception;
   int add(Favorite favorite) throws Exception;
   int delete(Favorite favorite) throws Exception;
-  
+  int count(Favorite favorite) throws Exception;
 }
 
 

@@ -4,10 +4,27 @@ var infowindow;
 var loginMember;
 var filename;
 var memberNo = 5;
+var memberStoreNo = 5; 
+
 
 $('#favorite-star-span').click(function(){
-	$(this).removeClass('glyphicon-star-empty');
-	$(this).addClass('glyphicon-star');
+	var starBtn = $(this);
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		var data = ajaxResult.data;
+		memberNo = data.memberNo;
+		console.log(memberNo);
+
+		$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+			if (ajaxResult.status = 'success') {
+				console.log(ajaxResult.data);
+				alert('실패');
+				return;
+			}
+			starBtn.removeClass('glyphicon-star-empty');
+			starBtn.addClass('glyphicon-star');
+		});
+		
+	});
 });
 
 
@@ -76,7 +93,7 @@ function initMap() {
 
 $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) {
 	if (ajaxResult.status != 'success') {
-		alert('업체가 아닙니다.');
+		swal('경고',ajaxResult.data,'warning');
 		return;
 	}
 	var corporate = ajaxResult.data;
@@ -262,5 +279,4 @@ $('#infoEditor').summernote({
       }
     }
 });
-
 */

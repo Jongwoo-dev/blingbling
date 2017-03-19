@@ -23,10 +23,10 @@ public class FavoriteJsonControl{
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
+  
   @RequestMapping("/favorite/add")
   public AjaxResult add(Favorite favorite) throws Exception {
   	favoriteService.add(favorite);
-
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
@@ -37,6 +37,15 @@ public class FavoriteJsonControl{
       return new AjaxResult(AjaxResult.FAIL, "해당 즐겨찾기가 없습니다.");
     }
     return new AjaxResult(AjaxResult.SUCCESS, "삭제 성공입니다.");
+  }
+  
+  @RequestMapping("/favorite/count")
+  public AjaxResult count(Favorite favorite) throws Exception {
+    int count = favoriteService.count(favorite);
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL,"No data");
+    }
+    return new AjaxResult(AjaxResult.SUCCESS, "data exist");
   }
  
 }
