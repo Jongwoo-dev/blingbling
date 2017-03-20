@@ -6,24 +6,51 @@ var filename;
 var memberNo = 5;
 var memberStoreNo = 5; 
 
+$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	//로그인 확인
+	if(ajaxResult.status == 'success') {
+		var data = ajaxResult.data;
+		memberNo = data.memberNo;
+
+		$.getJSON('../favorite/count.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+			console.log(memberNo);
+			var count = ajaxResult.data;
+				if (count > 0) {
+					$('#favorite-star-span').removeClass('glyphicon-star-empty');
+					$('#favorite-star-span').addClass('glyphicon-star');
+				} return;
+		});
+	} else {
+		return	//비로그인 일시 '별버튼' 그대로
+	}
+});
 
 $('#favorite-star-span').click(function(){
 	var starBtn = $(this);
 	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		var status;
 		var data = ajaxResult.data;
 		memberNo = data.memberNo;
-		console.log(memberNo);
-
-		$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
-			if (ajaxResult.status = 'success') {
-				console.log(ajaxResult.data);
-				alert('실패');
-				return;
-			}
-			starBtn.removeClass('glyphicon-star-empty');
-			starBtn.addClass('glyphicon-star');
-		});
-		
+		console.log('memberNo=' +memberNo);
+		if(starBtn.hasClass('glyphicon-star-empty')) {
+			$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					console.log(ajaxResult.data);
+					return;
+				}
+				starBtn.removeClass('glyphicon-star-empty');
+				starBtn.addClass('glyphicon-star');
+			});
+		} else if(starBtn.hasClass('glyphicon-star')) {
+			$.getJSON('../favorite/delete.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					console.log(ajaxResult.data);
+					return;
+				}
+				starBtn.removeClass('glyphicon-star');
+				starBtn.addClass('glyphicon-star-empty');
+			});
+		}
 	});
 });
 
@@ -139,7 +166,6 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 				initMarker(corporate.mapLocation);
 			}
 		}
-		
 /*
 	
 	$('#infoEditor').summernote('code', corporate.additionalInfo)

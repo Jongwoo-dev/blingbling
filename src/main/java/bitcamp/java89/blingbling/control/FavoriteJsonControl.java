@@ -26,7 +26,11 @@ public class FavoriteJsonControl{
   
   @RequestMapping("/favorite/add")
   public AjaxResult add(Favorite favorite) throws Exception {
-  	favoriteService.add(favorite);
+    try {
+      favoriteService.add(favorite);
+    } catch (Exception e) {
+      return new AjaxResult(AjaxResult.FAIL, e.getMessage());
+    }
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");
   }
   
@@ -43,9 +47,9 @@ public class FavoriteJsonControl{
   public AjaxResult count(Favorite favorite) throws Exception {
     int count = favoriteService.count(favorite);
     if (count == 0) {
-      return new AjaxResult(AjaxResult.FAIL,"No data");
+      return new AjaxResult(AjaxResult.FAIL, count);
     }
-    return new AjaxResult(AjaxResult.SUCCESS, "data exist");
+    return new AjaxResult(AjaxResult.SUCCESS, count);
   }
  
 }

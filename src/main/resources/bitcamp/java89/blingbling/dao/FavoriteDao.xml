@@ -18,10 +18,10 @@
   
   <select id="getList"  parameterType="int" resultMap="favorite-map">
     select
-      mno,
-      msno
-    from favor 
-    where mno=#{memberNo}
+      f.mno,
+      f.msno
+    from favor f 
+    where f.mno=#{value}
   </select>
 
   <insert id="insert" parameterType="favorite">
@@ -34,7 +34,6 @@
   <delete id="delete" parameterType="favorite">
     delete from favor where mno=#{memberNo} and msno=#{memberStoreNo}
   </delete>
-  
  
   
 </mapper>
