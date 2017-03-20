@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>블링블링</title>
+<link rel="stylesheet"
+	href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"
+	href="http://cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="mainsearch.css">
+
+
+
+
+<style>
+
+/*
+stylize any heading tags withing white-panel below
+*/
+</style>
+</head>
+<body>
+	<div class="container">
+		<div id='header'></div>
+
+		<div id='header_sub'>
+			<span id='header_sub_event_title'>EVENT</span> <span
+				id='header_sub_event_content'>전 예약자 쿠폰 지급</span> <span
+				id='header_sub_navi'> <a href='#'>홈</a> > <a href='#'>검색</a>
+				> <a href='#'>키워드 검색</a>
+			</span>
+		</div>
+		<div id=content>
+		<div id = contentsearchtitle>
+	  <span>서울 안산</span>
+		
+		</div>
+			
+
+			<div id=contentsearchtitlesub>
+			
+			<span id = titlenum>10</span> <span>개 업체</span>
+			
+
+			</div>
+			
+			
+			<div id='content_main'>
+			 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+					
+					 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+					 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+					 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+					 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+					 <div class="img-card">
+						<img src="../mypage/favor1.jpg">
+						<div class="caption">
+							<p>강남</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+
+					
+					
+					
+					
+			</div>
+	 </div>
+</div>
+			<div id='footer' class="container-fluid"></div>
+			
+			<script id="corTemplate" type="text/x-handlebars-template">
+      {{#each list}}
+            <div class="img-card">
+						<img src="../upload/{{photoList.[0].filePath}}">
+						<div class="caption">
+							<p>{{corporateName}}</p>
+							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							</div>
+							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							</div>
+							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							</div>
+						</div>
+					</div>
+			
+			{{/each}}
+			</script>
+
+
+      <script src="../node_modules/handlebars/dist/handlebars.js"></script>
+      <script src="../node_modules/jquery/dist/jquery.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+			<script src='../js/common.js'></script>
+			<script src='mainsearch.js'></script>
+</body>
+</html>

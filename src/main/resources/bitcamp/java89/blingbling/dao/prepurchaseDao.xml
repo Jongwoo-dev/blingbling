@@ -40,6 +40,28 @@
     <result column="price"       property="price"/>
   </resultMap>
   
+  <select id ="getCalenderTime" parameterType="map" resultMap="booking-map">
+    <![CDATA[
+    select
+      m.name as mname,
+      i.ino,
+      i.name as iname,
+      i.price,
+      b.bno,
+      b.sctime,
+      b.rp
+    from
+      buy b
+    join item i
+      using(ino)
+    join memb_store ms on ms.msno = i.msno 
+    join memb m on m.mno = ms.msno
+    where sctime >= #{startTime}
+      and sctime <= #{endTime}
+      and b.mno=#{memberNo}
+    
+    ]]>
+  </select>
   
   
   <select id="getBookingList" parameterType="int" resultMap="booking-map">
@@ -105,12 +127,6 @@
     where bno=#{value}
   </select>
   
- <!--  <select id ="getCalenderTime" parameterType="map" resultMap="booking-map">
-	select *
-	from buy 
-	where sctime >= #{sctime}
-	and sctime < #{sctime};
-  </select> -->
 
   <insert id="insert" parameterType="prepurchase">
     insert into buy(bno, mno, ino, pay_op, pay_st, 

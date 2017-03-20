@@ -19,6 +19,7 @@ public class StampServiceImpl implements StampService {
   public List<Stamp> getListBymember(int memberNo) throws Exception {
     return stampDao.getListBymember(memberNo);
   }
+  
   @Override
   public List<Stamplog> getListStamplog(int memberNo,int memberStoreNo) throws Exception {
    	HashMap<String,Integer> paramMap = new HashMap<>();

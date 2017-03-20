@@ -1,12 +1,12 @@
 package bitcamp.java89.blingbling.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import bitcamp.java89.blingbling.domain.Favorite;
 
 public interface FavoriteDao {
-  int countByNo(Favorite favorite) throws Exception;
-  ArrayList<Favorite> getList(int memberNo) throws Exception;
+  List<Favorite> getList(int memberNo) throws Exception;
   int insert(Favorite favorite) throws Exception;
   int delete(Favorite favorite) throws Exception;
+  int countByNo(Favorite favorite) throws Exception;
 }

@@ -29,6 +29,17 @@ public class PrepurchasejsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, list);
   }
   
+  @RequestMapping("/prepurchase/calendertime")
+  public AjaxResult CalenderTime(String startTime,String endTime,int memberNo) throws Exception {
+    List<Prepurchase> calenderTime = prepurchaseService.getCalenderTime(startTime,endTime,memberNo);
+    
+    if (calenderTime.isEmpty()) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 날짜에 기록이 없습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, calenderTime);
+  }
+  
   @RequestMapping("/prepurchase/list")
   public AjaxResult list() throws Exception {
 		List<Prepurchase> list = prepurchaseService.getList();

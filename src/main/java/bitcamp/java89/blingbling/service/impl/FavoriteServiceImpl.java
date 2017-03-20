@@ -30,6 +30,12 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
     return favoriteDao.delete(favorite);
   }
+  
+  public int count(Favorite favorite) throws Exception {
+    
+    return favoriteDao.countByNo(favorite);
+  } 
+ 
 }
 
 

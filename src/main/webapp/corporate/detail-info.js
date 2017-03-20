@@ -4,10 +4,66 @@ var infowindow;
 var loginMember;
 var filename;
 var memberNo = 5;
+var memberStoreNo = 5; 
+
+try {
+	  var memberNo = location.href.split('?')[1].split('=')[1];
+	} catch (error) {
+		var memberNo = -1;
+	}
+
+	if (memberNo > 0) {
+		prepareViewForm();
+	} else {
+		prepareNewForm();
+	}
+
+$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+	//로그인 확인
+	if(ajaxResult.status == 'success') {
+		var data = ajaxResult.data;
+		memberNo = data.memberNo;
+
+		$.getJSON('../favorite/count.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+			console.log(memberNo);
+			var count = ajaxResult.data;
+				if (count > 0) {
+					$('#favorite-star-span').removeClass('glyphicon-star-empty');
+					$('#favorite-star-span').addClass('glyphicon-star');
+				} return;
+		});
+	} else {
+		return	//비로그인 일시 '별버튼' 그대로
+	}
+});
 
 $('#favorite-star-span').click(function(){
-	$(this).removeClass('glyphicon-star-empty');
-	$(this).addClass('glyphicon-star');
+	var starBtn = $(this);
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		var status;
+		var data = ajaxResult.data;
+		memberNo = data.memberNo;
+		console.log('memberNo=' +memberNo);
+		if(starBtn.hasClass('glyphicon-star-empty')) {
+			$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					console.log(ajaxResult.data);
+					return;
+				}
+				starBtn.removeClass('glyphicon-star-empty');
+				starBtn.addClass('glyphicon-star');
+			});
+		} else if(starBtn.hasClass('glyphicon-star')) {
+			$.getJSON('../favorite/delete.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					console.log(ajaxResult.data);
+					return;
+				}
+				starBtn.removeClass('glyphicon-star');
+				starBtn.addClass('glyphicon-star-empty');
+			});
+		}
+	});
 });
 
 
@@ -76,7 +132,7 @@ function initMap() {
 
 $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) {
 	if (ajaxResult.status != 'success') {
-		alert('업체가 아닙니다.');
+		swal('경고',ajaxResult.data,'warning');
 		return;
 	}
 	var corporate = ajaxResult.data;
@@ -122,7 +178,6 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 				initMarker(corporate.mapLocation);
 			}
 		}
-		
 /*
 	
 	$('#infoEditor').summernote('code', corporate.additionalInfo)
@@ -262,5 +317,4 @@ $('#infoEditor').summernote({
       }
     }
 });
-
 */
