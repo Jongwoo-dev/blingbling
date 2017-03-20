@@ -52,10 +52,8 @@ $.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function
 
 	main.html(template({"list": list}));
 	
-	
 	$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	consol.log($(this).attr("data-memberno"));
 		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
@@ -73,6 +71,9 @@ $('#content-headersub span').click(function() {
 	btn.addClass('selected');
 	detclk=$(this).text()
 	fullclk = basclk+' '+detclk;
+	
+	
+	
 
 	$.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function(ajaxResult) {
 		var status = ajaxResult.status;
@@ -86,12 +87,15 @@ $('#content-headersub span').click(function() {
 
 		main.html(template({"list": list}));
 		
-		$('#clkdetail').click(function(event) {
+		$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
+		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
+
+		
 	});
+
 });
 
 
@@ -445,9 +449,9 @@ $('#btn_category button').click(function() {
 		//console.log(list);
 
 		main.html(template({"list": list}));
-		$('#clkdetail').click(function(event) {
+		$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
+		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
 		
@@ -477,9 +481,9 @@ $('#btn_category button').click(function() {
 			//console.log(list);
 
 			main.html(template({"list": list}));
-			$('#clkdetail').click(function(event) {
+			$('.img-card').click(function(event) {
 			  	event.preventDefault();
-			  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
+			  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 			  	
 			  });
 			
