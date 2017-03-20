@@ -83,7 +83,7 @@
 	<div id='content_main'>
       <div>
         <div class="aa maintitle">예약내역</div>
-        <div class="aa maindesc">예약취소 가능횟수x개</div>
+        <div class="aa maindesc">익일부터 예약한내역</div>
       </div>
   </div>    
       <!-- 달력으로 조회하는 부분 -->
@@ -158,7 +158,31 @@
 {{/each}}
 </script>
 
+<script>
+  $('#menu1').click(function(){
+    location.href='favor.html';
+  }) 
 
+  $('#menu2').click(function(){
+    location.href='stamp.html';
+  })
+
+  $('#menu3').click(function(){
+    location.href='reservationHistory.html';
+  })
+
+  $('#menu4').click(function(){
+    location.href='usageHistory.html';
+  })
+  
+  $('#menu5').click(function(){
+    location.href='#.html';
+  })
+  
+  $('#menu6').click(function(){
+    location.href='companyRegistration.html';
+  })
+</script>
 
 </body>
 </html>

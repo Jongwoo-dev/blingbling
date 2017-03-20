@@ -42,11 +42,23 @@
   
   <select id ="getCalenderTime" parameterType="map" resultMap="booking-map">
     <![CDATA[
-    select *
-    from buy 
+    select
+      m.name as mname,
+      i.ino,
+      i.name as iname,
+      i.price,
+      b.bno,
+      b.sctime,
+      b.rp
+    from
+      buy b
+    join item i
+      using(ino)
+    join memb_store ms on ms.msno = i.msno 
+    join memb m on m.mno = ms.msno
     where sctime >= #{startTime}
-    and sctime <= #{endTime}
-    and mno=#{memberNo}
+      and sctime <= #{endTime}
+      and b.mno=#{memberNo}
     
     ]]>
   </select>
