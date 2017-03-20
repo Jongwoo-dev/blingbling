@@ -3,20 +3,11 @@ var marker;
 var infowindow;
 var loginMember;
 var filename;
-var memberNo = 5;
-var memberStoreNo = 5; 
+//var memberNo = 5;
+//var memberStoreNo = 5; 
 
-try {
-	  var memberNo = location.href.split('?')[1].split('=')[1];
-	} catch (error) {
-		var memberNo = -1;
-	}
-
-	if (memberNo > 0) {
-		prepareViewForm();
-	} else {
-		prepareNewForm();
-	}
+var memberNo = location.href.split('?')[1].split('=')[1];
+var memberStoreNo = memberNo;
 
 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	//로그인 확인

@@ -55,14 +55,10 @@ $.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function
 	
 	$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	consol.log($(this).attr("data-memberno"));
+		  	console.log($(this).attr("data-memberno"));
 		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
-	
-
-	
-
 	
 });
 
@@ -86,9 +82,9 @@ $('#content-headersub span').click(function() {
 
 		main.html(template({"list": list}));
 		
-		$('#clkdetail').click(function(event) {
+		$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
+		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
 	});
