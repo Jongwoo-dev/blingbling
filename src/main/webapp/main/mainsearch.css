@@ -1,0 +1,145 @@
+@CHARSET "UTF-8";
+
+/* 메인 */
+
+#header_sub {
+  border-bottom: 1px solid black;
+  padding: 20px;
+  color: #5e5e5e;
+}
+
+#header_sub_event_title {
+  color: #c0392b; 
+  font-size: 1.15em; 
+  padding-right: 5px; 
+  border-right: 1px solid black;
+}
+
+#header_sub_event_content {
+  font-size: 1.15em; 
+  margin-left: 10px;
+}
+
+#header_sub_navi {
+  float: right; 
+  font-size: 1.15em;
+}
+
+#header_sub_navi > a {
+	color: #333333;
+	text-decoration: none;
+}
+.content_hr {
+	margin: 0px; 
+	border: 1px solid #d0d0d0;
+}
+
+#content {
+  margin-bottom: 230px;
+  padding: 5px;
+}
+#contentsearchtitle{
+	background: #f1f1f1;
+	font-size: 1.8em;
+  height: 80px; 
+  text-align: center;
+  display: block;
+  padding-top: 16px;
+
+	
+}
+
+#contentsearchtitlesub{
+	
+	font-size: 1.4em;
+	margin-left: 20px;
+	color: #6d6a6a;
+	margin-top: 15px;
+	
+}
+#titlenum{
+	color: #c10707;
+}
+
+.headersubsle{
+  width: 169px; 
+  height: 33px; 
+  display: inline-block;
+  margin-left: 10px;
+	
+}
+.headersubsle.selected > a{
+	color: #ef4343
+	
+}
+.headersubsle > a{
+  color: #5e5e5e;
+}
+
+
+.content-default {
+  width: 109px; 
+  height: 42px; 
+  background-color: rgba(0,0,0,0); 
+  border-color: #9e9e9e; 
+  font-size: 1.2em; 
+  color: #5e5e5e;
+  margin: 10px -3px -3px 5px;
+}
+
+
+
+
+.img-card {
+  position: relative;
+  background-color: #f4f4f4;
+  width: 293px;
+  max-width: 300px;
+  height: 208px;
+  display: inline-block;
+  padding-top: 5px;
+  overflow: hidden;
+  transition: bottom 0.1s;
+  margin: 18px 0px 0px 10px;
+}
+
+.img-card img {
+	height: 208px;
+  width: 293px;
+	
+}
+
+.img-card .caption {
+  background-color: rgba(1,0,0,0.8);
+  color: #fff;
+  position: relative;
+  bottom: 35px;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  transition: bottom 0.25s;
+  
+}
+
+.caption p {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.img-card:hover .caption {
+  height: 100px;
+  bottom: 105px;
+}
+
+.img-card .description {
+  display: none;
+  color: #fffb23;
+  font-size: 0.90em;
+  padding: 0px 5px;
+  margin-left: 10px;
+  
+}
+
+.img-card:hover .description {
+  display: block;
+}
