@@ -79,7 +79,7 @@ stylize any heading tags withing white-panel below
 			
 			<script id="corTemplate" type="text/x-handlebars-template">
       {{#each list}}
-            <div class="img-card">
+            <div class="img-card"><a href=../corporate/detail.html>
 						<img src="../upload/{{photoList.[0].filePath}}">
 						<div class="caption">
 							<p>{{corporateName}}</p>
@@ -89,6 +89,7 @@ stylize any heading tags withing white-panel below
 							</div>
 							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
 							</div>
+			   		</a>
 						</div>
 					</div>
 			
