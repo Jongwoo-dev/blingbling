@@ -205,31 +205,27 @@
 }
 
 .table-responsive {
-	margin-left:28px;
+	margin-left:30px;
 }
 
-.review-btn {
+.btn-default {
 	width:70px;
 	height:25px;
-  background-color: rgb(231, 76, 60);
+  background-color: #c0392b;
 	color:white;
 	padding:0;
 	font-size:0.9em;
-	border:0;
-	border-radius: 3px;
 }
 
-.category {
-	width:500px;
-	font-size:1.1em;
+th {
+	text-align: center;
+	width:55px;
 }
 
 td {
 	text-align: center;
-	padding:9px;
 }
 
-#tr {
-	margin-bottom:10px;
-}
+
+
 

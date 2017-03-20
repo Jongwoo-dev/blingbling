@@ -24,7 +24,7 @@
 	<div id='header_sub'>
 		<span id='header_sub_event_title'>EVENT</span> 
 		<span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
-		<span id='header_sub_navi'>홈>마이페이지>예약내역</span>
+		<span id='header_sub_navi'>홈>마이페이지>이용내역</span>
 	</div>
 
 	<div id='sidebar'>
@@ -83,7 +83,7 @@
 	<div id='content_main'>
       <div>
         <div class="aa maintitle">이용내역</div>
-        <div class="aa maindesc">과거에 이용한 내역</div>
+        <div class="aa maindesc">x개</div>
       </div>
   </div>    
       <!-- 달력으로 조회하는 부분 -->
@@ -98,22 +98,40 @@
 			</div>
 			
 			<div class="table-responsive">
-				<table class="list-table">
+				<table class="table">
 					<thead>
 						<tr id="tr">
-							<th class='col-xs-2 text-center category'>예약일자</th>
-							<th class='col-xs-2 text-center category'>업체이름</th>
-							<th class='col-xs-3 text-center category'>상품정보</th>
-							<th class='col-xs-2 text-center category'>총결제금액</th>
-							<th class='col-xs-3 text-center category'>상태</th>
+							<th>예약일자</th>
+							<th>업체이름</th>
+							<th>상품정보</th>
+							<th>총결제금액</th>
+							<th>상태</th>
 						</tr>
 					</thead>
-				<hr class='content_hr' color='#e0e0e0'>
 					<tbody>
-					
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>리뷰쓰기</button></td>
+						</tr>
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>리뷰쓰기</button></td>
+						</tr>
+						<tr>
+							<td>2017/01/10</td>
+							<td>따봉마사지</td>
+							<td>피부관리</td>
+							<td>50,000</td>
+							<td><button type="button" class='btn btn-default'>리뷰쓰기</button></td>
+						</tr>
 					</tbody>
 				</table>
-				<hr class='content_hr' color='#e0e0e0'>
 			</div>
 			
 			<!-- 페이징처리 주석막아놓음 -->
@@ -137,8 +155,6 @@
 		</div>
 	</div>
 
-
-<script src="../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -146,43 +162,7 @@
 <script src='../js/common.js'></script>
 <script src='usageHistory.js'></script>
 
-<script id="trTemplate" type="text/x-handlebars-template">
-<{{#each list}}
-<tr>
-  <td class='text-bookingDate text-center'>{{bookingDate}}</td>
-  <td class='text-corporateName'>{{corporateName}}></td>
-  <td class='text-itemName'>{{itemName}}</td>
-  <td class='text-price text-center'>{{price}}</td>
-  <td><button data-no= "{{prepurchaseNo}}" type="button" class="review-btn">리뷰쓰기</button></td>
-</tr>
-{{/each}}
-</script>
 
-<script>
-  $('#menu1').click(function(){
-    location.href='favor.html';
-  }) 
-
-  $('#menu2').click(function(){
-    location.href='stamp.html';
-  })
-
-  $('#menu3').click(function(){
-    location.href='reservationHistory.html';
-  })
-
-  $('#menu4').click(function(){
-    location.href='usageHistory.html';
-  })
-  
-  $('#menu5').click(function(){
-    location.href='#.html';
-  })
-  
-  $('#menu6').click(function(){
-    location.href='companyRegistration.html';
-  })
-</script>
 
 </body>
 </html>

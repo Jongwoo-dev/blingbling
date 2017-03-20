@@ -76,11 +76,11 @@ $(function() {
 
 	var date = new Date();
 	today = dateToYYYYMMDD(date);
-	week = date.setDate(date.getDate()-7);
+	week = date.setDate(date.getDate()+7);
 	weekday = dateToYYYYMMDD(week);
-	month = date.setDate(date.getDate()-30);
+	month = date.setDate(date.getDate()+30);
 	monthday= dateToYYYYMMDD(month);
-	trmonth= date.setDate(date.getDate()-90);
+	trmonth= date.setDate(date.getDate()+90);
 	trmonthday= dateToYYYYMMDD(trmonth);
 	console.log(weekday);
 	console.log(monthday);
