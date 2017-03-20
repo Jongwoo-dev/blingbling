@@ -68,6 +68,7 @@ stylize any heading tags withing white-panel below
 			<hr class='content_hr' color='#e0e0e0'>
 			<div id='content_main'>
 
+
 					
 					
 					
@@ -79,7 +80,7 @@ stylize any heading tags withing white-panel below
 			
 			<script id="corTemplate" type="text/x-handlebars-template">
       {{#each list}}
-            <div class="img-card" id = clkdetail  style="cursor:pointer">
+            <div class="img-card" data-memberno={{memberNo}}  style="cursor:pointer">
 						<img src="../upload/{{photoList.[0].filePath}}">
 						<div class="caption">
 							<p>{{corporateName}}</p>

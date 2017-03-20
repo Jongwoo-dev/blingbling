@@ -52,9 +52,11 @@ $.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function
 
 	main.html(template({"list": list}));
 	
-	$('#clkdetail').click(function(event) {
+	
+	$('.img-card').click(function(event) {
 		  	event.preventDefault();
-		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
+		  	consol.log($(this).attr("data-memberno"));
+		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
 		  	
 		  });
 	
