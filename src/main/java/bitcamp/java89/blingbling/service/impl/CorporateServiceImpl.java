@@ -79,6 +79,10 @@ public class CorporateServiceImpl implements CorporateService {
   public List<Corporate> searchBybaseAddress(HashMap<String, Object> map) throws Exception {
     return corporateDao.getListBybaseAddress(map);
   }
+  @Override
+  public List<Corporate> searchBysearchbar(HashMap<String, Object> map) throws Exception {
+    return corporateDao.getListBysearchbar(map);
+  }
  
 }
 

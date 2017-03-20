@@ -120,6 +120,45 @@
     where ms.cname like concat('%',#{value}%,'%')
   </select>
   
+  <select id="getListBysearchbar" parameterType="map" resultMap="corporate-map">
+    select
+      ms.msno,
+      m.name, 
+      m.email, 
+      m.tel, 
+      m.chck, 
+      m.mgr,
+      ms.crno,
+      ms.cachk,
+      ms.cname,
+      ms.ctype,
+      ms.pst_no,
+      ms.bas_adr,
+      ms.det_adr,
+      ms.map_loc,
+      ms.detail,
+      ms.minfo,
+      ms.notice,
+      ms.pr_ti,
+      mp.mpno,
+      mp.path,
+      it.ino,
+      it.name as iname,
+      it.price,
+      it.utime
+    from  memb m
+      inner join memb_store ms on ms.msno=m.mno
+      left outer join ms_phot mp on mp.msno=m.mno
+      left outer join item it on it.msno=mp.msno
+      where 
+      <foreach collection = "searchbar" item="value" open="(" close=")" separator="or">
+      	ms.bas_adr like concat('%',#{value},'%') or
+      	ms.cname like concat('%',#{value},'%') or
+      	it.name like concat('%',#{value},'%')
+      </foreach>
+       
+  </select>
+  
   <select id="getOneWithTel" parameterType="int" resultMap="corporate-map">
     select
       ms.msno,

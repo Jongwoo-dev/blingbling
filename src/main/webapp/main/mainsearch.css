@@ -57,10 +57,12 @@
 	margin-top: 15px;
 	
 }
-#titlenum{
+.titlenum{
 	color: #c10707;
 }
-
+.titletext{
+	color: #282626;
+}
 .headersubsle{
   width: 169px; 
   height: 33px; 
