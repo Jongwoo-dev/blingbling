@@ -79,9 +79,16 @@ body {
 }
 #corp-addr-span{
 	margin-left:20px;
-	margin-bottom:6px;
+	/* margin-bottom:6px; */
 	display:inline-block;
 }
+
+#corp-addr-span2{
+  margin-left:20px;
+  margin-bottom:6px;
+  display:inline-block;
+}
+
 #addr-copy-btn{
 	width:55px;
 	hight:25px;

@@ -16,7 +16,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		memberNo = data.memberNo;
 
 		$.getJSON('../favorite/count.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
-			console.log(memberNo);
 			var count = ajaxResult.data;
 				if (count > 0) {
 					$('#favorite-star-span').removeClass('glyphicon-star-empty');
@@ -31,31 +30,38 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 $('#favorite-star-span').click(function(){
 	var starBtn = $(this);
 	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-		var status;
-		var data = ajaxResult.data;
-		memberNo = data.memberNo;
-		console.log('memberNo=' +memberNo);
-		if(starBtn.hasClass('glyphicon-star-empty')) {
-			$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
-				if (ajaxResult.status != 'success') {
-					console.log(ajaxResult.data);
-					return;
-				}
-				starBtn.removeClass('glyphicon-star-empty');
-				starBtn.addClass('glyphicon-star');
-			});
-		} else if(starBtn.hasClass('glyphicon-star')) {
-			$.getJSON('../favorite/delete.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
-				if (ajaxResult.status != 'success') {
-					console.log(ajaxResult.data);
-					return;
-				}
-				starBtn.removeClass('glyphicon-star');
-				starBtn.addClass('glyphicon-star-empty');
-			});
+		if (ajaxResult.status != 'success') {
+			window.alert('즐찾 기능 쓰려면 로그인 하셈!!');
+			return
+		} else {
+			
+			var status;
+			var data = ajaxResult.data;
+			memberNo = data.memberNo;
+			
+			if(starBtn.hasClass('glyphicon-star-empty')) {
+				$.getJSON('../favorite/add.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+					if (ajaxResult.status != 'success') {
+						return;
+					}
+					starBtn.removeClass('glyphicon-star-empty');
+					starBtn.addClass('glyphicon-star');
+				});
+			} else if(starBtn.hasClass('glyphicon-star')) {
+				$.getJSON('../favorite/delete.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+					if (ajaxResult.status != 'success') {
+						return;
+					}
+					starBtn.removeClass('glyphicon-star');
+					starBtn.addClass('glyphicon-star-empty');
+				});
+			}
+			
 		}
 	});
 });
+
+
 
 
 function initMap() {
@@ -129,7 +135,8 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 	var corporate = ajaxResult.data;
 	console.log(corporate);
 		$('#corp-name-span').text(corporate.corporateName);
-		$('#corp-addr-span').text(corporate.baseAddress +" " + corporate.detailAddress);
+		$('#corp-addr-span').text(corporate.baseAddress);
+		$('#corp-addr-span2').text(corporate.detailAddress);
 		$('#corp-tel-span').text(corporate.tel);
 		$('#comment-span').html(corporate.additionalInfo);
 		$('#navi-header-div').text('정보&사진');
@@ -197,13 +204,6 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 		}
 	}
 */
-	
-
-
-/*$('#booking-btn').click(function() {
-	reservation = window.open("detail.html", "mywindow");
-
-});*/
 
 });
 
