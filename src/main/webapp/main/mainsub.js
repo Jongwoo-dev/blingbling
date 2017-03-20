@@ -71,9 +71,6 @@ $('#content-headersub span').click(function() {
 	btn.addClass('selected');
 	detclk=$(this).text()
 	fullclk = basclk+' '+detclk;
-	
-	
-	
 
 	$.getJSON('../corporate/searchBybaseAddress.json?baseAddress='+fullclk, function(ajaxResult) {
 		var status = ajaxResult.status;
@@ -92,10 +89,7 @@ $('#content-headersub span').click(function() {
 		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-no");
 		  	
 		  });
-
-		
 	});
-
 });
 
 
