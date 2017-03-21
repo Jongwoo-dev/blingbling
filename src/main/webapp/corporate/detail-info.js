@@ -3,11 +3,34 @@ var marker;
 var infowindow;
 var loginMember;
 var filename;
-//var memberNo = 5;
-//var memberStoreNo = 5; 
 
 var memberNo = location.href.split('?')[1].split('=')[1];
 var memberStoreNo = memberNo;
+
+
+//<textarea id="ClipBoard" style="display:none"></textarea>
+
+/*$('#addr-copy-btn').click(function(){
+	var html = $(this).parent().prev().html();
+	html = '<a href="http://www.test.com" target="_blank">'+html+'</a>';
+	$('#ClipBoard').css('display', 'block').val(html).select();
+	
+	// copy the selection
+	var succeed;
+	try {
+		succeed = document.execCommand("copy");
+		$('#ClipBoard').css('display', 'none');
+
+	} catch(e) {
+		succeed = false;
+	}
+
+	if(succeed){
+		alert('복사 되었습니다');
+	}
+	return false;
+
+});*/
 
 $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	//로그인 확인
