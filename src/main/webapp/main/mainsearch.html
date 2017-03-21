@@ -35,93 +35,20 @@ stylize any heading tags withing white-panel below
 		</div>
 		<div id=content>
 		<div id = contentsearchtitle>
-	  <span>서울 안산</span>
 		
 		</div>
 			
 
 			<div id=contentsearchtitlesub>
-			
-			<span id = titlenum>10</span> <span>개 업체</span>
-			
+			<div id = countlist>
+			</div>
 
 			</div>
 			
 			
 			<div id='content_main'>
-			 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
-					
-					 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
-					 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
-					 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
-					 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
-					 <div class="img-card">
-						<img src="../mypage/favor1.jpg">
-						<div class="caption">
-							<p>강남</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
-							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
-							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
-							</div>
-						</div>
-					</div>
+			 
+				
 
 					
 					
@@ -134,16 +61,17 @@ stylize any heading tags withing white-panel below
 			
 			<script id="corTemplate" type="text/x-handlebars-template">
       {{#each list}}
-            <div class="img-card">
+            <div class="img-card" data-memberno={{memberNo}}  style="cursor:pointer">
 						<img src="../upload/{{photoList.[0].filePath}}">
 						<div class="caption">
 							<p>{{corporateName}}</p>
-							<div class="description">{{itemList.[0].name}}:{{itemList.[0].price}}원
+							<div class="description" {{#unless itemList.[0].name}}style="display:none"{{/unless}}>{{itemList.[0].name}}:{{itemList.[0].price}}원
 							</div>
-							<div class="description">{{itemList.[1].name}}:{{itemList.[1].price}}원
+							<div class="description" {{#unless itemList.[1].name}}style="display:none"{{/unless}}>{{itemList.[1].name}}:{{itemList.[1].price}}원
 							</div>
-							<div class="description">{{itemList.[2].name}}:{{itemList.[2].price}}원
+							<div class="description" {{#unless itemList.[2].name}}style="display:none"{{/unless}}>{{itemList.[2].name}}:{{itemList.[2].price}}원
 							</div>
+		
 						</div>
 					</div>
 			

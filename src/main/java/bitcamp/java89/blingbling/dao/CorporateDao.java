@@ -23,4 +23,6 @@ public interface CorporateDao {
   int delete(int memberNo) throws Exception;
   int deleteTel(int memberNo) throws Exception;
   ArrayList<Corporate> getListBybaseAddress(HashMap<String, Object> map) throws Exception;
+  ArrayList<Corporate> getListBysearchbar(HashMap<String, Object> map) throws Exception;
+
 }

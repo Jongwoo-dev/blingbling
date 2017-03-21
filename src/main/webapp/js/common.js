@@ -1,4 +1,5 @@
 var member
+var searchbar;
 
 $(function() {
 
@@ -9,6 +10,14 @@ $(function() {
 		/*$('#login-link').click(function(){
 			location.href = '../auth/testlogin.html';
 		});*/
+		
+		$('.btn.btn-link').click(function(event) {
+			searchbar = $('#searchbarinput').val();
+		  	event.preventDefault();
+		  	console.log(searchbar);
+		  	location.href = '../main/mainsearch.html?searchbar='+ searchbar;
+		  	
+		});
 		
 		$('#service-center-link').click(function(event) {
 			event.preventDefault();
@@ -67,8 +76,18 @@ $(function() {
 						location.href = '/blingbling/admin/admin-qna.html';
 					});
 			}
+			
+			$('<li>').html('<a href="#" id="login-dropdown-logout" class="header-menu-a">로그 아웃</a>')
+				.appendTo(ul).click(function(e) {
+					e.preventDefault();
+					$.getJSON('/blingbling/auth/logout.json', function(ajaxResult) {
+					    location.reload();
+					});
+				});
 		});
 	});
+	
+
 });
 
 $(function() {
@@ -101,3 +120,7 @@ var arrayToJson = function(list) {
 	result += '';
 	return result;
 }
+
+searchbar = $('#searchbarinput').val();
+
+

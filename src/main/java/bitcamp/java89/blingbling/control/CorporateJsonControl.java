@@ -131,6 +131,26 @@ public class CorporateJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, searchBybaseAddressList);
   }
+  
+  @RequestMapping("/corporate/searchBysearchbar")
+  public AjaxResult searchBysearchbarList(String searchbar) throws Exception {
+    String[] tempStr = searchbar.split(" ");
+    HashMap<String, Object> map = new HashMap<>();
+    ArrayList<String> listsearch = new ArrayList<>();
+    System.out.println(searchbar);
+    
+    for (int i = 0; i < tempStr.length; i++) {
+    	listsearch.add(tempStr[i]);
+    }
+    
+    
+    map.put("searchbar", listsearch);
+    
+    
+  	List<Corporate> searchBysearchbarList = corporateService.searchBysearchbar(map);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, searchBysearchbarList);
+  }
  
   
 }
