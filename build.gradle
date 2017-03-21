@@ -51,8 +51,12 @@ dependencies {
   // 객체를 JSON 문자열로 자동 변환시켜주는 ViewResolver 라이브러리 가져오기
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.6'
   
-  // 문자보내기에서 사용하는 라이브러리
+  // 문자보내기에서 사용하는 라이브러리 - 다이렉트 센드
   compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  
+  // 문자보내기에서 사용하는 라이브러리 - 청기와랩
+  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+  
   
   
   // 컴파일 할 때만 사용하고 배치에는 포함시키지 않는 라이브러리들

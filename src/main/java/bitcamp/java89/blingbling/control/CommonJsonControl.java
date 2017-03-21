@@ -1,12 +1,27 @@
 package bitcamp.java89.blingbling.control;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.net.MalformedURLException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.AuthCache;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.client.BasicAuthCache;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,102 +77,55 @@ public class CommonJsonControl {
   
   @RequestMapping("sendSMS")
   public AjaxResult sendSMS(String message, String sender, String recipients) throws Exception {
-    String url = "https://directsend.co.kr/index.php/api/v1/sms";
-    java.net.URL obj;
-    obj = new java.net.URL(url);
-    javax.net.ssl.HttpsURLConnection con;
-    con = (javax.net.ssl.HttpsURLConnection) obj.openConnection();
-    con.setRequestMethod("POST");
+    String hostname = "api.bluehouselab.com";
+    String url = "https://"+hostname+"/smscenter/v1.0/sendsms";
+    String appid = "blingbling";
+    String apikey = "27d152ea0d4c11e7bf090cc47a1fcfae";
 
-    /* 
-     * message  : 받을 문자 내용 최대 2000바이트.
-     * username : directsend 발급 ID
-     * recipients : 발송 할 고객 번호 , 로 구분함. ex) 01012341234,0101555123,010303040123
-     * key : directsend 발급 api key
-     * 
-     * 각 번호가 유효하지 않을 경우에는 발송이 되지 않습니다.
-     */ 
+    CredentialsProvider credsProvider = new BasicCredentialsProvider();
+    credsProvider.setCredentials(
+        new AuthScope(hostname, 443, AuthScope.ANY_REALM),
+        new UsernamePasswordCredentials(appid, apikey)
+        );
 
+    // Create AuthCache instance
+    AuthCache authCache = new BasicAuthCache();
+    authCache.put(new HttpHost(hostname, 443, "https"), new BasicScheme());
 
-    /* 여기서부터 수정해주시기 바랍니다. */
+    // Add AuthCache to the execution context
+    HttpClientContext context = HttpClientContext.create();
+    context.setCredentialsProvider(credsProvider);
+    context.setAuthCache(authCache);
 
-    //String message = "고객님 환영함니다.";
-    //String sender = "01012341234";
-    String username = "directsend id";
-    //String recipients = "01011233785,01041231231";
-    String key = "directsend 발급 api key";
+    DefaultHttpClient client = new DefaultHttpClient();
 
-    /* 여기까지만 수정해주시기 바랍니다. */
+    try {
+      HttpPost httpPost = new HttpPost(url);
+      httpPost.setHeader("Content-type", "application/json; charset=utf-8");
+      String json = "{\"sender\":\""+sender+"\",\"receivers\":[\""+recipients+"\"],\"content\":\""+message+"\"}";
 
-    /** 수정하지 마시기 바랍니다.
-     *  아래의 URL에서 apache commons-comdec jar 파일을 다운로드 한 후에 함께 컴파일 해주십시오.
-     *  http://commons.apache.org/proper/commons-codec/download_codec.cgi
-     * **/
-    String urlParameters = "message=" + java.net.URLEncoder.encode(org.apache.commons.codec.binary.Base64.encodeBase64String(message.getBytes("euc-kr")), "EUC_KR")
-    + "&sender=" + java.net.URLEncoder.encode(sender, "EUC_KR")
-    + "&username=" + java.net.URLEncoder.encode(username, "EUC_KR")
-    + "&recipients=" + java.net.URLEncoder.encode(recipients, "EUC_KR")
-    + "&key=" + java.net.URLEncoder.encode(key, "EUC_KR");
-    /** 수정하지 마시기 바랍니다. **/
+      StringEntity se = new StringEntity(json, "UTF-8");
+      httpPost.setEntity(se);
 
-    System.setProperty("jsse.enableSNIExtension", "false") ; 
-    con.setDoOutput(true);
-    java.io.DataOutputStream wr = new java.io.DataOutputStream(con.getOutputStream());
-    wr.writeBytes(urlParameters);
-    wr.flush();
-    wr.close();
+      HttpResponse httpResponse = client.execute(httpPost, context);
+      System.out.println(httpResponse.getStatusLine().getStatusCode());
 
-    int responseCode = con.getResponseCode();
-    System.out.println(responseCode);
-
-    /* 
-     * responseCode 가 200 이 아니면 내부에서 문제가 발생한 케이스입니다. 
-     * directsend 관리자에게 문의해주시기 바랍니다.
-     * */
-
-    java.io.BufferedReader in = new java.io.BufferedReader(
-        new java.io.InputStreamReader(con.getInputStream()));
-    String inputLine;
-    StringBuffer response = new StringBuffer();
-
-    while ((inputLine = in.readLine()) != null) {
-      response.append(inputLine);
+      InputStream inputStream = httpResponse.getEntity().getContent();
+      if(inputStream != null) {
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        while((line = bufferedReader.readLine()) != null)
+          System.out.println(line);
+        inputStream.close();
+      }
+    } catch (Exception e) {
+      System.err.println("Error: "+e.getLocalizedMessage());
+    } finally {
+      client.getConnectionManager().shutdown();
     }
-    in.close();
-
-    System.out.println(response.toString());
-
-    /* 
-     * response의 실패
-     *  {"status":101} 
-     */
-
-    /* 
-     * response 성공
-     * {"status":0}
-     *  성공 코드번호.
-     */
-
-    /*
-     ** status code
-      0   : 정상발송
-      100 : sender 검증 실패
-      101 : key 검증 실패
-      102 : username 값 존재 X
-      103 : message 값 존재 X
-      104 : sender 값 존재 X
-      105 : recipients 값 존재 X
-      106 : message validation 실패
-      201 : user is null
-      202 : 발송대상 0개
-      203 : 2000bytes 초과
-      204 : api key 일치하지 않음.
-      205 : 잔액부족
-      999 : Internal Error.
-     **
-     */
+    
     return null;
   }
-  
+
   
 }

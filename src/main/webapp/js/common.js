@@ -67,6 +67,14 @@ $(function() {
 						location.href = '/blingbling/admin/admin-qna.html';
 					});
 			}
+			
+			$('<li>').html('<a href="#" id="login-dropdown-logout" class="header-menu-a">로그 아웃</a>')
+				.appendTo(ul).click(function(e) {
+					e.preventDefault();
+					$.getJSON('/blingbling/auth/logout.json', function(ajaxResult) {
+					    location.reload();
+					});
+				});
 		});
 	});
 });

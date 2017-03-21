@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자 테스트</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <label>보내는사람 번호</label>
+  <input id='sendNum'>
+  
+  <label>받는사람 번호</label>
+  <input id='recvNum'>
+  
+  <label>내용</label>
+  <textarea id=sendCont rows="5" cols="80"></textarea>
+  
+  <button type="button" id='sendBtn'>보내기</button>
+
+</div>
+
+<!-- <div id='footer' class="container-fluid"></div> -->
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<script>
+$(function() {
+	$('#sendBtn').click(function() {
+		var param = {
+				message    : $('#sendNum').val(),
+				sender     : $('#recvNum').val(),
+				recipients : $('#sendCont').val()
+		}
+		
+		$.post('/blingbling/common/sendSMS.json', param, function(ajaxResult) {
+		    
+		    console.log(ajaxResult);
+		  }, 'json');
+	});
+});
+</script>
+<!-- 
+<script>
+  function callSMS(sender, receivers, content) {
+	  var APPID = 'blingbling';
+	  var APIKEY = '27d152ea0d4c11e7bf090cc47a1fcfae';
+		//var c = require('./conf');
+		var https = require("https");
+		var credential = 'Basic '
+				+ new Buffer(APPID + ':' + APIKEY).toString('base64');
+	
+		var data = {
+			"sender" : sender,
+			"receivers" : receivers,
+			"content" : content
+		}
+		var body = JSON.stringify(data);
+	
+		var options = {
+			host : 'api.bluehouselab.com',
+			port : 443,
+			path : '/smscenter/v1.0/sendsms',
+			headers : {
+				'Authorization' : credential,
+				'Content-Type' : 'application/json; charset=utf-8',
+				'Content-Length' : Buffer.byteLength(body)
+			},
+			method : 'POST'
+		};
+		var req = https.request(options, function(res) {
+			console.log(res.statusCode);
+			var body = "";
+			res.on('data', function(d) {
+				body += d;
+			});
+			res.on('end', function(d) {
+				if (res.statusCode == 200)
+					console.log(JSON.parse(body));
+				else
+					console.log(body);
+			});
+		});
+		req.write(body);
+		req.end();
+		req.on('error', function(e) {
+			console.error(e);
+		});
+  }
+</script>
+ -->
+</body>
+</html>
