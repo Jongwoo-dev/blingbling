@@ -67,7 +67,12 @@ $('#fblogin').click(function() {
 		  });
 		}
 		else {
-		  FB.login();
+		  FB.login(function(result) {
+			  
+		  },{
+		        scope: 'public_profile,email', 
+		        return_scopes: true
+		      });
 		}
 	});	
 });
