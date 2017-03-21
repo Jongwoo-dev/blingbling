@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>페이스북 로그인 테스트</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>페이스북 로그인 테스트</h1>
+  <button id='fblogin' type="button" class='btn btn-default'>페북 로그인 버튼</button>
+  <br>
+  <button id='fblogout' type="button" class='btn btn-default'>페북 로그아웃 버튼</button>
+  <br>
+  <br>
+  
+  <div id="fb-root"></div>
+  
+  <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+
+</div>
+
+<!-- <div id='footer' class="container-fluid"></div> -->
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<script>
+
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1927486694147122',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=1927486694147122";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+$('#fblogin').click(function() {
+	FB.getLoginStatus(function(response) {
+		if (response.status === 'connected') {
+		  console.log('Logged in.');
+		  var a = FB.getAuthResponse(function(response) {
+			  console.log(response);
+			}, true);
+		  console.log('a : ', a);
+		  FB.api('/me',{
+			  scope:'name,email'
+		  }, function(response) {
+			  console.log('유저 : ',response);
+		  });
+		}
+		else {
+		  FB.login();
+		}
+	});	
+});
+
+$('#fblogout').click(function() {
+	FB.getLoginStatus(function(response) {
+		var b = FB.getAuthResponse(function(response) {
+	        //console.log(response);
+	    }, true);
+		console.log('b : ', b);
+	  FB.logout(function() {
+		  
+	  });
+		
+	});
+})
+</script>
+</body>
+</html>
