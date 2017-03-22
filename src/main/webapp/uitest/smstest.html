@@ -14,13 +14,13 @@
 </head>
 <body>
 <div class="container">
-  <label>보내는사람 번호</label>
-  <input id='sendNum'>
-  
+  <h1>문자 보내기 테스트</h1>
+  <br>
   <label>받는사람 번호</label>
   <input id='recvNum'>
-  
+  <br>
   <label>내용</label>
+  <br>
   <textarea id=sendCont rows="5" cols="80"></textarea>
   
   <button type="button" id='sendBtn'>보내기</button>
@@ -36,10 +36,10 @@
 $(function() {
 	$('#sendBtn').click(function() {
 		var param = {
-				message    : $('#sendNum').val(),
-				sender     : $('#recvNum').val(),
-				recipients : $('#sendCont').val()
+				message    : $('#sendCont').val(),
+				receiver   : $('#recvNum').val()
 		}
+		console.log(param);
 		
 		$.post('/blingbling/common/sendSMS.json', param, function(ajaxResult) {
 		    
