@@ -150,6 +150,16 @@ function initMap() {
 		moveMarker(new google.maps.LatLng({lat:Number(point[0]), lng:Number(point[1])}));
 	}
 
+	
+
+	$('#view-big').click(function () {
+		window.open()
+		
+		initMarker(corporate.mapLocation);
+		
+	})
+	
+	
 $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) {
 	if (ajaxResult.status != 'success') {
 		swal('경고',ajaxResult.data,'warning');
@@ -231,60 +241,14 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 });
 
 
-/*
-$("#add-telform").click(function() {
-	
-	if($("#tel-group").children().length > 4) {
-		swal('주의','전화번호는 5개까지만 추가 가능합니다.','warning');
-		return;
-	}
-	$("<div>")
-		.html("<input class='form-control short' name='corporateTel' placeholder='업체 전화번호를 입력해 주세요' style='margin-left:123px;'>")
-		.appendTo("#tel-group");
-});
-
-$("#submit-btn").click(function() {
-	var param = {
-			memberNo        : loginMember.memberNo,
-			corporateName   : $("#corporate-name").val(),
-			postNumber      : $("#corporate-postcode").val(),
-			baseAddress     : $("#corporate-address-base").val(),
-			detailAddress   : $("#corporate-address-detail").val(),
-			telList         : arrayToJson($("input[name=corporateTel]")),
-			additionalInfo  : separateImg($('#infoEditor').summernote('code')),
-			mapLocation     : marker.getPosition().toString(),
-			
-			corporateRegistrationNumber : $('#corporateRegistrationNumber').val(),
-			corporateConfirm            : $('#corporateConfirm').val(),
-			corporateType               : $('#corporateType').val(),
-			detail                      : $('#detail').val(),
-			notice                      : $('#notice').val()
-	}
-	$.post('update.json', param, function(ajaxResult) {
-		if (ajaxResult.status != "success") {
-			alert(ajaxResult.data);
-			return;
-		}
-		swal('등록 성공',ajaxResult.data,'success');
-	}, 'json');
-});
 
 $('#header_sub_a_home').click(function(event) {
 	event.preventDefault()
 	//location.href='.html';
 });
-
-$('#header_sub_a_mgrpage').click(function(event) {
-	event.preventDefault()
-	location.href='basicinfo.html';
-});
-
-$('#header_sub_a_mgrbaseinfo').click(function(event) {
-	event.preventDefault()
-	location.href='basicinfo.html';
-});
-
-CKEDITOR.replace( 'infoEditor', {
+/*
+ * 
+ * CKEDITOR.replace( 'infoEditor', {
 	width: "600px",
 	height: "350px",
 	resize_enabled: false,

@@ -1,28 +1,30 @@
 //학생 목록 가져와서 tr 태그를 만들어 붙인다.
 $.getJSON('../auth/loginUser.json', function (ajaxResult){
+	console.log('11111111111');
 	if (ajaxResult.status != "success")
 		return;
-	var member = ajaxResult.data;
-
+	var data = ajaxResult.data;
+	var memberNo = data.memberNo;
+	console.log(memberNo);
 	
-
-	$.getJSON('../stamp/listByMember.json?memberNo='+member.memberNo, function(ajaxResult) {
+	/*$.getJSON('../stamp/listByMember.json?memberNo='+memberNo, function(ajaxResult) {
 		var status = ajaxResult.status;
-
 		if (status != "success")
 			return;
-
 		var list = ajaxResult.data;
 		var main = $('#content_main');
-	
 
 
+	});*/
 
-	});
+	$.getJSON('../favorite/list?memberNo' + memberNo, function(ajaxResult) {
+		var list = ajaxResult.data
+		console.log(list);
+	})
 	
 	
 	
-	$.getJSON('../mypagepl/listByMember.json?memberNo='+member.memberNo, function(ajaxResult) {
+	/*$.getJSON('../mypagepl/listByMember.json?memberNo='+memberNo, function(ajaxResult) {
 		var status = ajaxResult.status;
 
 		if (status != "success")
@@ -43,10 +45,8 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 		
 		var profilename =$('#profilename');
 		$('<span>').addClass('profile name').text(member.name).appendTo(profilename);
-
-		
 	});
-
+*/
 });
 
 

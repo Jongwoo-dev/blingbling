@@ -56,7 +56,7 @@
 
 				<div class='itemform'>
 					<div class='item titleform'>
-						<span class="glyphicon glyphicon-heart"></span> <span
+						<span class="glyphicon glyphicon-star"></span> <span
 							class='item titletext'>찜</span>
 					</div>
 						<div id='Totallike'>
@@ -86,73 +86,40 @@
 
 			<div id='content_main'>
 				<div class="row" id = subfavor>
-					<span class="maintitle">이용내역</span>
+					<span class="maintitle maintitle-sub">찜</span>
 				</div>
 
 			</div>
-			<div class="submain">
-			<div class="cardbox">
-    <figure class="snip1174 blue">
-      <img src="favor3.jpg" />
-      <figcaption>
-        <h2>강남피부</h2>
-        <p>
-          피부 - 50000원
-        </p>
-        <a href="/main/page/auction">둘러보기</a>
-      </figcaption>
-    </figure>
-</div>
-			<div class="cardbox">
-    <figure class="snip1174 blue">
-      <img src="favor1.jpg" />
-      <figcaption>
-        <h2>강남피부</h2>
-        <p>
-          피부 - 50000원
-        </p>
-        <a href="/main/page/auction">둘러보기</a>
-      </figcaption>
-    </figure>
-</div>
-	<div class="cardbox">
-    <figure class="snip1174 blue">
-      <img src="favor2.jpg" />
-      <figcaption>
-        <h2>강남피부</h2>
-        <p>
-          피부 - 50000원
-        </p>
-        <a href="/main/page/auction">둘러보기</a>
-      </figcaption>
-    </figure>
-</div>
-	<div class="cardbox">
-    <figure class="snip1174 blue">
-      <img src="favor2.jpg" />
-      <figcaption>
-        <h2>강남피부</h2>
-        <p>
-          피부 - 50000원
-        </p>
-        <a href="/main/page/auction">둘러보기</a>
-      </figcaption>
-    </figure>
-</div>
+		<div class="submain">
+		<div class="cardbox">
+		
 			
 		</div>	
 		</div>
-			
-
+		
 
 </div>
-
+<script id="corTemplate" type="text/x-handlebars-template">
+     {{#each list}}
+            <div class="img-card" data-memberno={{memberNo}}  style="cursor:pointer">
+            <img src="../upload/{{photoList.[0].filePath}}">
+            <div class="caption">
+              <p>{{corporateName}}</p>
+              <div class="description" {{#unless itemList.[0].name}}style="display:none"{{/unless}}>{{itemList.[0].name}}:{{itemList.[0].price}}원
+              </div>
+              <div class="description" {{#unless itemList.[1].name}}style="display:none"{{/unless}}>{{itemList.[1].name}}:{{itemList.[1].price}}원
+              </div>
+              <div class="description" {{#unless itemList.[2].name}}style="display:none"{{/unless}}>{{itemList.[2].name}}:{{itemList.[2].price}}원
+              </div>
+            </div>
+          </div>
+      {{/each}}
+      </script>
 
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
 <script src='../js/common.js'></script>
-
 <script src='favor.js'></script>
 
 
