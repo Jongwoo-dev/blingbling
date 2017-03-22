@@ -19,11 +19,16 @@
   <br>
   <button id='fblogout' type="button" class='btn btn-default'>페북 로그아웃 버튼</button>
   <br>
+  
+  <button id='fbrerequest' type="button" class='btn btn-default'>페북 권한재요청 버튼</button>
+  <br>
+  <button id='fbprofile' type="button" class='btn btn-default'>페북 사용자정보 받아오기 버튼</button>
+  <br>
   <br>
   
   <div id="fb-root"></div>
   
-  <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+  <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" data-scope="public_profile,email"></div>
 
 </div>
 
@@ -55,22 +60,31 @@ window.fbAsyncInit = function() {
 $('#fblogin').click(function() {
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-		  console.log('Logged in.');
+		  //console.log('로그인 상태 : ', response);
 		  var a = FB.getAuthResponse(function(response) {
-			  console.log(response);
+			  //console.log(response);
 			}, true);
 		  console.log('a : ', a);
 		  FB.api('/me',{
-			  scope:'name,email'
+			  fields : 'name, email, gender, birthday'
 		  }, function(response) {
 			  console.log('유저 : ',response);
 		  });
 		}
 		else {
 		  FB.login(function(result) {
-			  
+			  console.log('로그인 : ', result);
+			  console.log('로그인auth : ', result.authResponse);
+			  var a = FB.getAuthResponse(function(response) {
+			      }, true);
+			      console.log('a : ', a);
+			      FB.api('/me',{
+			    	  fields:'name, email, gender, birthday'
+			      }, function(response) {
+			        console.log('유저 : ',response);
+			      });
 		  },{
-		        scope: 'public_profile,email', 
+		        scope: 'public_profile,email,user_birthday', 
 		        return_scopes: true
 		      });
 		}
@@ -88,6 +102,35 @@ $('#fblogout').click(function() {
 	  });
 		
 	});
+})
+
+$('#fbrerequest').click(function() {
+	FB.login(
+			  function(response) {
+			    console.log(response);
+			  },
+			  {
+			    scope: 'email',
+			    auth_type: 'rerequest'
+			  }
+			);
+})
+
+$('#fbprofile').click(function() {
+	
+	FB.api('/me', function(user) {
+
+		var myName = user.name;
+		var myEmail = user.email;
+		var myId = user.id;
+	  console.log('유저 : ',user);
+	  console.log('이메일 : ',myEmail);
+	});
+	FB.api('/me/picture?type=large', function(data) {
+		var myImg = data.data.url;
+	});
+
+		
 })
 </script>
 </body>

@@ -76,17 +76,23 @@ public class CommonJsonControl {
   }
   
   @RequestMapping("sendSMS")
-  public AjaxResult sendSMS(String message, String sender, String recipients) throws Exception {
+  public AjaxResult sendSMS(String message, String receiver) throws Exception {
     String hostname = "api.bluehouselab.com";
     String url = "https://"+hostname+"/smscenter/v1.0/sendsms";
-    String appid = "blingbling";
-    String apikey = "27d152ea0d4c11e7bf090cc47a1fcfae";
+    String appid = "blingbling2";
+    String apikey = "c302888c0ec411e7a0100cc47a1fcfae";
+    String result = "";
+    String sender = "01030035160";
 
+    System.out.println("보내는사람 : "+sender);
+    System.out.println("받는사람 : "+receiver);
+    System.out.println("내용 : "+message);
+    
     CredentialsProvider credsProvider = new BasicCredentialsProvider();
     credsProvider.setCredentials(
         new AuthScope(hostname, 443, AuthScope.ANY_REALM),
         new UsernamePasswordCredentials(appid, apikey)
-        );
+    );
 
     // Create AuthCache instance
     AuthCache authCache = new BasicAuthCache();
@@ -98,33 +104,36 @@ public class CommonJsonControl {
     context.setAuthCache(authCache);
 
     DefaultHttpClient client = new DefaultHttpClient();
-
+    
     try {
-      HttpPost httpPost = new HttpPost(url);
-      httpPost.setHeader("Content-type", "application/json; charset=utf-8");
-      String json = "{\"sender\":\""+sender+"\",\"receivers\":[\""+recipients+"\"],\"content\":\""+message+"\"}";
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.setHeader("Content-type", "application/json; charset=utf-8");
+        String json = "{\"sender\":\""+sender+"\",\"receivers\":[\""+receiver+"\"],\"content\":\""+message+"\"}";
 
-      StringEntity se = new StringEntity(json, "UTF-8");
-      httpPost.setEntity(se);
+        StringEntity se = new StringEntity(json, "UTF-8");
+        httpPost.setEntity(se);
 
-      HttpResponse httpResponse = client.execute(httpPost, context);
-      System.out.println(httpResponse.getStatusLine().getStatusCode());
+        HttpResponse httpResponse = client.execute(httpPost, context);
+        System.out.println(httpResponse.getStatusLine().getStatusCode());
 
-      InputStream inputStream = httpResponse.getEntity().getContent();
-      if(inputStream != null) {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
-        while((line = bufferedReader.readLine()) != null)
-          System.out.println(line);
-        inputStream.close();
-      }
+        InputStream inputStream = httpResponse.getEntity().getContent();
+        if(inputStream != null) {
+            BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+            String line = "";
+            while((line = bufferedReader.readLine()) != null) {
+              System.out.println(line);
+              result += line+"\n";
+            }
+            
+            inputStream.close();
+        }
     } catch (Exception e) {
-      System.err.println("Error: "+e.getLocalizedMessage());
+        System.err.println("Error: "+e.getLocalizedMessage());
     } finally {
-      client.getConnectionManager().shutdown();
+        client.getConnectionManager().shutdown();
     }
     
-    return null;
+    return new AjaxResult(AjaxResult.SUCCESS, result);
   }
 
   
