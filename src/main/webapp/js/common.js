@@ -118,19 +118,16 @@ $(function() {
 					return;
 				}
 			
-				swal({
-					  title: "안내",
-					  text: "회원가입 완료!",
-					  type: "success",
-					  /*showCancelButton: true,
-					  confirmButtonColor: "#DD6B55",
-					  confirmButtonText: "Yes, delete it!",*/
-					  closeOnConfirm: true
-					},
-					function(){
-						
-					  location.reload();
-				});
+				// 회원가입 후 자동 로그인
+				$.post('/blingbling/auth/login.json', param, function(ajaxResult) {
+					//console.log(ajaxResult);
+					if (ajaxResult.status != "success") {
+						//alert(ajaxResult.data);
+						return;
+					}
+					location.reload();
+				}, 'json');
+				
 			}, 'json');
 		});
 		
@@ -189,7 +186,6 @@ function processLogin(email, username="", id="") {
 	
 	// 서버에 회원이 있는지 체크하는 요청
 	$.getJSON('/blingbling/auth/checkUser.json',param, function(ajaxResult) {
-		console.log('체크 : ',ajaxResult);
 		if (ajaxResult.status != 'success') {
 			// 회원이 없으면 가입처리
 			// 가입 모달 띄우고 받은 정보로 초기화 
