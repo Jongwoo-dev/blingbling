@@ -159,6 +159,11 @@ body > .container {
    color:    #c0392b;
 }
 
+.signup-input {
+	height: 40px;
+	margin-bottom: 10px;
+}
+
 /* 서브헤더 css */
 
 #header_sub {

@@ -27,20 +27,14 @@ public class AuthServiceImpl implements AuthService {
         member.setType(Member.USER);
       }
     }
-    
-    /*if (member == null) {
-      return null;
-    }*/
-    
     return member;
-    /*if (userType.equals(Member.STUDENT)) {
-      return studentDao.getOne(member.getMemberNo());
-      
-    } else if (userType.equals(Member.TEACHER)) {
-      return teacherDao.getOneWithPhoto(member.getMemberNo());
-      
-    } else if (userType.equals(Member.MANAGER)) {
-      return managerDao.getOne(member.getMemberNo());
-    }*/
   }
+  
+  public boolean checkMember(String email) throws Exception {
+    if (memberDao.count(email) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
 }
