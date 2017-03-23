@@ -84,10 +84,65 @@ $(function() {
 					    location.reload();
 					});
 				});
+			
+			
 		});
+		
+		// 회원가입모달 클릭 이벤트
+		$('#signup-submit-btn').click(function() {
+			
+			// 빈칸 없는지 체크
+			if($('#signup-username').val().length == 0){
+				$('#signup-username').popover('show');
+				return;
+			}else if($('#signup-email').val().length == 0){
+				$('#signup-email').popover('show');
+				return;
+			}else if($('#signup-tel').val().length == 0){
+				$('#signup-tel').popover('show');
+				return;
+	         }
+			
+			$('.signup-input').popover('hide');
+			var param = {
+					name  : $('#signup-username').val(),
+					email : $('#signup-email').val(),
+					tel   : $('#signup-tel').val()
+			}
+			console.log(param);
+			$.post('/blingbling/member/add.json', param, function(ajaxResult) {
+				$('#signUpModal').modal('hide');
+				if (ajaxResult.status != "success") {
+					swal('실패',ajaxResult.data,'error');
+					//alert(ajaxResult.data);
+					return;
+				}
+			
+				// 회원가입 후 자동 로그인
+				$.post('/blingbling/auth/login.json', param, function(ajaxResult) {
+					//console.log(ajaxResult);
+					if (ajaxResult.status != "success") {
+						//alert(ajaxResult.data);
+						return;
+					}
+					location.reload();
+				}, 'json');
+				
+			}, 'json');
+		});
+		
+		$('#signup-cancel-btn').click(function() {
+			$('.signup-input').popover('hide');
+		});
+		
 	});
 	
-
+	$.getScript("/blingbling/auth/facebook.js", function() {
+		// 버튼등록
+		registerFacebookBtn('#facebookLoginBtn');
+	});
+	
+	
 });
 
 $(function() {
@@ -121,6 +176,38 @@ var arrayToJson = function(list) {
 	return result;
 }
 
-searchbar = $('#searchbarinput').val();
+function processLogin(email, username="", id="") {
+	$('#myModal').modal('hide');
+	
+	// 홈페이지 로그인 처리
+	var param = {
+			email : email
+	}
+	
+	// 서버에 회원이 있는지 체크하는 요청
+	$.getJSON('/blingbling/auth/checkUser.json',param, function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			// 회원이 없으면 가입처리
+			// 가입 모달 띄우고 받은 정보로 초기화 
+			$('#signUpModal').modal('show');
+			$('#signup-email').val(email);
+			$('#signup-username').val(username);
+			
+			return;
+		}
+		// 회원이 있으면 로그인처리
+		$.post('/blingbling/auth/login.json', param, function(ajaxResult) {
+			//console.log(ajaxResult);
+			if (ajaxResult.status != "success") {
+				//alert(ajaxResult.data);
+				return;
+			}
+			location.reload();
+		}, 'json');
+	});
+	
 
+}
+
+searchbar = $('#searchbarinput').val();
 

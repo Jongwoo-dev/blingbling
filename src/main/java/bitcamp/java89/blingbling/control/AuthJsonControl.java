@@ -44,6 +44,15 @@ public class AuthJsonControl {
     return new AjaxResult(AjaxResult.SUCCESS, member);
   }
   
+  @RequestMapping("/auth/checkUser")
+  public AjaxResult checkUser(String email) throws Exception {
+    if (!authService.checkMember(email)) { // 해당 이메일 유저가 없으면
+      return new AjaxResult(AjaxResult.FAIL, "해당 이메일의 유저가 존재하지 않습니다.");
+    }
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "해당 이메일의 유저가 존재합니다.");
+  }
+  
 }
 
 
