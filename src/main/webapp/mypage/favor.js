@@ -1,4 +1,4 @@
-//학생 목록 가져와서 tr 태그를 만들어 붙인다.
+//로그인 멤버 넘버 추출
 $.getJSON('../auth/loginUser.json', function (ajaxResult){
 	console.log('11111111111');
 	if (ajaxResult.status != "success")
@@ -7,24 +7,31 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 	var memberNo = data.memberNo;
 	console.log(memberNo);
 	
-	/*$.getJSON('../stamp/listByMember.json?memberNo='+memberNo, function(ajaxResult) {
-		var status = ajaxResult.status;
-		if (status != "success")
-			return;
-		var list = ajaxResult.data;
-		var main = $('#content_main');
-
-
-	});*/
-
-	$.getJSON('../favorite/list?memberNo' + memberNo, function(ajaxResult) {
+	//즐찾 리스트 추출
+	$.getJSON('../favorite/list.json?memberNo=' + memberNo, function(ajaxResult) {
 		var list = ajaxResult.data
 		console.log(list);
+		
+		var memberStoreNo = list[i].memberStoreNo;
+		
+		//각 테이블 생성
+		var list = ajaxResult.data;
+	    var main = $('#content_main');
+		var template = Handlebars.compile($('#corTemplate').html());
+
+		   main.html(template({"list": list}));
+		   
+		   $('.img-card').click(function(event) {
+		           event.preventDefault();
+		           location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
+		           
+		        });
+		   
 	})
 	
 	
 	
-	/*$.getJSON('../mypagepl/listByMember.json?memberNo='+memberNo, function(ajaxResult) {
+	$.getJSON('../mypagepl/listByMember.json?memberNo='+memberNo, function(ajaxResult) {
 		var status = ajaxResult.status;
 
 		if (status != "success")
@@ -46,7 +53,7 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 		var profilename =$('#profilename');
 		$('<span>').addClass('profile name').text(member.name).appendTo(profilename);
 	});
-*/
+	
 });
 
 

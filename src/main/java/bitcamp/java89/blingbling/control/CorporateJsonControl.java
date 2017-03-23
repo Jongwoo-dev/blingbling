@@ -19,6 +19,14 @@ public class CorporateJsonControl {
   
   @Autowired CorporateService corporateService;
 
+  @RequestMapping("/corporate/listbymno")
+  public AjaxResult getListByMemberNO(int memberStoreNo) throws Exception {
+      
+      List<Corporate> searchBybaseAddressList = corporateService.searchBybaseAddress(map);
+      
+      return new AjaxResult(AjaxResult.SUCCESS, searchBybaseAddressList);
+  }
+  
   @RequestMapping("/corporate/conversionlist")
   public AjaxResult conversionList() throws Exception {
     List<Corporate> conversionList = corporateService.getConversionList();
