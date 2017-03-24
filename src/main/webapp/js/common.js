@@ -296,6 +296,9 @@ var arrayToJson = function(list) {
 function processLogin(email, username="", id="") {
 	$('#myModal').modal('hide');
 	
+	if (!email) {
+		return;
+	}
 	// 홈페이지 로그인 처리
 	var param = {
 			email : email
