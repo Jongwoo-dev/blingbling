@@ -4,7 +4,6 @@ try {
 		var search = -1;
 	}
 	
-	console.log(search);
 var keyword =$('#contentsearchtitle');
  $('<span>').text(decodeURIComponent(search)).appendTo(keyword);
 	$.getJSON('../corporate/searchBysearchbar.json?searchbar='+search, function(ajaxResult) {
@@ -12,7 +11,7 @@ var keyword =$('#contentsearchtitle');
 		if (status != "success")
 			return;
 		//$('#content-main').children().remove();
-		
+		    
 		var list = ajaxResult.data;
 		var main = $('#content_main');
 		var template = Handlebars.compile($('#corTemplate').html());
@@ -23,4 +22,10 @@ var keyword =$('#contentsearchtitle');
 		console.log(list);
 
 		main.html(template({"list": list}));
+		
+		$('.img-card').click(function(event) {
+		  	event.preventDefault();
+		  	location.href = '../corporate/detail-info.html?memberNo=' + $(this).attr("data-memberno");
+		  	
+		  });
 	});
