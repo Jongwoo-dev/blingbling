@@ -198,13 +198,13 @@ body > .container {
 /* 풋터 css */
 #footer {
    /* z-index: 8; */
-   position: fixed; 
-   width: 100%; 
+   width: 960px; 
    height:200px; 
    bottom:0px; 
    background-color: #ebebeb; 
    border-top: 1px solid #bebebe;
    padding: 0px;
+
 }
 
 #footer_content {
