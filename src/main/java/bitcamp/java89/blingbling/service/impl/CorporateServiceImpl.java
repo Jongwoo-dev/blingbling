@@ -15,6 +15,12 @@ import bitcamp.java89.blingbling.service.CorporateService;
 public class CorporateServiceImpl implements CorporateService {
   @Autowired CorporateDao corporateDao;
 
+
+  @Override
+  public List<Corporate> getListByMemberNo(int memberNo) throws Exception {
+    return corporateDao.getListByMemberNo(memberNo);
+  }
+  
   @Override
   public List<Corporate> getConversionList() throws Exception {
     return corporateDao.getConversionList();

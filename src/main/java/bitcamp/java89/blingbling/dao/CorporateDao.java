@@ -6,6 +6,7 @@ import java.util.HashMap;
 import bitcamp.java89.blingbling.domain.Corporate;
 
 public interface CorporateDao {
+  ArrayList<Corporate> getListByMemberNo(int memberNo) throws Exception;
   ArrayList<Corporate> getConversionList() throws Exception;
   ArrayList<Corporate> getList() throws Exception;
   ArrayList<Corporate> getListByCorporateName(String corporateName) throws Exception;

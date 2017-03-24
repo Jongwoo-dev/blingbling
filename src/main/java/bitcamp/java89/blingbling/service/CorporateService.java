@@ -6,6 +6,7 @@ import java.util.List;
 import bitcamp.java89.blingbling.domain.Corporate;
 
 public interface CorporateService {
+  List<Corporate> getListByMemberNo(int memberNo) throws Exception;
   List<Corporate> getConversionList() throws Exception;
   List<Corporate> getList() throws Exception;
   List<Corporate> searchByCorporateName(String corporateName) throws Exception;

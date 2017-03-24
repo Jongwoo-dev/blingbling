@@ -45,6 +45,30 @@
 
   </resultMap>
   
+  <select id="getListByMemberNo" parameterType="int" resultMap="corporate-map">
+   select
+      f.mno,
+      f.msno,
+      m.name, 
+      ms.cname,
+      mp.mpno,
+      mp.path,
+      it.ino,
+      it.name as iname,
+      it.price
+    from  favor f
+      join memb_store ms 
+        using(msno)
+      join ms_phot mp
+        using(msno)
+      join item it 
+        using(msno)
+      join memb m 
+        using(mno)
+    where f.mno=#{value}
+  </select>
+  
+  
   <select id="getConversionList" resultMap="corporate-map">
     select
       memb.mno,

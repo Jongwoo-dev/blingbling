@@ -19,6 +19,15 @@ public class CorporateJsonControl {
   
   @Autowired CorporateService corporateService;
 
+  @RequestMapping("/corporate/myFavoriteList")
+  public AjaxResult getListByMemberNo(int memberNo) throws Exception {
+      List<Corporate> list = corporateService.getListByMemberNo(memberNo);
+      if (list.isEmpty()) {
+        return new AjaxResult(AjaxResult.FAIL, "즐찾 없음");
+      }
+      return new AjaxResult(AjaxResult.SUCCESS,list);
+  }
+  
   @RequestMapping("/corporate/conversionlist")
   public AjaxResult conversionList() throws Exception {
     List<Corporate> conversionList = corporateService.getConversionList();
