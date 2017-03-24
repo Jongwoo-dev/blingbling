@@ -146,7 +146,6 @@ public class CorporateJsonControl {
     String[] tempStr = searchbar.split(" ");
     HashMap<String, Object> map = new HashMap<>();
     ArrayList<String> listsearch = new ArrayList<>();
-    System.out.println(searchbar);
     
     for (int i = 0; i < tempStr.length; i++) {
     	listsearch.add(tempStr[i]);

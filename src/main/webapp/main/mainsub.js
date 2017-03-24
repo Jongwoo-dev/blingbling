@@ -10,7 +10,6 @@ try {
 	}
 	
 	
-	console.log(basclk);
 	var btnList = $('.content-default');
 //	btnList.removeClass('.selected');
 	for (var i = 0; i < btnList.length; i++) {

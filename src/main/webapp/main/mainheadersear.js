@@ -4,7 +4,6 @@ try {
 		var search = -1;
 	}
 	
-	console.log(search);
 var keyword =$('#contentsearchtitle');
  $('<span>').text(decodeURIComponent(search)).appendTo(keyword);
 	$.getJSON('../corporate/searchBysearchheader.json?searchheader='+search, function(ajaxResult) {
@@ -20,7 +19,6 @@ var keyword =$('#contentsearchtitle');
 		
 		var countli = $('<span>').addClass('titlenum').text(list.length).appendTo(count);
 		$('<span>').addClass('titletext').text("개 업체").appendTo(countli);
-		console.log(list);
 
 		main.html(template({"list": list}));
 		$('.img-card').click(function(event) {

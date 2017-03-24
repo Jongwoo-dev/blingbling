@@ -4,7 +4,6 @@ try {
 		var search = -1;
 	}
 	
-	console.log(search);
 var keyword =$('#contentsearchtitle');
  $('<span>').text(decodeURIComponent(search)).appendTo(keyword);
 	$.getJSON('../corporate/searchBysearchbar.json?searchbar='+search, function(ajaxResult) {
