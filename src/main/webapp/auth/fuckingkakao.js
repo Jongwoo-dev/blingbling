@@ -1,6 +1,6 @@
 Kakao.init('aeb1a37bb88bcebd4739d8cd29974225');
 
-Kakao.Auth.createLoginButton({
+/*Kakao.Auth.createLoginButton({
     container: '#kakao-login-btn',
     success: function(authObj) {
       alert(JSON.stringify(authObj));
@@ -8,15 +8,19 @@ Kakao.Auth.createLoginButton({
     fail: function(err) {
        alert(JSON.stringify(err));
     }
-  });
+  });*/
 
-  function kakaoLogin() {
+function kakaoLogin() {
     Kakao.Auth.login({
       success: function(authObj) {
           Kakao.API.request({
               url: '/v1/user/me',
               success: function(res) {
-                 console.log(res);
+            	  console.log(res);
+            	  console.log(res.kaccount_email);
+            	  console.log(res.properties.nickname);
+            	  console.log(statusObj);
+//                 processLogin(res.email, res.name);
                   /*$.getJSON(serverRoot + '/auth/loginsns.json', {type: "kakao", snsId: res.id}, function (ajaxResult) {
                       if (ajaxResult.status == "success") {
                           location.href = clientRoot + "/main/main.html";
@@ -38,7 +42,7 @@ Kakao.Auth.createLoginButton({
   });
 };
 
-
+/*
 
 $(function() {
     setTimeout(function() { $('#email').focus() }, 200);
@@ -87,4 +91,4 @@ $(function() {
             alert(ajaxResult.data);
         }, 'json');
     }
-})
+})*/
