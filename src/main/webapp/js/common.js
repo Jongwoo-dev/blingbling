@@ -19,6 +19,116 @@ $(function() {
 		  	
 		});
 		
+		$('#whole').click(function() {
+			var catbtn = $(this);
+			if(catbtn.attr('aria-pressed') == "true" ){
+				whole = '';
+				
+				console.log("메롱");
+			}
+			else{
+				console.log("안녕");
+				whole = '마사지 에스테틱 네일아트 왁싱';
+				masa = '';
+				aes = '';
+				nali = '';
+				wax = '';
+				
+			}
+			
+			getSearchStr();
+			
+			
+			console.log(searchselect);
+		});
+		
+		$('#masa').click(function() {
+			var catbtn = $(this);
+			if(catbtn.attr('aria-pressed') == "true" ){
+				console.log("메롱");
+				masa = '';
+			}
+			else{
+				console.log("안녕");
+				masa = '마사지';
+			}
+			getSearchStr();
+			
+			
+			console.log(searchselect);
+			
+		});
+		
+		$('#aes').click(function() {
+			var catbtn = $(this);
+			if(catbtn.attr('aria-pressed') == "true" ){
+				console.log("메롱");
+				aes = '';
+			}
+			else{
+				console.log("안녕");
+				aes = '에스테틱'
+			}
+			getSearchStr();
+			
+			
+			console.log(searchselect);
+			
+		});
+		
+		$('#nail').click(function() {
+			var catbtn = $(this);
+			if(catbtn.attr('aria-pressed') == "true" ){
+				console.log("메롱");
+				nali = '';
+			}
+			else{
+				console.log("안녕");
+				nali = '네일아트';
+			}
+		
+			getSearchStr();
+			
+			
+			console.log(searchselect);
+			
+		});
+		
+		$('#wax').click(function() {
+			var catbtn = $(this);
+			if(catbtn.attr('aria-pressed') == "true" ){
+				console.log("메롱");
+				wax = '';
+			}
+			else{
+				console.log("안녕");
+				wax = '왁싱'
+			}
+			getSearchStr();
+			
+			console.log(searchselect);
+			
+		});
+		
+		$('#ariabtn button').click(function(event) {
+			
+			searchclk = $(this).text();
+			$('#ariabtn').children().remove();
+			
+			if(searchselect == ''){
+				searchselect = '마사지 에스테틱 네일아트 왁싱';
+			 	event.preventDefault();
+				
+				location.href = '../main/mainheadersear.html?searchbar='+searchclk +' '+searchselect;
+			}
+			else{
+				event.preventDefault();
+			  	location.href = '../main/mainheadersear.html?searchbar='+searchclk +' '+searchselect;
+			}
+				
+		  	
+		});
+		
 		$('#service-center-link').click(function(event) {
 			event.preventDefault();
 			location.href='../serviceCenter/notice.html';
@@ -210,4 +320,26 @@ function processLogin(email, username="", id="") {
 }
 
 searchbar = $('#searchbarinput').val();
+
+function getSearchStr() {
+	
+	
+	if (whole == null) {
+		whole = '';
+	}
+	if (masa == null) {
+		masa = '';
+	}
+	if (aes == null) {
+		aes = '';
+	}
+	if (nali == null) {
+		nali = '';
+	}
+	if (wax == null) {
+		wax = '';
+	}
+	searchselect = whole+' '+masa+' '+aes+' '+nali+ ' '+wax;
+
+}
 
