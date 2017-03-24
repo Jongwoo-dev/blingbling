@@ -1,5 +1,12 @@
 var member
 var searchbar;
+var whole = '';
+var masa = '';
+var aes = '';
+var nali = '';
+var wax = '';
+var searchselect = '';
+var searchclk;
 
 $(function() {
 
