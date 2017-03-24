@@ -19,14 +19,6 @@ public class CorporateJsonControl {
   
   @Autowired CorporateService corporateService;
 
-  @RequestMapping("/corporate/listbymno")
-  public AjaxResult getListByMemberNO(int memberStoreNo) throws Exception {
-      
-      List<Corporate> searchBybaseAddressList = corporateService.searchBybaseAddress(map);
-      
-      return new AjaxResult(AjaxResult.SUCCESS, searchBybaseAddressList);
-  }
-  
   @RequestMapping("/corporate/conversionlist")
   public AjaxResult conversionList() throws Exception {
     List<Corporate> conversionList = corporateService.getConversionList();
@@ -158,6 +150,26 @@ public class CorporateJsonControl {
   	List<Corporate> searchBysearchbarList = corporateService.searchBysearchbar(map);
     
     return new AjaxResult(AjaxResult.SUCCESS, searchBysearchbarList);
+  }
+  
+  @RequestMapping("/corporate/searchBysearchheader")
+  public AjaxResult searchByheaderList(String searchheader) throws Exception {
+    String[] tempStr = searchheader.split(" ");
+    HashMap<String, Object> map = new HashMap<>();
+    ArrayList<String> list = new ArrayList<>();
+    
+    for (int i = 1; i < tempStr.length; i++) {
+    	list.add(tempStr[i]);
+    }
+    
+    
+    map.put("address1", tempStr[0]);
+    map.put("address2", list);
+    
+    
+  	List<Corporate> searchByheaderList = corporateService.searchBysearchheader(map);
+    
+    return new AjaxResult(AjaxResult.SUCCESS, searchByheaderList);
   }
  
   

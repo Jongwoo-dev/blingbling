@@ -2,12 +2,10 @@ package bitcamp.java89.blingbling.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import bitcamp.java89.blingbling.domain.Corporate;
 
 public interface CorporateDao {
-  ArrayList<Corporate> getListByMemberNo() throws Exception;
   ArrayList<Corporate> getConversionList() throws Exception;
   ArrayList<Corporate> getList() throws Exception;
   ArrayList<Corporate> getListByCorporateName(String corporateName) throws Exception;
@@ -26,5 +24,6 @@ public interface CorporateDao {
   int deleteTel(int memberNo) throws Exception;
   ArrayList<Corporate> getListBybaseAddress(HashMap<String, Object> map) throws Exception;
   ArrayList<Corporate> getListBysearchbar(HashMap<String, Object> map) throws Exception;
+  ArrayList<Corporate> getListBysearchheader(HashMap<String, Object> map) throws Exception;
 
 }

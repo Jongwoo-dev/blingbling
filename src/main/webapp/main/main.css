@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+
+/* 메인 */
+
+#imgcard {
+	margin-top: 30px;
+	margin-bottom: 230px;
+	border-left: 1px solid rgb(224, 224, 224);
+	background-color: rgb(244, 244, 244);
+	position: relative;
+}
+
+.itembox {
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+  cursor: pointer; 
+	
+}
+
+.itembox:hover {
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	transition: all 0.3s ease-in-out;
+}
+
+.itembox>img {
+	width: 188px;
+  height: 125px;
+}
+
+
+
+/*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+.fade-carousel {
+    position: relative;
+    height: 430px;
+}
+.fade-carousel .carousel-inner .item {
+	
+    height: 430px;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 1s all ease-in-out .5s;
+       -moz-transition: 1s all ease-in-out .5s; 
+        -ms-transition: 1s all ease-in-out .5s; 
+         -o-transition: 1s all ease-in-out .5s; 
+            transition: 1s all ease-in-out .5s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 1s all ease-in-out .5s;
+       -moz-transition: 1s all ease-in-out .5s; 
+        -ms-transition: 1s all ease-in-out .5s; 
+         -o-transition: 1s all ease-in-out .5s; 
+            transition: 1s all ease-in-out .1s;    
+}
+
+
+
+
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url(mainimg1.JPG); 
+   width: 960px;
+  height: 400px;
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url(mainimg2.JPG);
+    width: 960px;
+  height: 400px;
+}
+.fade-carousel .slides .slide-3 {
+  background-image: url(mainimg3.JPG);
+    width: 960px;
+  height: 400px;
+}
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+    .hero { width: 960px; }    
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }    
+}
+
+
+

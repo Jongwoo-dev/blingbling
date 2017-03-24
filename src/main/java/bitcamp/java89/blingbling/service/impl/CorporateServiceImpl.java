@@ -14,12 +14,7 @@ import bitcamp.java89.blingbling.service.CorporateService;
 @Service
 public class CorporateServiceImpl implements CorporateService {
   @Autowired CorporateDao corporateDao;
-  
-  @Override
-  public List<Corporate> getListByMemberNo() throws Exception {
-    return corporateDao.getListbyMemberNo();
-  }
-  
+
   @Override
   public List<Corporate> getConversionList() throws Exception {
     return corporateDao.getConversionList();
@@ -88,9 +83,12 @@ public class CorporateServiceImpl implements CorporateService {
   public List<Corporate> searchBysearchbar(HashMap<String, Object> map) throws Exception {
     return corporateDao.getListBysearchbar(map);
   }
+  @Override
+  public List<Corporate> searchBysearchheader(HashMap<String, Object> map) throws Exception {
+    return corporateDao.getListBysearchheader(map);
+  }
  
 }
-
 
 
 

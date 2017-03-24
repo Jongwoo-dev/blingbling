@@ -6,7 +6,6 @@ import java.util.List;
 import bitcamp.java89.blingbling.domain.Corporate;
 
 public interface CorporateService {
-  List<Corporate> getListByMemberNo() throws Exception;
   List<Corporate> getConversionList() throws Exception;
   List<Corporate> getList() throws Exception;
   List<Corporate> searchByCorporateName(String corporateName) throws Exception;
@@ -20,6 +19,7 @@ public interface CorporateService {
   int updatePriceTime(Corporate corporate) throws Exception;
   List<Corporate> searchBybaseAddress( HashMap<String, Object> map) throws Exception;
   List<Corporate> searchBysearchbar( HashMap<String, Object> map) throws Exception;
+  List<Corporate> searchBysearchheader( HashMap<String, Object> map) throws Exception;
 
 }
 
