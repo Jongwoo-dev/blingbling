@@ -1,11 +1,16 @@
 var map;
 var marker;
 var infowindow;
-var loginMember;
+var loginMember = null;
 var filename;
+
+var commentBox;
+var mainCommentBox;
+var writeBoxContainer;
 
 var memberNo = location.href.split('?')[1].split('=')[1];
 var memberStoreNo = memberNo;
+var corporateNo = memberNo;
 
 
 //<textarea id="ClipBoard" style="display:none"></textarea>
@@ -32,23 +37,33 @@ var memberStoreNo = memberNo;
 
 });*/
 
-$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-	//로그인 확인
-	if(ajaxResult.status == 'success') {
-		var data = ajaxResult.data;
-		memberNo = data.memberNo;
+$(function() {
+	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
+		
+		//로그인 확인
+		if(ajaxResult.status == 'success') {
+			var data = ajaxResult.data;
+			memberNo = data.memberNo;
+			loginMember = data;
 
-		$.getJSON('../favorite/count.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
-			var count = ajaxResult.data;
-				if (count > 0) {
-					$('#favorite-star-span').removeClass('glyphicon-star-empty');
-					$('#favorite-star-span').addClass('glyphicon-star');
-				} return;
-		});
-	} else {
-		return	//비로그인 일시 '별버튼' 그대로
-	}
+			$.getJSON('../favorite/count.json?memberNo=' + memberNo +'&memberStoreNo=' + memberStoreNo, function(ajaxResult) {
+				var count = ajaxResult.data;
+					if (count > 0) {
+						$('#favorite-star-span').removeClass('glyphicon-star-empty');
+						$('#favorite-star-span').addClass('glyphicon-star');
+					}
+					return;
+			});
+			
+			initInfo();
+		} else {
+			initInfo();
+			return	//비로그인 일시 '별버튼' 그대로
+		}
+	});
 });
+
+
 
 $('#favorite-star-span').click(function(){
 	var starBtn = $(this);
@@ -200,7 +215,11 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 			$('button').removeClass('navi-selected');
 			$(this).addClass('navi-selected');
 			$('#navi-header-div').text('리뷰');
-			$('#info-cont-div').text(corporate.notice);
+			$('#info-cont-div').html("<div id='comment-container'></div>");
+			
+			initInfo();
+			
+			
 		});
 		
 		
@@ -209,34 +228,6 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 				initMarker(corporate.mapLocation);
 			}
 		}
-/*
-	
-	$('#infoEditor').summernote('code', corporate.additionalInfo)
-	if (corporate.mapLocation != null) {
-		if (corporate.mapLocation.length != 0) {
-			initMarker(corporate.mapLocation);
-		}
-	}
-
-	$('#corporateRegistrationNumber').val(corporate.corporateRegistrationNumber);
-	$('#corporateConfirm').val(corporate.corporateConfirm);
-	$('#corporateType').val(corporate.corporateType);
-	$('#detail').val(corporate.detail);
-	$('#notice').val(corporate.notice);
-	
-	var list = corporate.telList
-	for (var i = 0; i < list.length; i++) {
-		//console.log(list[i].corporateTel);
-		if (i == 0) {
-			$('input[name=corporateTel]').val(list[i].corporateTel)
-		} else {
-			$("<div>")
-			.html("<input class='form-control short' name='corporateTel' placeholder='업체 전화번호를 입력해 주세요'" +
-					"value='"+list[i].corporateTel+"' style='margin-left:123px;'>")
-			.appendTo("#tel-group")
-		}
-	}
-*/
 
 });
 
@@ -246,53 +237,224 @@ $('#header_sub_a_home').click(function(event) {
 	event.preventDefault()
 	//location.href='.html';
 });
-/*
- * 
- * CKEDITOR.replace( 'infoEditor', {
-	width: "600px",
-	height: "350px",
-	resize_enabled: false,
-	filebrowserUploadUrl: '../ckeditor/upload.php',
+
+var initInfo = function() {
+	$.getJSON('/blingbling/comment/list.json?corporateNo='+corporateNo, function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			swal('오류!', ajaxResult.data, 'error')
+			return;
+		}
+		
+		var commentContainer = $('#comment-container');
+
+		commentContainer.children().remove();
+		
+		var list = ajaxResult.data;
+		/*console.log(list);*/
+		
+		var comment = new Array();
+		/*var reply = new Array();*/
+		
+		var commentTemplate = Handlebars.compile($('#commentBoxTemplate').html());
+		var deletedCommentTemplate = Handlebars.compile($('#deletedCommentBoxTemplate').html());
+		var replyTemplate = Handlebars.compile($('#replyBoxTemplate').html());
+		var writeTemplate = Handlebars.compile($('#writeBoxTemplate').html());
+		
+		$('<div>')
+			.addClass('comment-box')
+			.html(writeTemplate(loginMember))
+			.appendTo(commentContainer);
+		
+		var writeBtn = $('.comment-write-btn');
+		
+		writeBtnRegister(writeBtn);
+		
+		var commentList = $('<div>')
+			.addClass('comment-list')
+			.appendTo(commentContainer);
+		
+		var boxHtml;
+		for (var i in list) {
+			if (list[i].level == 1) {
+				if (list[i].deleted) {
+					commentList
+					.prepend(deletedCommentTemplate(list[i]));
+					$('.comment-list > .comment-box').first().addClass('deleted');
+				} else {
+					commentList
+					.prepend(commentTemplate(list[i])); 
+				}
+				comment[list[i].group] = $('.comment-list > .comment-box').first();
+				comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-reply').click(function() {
+					commentBox = $(this).parent().parent().parent();
+					writeBoxContainer = commentBox.children('.write-box-container');
+					// 속성 확인해보고 추가할지 없엘지 
+					if (commentBox.hasClass('active-write')) {
+						writeBoxContainer.children().remove();
+						commentBox.removeClass('active-write');
+					} else {
+						removeWriteBox();
+						
+						// 답글박스 추가
+						writeBoxContainer.append(writeTemplate(loginMember));
+						commentBox.addClass('active-write');
+						
+						
+						writeBtn = writeBoxContainer.children('.comment-write-box').children('.comment-write-btn');
+						writeBtnRegister(writeBtn, $(this).parent().attr('data-no'), 2, commentBox.children('.reply').length+1);
+						
+					}
+				}) // reply_click()
+				
+				if (interactionBtnCheck(comment[list[i].group].children('.main-comment-box').children('.writer-interaction'))) {
+					
+					comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-update').click(function() {
+						updateComment(this, 1);
+					}); // update_click()
+					
+					comment[list[i].group].children('.main-comment-box').children('.writer-interaction').children('.comment-delete').click(function() {
+						deleteComment(this);
+					}); // delete_click()
+				}
+			} else {
+				comment[list[i].group].append(replyTemplate(list[i]));
+				if (!list[i].deleted) {
+					if (comment[list[i].group].hasClass('deleted')) {
+						comment[list[i].group].css('display','block');					
+					}
+					comment[list[i].group].children('.comment-box.reply').last()
+						.css('display','block');
+					
+					if (interactionBtnCheck(comment[list[i].group].children('.comment-box.reply').last()
+							.children('.writer-interaction'))) {
+						comment[list[i].group].children('.comment-box.reply').last()
+						.children('.writer-interaction').children('.comment-update').click(function() {
+							updateComment(this, 2);
+						}); // update_click()
+						
+						comment[list[i].group].children('.comment-box.reply').last()
+						.children('.writer-interaction').children('.comment-delete').click(function() {
+							deleteComment(this);
+						}); // delete_click()
+					}
+				}
+			}
+		}
+		/*console.log(comment);*/
+	});
+}
+
+function writeBtnRegister(jqueryObj, group = 0, level = 1, sequence = 1) {
+	jqueryObj
+		.attr('data-group', group)
+		.attr('data-level', level)
+		.attr('data-sequence', sequence)
+		.click(function() {
+			if (loginMember == null) {
+				swal('알림','로그인을 하셔야 댓글작성이 가능합니다.','error');
+			}
+			var param = {
+					corporateNo : corporateNo,
+					memberNo    : loginMember.memberNo,
+					group       : $(this).attr('data-group'),
+					level       : $(this).attr('data-level'),
+					sequence    : $(this).attr('data-sequence'),
+					contents    : $(this).parent().children('.comment-write-textarea').val()
+			}
+			/*console.log(param);*/
+			$.post('/blingbling/comment/add.json', param, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					swal('에러',ajaxResult.data,'error');
+				}
+				/*console.log(ajaxResult);*/
+				/*swal('예약성공!',ajaxResult.data,'success');*/
+				initInfo();
+			});
+		});
+};
+
+function updateComment(domObj, level) {
+	removeWriteBox();
 	
-	toolbar : [
-			[ 'Source', '-' ],
-			[ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo' ],
-			[ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
-			[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ],
-			'/',
-			[ 'Styles', 'Format', 'Font', 'FontSize' ],
-			[ 'TextColor', 'BGColor' ],
-			[ 'Image', 'Table' , 'SpecialChar' , 'Link']
-			//, 'Unlink'
-		]
+	commentBox = $(domObj).parent().parent().parent();
+	mainCommentBox = $(domObj).parent().parent();
 
-});
+	var commentNo = $(domObj).parent().attr('data-no');
+	var commentText = mainCommentBox.children('.comment-content').children('.comment-textline').children('pre').text();
+	/*console.log('코멘트 번호 : ',commentNo,'      내용 : ',commentText);*/
+	var updateTemplate = Handlebars.compile($('#updateBoxTemplate').html());
+	
+	var currentComment = {
+			name        : loginMember.name,
+			commentText : commentText
+	}
+	
+	if (level == 1) {
+		commentBox.prepend(updateTemplate(currentComment));
+		commentBox.children('.comment-write-box').css('background-color','rgb(244,244,244)');
+	} else if(level == 2) {
+		mainCommentBox.before(updateTemplate(currentComment));
+		commentBox.children('.comment-write-box').css('margin-left','50px').css('background-color','rgb(244,244,244)');;
+	}
+	
+	mainCommentBox.addClass('hidden');
+	
+	$('.comment-cancel-btn').click(function() {
+		removeWriteBox();
+	})
+	
+	$('.comment-update-btn').click(function() {
+		var param = {
+				commentNo : commentNo,
+				contents    : $(this).parent().children('.comment-write-textarea').val()
+		}
+		$.post('/blingbling/comment/update.json', param, function(ajaxResult) {
+			if (ajaxResult.status != 'success') {
+				swal('에러',ajaxResult.data,'error');
+			}
+			initInfo();
+		});
+	})
+	
+}
 
-$('#infoEditor').summernote({
-	height: 450,                 // set editor height
-	minHeight: null,             // set minimum height of editor
-	maxHeight: null,             // set maximum height of editor
-	focus: true,                  // set focus to editable area after initializing summernote
-	lang: 'ko-KR',
-	maximumImageFileSize: 2097152, //2MB
-	disableDragAndDrop: true,
-	toolbar: [
-		// [groupName, [list of button]]
-		['style', ['bold', 'italic', 'underline', 'clear']],
-		['fontsize', ['fontname', 'fontsize']],
-		['color', ['color']],
-		['insert', ['picture', 'link', 'video']],
-		['font', ['strikethrough', 'superscript', 'subscript']],
-		['misc', ['undo', 'redo']],
-		['table', ['table']],
-		['para', ['ul', 'ol', 'paragraph']],
-		['height', ['height']],
-		['detail', ['codeview']]
-		]
-	callbacks : {
-      onImageUpload: function(image) {
-        uploadImage(image[0]);
-      }
-    }
-});
-*/
+function deleteComment(domObj) {
+	var param = {
+			commentNo : $(domObj).parent().attr('data-no')
+	}
+	$.post('/blingbling/comment/delete.json', param, function(ajaxResult) {
+		if (ajaxResult.status != 'success') {
+			swal('에러',ajaxResult.data,'error');
+		}
+		/*console.log(ajaxResult);*/
+		initInfo();
+	});
+}
+
+function replyBtnRegister(jqueryObj) {
+	
+}
+
+function interactionBtnCheck(jqueryObj) {
+	// 로그인한 유저랑 코멘트 쓴 유저가 다르면 삭제
+	if (loginMember.memberNo != jqueryObj.attr('data-writer-no')) {
+		jqueryObj.children('.comment-update').remove();
+		if (!loginMember.administrator) {
+			jqueryObj.children('.comment-delete').remove();
+		}
+		return false;
+	} 
+	
+	return true;
+}
+
+function removeWriteBox() {
+	// 기존 답글박스 삭제
+	$('.comment-list').children('.comment-box').children('.write-box-container').children().remove();
+	$('.comment-box').removeClass('active-write');
+	
+	// 기존 수정박스 삭제
+	$('.comment-list').children('.comment-box').children('.comment-write-box').remove();
+	$('.main-comment-box').removeClass('hidden');
+	$('.comment-box').removeClass('hidden');
+}
