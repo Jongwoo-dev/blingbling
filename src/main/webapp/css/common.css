@@ -323,3 +323,14 @@ body > .container {
 .well {
    margin-bottom: 5px;
 }
+
+.btn.btn-danger.focus {
+  background-color: white;
+  color: #5e5e5e;
+}
+
+.btn.btn-danger.active.focus {
+  background-color: #c9302c;
+  border-color: #ac2925;
+  color: #fff;
+} 
