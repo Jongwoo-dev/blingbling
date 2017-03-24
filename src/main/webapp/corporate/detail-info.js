@@ -12,6 +12,8 @@ var memberNo = location.href.split('?')[1].split('=')[1];
 var memberStoreNo = memberNo;
 var corporateNo = memberNo;
 
+var corporate;
+
 
 //<textarea id="ClipBoard" style="display:none"></textarea>
 
@@ -168,9 +170,14 @@ function initMap() {
 	
 
 	$('#view-big').click(function () {
-		window.open()
+		var locStr = corporate.mapLocation
+			.replace('(','')
+			.replace(')','')
+			.replace(' ','');
+		window.open('https://www.google.co.kr/maps/@'+locStr+',17z');
 		
-		initMarker(corporate.mapLocation);
+		//initMarker(corporate.mapLocation);
+		
 		
 	})
 	
@@ -180,8 +187,8 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 		swal('경고',ajaxResult.data,'warning');
 		return;
 	}
-	var corporate = ajaxResult.data;
-	console.log(corporate);
+	corporate = ajaxResult.data;
+	//console.log(corporate);
 		$('#corp-name-span').text(corporate.corporateName);
 		$('#corp-addr-span').text(corporate.baseAddress);
 		$('#corp-addr-span2').text(corporate.detailAddress);
