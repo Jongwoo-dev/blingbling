@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이 페이지 - 찜</title>
+<title>마이 페이지 - 내정보수정</title>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -24,7 +24,7 @@
     <span id='header_sub_event_title'>EVENT</span>
     <span id='header_sub_event_content'>전 예약자 쿠폰 지급</span>
     <span id='header_sub_navi'>
-      <a href='#'>홈</a> > <a href='#'>마이페이지</a> > <a href='#'>스탬프</a>
+      <a href='#'>홈</a> > <a href='#'>마이페이지</a> > <a href='#'>내정보수정</a>
     </span>
   </div>
   <div id='sidebar'>
@@ -74,34 +74,62 @@
 					</div>
 				</div>
 			</div>
-
-			<div id='aaaa'>
-				<div class="row" id = subfavor>
-					<span style="margin-left:99px" class="maintitle maintitle-sub">찜</span>
-					<span style="padding-right:20px" class="maindesc">개</span>
-		      <div id='content_main'></div>
+    <!-- 메인컨텐트 시작 -->
+    <div id='content_main'>
+      <div>
+        <div class="aa maintitle">내 정보 수정</div>
+        <div class="aa maindesc">회원정보를 수정할 수 있습니다.</div>
+      </div>
+      
+      <form id='content_main_form'>
+        <div id="profile_change1">
+          <div class="profile-photo">
+            <span class="fa fa-user-circle-o" aria-hidden="true"></span>
+          </div>
+          <div id="profile_change2">  
+            <div class="profile_row">
+              <span class="profile-label">닉네임</span>
+              <span id='name-text' class="profile-value"></span>
+              <button id='name-update' type="button" class="btn btn-info mypage-btn">변경</button>
+            </div>
+            <div class="profile_row">
+              <span class="profile-label">휴대전화</span>
+              <span id='tel-text' class="profile-value"></span>
+              <button id='tel-update' type="button" class="btn btn-info mypage-btn">변경</button>
+            </div>
+            <div class="profile_row noborder">
+              <span class="profile-label">본인인증</span>
+              <span id='confirm-text' class="profile-value"></span>
+              <button type="button" class="btn btn-info mypage-btn">본인인증</button>
+            </div>
+          </div>  
+        </div>
+      </form>
+      
+      <!-- Modal -->
+				<div class="modal fade bs-example-modal-sm" id="userinfo-modal" tabindex="-1" role="dialog"
+					aria-labelledby="userinfo-modal-label">
+					<div class="modal-dialog modal-sm" role="document">
+						<div class="modal-content">
+							<div class="modal-body" id="userinfo-modal-body">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="userinfo-modal-label">닉네임 변경</h4>
+							  <input id='userinfo-modal-input'>
+								<button id='userinfo-modal-cancel' type="button" class="btn btn-default modal-btn"
+									data-dismiss="modal">닫기</button>
+								<button id='userinfo-modal-submit' type="button" class="btn btn-primary modal-btn">변경</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		
-</div>
+  </div>
 </div>
 
-<script id="corTemplate" type="text/x-handlebars-template">
-     {{#each list}}
-            <div class="img-card" data-memberno={{memberNo}}  style="cursor:pointer">
-            <img src="../upload/{{photoList.[0].filePath}}">
-            <div class="caption">
-              <p>{{corporateName}}</p>
-              <div class="description" {{#unless itemList.[0].name}}style="display:none"{{/unless}}>{{itemList.[0].name}}:{{itemList.[0].price}}원
-              </div>
-              <div class="description" {{#unless itemList.[1].name}}style="display:none"{{/unless}}>{{itemList.[1].name}}:{{itemList.[1].price}}원
-              </div>
-              <div class="description" {{#unless itemList.[2].name}}style="display:none"{{/unless}}>{{itemList.[2].name}}:{{itemList.[2].price}}원
-              </div>
-            </div>
-          </div>
-      {{/each}}
-</script>
 <script src="../node_modules/handlebars/dist/handlebars.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
