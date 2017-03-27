@@ -10,6 +10,7 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	var data = ajaxResult.data;
 	
 	memberNo= data.memberNo;
+	console.log(memberNo);
 
 	$.getJSON('../prepurchase/memberbookinglist.json?memberNo=' +memberNo, function(ajaxResult){
 		
@@ -51,6 +52,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		
 		var totalprepurchase = $('#Totalprepurchase');
 		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
+		
+		var profilename =$('#ename');
+		$('<span>').addClass('profile name').text(data.name).appendTo(profilename);
 		
 		
 		

@@ -51,6 +51,9 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		
 		var totalprepurchase = $('#Totalprepurchase');
 		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
+		
+		var profilename =$('#profilename');
+		$('<span>').addClass('profile name').text(data.name).appendTo(profilename);
 	});
 $(function() {
 	$( "#datepicker" ).datepicker({

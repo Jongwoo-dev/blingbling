@@ -23,6 +23,8 @@ $.getJSON('../mypagepl/listByMember.json?memberNo='+member.memberNo, function(aj
 		
 		var totalprepurchase = $('#Totalprepurchase');
 		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
+		var profilename =$('#profilename');
+		$('<span>').addClass('profile name').text(member.name).appendTo(profilename);
 
 		
 	});
