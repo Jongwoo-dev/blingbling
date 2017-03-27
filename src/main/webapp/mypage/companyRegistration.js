@@ -14,7 +14,6 @@ $.getJSON('../mypagepl/listByMember.json?memberNo='+member.memberNo, function(aj
 			return; 
 
 		var list = ajaxResult.data;
-		console.log(list);
 		
 		var totallike = $('#Totallike');
 		$('<span>').addClass('item value').text(list[0].likeNum+'개').appendTo(totallike);

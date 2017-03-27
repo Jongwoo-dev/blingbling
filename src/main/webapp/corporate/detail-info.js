@@ -197,6 +197,17 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 		$('#navi-header-div').text('정보&사진');
 		$('#info-cont-div').html(corporate.detail);
 		
+		$.getJSON('/blingbling/review/average.json?corporateNo=' + corporateNo, function(ajaxResult) {
+			if (ajaxResult.status != 'success') {
+				$('#corp-score-span').text('평가없음');
+				return
+			}
+			
+			$('#corp-score-span').text('평가점수 : ' 
+					+ ajaxResult.data.average.toFixed(1) 
+					+ ' (' + ajaxResult.data.length + ')');
+		});
+		
 		$('#infonpic-btn').click(function() {
 			$('button').removeClass('navi-selected');
 			$(this).addClass('navi-selected');
@@ -372,7 +383,6 @@ var initInfo = function() {
 						writeBoxContainer.append(writeTemplate(loginMember));
 						commentBox.addClass('active-write');
 						
-						
 						writeBtn = writeBoxContainer.children('.comment-write-box').children('.comment-write-btn');
 						writeBtnRegister(writeBtn, $(this).parent().attr('data-no'), 2, commentBox.children('.reply').length+1);
 						
@@ -393,7 +403,7 @@ var initInfo = function() {
 				comment[list[i].group].append(replyTemplate(list[i]));
 				if (!list[i].deleted) {
 					if (comment[list[i].group].hasClass('deleted')) {
-						comment[list[i].group].css('display','block');					
+						comment[list[i].group].css('display','block');
 					}
 					comment[list[i].group].children('.comment-box.reply').last()
 						.css('display','block');

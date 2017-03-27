@@ -13,6 +13,17 @@
     <result column="csco"      property="cleanScore"/>
   </resultMap>
   
+  <select id="getList"  parameterType="int" resultMap="review-map">
+    select
+      r.mno,
+      r.msno,
+      r.fsco,
+      r.ssco,
+      r.csco
+    from review r 
+    where r.msno=#{value}
+  </select>
+  
   <select id="getOne" parameterType="map" resultMap="review-map">
     select
       r.mno,

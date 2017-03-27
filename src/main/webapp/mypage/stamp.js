@@ -30,8 +30,6 @@ $.getJSON('../auth/loginUser.json', function (ajaxResult){
 			.text(list[i].memberStoreName)
 			.appendTo(div);
 
-			console.log(i,'번째 데이터 : ',list[i]); 
-
 			var myDoughnutChart = new Chart(canvas, {
 				type: 'doughnut',
 				data: {

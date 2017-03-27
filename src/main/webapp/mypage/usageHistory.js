@@ -10,13 +10,11 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 	var data = ajaxResult.data;
 	
 	memberNo= data.memberNo;
-	console.log(memberNo);
 
 	$.getJSON('../prepurchase/memberbookinglist.json?memberNo=' +memberNo, function(ajaxResult){
 		
 		var list = ajaxResult.data;
 		
-		console.log(list);
 		var tbody = $('.list-table > tbody');
 		
 		var template = Handlebars.compile($('#trTemplate').html());
@@ -44,7 +42,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 			return; 
 		
 		var list = ajaxResult.data;
-		console.log(list);
 		
 		var totallike = $('#Totallike');
 		$('<span>').addClass('item value').text(list[0].likeNum+'개').appendTo(totallike);
@@ -54,9 +51,6 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		
 		var totalprepurchase = $('#Totalprepurchase');
 		$('<span>').addClass('item value').text(list[0].prepurchaseNum+'개').appendTo(totalprepurchase);
-		
-		
-		
 	});
 $(function() {
 	$( "#datepicker" ).datepicker({
@@ -82,11 +76,6 @@ $(function() {
 	monthday= dateToYYYYMMDD(month);
 	trmonth= date.setDate(date.getDate()-90);
 	trmonthday= dateToYYYYMMDD(trmonth);
-	console.log(weekday);
-	console.log(monthday);
-	console.log(trmonthday);
-
-
 
 	$('.bt4').click(function() {
 		$.getJSON('../prepurchase/calendertime.json?startTime='+$("#datepicker").val() + '&endTime='+ $("#datepicker2").val()+'&memberNo='+memberNo, function(ajaxResult) {	

@@ -32,12 +32,12 @@
   <div id='sidebar'>
     <span class='sidebar_title'>마이 페이지</span>
 
-    <span class='sidebar_menu'>찜</span>
-    <span class='sidebar_menu selected'>스탬프</span>
-    <span class='sidebar_menu'>예약내역</span>
-    <span class='sidebar_menu'>이용내역</span>
-    <span class='sidebar_menu'>내정보수정</span>
-    <span class='sidebar_menu'>업체전환</span>
+    <span class='sidebar_menu' id='menu1'>찜</span>
+    <span class='sidebar_menu selected' id='menu2'>스탬프</span>
+    <span class='sidebar_menu' id='menu3'>예약내역</span>
+    <span class='sidebar_menu' id='menu4'>이용내역</span>
+    <span class='sidebar_menu' id='menu5'>내정보수정</span>
+    <span class='sidebar_menu' id='menu6'>업체전환</span>
   </div>
 
   <div id='content'>
@@ -127,44 +127,7 @@
 
 <script src="../node_modules/chart.js/dist/Chart.js"></script>
 <script src='stamp.js'></script>
-
-<script>
-/* 
-var ctx = $('.myDoughnutChart');
-for (var i = 0; i < ctx.length; i++) {
-	
-	var myDoughnutChart = new Chart(ctx.eq(i), {
-	    type: 'doughnut',
-	    data: {
-	        labels: ["남은횟수", "누적횟수"],
-	        datasets: [{
-	            label: '# of Votes',
-	            data: [8, 2],
-	            backgroundColor: [
-	                'rgba(230, 126, 34, 0.6)',
-	                'rgba(230, 126, 34, 1)'
-	                
-	            ],
-	            hoverBackgroundColor: [
-	                'rgba(230, 126, 34, 0.5)',
-	                'rgba(230, 126, 34, 0.8)'
-	            ]
-	         
-	        
-	        }]
-	    },
-	    options: {
-	    	legend:{
-	    	display: false
-	    	}
-	    }
-	    
-	});
-} 
-*/
-
-</script>
-
+<script src='sidebarLink.js'></script>
 
 
 
