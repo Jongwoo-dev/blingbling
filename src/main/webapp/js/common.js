@@ -244,6 +244,14 @@ $(function() {
 		registerFacebookBtn('#facebookLoginBtn');
 	});
 	
+	$.getScript('/blingbling/auth/kakao.js', function() {
+		$.getScript('/blingbling/auth/fuckingkakao.js',function(){
+			$('#kakaoLoginBtn').click(function() {
+				kakaoLogin();
+			});
+		})
+	})
+	
 	
 });
 
