@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.java89.blingbling.dao.ReviewDao">
+
+  <resultMap type="review" id="review-map">
+    <id     column="mno"     property="memberNo"/>
+    <id     column="msno"     property="corporateNo"/>
+    <result column="fsco"      property="facilityScore"/>
+    <result column="ssco"      property="serviceScore"/>
+    <result column="csco"      property="cleanScore"/>
+  </resultMap>
+  
+  <select id="getOne" parameterType="map" resultMap="review-map">
+    select
+      r.mno,
+      r.msno,
+      r.fsco,
+      r.ssco,
+      r.csco
+    from review r 
+    where r.mno=#{memberNo} and r.msno=#{corporateNo}
+  </select>
+
+  <insert id="insert" parameterType="review">
+    insert into review(mno, msno, fsco, ssco, csco)
+    values(
+      #{memberNo},
+      #{corporateNo},
+      #{facilityScore},
+      #{serviceScore},
+      #{cleanScore})
+  </insert>
+  
+  <delete id="delete" parameterType="review">
+    delete from review where mno=#{memberNo} and msno=#{corporateNo}
+  </delete>
+ 
+</mapper>
+
+
+
+
+
+
+

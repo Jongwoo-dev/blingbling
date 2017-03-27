@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>별 테스트</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blingbling/css/starinput.css">
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>별 테스트</h1>
+  
+  <div class='star-box-container'></div>
+
+</div>
+
+
+<script id="starBoxTemplate" type="text/x-handlebars-template">
+<span id="{{starboxId}}" class="star-input">
+  <span class="input">
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p1" value="1"><label for="{{starboxId}}-p1">1</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p2" value="2"><label for="{{starboxId}}-p2">2</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p3" value="3"><label for="{{starboxId}}-p3">3</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p4" value="4"><label for="{{starboxId}}-p4">4</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p5" value="5"><label for="{{starboxId}}-p5">5</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p6" value="6"><label for="{{starboxId}}-p6">6</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p7" value="7"><label for="{{starboxId}}-p7">7</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p8" value="8"><label for="{{starboxId}}-p8">8</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p9" value="9"><label for="{{starboxId}}-p9">9</label>
+    <input type="radio" name="{{starboxId}}-star-input" id="{{starboxId}}-p10" value="10"><label for="{{starboxId}}-p10">10</label>
+  </span>
+  <output for="star-input"><b>0</b></output>
+</span>
+</script>
+
+<script src="../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="startest.js"></script>
+
+</body>
+</html>

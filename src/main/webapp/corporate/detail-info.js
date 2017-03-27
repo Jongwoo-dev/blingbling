@@ -9,8 +9,8 @@ var mainCommentBox;
 var writeBoxContainer;
 
 var memberNo = location.href.split('?')[1].split('=')[1];
-var memberStoreNo = memberNo;
-var corporateNo = memberNo;
+var memberStoreNo = memberNo.replace('#','');
+var corporateNo = memberNo.replace('#','');
 
 var corporate;
 
@@ -222,7 +222,7 @@ $.getJSON('../corporate/detail.json?memberNo=' + memberNo, function(ajaxResult) 
 			$('button').removeClass('navi-selected');
 			$(this).addClass('navi-selected');
 			$('#navi-header-div').text('리뷰');
-			$('#info-cont-div').html("<div id='comment-container'></div>");
+			$('#info-cont-div').html("<div class='star-box-container'></div><div id='comment-container'></div>");
 			
 			initInfo();
 			
@@ -252,6 +252,72 @@ var initInfo = function() {
 			return;
 		}
 		
+		// 별점창 만들기
+		makeStarBox('.star-box-container');
+
+		var totalStarBox = new StarRating('total-star-input', 'total-star-box', true);
+		var facilityStarBox = new StarRating('facility-star-input', 'facility-star-box');
+		var serviceStarBox = new StarRating('service-star-input', 'service-star-box');
+		var cleanStarBox = new StarRating('clean-star-input', 'clean-star-box');
+
+		function changeTotal() {
+			
+			if (loginMember == null) {
+				swal('알림','로그인을 하셔야 댓글작성이 가능합니다.','error');
+			}
+			var param = {
+					corporateNo   : corporateNo,
+					memberNo      : loginMember.memberNo,
+					facilityScore : facilityStarBox.result,
+					serviceScore  : serviceStarBox.result,
+					cleanScore    : cleanStarBox.result
+			}
+			$.post('/blingbling/review/update.json', param, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					swal('에러',ajaxResult.data,'error');
+				}
+				
+				var result = ((parseInt(facilityStarBox.result) 
+						+ parseInt(serviceStarBox.result) 
+						+ parseInt(cleanStarBox.result))/3).toFixed(1) ;
+				totalStarBox.star.find("output>b").text(result);
+				stampStar(totalStarBox.star, Math.round(result));
+			});
+		};
+
+		function stampStar($starInputBox, num) {
+			$starInputBox.children('.input').children().remove();
+			$starInputBox.children('.input')
+				.append('<input type="radio" name="total-star-input-star-input" id="total-star-input-p'+num+'" value="'+num+'" checked>')
+				.append('<label for="total-star-input-p'+num+'" style="width:'+num*10+'px">'+num+'</label>');
+		}
+
+		facilityStarBox.callback = changeTotal;
+		serviceStarBox.callback = changeTotal;
+		cleanStarBox.callback = changeTotal;
+		
+		// 점수 초기화.
+		if (loginMember != null) {
+			$.getJSON('/blingbling/review/detail.json?memberNo=' + loginMember.memberNo +'&corporateNo=' + corporateNo, function(ajaxResult) {
+				if (ajaxResult.status != 'success') {
+					return;
+				}
+				var review = ajaxResult.data;
+				facilityStarBox.changeStar(review.facilityScore);
+				serviceStarBox.changeStar(review.serviceScore);
+				cleanStarBox.changeStar(review.cleanScore);
+				
+				var aver = ((parseInt(review.facilityScore) 
+						+ parseInt(review.serviceScore) 
+						+ parseInt(review.cleanScore))/3).toFixed(1) ;
+				totalStarBox.star.find("output>b").text(aver);
+				stampStar(totalStarBox.star, Math.round(aver));
+			});
+		}
+		
+		//* 여기 아래 토탈 점수 초기화 하는루틴
+		
+		// 코멘트창 만들기
 		var commentContainer = $('#comment-container');
 
 		commentContainer.children().remove();
@@ -368,7 +434,6 @@ function writeBtnRegister(jqueryObj, group = 0, level = 1, sequence = 1) {
 					sequence    : $(this).attr('data-sequence'),
 					contents    : $(this).parent().children('.comment-write-textarea').val()
 			}
-			/*console.log(param);*/
 			$.post('/blingbling/comment/add.json', param, function(ajaxResult) {
 				if (ajaxResult.status != 'success') {
 					swal('에러',ajaxResult.data,'error');
@@ -444,6 +509,11 @@ function replyBtnRegister(jqueryObj) {
 
 function interactionBtnCheck(jqueryObj) {
 	// 로그인한 유저랑 코멘트 쓴 유저가 다르면 삭제
+	if (loginMember == null) {
+		jqueryObj.children('.comment-update').remove();
+		jqueryObj.children('.comment-delete').remove();
+		return false;
+	}
 	if (loginMember.memberNo != jqueryObj.attr('data-writer-no')) {
 		jqueryObj.children('.comment-update').remove();
 		if (!loginMember.administrator) {
@@ -465,3 +535,82 @@ function removeWriteBox() {
 	$('.main-comment-box').removeClass('hidden');
 	$('.comment-box').removeClass('hidden');
 }
+
+function StarRating(starboxId, appendToSelector, fixed=false){
+	var starRating = new Object();
+	starRating.id = starboxId
+
+	var template = Handlebars.compile($('#starBoxTemplate').html());
+	$('#'+appendToSelector).append(template({"starboxId":starRating.id}))
+
+	var $star = $("#"+starRating.id),
+	$result = $star.find("output>b");
+	
+	for (var i = 1; i < 11; i++) {
+		$star.children('.input').children('label[for="'+starRating.id+'-p'+i+'"]')
+			.css('width',i*10)
+			.css('z-index',11-i);
+	}
+	
+	starRating.star = $star;
+	starRating.result = $result.text();
+	starRating.fixed = fixed;
+	starRating.callback = null;
+	starRating.changeStar = function(num) {
+		$result.text(num);
+		$('#'+starRating.id+'-p'+num).attr('checked',true);
+		starRating.result = num; 
+	}
+	
+
+	if (starRating.fixed) {
+		$star.children('.input').children().remove();
+		return starRating;
+	}
+	
+	$("#"+starRating.id).parent()
+	.on("change", "#"+starRating.id+" :radio", function(event){
+		$result.text($(this).next().text());
+		starRating.result = $result.text();
+		if (starRating.callback != null) {
+			starRating.callback();
+		}
+	})
+	.on("mouseover", "#"+starRating.id+" label", function(){
+		$result.text($(this).text());
+	})
+	.on("mouseleave", "#"+starRating.id+">.input", function(){
+		var $checked = $star.find(":checked");
+		if($checked.length === 0){
+			$result.text("0");
+		} else {
+			$result.text($checked.next().text());
+		}
+	});
+	return starRating;
+};
+
+function makeStarBox(containerSelector) {
+	$(containerSelector).children().remove();
+	
+	$('<div>').attr('class','star-box header')
+		.append("<span class='star-box-total'>평점</span>")
+		.append("<div id='total-star-box'></div>")
+		.appendTo($(containerSelector));	
+  
+	$('<div>').attr('class','star-box')
+		.append("<span class='star-box-label'>시설</span>")
+		.append("<div id='facility-star-box'></div>")
+		.appendTo(containerSelector);
+	
+	$('<div>').attr('class','star-box')
+		.append("<span class='star-box-label'>서비스</span>")
+		.append("<div id='service-star-box'></div>")
+		.appendTo(containerSelector);
+	
+	$('<div>').attr('class','star-box')
+		.append("<span class='star-box-label'>청결</span>")
+		.append("<div id='clean-star-box'></div>")
+		.appendTo(containerSelector);
+}
+
