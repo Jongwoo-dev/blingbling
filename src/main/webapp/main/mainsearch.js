@@ -1,5 +1,5 @@
 try {
-	  var search = location.href.split('?')[1].split('=')[1];
+	  var search = location.href.split('?')[1].split('=')[1].replace('#','');
 	} catch (error) {
 		var search = -1;
 	}

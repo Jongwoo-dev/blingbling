@@ -89,7 +89,7 @@ insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(10,'123-45-01
 
 insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(11,'323-45-01234','1','네일메이커','네일아트', '서울특별시 강남구 신사동 531');
 insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(12,'333-45-01234','1','DO왁싱','왁싱', '서울특별시 강남구 신사동 531');
-insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(13,'343-45-01234','1','에뜨레휴스파','애스테틱', '서울특별시 서초구 서초동 1308-16');
+insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(13,'343-45-01234','1','에뜨레휴스파','에스테틱', '서울특별시 서초구 서초동 1308-16');
 insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(14,'353-45-01234','1','왁싱30','왁싱', '서울특별시 서초구 서초동 1308-16');
 insert into memb_store(msno,crno,cachk,cname,ctype,bas_adr) values(15,'363-45-01234','1','서울보건마사지','마사지', '서울특별시 서초구 서초동 1308-16');
 

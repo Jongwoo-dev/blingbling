@@ -4,7 +4,7 @@ var fullclk;
 var contenheager = $('#content-headersub');
 
 try {
-	  basclk = decodeURIComponent(location.href.split('?')[1].split('=')[1]);
+	  basclk = decodeURIComponent(location.href.split('?')[1].split('=')[1].replace('#',''));
 	} catch (error) {
 	  basclk = -1;
 	}

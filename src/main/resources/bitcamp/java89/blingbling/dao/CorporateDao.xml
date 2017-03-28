@@ -214,8 +214,9 @@
       left outer join ms_phot mp on mp.msno=m.mno
       left outer join item it on it.msno=mp.msno
       where ms.bas_adr like concat('%',#{address1},'%') and
-      <foreach collection = "address2" item="value" separator="or">
+      <foreach collection = "address2" item="value" open="(" close=")"  separator="or">
       	ms.cname like concat('%',#{value},'%') or
+      	ms.ctype like concat('%',#{value},'%') or
       	it.name like concat('%',#{value},'%')
       </foreach>
        

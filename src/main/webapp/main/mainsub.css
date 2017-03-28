@@ -118,6 +118,7 @@
 .caption p {
   padding: 5px;
   margin-left: 10px;
+  font-size: 1.2em;
 }
 
 .img-card:hover .caption {
