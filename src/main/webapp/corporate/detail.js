@@ -1,8 +1,10 @@
-try {
+/*try {
   var memberNo = location.href.split('?')[1].split('=')[1];
 } catch (error) {
 	var memberNo = -1;
 }
+*/
+
 
 
 $( function() {
@@ -105,6 +107,9 @@ $('#reservation-submitbtn').click(function() {
 			if (ajaxResult.status != 'success') {
 				swal('에러',ajaxResult.data,'error');
 			}
+			var selectedItemName = $('.fa-circle-o.selected').next().children('.item-title').text();
+			//console.log('보낼 문자 : ', '예약자:'+loginMember.tel+', 예약항목 : '+selectedItemName);
+			sendSMS(corporate.tel.replace(/-/gi, ""), '예약자:'+loginMember.tel+', 예약항목 : '+selectedItemName+', 예약날짜 : '+param.serviceTime);
 			
 			swal({
 				  title: "예약성공",

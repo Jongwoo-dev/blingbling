@@ -27,8 +27,6 @@ for (var i = 0; i < urlParam.length; i++) {
 	}
 }
 
-console.log('번호 : ', memberNo);
-console.log('네비 : ', navi);
 var corporate;
 
 
