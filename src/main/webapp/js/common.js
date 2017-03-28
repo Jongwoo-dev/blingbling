@@ -161,9 +161,8 @@ $(function() {
 				.attr('aria-labelledby','login-name-a').appendTo('#login-name-div');
 			$('<li>').html('<a href="#" id="login-dropdown-mypage" class="header-menu-a">마이 페이지</a>')
 				.appendTo(ul).click(function(e) {
-					e.preventDefault();
-					alert('임시로 찜 페이지에 넣음. 나중에 내정보수정 페이지로 변경'); 
-					location.href = '/blingbling/mypage/favor.html';
+					e.preventDefault(); 
+					location.href = '/blingbling/mypage/detail.html';
 				});
 			if (member.type == 'ceo') {
 				$('<li>').html('<a href="#" id="login-dropdown-corppage" class="header-menu-a">업체 관리자 페이지</a>')
