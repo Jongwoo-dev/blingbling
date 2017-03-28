@@ -120,7 +120,7 @@ span {
 	cursor: pointer;
 }
 
-.btn.btn-danger {
+#reservation-submitbtn {
 	display: block;
 	border-radius: 0;
 	font-size: 1.4em;

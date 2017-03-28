@@ -8,10 +8,27 @@ var commentBox;
 var mainCommentBox;
 var writeBoxContainer;
 
-var memberNo = location.href.split('?')[1].split('=')[1];
-var memberStoreNo = memberNo.replace('#','');
-var corporateNo = memberNo.replace('#','');
+var urlParam = location.href.split('?')[1].split('&');
+var memberNo;
+var memberStoreNo;
+var corporateNo;
+var navi;
 
+for (var i = 0; i < urlParam.length; i++) {
+	switch (urlParam[i].split('=')[0]) {
+	case 'memberNo':
+		memberNo = urlParam[i].split('=')[1].replace('#','');
+		memberStoreNo = memberNo;
+		corporateNo = memberNo;
+		break;
+	case 'navi':
+		navi = urlParam[i].split('=')[1].replace('#','')
+		break;
+	}
+}
+
+console.log('번호 : ', memberNo);
+console.log('네비 : ', navi);
 var corporate;
 
 
@@ -41,7 +58,14 @@ var corporate;
 
 $(function() {
 	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
-		
+		if (navi == 'review') {
+			$('button').removeClass('navi-selected');
+			$(this).addClass('navi-selected');
+			$('#navi-header-div').text('리뷰');
+			$('#info-cont-div').html("<div class='star-box-container'></div><div id='comment-container'></div>");
+			$('#review-btn').addClass('navi-selected');
+			initInfo();
+		}
 		//로그인 확인
 		if(ajaxResult.status == 'success') {
 			var data = ajaxResult.data;
