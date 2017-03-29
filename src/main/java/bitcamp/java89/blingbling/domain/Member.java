@@ -6,6 +6,7 @@ public class Member implements Serializable {
   private static final long serialVersionUID = 1L;
   
   public static final String USER = "user";
+  public static final String CEO_WAIT = "ceo_wait";
   public static final String CEO = "ceo";
   public static final String ADMIN = "admin";
   

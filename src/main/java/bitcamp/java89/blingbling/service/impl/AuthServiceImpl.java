@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java89.blingbling.dao.CorporateDao;
 import bitcamp.java89.blingbling.dao.MemberDao;
+import bitcamp.java89.blingbling.domain.Corporate;
 import bitcamp.java89.blingbling.domain.Member;
 import bitcamp.java89.blingbling.service.AuthService;
 
@@ -22,7 +23,12 @@ public class AuthServiceImpl implements AuthService {
       member.setType(Member.ADMIN); 
     } else {
       if (corporateDao.countByNo(member.getMemberNo()) > 0) {
-        member.setType(Member.CEO);
+        Corporate corporate = corporateDao.getOneWithTel(member.getMemberNo());
+        if (!corporate.isCorporateConfirm()) {
+          member.setType(Member.CEO_WAIT);
+        }else {
+          member.setType(Member.CEO);
+        }
       } else {
         member.setType(Member.USER);
       }
