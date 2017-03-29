@@ -348,16 +348,16 @@ function getSearchStr() {
 function sendSMS(recvNum, sendMsg) {
 	var param = {
 			message    : sendMsg,
-			receiver   : recvNum
+			receiver   : recvNum.replace(/-/gi, "")
 	}
 	
 	console.log(param);
 	
-	alert('받는사람 : '+recvNum+'\n내용 : '+sendMsg+'\n최종본때 이거 지우고 문자보내는 코드 주석해제')
-	/*
+	//alert('받는사람 : '+recvNum+'\n내용 : '+sendMsg+'\n최종본때 이거 지우고 문자보내는 코드 주석해제')
+	
 	$.post('/blingbling/common/sendSMS.json', param, function(ajaxResult) {
 	    
 	    console.log(ajaxResult);
 	}, 'json');
-	*/
+	
 }
