@@ -3,6 +3,7 @@
 -- 회원 데이터
 
 
+
 insert into memb(mno, name, email, tel, chck, mgr) values(1,'뉴가닉스파','user01@test.com','02-3446-1688','1','0');
 insert into memb(mno, name, email, tel, chck, mgr) values(2,'미다스타운','user02@test.com','02-6111-8880','1','0');
 insert into memb(mno, name, email, tel, chck, mgr) values(3,'GW샵','user03@test.com','02-3482-3006','1','0');
@@ -263,3 +264,9 @@ insert into ms_tel(mtno,msno,mstel) values(47,47,'02-6117-8880');
 insert into ms_tel(mtno,msno,mstel) values(48,48,'02-6118-8880');
 insert into ms_tel(mtno,msno,mstel) values(49,49,'02-6119-8880');
 insert into ms_tel(mtno,msno,mstel) values(50,50,'02-6110-8880');
+
+update memb_store set det_adr='';
+update memb set tel='010-4534-1457';
+
+
+
