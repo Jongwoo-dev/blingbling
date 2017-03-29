@@ -71,7 +71,7 @@
   
   <select id="getConversionList" resultMap="corporate-map">
     select
-      memb.mno,
+      memb_store.msno,
       memb.name,
       memb_store.cname,
       memb_store.ctype
