@@ -383,6 +383,14 @@
     where msno=#{memberNo}
   </update>
   
+  <update id="updateCorporateConfirm" parameterType="int">
+    update memb_store ms set
+      ms.cachk='1'
+    where msno=#{memberNo}
+  </update>
+  
+  
+  
   <delete id="delete" parameterType="int">
     delete from memb_store where msno=#{value}
   </delete>

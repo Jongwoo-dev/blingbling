@@ -18,6 +18,7 @@ public interface CorporateService {
   int updateDetail(Corporate corporate) throws Exception;
   int updateNotice(Corporate corporate) throws Exception;
   int updatePriceTime(Corporate corporate) throws Exception;
+  int updateCorporateConfirm(int memberNo) throws Exception;
   List<Corporate> searchBybaseAddress( HashMap<String, Object> map) throws Exception;
   List<Corporate> searchBysearchbar( HashMap<String, Object> map) throws Exception;
   List<Corporate> searchBysearchheader( HashMap<String, Object> map) throws Exception;

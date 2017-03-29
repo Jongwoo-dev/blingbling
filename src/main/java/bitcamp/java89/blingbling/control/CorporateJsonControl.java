@@ -121,6 +121,20 @@ public class CorporateJsonControl {
     
     return new AjaxResult(AjaxResult.SUCCESS, "변경 성공입니다.");
   }
+  
+  @RequestMapping("/corporate/updateCorporateConfirm")
+  public AjaxResult updateCorporateConfirm(int memberNo) throws Exception {
+    
+    int count = corporateService.updateCorporateConfirm(memberNo);
+    
+    if (count == 0) {
+      return new AjaxResult(AjaxResult.FAIL, "해당 번호의 회원이 없습니다.");
+    }
+    
+    
+    return new AjaxResult(AjaxResult.SUCCESS, "승인 성공입니다.");
+  }
+  
   @RequestMapping("/corporate/searchBybaseAddress")
   public AjaxResult searchBybaseAddressList(String baseAddress) throws Exception {
     String[] tempStr = baseAddress.split(" ");

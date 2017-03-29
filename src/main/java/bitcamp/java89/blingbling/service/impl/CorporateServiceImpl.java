@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java89.blingbling.dao.CorporateDao;
 import bitcamp.java89.blingbling.domain.Corporate;
-import bitcamp.java89.blingbling.domain.Stamplog;
 import bitcamp.java89.blingbling.service.CorporateService;
 
 @Service
@@ -80,6 +79,10 @@ public class CorporateServiceImpl implements CorporateService {
   @Override
   public int updatePriceTime(Corporate corporate) throws Exception {
     return corporateDao.updatePriceTime(corporate);
+  }
+  @Override
+  public int updateCorporateConfirm(int memberNo) throws Exception {
+    return corporateDao.updateCorporateConfirm(memberNo);
   }
   @Override
   public List<Corporate> searchBybaseAddress(HashMap<String, Object> map) throws Exception {
