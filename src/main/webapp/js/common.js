@@ -127,7 +127,7 @@ $(function() {
 		});
 		
 		$('#titleimg').click(function(event) {
-			location.href='/blingbling/';
+			location.href='/blingbling/main/main.html';
 		});
 		
 		// 로그인 유저 체크
