@@ -269,4 +269,9 @@ update memb_store set det_adr='';
 update memb set tel='010-4534-1457';
 
 
+insert into memb(mno, name, email, tel, chck, mgr) values(60,'엄진영','user61@test.com','010-1111-1111','1','0');
+insert into memb(mno, name, email, tel, chck, mgr) values(61,'김보라','user62@test.com','010-1111-1112','1','0');
+insert into memb(mno, name, email, tel, chck, mgr) values(62,'오용석','user63@test.com','010-1111-1113','1','0');
+insert into memb(mno, name, email, tel, chck, mgr) values(63,'이성복','user64@test.com','010-1111-1114','1','0');
 
+insert into memb(mno, name, email, tel, chck, mgr) values(64,'운영자','admin@test.com','010-1111-1114','1','1');
