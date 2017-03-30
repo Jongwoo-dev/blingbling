@@ -85,6 +85,7 @@
   <select id="getMemberBookingList" parameterType="int" resultMap="member-booking-map">
   select
     m.name as mname,
+    ms.cname,
     i.ino,
     i.name as iname,
     i.price,

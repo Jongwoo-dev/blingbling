@@ -22,6 +22,8 @@ $.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		for (var i = 0; i < list.length; i++) {
 			list[i].bookingDate = list[i].serviceTime.split(" ")[0]
 		}
+		
+		console.log('리스트 : ',list);
 		tbody.html(template({"list":list}));
 		
 	//삭제버튼	
