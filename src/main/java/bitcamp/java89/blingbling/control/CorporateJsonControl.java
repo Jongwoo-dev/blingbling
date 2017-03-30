@@ -60,6 +60,14 @@ public class CorporateJsonControl {
       System.out.println(i+"번째 파일이름 : "+list.get(i).getFilePath());
     }
     
+    if (corporate.getBaseAddress() == null) {
+      corporate.setBaseAddress("");
+    }
+    
+    if (corporate.getDetailAddress() == null) {
+      corporate.setDetailAddress("");
+    }
+    
     corporateService.add(corporate);
 
     return new AjaxResult(AjaxResult.SUCCESS, "등록 성공입니다.");

@@ -8,8 +8,16 @@ var wax = '';
 var searchselect = '';
 var searchclk;
 
-$(function() {
 
+
+$(function() {
+	function search() {
+		searchbar = $('#searchbarinput').val();
+	  	event.preventDefault();
+	  	console.log(searchbar);
+	  	location.href = '../main/mainsearch.html?searchbar='+ searchbar;
+	}
+	
 	// header.html을 가져와서 붙인다.
 	$.get('../header.html', function(result) {
 		$('#header').html(result);
@@ -19,10 +27,11 @@ $(function() {
 		});*/
 		
 		$('.btn.btn-link').click(function(event) {
-			searchbar = $('#searchbarinput').val();
+			/*searchbar = $('#searchbarinput').val();
 		  	event.preventDefault();
 		  	console.log(searchbar);
-		  	location.href = '../main/mainsearch.html?searchbar='+ searchbar;
+		  	location.href = '../main/mainsearch.html?searchbar='+ searchbar;*/
+			search();
 		  	
 		});
 		
@@ -129,6 +138,12 @@ $(function() {
 		$('#titleimg').click(function(event) {
 			location.href='/blingbling/main/main.html';
 		});
+		
+		$('#searchbarinput').on('keyup',function() {
+			if (window.event.keyCode == 13) {
+				search();
+	        }
+		})
 		
 		// 로그인 유저 체크
 		$.getJSON('../auth/loginUser.json', function(ajaxResult) {
