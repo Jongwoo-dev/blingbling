@@ -98,7 +98,7 @@ $('.btn-lg.3').click(function() {
 			return;
 		}
 		//console.log('받는사람 : ',tel,'   메시지 내용 : ', name+'님의 '+corporateName+'에 대한 업체 전환이 승인되었습니다. 블링블링에 가입하신 것을 축하합니다.');
-		sendSMS(tel,name+'님의 '+corporateName+'에 대한 업체 전환이 승인되었습니다. 블링블링에 가입하신 것을 축하합니다.');
+		sendSMS(tel,name+'님의 '+corporateName+'에 대한 업체 전환이 승인되었습니다. 축하합니다.');
 		swal({
 			title: "안내",
 			text: "업체 승인되었습니다",
