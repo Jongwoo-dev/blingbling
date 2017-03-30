@@ -186,6 +186,12 @@ $(function() {
 					});
 				});
 			
+			// 예약내역 링크 처리
+			$('#buyinfo-link').click(function(event) {
+				event.preventDefault();
+				location.href = '/blingbling/mypage/reservationHistory.html';
+			});
+			
 			
 		});
 		
