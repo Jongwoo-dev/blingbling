@@ -85,6 +85,9 @@ $('#sb-infopicture').click(function(){
 $('#sb-notice').click(function(){
 	location.href='notice.html';
 })
+$('#sb-review').click(function(){
+	location.href='/blingbling/corporate/detail-info.html?memberNo='+loginMember.memberNo+'&navi=review';
+})
 $('#sb-pricetime').click(function(){
 	location.href='pricetime.html';
 })
