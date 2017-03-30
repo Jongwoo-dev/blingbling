@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java89.blingbling.domain.Corporate;
+import bitcamp.java89.blingbling.domain.Photo;
 import bitcamp.java89.blingbling.service.CorporateService;
 
 @RestController
@@ -54,10 +55,10 @@ public class CorporateJsonControl {
   @RequestMapping("/corporate/add")
   public AjaxResult add(Corporate corporate) throws Exception {
     
-    /*List<Photo> list = corporate.getPhotoList();
+    List<Photo> list = corporate.getPhotoList();
     for (int i = 0; i < list.size(); i++) {
       System.out.println(i+"번째 파일이름 : "+list.get(i).getFilePath());
-    }*/
+    }
     
     corporateService.add(corporate);
 

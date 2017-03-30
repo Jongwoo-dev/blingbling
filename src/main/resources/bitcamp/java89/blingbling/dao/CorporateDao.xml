@@ -243,10 +243,13 @@
       ms.notice,
       ms.pr_ti,
       mt.mtno,
-      mt.mstel
+      mt.mstel,
+      mp.mpno,
+      mp.path
     from  memb m
       inner join memb_store ms on ms.msno=m.mno
       left outer join ms_tel mt on mt.msno=m.mno
+      left outer join ms_phot mp on mp.msno=m.mno
     where m.mno=#{value}
   </select>
   <select id="getListBybaseAddress" parameterType="map" resultMap="corporate-map">
@@ -338,10 +341,10 @@
   </insert> 
   
   <insert id="insertPhoto" parameterType="corporate">
-    insert into ms_phot(mpno,path) 
+    insert into ms_phot(msno,path) 
     values
     <foreach collection="photoList" item="photo" separator=",">
-      (#{memberNo}, #{photo.filepath})
+      (#{memberNo}, #{photo.filePath})
     </foreach>
   </insert> 
   

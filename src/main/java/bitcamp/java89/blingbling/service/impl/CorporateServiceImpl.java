@@ -47,7 +47,9 @@ public class CorporateServiceImpl implements CorporateService {
 
   @Override
   public int add(Corporate corporate) throws Exception {
-    return corporateDao.insert(corporate);
+    int count = corporateDao.insert(corporate);
+    corporateDao.insertPhoto(corporate);
+    return count;
   }
 
   @Override
