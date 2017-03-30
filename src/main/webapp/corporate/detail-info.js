@@ -93,7 +93,7 @@ $('#favorite-star-span').click(function(){
 	var starBtn = $(this);
 	$.getJSON('../auth/loginUser.json', function(ajaxResult) {
 		if (ajaxResult.status != 'success') {
-			window.alert('즐찾 기능 쓰려면 로그인 하셈!!');
+			window.alert('로그인 하세요');
 			return
 		} else {
 			
